@@ -1,0 +1,168 @@
+name: "LeNet"		# Nombre de la red.		
+layer {			# Datos de entrenamiento.
+  name: "mnist"		# Nombre.
+  type: "Data"		# Tipo.
+  top: "data"		# Genera BLOB (Binary Large Object) de datos. Almacena datos de gran tamaño que cambian de forma dinámica.
+  top: "label"		# Genera BLOB (Binary Large Object) de etiquetas.
+  include {
+    phase: TRAIN		# Fase de entrenamiento.
+  }
+  transform_param {
+    scale: 0.00390625		# Escala de los píxeles de entrada para que estén en el intervalo [0,1). 1/256 = 0.00390625. 
+  }
+  data_param {		# Parámetros de la capa.
+    source: "examples/mnist/mnist_train_lmdb"		# Localización de los datos de entrenamiento.
+    batch_size: 64		# Número de entradas para procesar de una sola vez. Cuantas imágenes/ejemplos por lote. 
+    backend: LMDB		# Extensión de los datos de entrenamiento.
+  }
+}
+layer {			# Datos de test.
+  name: "mnist"		# Nombre.
+  type: "Data"		# Tipo.
+  top: "data"		# Genera BLOB (Binary Large Object) de datos de test.
+  top: "label"		# Genera BLOB (Binary Large Object) de etiquetas.
+  include {
+    phase: TEST		# Fase de Test.
+  }
+  transform_param {
+    scale: 0.00390625		# Escala de los píxeles de entrada para que estén en el intervalo [0,1). 1/256 = 0.00390625.
+  }
+  data_param {		# Parámetros de la capa.
+    source: "examples/mnist/mnist_test_lmdb"		# Localización de los datos de test.
+    batch_size: 100		# Número de entradas para procesar de una sola vez. Cuantas imágenes/ejemplos por lote.
+    backend: LMDB		# Extensión de los datos de test.
+  }
+}
+layer {		# CAPA 1: Capa de convolución 1.
+  name: "conv1"		# Nombre de la capa.
+  type: "Convolution"		# Tipo de la capa.
+  bottom: "data"		# Datos que entrada de la capa (Datos de entrenamiento).
+  top: "conv1"		# Datos de salida de la capa.
+  param {		# lr_mults: Ajustes de la velocidad de aprendizaje para los parámetros que se pueden aprender en la capa.
+    lr_mult: 1		# Velocidad de aprendizaje de peso = Tasa de aprendizaje propuesta por el solucioandor en tiempo de ejecución.
+  }			
+  param {
+    lr_mult: 2		# Velocidad de aprendizaje de sesgo = Doble de tasa de aprendizaje.
+  }
+  convolution_param {
+    num_output: 20		# Número salidas.
+    kernel_size: 5		# Cada filtro es de 5x5.
+    stride: 1			# Salto de 1px entre cada filtro. Intervalos en los que se aplica el filtro a la entrada.
+    weight_filler {		# Inicialización de los pesos. Algoritmo Xavier (Determina automáticamente la escala de la
+      type: "xavier"		# inicialización de los pesos baśandose en el número de neuronas de entrada y salida).
+    }
+    bias_filler {		# Inicialización del sesgo.
+      type: "constant"		# Constante = 0.
+    }
+  }
+}
+layer {		# CAPA 2: Capa de poolling 1.
+  name: "pool1"		# Nombre de la capa.
+  type: "Pooling"		# Tipo de la capa.
+  bottom: "conv1"		# Datos de entrada de la capa (Datos de salida de la capa de convolución 1).
+  top: "pool1"		# Datos de salida de la capa.
+  pooling_param {
+    pool: MAX		# Función de máximo para realizar el poolling.
+    kernel_size: 2	# Cada filtro es de 2x2.
+    stride: 2		# Salto de 2px entre cada filtro. Intervalos en los que se aplica el filtro a la entrada.
+  }
+}
+layer {		# CAPA 3: Capa de convolución 2.
+  name: "conv2"		# Nombre de la capa.
+  type: "Convolution"		# Tipo de la capa
+  bottom: "pool1"		# Datos de entrada de la capa (Datos de salida de la capa de poolling 1).
+  top: "conv2"		# Datos de salida de la capa.
+  param {		# lr_mults: Ajustes de la velocidad de aprendizaje para los parámetros que se pueden aprender en la capa.
+    lr_mult: 1		# Velocidad de aprendizaje de peso = Tasa de aprendizaje propuesta por el solucioandor en tiempo de ejecución.
+  }
+  param {
+    lr_mult: 2		# Velocidad de aprendizaje de sesgo = Doble de tasa de aprendizaje.
+  }
+  convolution_param {
+    num_output: 50		# Número filtros.
+    kernel_size: 5		# Cada filtro es de 5x5.
+    stride: 1			# Salto de 1px entre cada filtro. Intervalos en los que se aplica el filtro a la entrada.
+    weight_filler {		# Inicialización de los pesos. Algoritmo Xavier (Determina automáticamente la escala de la
+      type: "xavier"		# inicialización de los pesos baśandose en el número de neuronas de entrada y salida).
+    }
+    bias_filler {		# Inicialización del sesgo.
+      type: "constant"		# Constante = 0.
+    }
+  }
+}
+layer {		# CAPA 4: Capa de poolling 2.
+  name: "pool2"		# Nombre de la capa.
+  type: "Pooling"		# Tipo de la capa.
+  bottom: "conv2"		# Datos de entrada de la capa (Datos de salida de la capa de convolución 2).
+  top: "pool2"		# Datos de salida de la capa.
+  pooling_param {
+    pool: MAX		# Función de máximo para realizar el poolling.
+    kernel_size: 2	# Cada filtro es de 2x2.
+    stride: 2		# Salto de 2px entre cada filtro. Intervalos en los que se aplica el filtro a la entrada.
+  }
+}
+layer {		# Capa 5. Trata la entrada como un vector simple y produce una salida en forma de vector único.
+  name: "ip1"		# Nombre de la capa.
+  type: "InnerProduct"		# Tipo de la capa.
+  bottom: "pool2"		# Datos de entrada de la capa (Datos de salida de la capa poolling 2).
+  top: "ip1"		# Datos de salida de la capa.
+  param {		# lr_mults: Ajustes de la velocidad de aprendizaje para los parámetros que se pueden aprender en la capa.
+    lr_mult: 1		# Velocidad de aprendizaje de peso = Tasa de aprendizaje propuesta por el solucioandor en tiempo de ejecución.
+  }
+  param {
+    lr_mult: 2		# Velocidad de aprendizaje de sesgo = Doble de tasa de aprendizaje.
+  }
+  inner_product_param {
+    num_output: 500		# Número de salidas de la capa.
+    weight_filler {		# Inicialización de los pesos. Algoritmo Xavier (Determina automáticamente la escala de la
+      type: "xavier"		# inicialización de los pesos baśandose en el número de neuronas de entrada y salida).
+    }
+    bias_filler {		# Inicialización del sesgo.
+      type: "constant"		# Constante = 0.
+    }
+  }
+}
+layer {		# Función de activación ReLU, f(x) = max(0,x).
+  name: "relu1"		# Nombre.
+  type: "ReLU"		# Tipo.
+  bottom: "ip1"		# Datos de entrada.
+  top: "ip1"		# Datos de salida.
+}
+layer {		# Capa 6. Trata la entrada como un vector simple y produce una salida en forma de vector único.
+  name: "ip2"		# Nombre de la capa.
+  type: "InnerProduct"		# Tipo de la capa.
+  bottom: "ip1"		# Datos de entrada de la capa (Datos de salida de la capa ip1).
+  top: "ip2"		# Datos de salida.
+  param {		# lr_mults: Ajustes de la velocidad de aprendizaje para los parámetros que se pueden aprender en la capa.
+    lr_mult: 1		# Velocidad de aprendizaje de peso = Tasa de aprendizaje propuesta por el solucioandor en tiempo de ejecución.
+  }
+  param {
+    lr_mult: 2		# Velocidad de aprendizaje de sesgo = Doble de tasa de aprendizaje.
+  }
+  inner_product_param {
+    num_output: 10		# Número de salidas de la capa. Salida final (10 salidas para cada uno de los dígitos del 0-9).
+    weight_filler {		# Inicialización de los pesos. Algoritmo Xavier (Determina automáticamente la escala de la 
+      type: "xavier"		# inicialización de los pesos baśandose en el número de neuronas de entrada y salida).
+    }
+    bias_filler {		# Inicialización del sesgo.
+      type: "constant"		# Constante = 0.
+    }
+  }
+}
+layer {
+  name: "accuracy"	# Nombre.
+  type: "Accuracy"	# Tipo.
+  bottom: "ip2"		# Datos de entrada (Datos de salida de ip2).
+  bottom: "label"	# Datos de entrada (Etiqueta).
+  top: "accuracy"	# Informa de la precisión del modelo cada 100 iteraciones.
+  include {
+    phase: TEST		# Fase de Test.
+  }
+}
+layer {
+  name: "loss"			# Nombre.
+  type: "SoftmaxWithLoss"	# Tipo.	
+  bottom: "ip2"			# Datos de entrada (Datos de salida de ip2)
+  bottom: "label"		# Datos de entrada (Etiquetas).
+  top: "loss"			# No produce salidas. Calcula el valor de la función de pérdida, informa de ello cuando se inicia la 
+}				# propagación hacia atrás e inicia el gradiente con respecto a ip2.
