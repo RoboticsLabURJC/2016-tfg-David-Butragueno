@@ -8,6 +8,12 @@ datum = caffe.proto.caffe_pb2.Datum()
 n = 0
 i = 0
 
+x = 0
+y = 0
+
+u = 0
+v = 0
+
 width = 28
 height = 28
 ftype = 'P2'
@@ -37,9 +43,6 @@ data9 = [[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0
 
 
 for key, value in lmdb_cursor:
-
-    n = 0
-    i = 0
         
     datum.ParseFromString(value)
     label = datum.label
@@ -68,252 +71,59 @@ for key, value in lmdb_cursor:
     elif label == 9:
         Nine = Nine + 1
 
-    #pgmfile=open('data' + str(label) + '.pgm', 'w')
-    #pgmfile.write("%s\n" % (ftype))
-    #pgmfile.write("%d %d\n" % (width,height))
-    #pgmfile.write("255\n")
 
-    #txtfile=open('data' + str(label) + '.txt', 'w')
-    #txtfile.write("%s\n" % (ftype))
-    #txtfile.write("%d %d\n" % (width,height))
-    #txtfile.write("255\n")
+    for x in range (0,28):
+        for y in range (0,28):
 
-    while i < height:
-        if label == 0:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data0[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data0[0][i][n]))
-                data0[0][i][n] = data0[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data0[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data0[0][i][n]))
-                data0[0][i][n] = data0[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data0[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data0[0][i][n]))
-                data0[0][i][n] = data0[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data0[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data0[0][i][n]))
-                data0[0][i][n] = data0[0][i][n] + data[0][i][n]
-                n = n + 1
+            if label == 0:
+                data0[0][x][y] = data0[0][x][y] + data[0][x][y]
 
-        elif label == 1:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data1[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data1[0][i][n]))
-                data1[0][i][n] = data1[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data1[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data1[0][i][n]))
-                data1[0][i][n] = data1[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data1[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data1[0][i][n]))
-                data1[0][i][n] = data1[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data1[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data1[0][i][n]))
-                data1[0][i][n] = data1[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 1:
+                data1[0][x][y] = data1[0][x][y] + data[0][x][y]
 
-        elif label == 2:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data2[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data2[0][i][n]))
-                data2[0][i][n] = data2[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data2[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data2[0][i][n]))
-                data2[0][i][n] = data2[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data2[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data2[0][i][n]))
-                data2[0][i][n] = data2[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data2[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data2[0][i][n]))
-                data2[0][i][n] = data2[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 2:
+                data2[0][x][y] = data2[0][x][y] + data[0][x][y]
 
-        elif label == 3:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data3[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data3[0][i][n]))
-                data3[0][i][n] = data3[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data3[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data3[0][i][n]))
-                data3[0][i][n] = data3[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data3[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data3[0][i][n]))
-                data3[0][i][n] = data3[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data3[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data3[0][i][n]))
-                data3[0][i][n] = data3[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 3:
+                data3[0][x][y] = data3[0][x][y] + data[0][x][y]
 
-        elif label == 4:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data4[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data4[0][i][n]))
-                data4[0][i][n] = data4[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data4[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data4[0][i][n]))
-                data4[0][i][n] = data4[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data4[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data4[0][i][n]))
-                data4[0][i][n] = data4[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data4[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data4[0][i][n]))
-                data4[0][i][n] = data4[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 4:
+                data4[0][x][y] = data4[0][x][y] + data[0][x][y]
 
-        elif label == 5:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data5[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data5[0][i][n]))
-                data5[0][i][n] = data5[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data5[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data5[0][i][n]))
-                data5[0][i][n] = data5[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data5[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data5[0][i][n]))
-                data5[0][i][n] = data5[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data5[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data5[0][i][n]))
-                data5[0][i][n] = data5[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 5:
+                data5[0][x][y] = data5[0][x][y] + data[0][x][y]
 
-        elif label == 6:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data6[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data6[0][i][n]))
-                data6[0][i][n] = data6[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data6[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data6[0][i][n]))
-                data6[0][i][n] = data6[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data6[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data6[0][i][n]))
-                data6[0][i][n] = data6[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data6[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data6[0][i][n]))
-                data6[0][i][n] = data6[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 6:
+                data6[0][x][y] = data6[0][x][y] + data[0][x][y]
 
-        elif label == 7:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data7[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data7[0][i][n]))
-                data7[0][i][n] = data7[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data7[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data7[0][i][n]))
-                data7[0][i][n] = data7[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data7[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data7[0][i][n]))
-                data7[0][i][n] = data7[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data7[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data7[0][i][n]))
-                data7[0][i][n] = data7[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 7:
+                data7[0][x][y] = data7[0][x][y] + data[0][x][y]
 
-        elif label == 8:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data8[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data8[0][i][n]))
-                data8[0][i][n] = data8[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data8[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data8[0][i][n]))
-                data8[0][i][n] = data8[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data8[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data8[0][i][n]))
-                data8[0][i][n] = data8[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data8[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data8[0][i][n]))
-                data8[0][i][n] = data8[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 8:
+                data8[0][x][y] = data8[0][x][y] + data[0][x][y]
 
-        elif label == 9:
-            if n == width - 1:
-                #pgmfile.write("%s\n" % ((data[0][i][n]) + data9[0][i][n]))
-                #txtfile.write("%s\n" % ((data[0][i][n]) + data9[0][i][n]))
-                data9[0][i][n] = data9[0][i][n] + data[0][i][n]
-                i = i + 1
-                n = 0   
-            elif data[0][i][n + 1] < 10:
-                #pgmfile.write("%s   " % ((data[0][i][n]) + data9[0][i][n]))
-                #txtfile.write("%s   " % ((data[0][i][n]) + data9[0][i][n]))
-                data9[0][i][n] = data9[0][i][n] + data[0][i][n]
-                n = n + 1
-            elif data[0][i][n + 1] < 100:
-                #pgmfile.write("%s  " % ((data[0][i][n]) + data9[0][i][n]))
-                #txtfile.write("%s  " % ((data[0][i][n]) + data9[0][i][n]))
-                data9[0][i][n] = data9[0][i][n] + data[0][i][n]
-                n = n + 1
-            else:
-                #pgmfile.write("%s " % ((data[0][i][n]) + data9[0][i][n]))
-                #txtfile.write("%s " % ((data[0][i][n]) + data9[0][i][n]))
-                data9[0][i][n] = data9[0][i][n] + data[0][i][n]
-                n = n + 1
+            elif label == 9:
+                data9[0][x][y] = data9[0][x][y] + data[0][x][y]
 
-    #pgmfile.close()
 
+for u in range (0,28):
+    for v in range (0,28):
+        data0[0][u][v] = data0[0][u][v] / Zero
+        data1[0][u][v] = data1[0][u][v] / One
+        data2[0][u][v] = data2[0][u][v] / Two
+        data3[0][u][v] = data3[0][u][v] / Three
+        data4[0][u][v] = data4[0][u][v] / Four
+        data5[0][u][v] = data5[0][u][v] / Five
+        data6[0][u][v] = data6[0][u][v] / Six
+        data7[0][u][v] = data7[0][u][v] / Seven
+        data8[0][u][v] = data8[0][u][v] / Eight
+        data9[0][u][v] = data9[0][u][v] / Nine
+
+        
 n = 0
 i = 0
 loop = 0
+
 
 
 for loop in range (0,10):
@@ -336,72 +146,72 @@ for loop in range (0,10):
 
             if loop == 0:
 
-                pgmfile.write("%s\n" % ((data0[0][i][n]) / Zero))
-                txtfile.write("%s\n" % ((data0[0][i][n]) / Zero))
+                pgmfile.write("%s\n" % (data0[0][i][n]))
+                txtfile.write("%s\n" % (data0[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 1:
 
-                pgmfile.write("%s\n" % ((data1[0][i][n]) / One))
-                txtfile.write("%s\n" % ((data1[0][i][n]) / One))
+                pgmfile.write("%s\n" % (data1[0][i][n]))
+                txtfile.write("%s\n" % (data1[0][i][n]))
                 i = i + 1
                 n = 0
 
 
             elif loop == 2:
 
-                pgmfile.write("%s\n" % ((data2[0][i][n]) / Two))
-                txtfile.write("%s\n" % ((data2[0][i][n]) / Two))
+                pgmfile.write("%s\n" % (data2[0][i][n]))
+                txtfile.write("%s\n" % (data2[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 3:
 
-                pgmfile.write("%s\n" % ((data3[0][i][n]) / Three))
-                txtfile.write("%s\n" % ((data3[0][i][n]) / Three))
+                pgmfile.write("%s\n" % (data3[0][i][n]))
+                txtfile.write("%s\n" % (data3[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 4:
 
-                pgmfile.write("%s\n" % ((data4[0][i][n]) / Four))
-                txtfile.write("%s\n" % ((data4[0][i][n]) / Four))
+                pgmfile.write("%s\n" % (data4[0][i][n]))
+                txtfile.write("%s\n" % (data4[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 5:
 
-                pgmfile.write("%s\n" % ((data5[0][i][n]) / Five))
-                txtfile.write("%s\n" % ((data5[0][i][n]) / Five))
+                pgmfile.write("%s\n" % (data5[0][i][n]))
+                txtfile.write("%s\n" % (data5[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 6:
 
-                pgmfile.write("%s\n" % ((data6[0][i][n]) / Six))
-                txtfile.write("%s\n" % ((data6[0][i][n]) / Six))
+                pgmfile.write("%s\n" % (data6[0][i][n]))
+                txtfile.write("%s\n" % (data6[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 7:
 
-                pgmfile.write("%s\n" % ((data7[0][i][n]) / Seven))
-                txtfile.write("%s\n" % ((data7[0][i][n]) / Seven))
+                pgmfile.write("%s\n" % (data7[0][i][n]))
+                txtfile.write("%s\n" % (data7[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 8:
 
-                pgmfile.write("%s\n" % ((data8[0][i][n]) / Eight))
-                txtfile.write("%s\n" % ((data8[0][i][n]) / Eight))
+                pgmfile.write("%s\n" % (data8[0][i][n]))
+                txtfile.write("%s\n" % (data8[0][i][n]))
                 i = i + 1
                 n = 0
 
             elif loop == 9:
 
-                pgmfile.write("%s\n" % ((data9[0][i][n]) / Nine))
-                txtfile.write("%s\n" % ((data9[0][i][n]) / Nine))
+                pgmfile.write("%s\n" % (data9[0][i][n]))
+                txtfile.write("%s\n" % (data9[0][i][n]))
                 i = i + 1
                 n = 0
 
@@ -411,196 +221,196 @@ for loop in range (0,10):
             
                 if data0[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data0[0][i][n]) / Zero))
-                    txtfile.write("%s   " % ((data0[0][i][n]) / Zero))
+                    pgmfile.write("%s   " % (data0[0][i][n]))
+                    txtfile.write("%s   " % (data0[0][i][n]))
                     n = n + 1
 
                 elif data0[0][i][n + 1] < 100:
-                    pgmfile.write("%s  " % ((data0[0][i][n]) / Zero))
-                    txtfile.write("%s  " % ((data0[0][i][n]) / Zero))
+                    pgmfile.write("%s  " % (data0[0][i][n]))
+                    txtfile.write("%s  " % (data0[0][i][n]))
                     n = n + 1
 
                 else:
-                    pgmfile.write("%s " % ((data0[0][i][n]) / Zero))
-                    txtfile.write("%s " % ((data0[0][i][n]) / Zero))
+                    pgmfile.write("%s " % (data0[0][i][n]))
+                    txtfile.write("%s " % (data0[0][i][n]))
                     n = n + 1
 
             elif loop == 1:
 
                 if data1[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data1[0][i][n]) / One))
-                    txtfile.write("%s   " % ((data1[0][i][n]) / One))
+                    pgmfile.write("%s   " % (data1[0][i][n]))
+                    txtfile.write("%s   " % (data1[0][i][n]))
                     n = n + 1
 
                 elif data1[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data1[0][i][n]) / One))
-                    txtfile.write("%s  " % ((data1[0][i][n]) / One))
+                    pgmfile.write("%s  " % (data1[0][i][n]))
+                    txtfile.write("%s  " % (data1[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data1[0][i][n]) / One))
-                    txtfile.write("%s " % ((data1[0][i][n]) / One))
+                    pgmfile.write("%s " % (data1[0][i][n]))
+                    txtfile.write("%s " % (data1[0][i][n]))
                     n = n + 1
 
             elif loop == 2:
 
                 if data2[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data2[0][i][n]) / Two))
-                    txtfile.write("%s   " % ((data2[0][i][n]) / Two))
+                    pgmfile.write("%s   " % (data2[0][i][n]))
+                    txtfile.write("%s   " % (data2[0][i][n]))
                     n = n + 1
 
                 elif data2[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data2[0][i][n]) / Two))
-                    txtfile.write("%s  " % ((data2[0][i][n]) / Two))
+                    pgmfile.write("%s  " % (data2[0][i][n]))
+                    txtfile.write("%s  " % (data2[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data2[0][i][n]) / Two))
-                    txtfile.write("%s " % ((data2[0][i][n]) / Two))
+                    pgmfile.write("%s " % (data2[0][i][n]))
+                    txtfile.write("%s " % (data2[0][i][n]))
                     n = n + 1
 
             elif loop == 3:
 
                 if data3[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data3[0][i][n]) / Three))
-                    txtfile.write("%s   " % ((data3[0][i][n]) / Three))
+                    pgmfile.write("%s   " % (data3[0][i][n]))
+                    txtfile.write("%s   " % (data3[0][i][n]))
                     n = n + 1
 
                 elif data3[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data3[0][i][n]) / Three))
-                    txtfile.write("%s  " % ((data3[0][i][n]) / Three))
+                    pgmfile.write("%s  " % (data3[0][i][n]))
+                    txtfile.write("%s  " % (data3[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data3[0][i][n]) / Three))
-                    txtfile.write("%s " % ((data3[0][i][n]) / Three))
+                    pgmfile.write("%s " % (data3[0][i][n]))
+                    txtfile.write("%s " % (data3[0][i][n]))
                     n = n + 1
 
             elif loop == 4:
 
                 if data4[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data4[0][i][n]) / Four))
-                    txtfile.write("%s   " % ((data4[0][i][n]) / Four))
+                    pgmfile.write("%s   " % (data4[0][i][n]))
+                    txtfile.write("%s   " % (data4[0][i][n]))
                     n = n + 1
 
                 elif data4[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data4[0][i][n]) / Four))
-                    txtfile.write("%s  " % ((data4[0][i][n]) / Four))
+                    pgmfile.write("%s  " % (data4[0][i][n]))
+                    txtfile.write("%s  " % (data4[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data4[0][i][n]) / Four))
-                    txtfile.write("%s " % ((data4[0][i][n]) / Four))
+                    pgmfile.write("%s " % (data4[0][i][n]))
+                    txtfile.write("%s " % (data4[0][i][n]))
                     n = n + 1
 
             elif loop == 5:
 
                 if data5[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data5[0][i][n]) / Five))
-                    txtfile.write("%s   " % ((data5[0][i][n]) / Five))
+                    pgmfile.write("%s   " % (data5[0][i][n]))
+                    txtfile.write("%s   " % (data5[0][i][n]))
                     n = n + 1
 
                 elif data5[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data5[0][i][n]) / Five))
-                    txtfile.write("%s  " % ((data5[0][i][n]) / Five))
+                    pgmfile.write("%s  " % (data5[0][i][n]))
+                    txtfile.write("%s  " % (data5[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data5[0][i][n]) / Five))
-                    txtfile.write("%s " % ((data5[0][i][n]) / Five))
+                    pgmfile.write("%s " % (data5[0][i][n]))
+                    txtfile.write("%s " % (data5[0][i][n]))
                     n = n + 1
 
             elif loop == 6:
 
                 if data6[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data6[0][i][n]) / Six))
-                    txtfile.write("%s   " % ((data6[0][i][n]) / Six))
+                    pgmfile.write("%s   " % (data6[0][i][n]))
+                    txtfile.write("%s   " % (data6[0][i][n]))
                     n = n + 1
 
                 elif data6[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data6[0][i][n]) / Six))
-                    txtfile.write("%s  " % ((data6[0][i][n]) / Six))
+                    pgmfile.write("%s  " % (data6[0][i][n]))
+                    txtfile.write("%s  " % (data6[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data6[0][i][n]) / Six))
-                    txtfile.write("%s " % ((data6[0][i][n]) / Six))
+                    pgmfile.write("%s " % (data6[0][i][n]))
+                    txtfile.write("%s " % (data6[0][i][n]))
                     n = n + 1
 
             elif loop == 7:
 
                 if data7[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data7[0][i][n]) / Seven))
-                    txtfile.write("%s   " % ((data7[0][i][n]) / Seven))
+                    pgmfile.write("%s   " % (data7[0][i][n]))
+                    txtfile.write("%s   " % (data7[0][i][n]))
                     n = n + 1
 
                 elif data7[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data7[0][i][n]) / Seven))
-                    txtfile.write("%s  " % ((data7[0][i][n]) / Seven))
+                    pgmfile.write("%s  " % (data7[0][i][n]))
+                    txtfile.write("%s  " % (data7[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data7[0][i][n]) / Seven))
-                    txtfile.write("%s " % ((data7[0][i][n]) / Seven))
+                    pgmfile.write("%s " % (data7[0][i][n]))
+                    txtfile.write("%s " % (data7[0][i][n]))
                     n = n + 1
 
             elif loop == 8:
 
                 if data8[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data8[0][i][n]) / Eight))
-                    txtfile.write("%s   " % ((data8[0][i][n]) / Eight))
+                    pgmfile.write("%s   " % (data8[0][i][n]))
+                    txtfile.write("%s   " % (data8[0][i][n]))
                     n = n + 1
 
                 elif data8[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data1[0][i][n]) / Eight))
-                    txtfile.write("%s  " % ((data1[0][i][n]) / Eight))
+                    pgmfile.write("%s  " % (data1[0][i][n]))
+                    txtfile.write("%s  " % (data1[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data8[0][i][n]) / Eight))
-                    txtfile.write("%s " % ((data8[0][i][n]) / Eight))
+                    pgmfile.write("%s " % (data8[0][i][n]))
+                    txtfile.write("%s " % (data8[0][i][n]))
                     n = n + 1
 
             else:
 
                 if data9[0][i][n + 1] < 10:
 
-                    pgmfile.write("%s   " % ((data9[0][i][n]) / Nine))
-                    txtfile.write("%s   " % ((data9[0][i][n]) / Nine))
+                    pgmfile.write("%s   " % (data9[0][i][n]))
+                    txtfile.write("%s   " % (data9[0][i][n]))
                     n = n + 1
 
                 elif data9[0][i][n + 1] < 100:
 
-                    pgmfile.write("%s  " % ((data9[0][i][n]) / Nine))
-                    txtfile.write("%s  " % ((data9[0][i][n]) / Nine))
+                    pgmfile.write("%s  " % (data9[0][i][n]))
+                    txtfile.write("%s  " % (data9[0][i][n]))
                     n = n + 1
 
                 else:
 
-                    pgmfile.write("%s " % ((data9[0][i][n]) / Nine))
-                    txtfile.write("%s " % ((data9[0][i][n]) / Nine))
+                    pgmfile.write("%s " % (data9[0][i][n]))
+                    txtfile.write("%s " % (data9[0][i][n]))
                     n = n + 1
