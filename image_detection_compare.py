@@ -12,7 +12,7 @@ from caffe.proto import caffe_pb2
 import cv2
 import xml.etree.ElementTree as ET
 
-input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_003188.jpg'
+input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_000783.jpg'
 
 class DetectionNet:
 
@@ -124,113 +124,8 @@ class DetectionNet:
             cv2.rectangle(img,(xmin,ymin),(xmax,ymax),(0,255,0),2) #Color BGR
 
 
-        print ground_truth
-        print ground_detection
-
-        rectangle = self.rectangle_intersection(ground_truth, ground_detection)
-
-        print rectangle
-
-        area_intersection = self.area(rectangle)
-
-        print area_intersection
-
-        area_total = self.area_total(ground_truth, ground_detection, area_intersection)
-
-        print area_total
-
-        jaccard_index = self.jaccard_index(area_total, area_intersection)
-
-        print jaccard_index
-
-
         return img
 
-
-    def jaccard_index(self, area_total, area_intersection):
-
-        jaccard_index_array = []
-
-        for x in range(len(area_total)):
-
-            jaccard_index = float(area_intersection[x]) / float(area_total[x])
-
-            jaccard_index_array.append(jaccard_index)
-
-        return jaccard_index_array
-
-
-    def area_total(self, rectangle1, rectangle2, area_intersection):
-
-        area_total_array = []
-
-        for x in range(len(rectangle1)):
-
-            heigh_rectangle1 = int(rectangle1[x][3]) - int(rectangle1[x][1]) 
-            weigh_rectangle1 = int(rectangle1[x][2]) - int(rectangle1[x][0])
-
-            area_rectangle1 = heigh_rectangle1 * weigh_rectangle1
-
-            heigh_rectangle2 = int(rectangle2[x][3]) - int(rectangle2[x][1]) 
-            weigh_rectangle2 = int(rectangle2[x][2]) - int(rectangle2[x][0])
-
-            area_rectangle2 = heigh_rectangle2 * weigh_rectangle2
-
-            area_total = area_rectangle1 + area_rectangle2 - area_intersection[x]
-
-            area_total_array.append(area_total)
-
-        return area_total_array
-        
-
-    def area(self, rectangles_array):
-
-        area_array = []
-
-        for x in range(len(rectangles_array)):
-
-            heigh = int(rectangles_array[x][3]) - int(rectangles_array[x][1]) 
-            weigh = int(rectangles_array[x][2]) - int(rectangles_array[x][0])
-
-            area = heigh * weigh
-
-            area_array.append(area)
-
-        return area_array
-
-    def rectangle_intersection(self, rectangles_array1, rectangles_array2):
-
-        positions_array = []
-
-        for x in range(len(rectangles_array1)):
-            if int(rectangles_array1[x][0]) >= int(rectangles_array2[x][0]):
-                xmin_intersection = int(rectangles_array1[x][0])
-            else:
-                xmin_intersection = int(rectangles_array2[x][0])
-
-            if int(rectangles_array1[x][1]) >= int(rectangles_array2[x][1]):
-                ymin_intersection = int(rectangles_array1[x][1])
-            else:
-                ymin_intersection = int(rectangles_array2[x][1])
-
-            if int(rectangles_array1[x][2]) <= int(rectangles_array2[x][2]):
-                xmax_intersection = int(rectangles_array1[x][2])
-            else:
-                xmax_intersection = int(rectangles_array2[x][2])
-
-            if int(rectangles_array1[x][3]) <= int(rectangles_array2[x][3]):
-                ymax_intersection = int(rectangles_array1[x][3])
-            else:
-                ymax_intersection = int(rectangles_array2[x][3])
-
-            positions = []
-            positions.append(xmin_intersection)
-            positions.append(ymin_intersection)
-            positions.append(xmax_intersection)
-            positions.append(ymax_intersection)
-            positions_array.append(positions)
-
-        return positions_array
 
     def get_ground_truth(self, input_image, label_detection):
 
