@@ -16,6 +16,66 @@ input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_000783.jp
 pathImages = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/'
 pathAnnotations = '/home/davidbutra/data/VOCdevkit/VOC2012/Annotations/'
 
+aeroplane_jaccard_index = 0
+naeroplane = 0
+
+bicycle_jaccard_index = 0
+nbicycle = 0
+
+bird_jaccard_index = 0
+nbird = 0
+
+boat_jaccard_index = 0
+nboat = 0
+
+bottle_jaccard_index = 0
+nbottle = 0
+
+bus_jaccard_index = 0
+nbus = 0
+
+car_jaccard_index = 0
+ncar = 0
+
+cat_jaccard_index = 0
+ncat = 0
+
+chair_jaccard_index = 0
+nchair = 0
+
+cow_jaccard_index = 0
+ncow = 0
+
+diningtable_jaccard_index = 0
+ndiningtable = 0
+
+dog_jaccard_index = 0
+ndog = 0
+
+horse_jaccard_index = 0
+nhorse = 0
+
+motorbike_jaccard_index = 0
+nmotorbike = 0
+
+person_jaccard_index = 0
+nperson = 0
+
+pottedplant_jaccard_index = 0
+npottedplant = 0
+
+sheep_jaccard_index = 0
+nsheep = 0
+
+sofa_jaccard_index = 0
+nsofa = 0
+
+train_jaccard_index = 0
+ntrain = 0
+
+tvmonitor_jaccard_index = 0
+ntvmonitor = 0
+
 class DetectionNet:
 
     def __init__(self):
@@ -273,7 +333,7 @@ class DetectionNet:
             print "Buscando etiqueta detectada: " + label_detection[x]
             for t in range(len(ground_detection)):
                 for i in range(len(names_xml_final)):
-                    if abs(int(ground_detection[t][0]) - int(names_xml_final[i][1])) <= 20 and abs(int(ground_detection[t][1]) - int(names_xml_final[i][2])) <= 20 and abs(int(ground_detection[t][2]) - int(names_xml_final[i][3])) <= 20 and abs(int(ground_detection[t][3]) - int(names_xml_final[i][4])) <= 20:
+                    if abs(int(ground_detection[t][0]) - int(names_xml_final[i][1])) <= 40 and abs(int(ground_detection[t][1]) - int(names_xml_final[i][2])) <= 40 and abs(int(ground_detection[t][2]) - int(names_xml_final[i][3])) <= 40 and abs(int(ground_detection[t][3]) - int(names_xml_final[i][4])) <= 40:
                         names_xml_final[i][6] = "Correct Object"
                         print "OBJETO CORRECTO"
                         break
@@ -309,7 +369,7 @@ dirsAnnotations = sorted(os.listdir(pathAnnotations))
 detec_array = []
 
 for x in range(len(dirsImages)):
-    if x == 100:
+    if x == 200:
         break
     print "IMAGEN DE ENTRADA"
     print pathImages + dirsImages[x]
@@ -326,3 +386,191 @@ for x in range(len(detec_array)):
     jaccardIndex_file.write(dirsAnnotations[x] +"\n")
     for i in range(len(detec_array[x][0])):
         jaccardIndex_file.write("%s" % str(detec_array[x][1][i]) + ": " + "%s\n" % str(detec_array[x][0][i]))
+        if detec_array[x][1][i] == "aeroplane":
+            aeroplane_jaccard_index = aeroplane_jaccard_index + detec_array[x][0][i]
+            naeroplane = naeroplane + 1
+
+        elif detec_array[x][1][i] == "bicycle":
+            bicycle_jaccard_index = bicycle_jaccard_index + detec_array[x][0][i]
+            nbicycle = nbicycle + 1
+
+        elif detec_array[x][1][i] == "bird":
+            bird_jaccard_index = bird_jaccard_index + detec_array[x][0][i]
+            nbird = nbird + 1
+
+        elif detec_array[x][1][i] == "boat":
+            boat_jaccard_index = boat_jaccard_index + detec_array[x][0][i]
+            nboat = nboat + 1
+
+        elif detec_array[x][1][i] == "bottle":
+            bottle_jaccard_index = bottle_jaccard_index + detec_array[x][0][i]
+            nbottle = nbottle + 1
+
+        elif detec_array[x][1][i] == "bus":
+            bus_jaccard_index = bus_jaccard_index + detec_array[x][0][i]
+            nbus = nbus + 1
+
+        elif detec_array[x][1][i] == "car":
+            car_jaccard_index = car_jaccard_index + detec_array[x][0][i]
+            ncar = ncar + 1
+
+        elif detec_array[x][1][i] == "cat":
+            cat_jaccard_index = cat_jaccard_index + detec_array[x][0][i]
+            ncat = ncat + 1
+
+        elif detec_array[x][1][i] == "chair":
+            chair_jaccard_index = chair_jaccard_index + detec_array[x][0][i]
+            nchair = nchair + 1
+
+        elif detec_array[x][1][i] == "cow":
+            cow_jaccard_index = cow_jaccard_index + detec_array[x][0][i]
+            ncow = ncow + 1
+
+        elif detec_array[x][1][i] == "diningtable":
+            diningtable_jaccard_index = diningtable_jaccard_index + detec_array[x][0][i]
+            ndiningtable = ndiningtable + 1
+
+        elif detec_array[x][1][i] == "dog":
+            dog_jaccard_index = dog_jaccard_index + detec_array[x][0][i]
+            ndog = ndog + 1
+
+        elif detec_array[x][1][i] == "horse":
+            horse_jaccard_index = horse_jaccard_index + detec_array[x][0][i]
+            nhorse = nhorse + 1
+
+        elif detec_array[x][1][i] == "motorbike":
+            motorbike_jaccard_index = motorbike_jaccard_index + detec_array[x][0][i]
+            nmotorbike = nmotorbike + 1
+
+        elif detec_array[x][1][i] == "person":
+            person_jaccard_index = person_jaccard_index + detec_array[x][0][i]
+            nperson = nperson + 1
+
+        elif detec_array[x][1][i] == "pottedplant":
+            pottedplant_jaccard_index = pottedplant_jaccard_index + detec_array[x][0][i]
+            npottedplant = npottedplant + 1
+
+        elif detec_array[x][1][i] == "sheep":
+            sheep_jaccard_index = sheep_jaccard_index + detec_array[x][0][i]
+            nsheep = nsheep + 1
+
+        elif detec_array[x][1][i] == "sofa":
+            sofa_jaccard_index = sofa_jaccard_index + detec_array[x][0][i]
+            nsofa = nsofa + 1
+
+        elif detec_array[x][1][i] == "train":
+            train_jaccard_index = train_jaccard_index + detec_array[x][0][i]
+            ntrain = ntrain + 1
+
+        elif detec_array[x][1][i] == "tvmonitor":
+            tvmonitor_jaccard_index = tvmonitor_jaccard_index + detec_array[x][0][i]
+            ntvmonitor = ntvmonitor + 1
+
+jaccardIndex_file.close()
+
+jaccardIndex_average_file = open('jaccardIndex_average.txt', 'w')
+
+jaccardIndex_average_file.write("Jaccard Index Average\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("AEROPLANE\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(naeroplane) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(aeroplane_jaccard_index/naeroplane) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("BICYCLE\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nbicycle) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(bicycle_jaccard_index/nbicycle) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("BIRD\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nbird) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(bird_jaccard_index/nbird) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("BOAT\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nboat) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(boat_jaccard_index/nboat) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("BOTTLE\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nbottle) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(bottle_jaccard_index/nbottle) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("BUS\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nbus) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(bus_jaccard_index/nbus) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("CAR\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ncar) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(car_jaccard_index/ncar) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("CAT\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ncat) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(cat_jaccard_index/ncat) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("CHAIR\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nchair) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(chair_jaccard_index/nchair) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("COW\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ncow) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(cow_jaccard_index/ncow) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("DININGTABLE\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ndiningtable) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(diningtable_jaccard_index/ndiningtable) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("DOG\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ndog) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(dog_jaccard_index/ndog) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("HORSE\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nhorse) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(horse_jaccard_index/nhorse) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("MOTORBIKE\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nmotorbike) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(motorbike_jaccard_index/nmotorbike) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("PERSON\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nperson) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(person_jaccard_index/nperson) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("POTTEDPLANT\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(npottedplant) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(pottedplant_jaccard_index/npottedplant) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("SHEPP\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nsheep) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(sheep_jaccard_index/nsheep) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("SOFA\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(nsofa) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(sofa_jaccard_index/nsofa) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("TRAIN\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ntrain) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(train_jaccard_index/ntrain) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.write("TVMONITOR\n")
+jaccardIndex_average_file.write("Numero de veces detectado: " + str(ntvmonitor) + "\n")
+jaccardIndex_average_file.write("Jaccard Index Average: " + str(tvmonitor_jaccard_index/ntvmonitor) + "\n")
+jaccardIndex_average_file.write("\n")
+
+jaccardIndex_average_file.close()
