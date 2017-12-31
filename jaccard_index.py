@@ -118,7 +118,7 @@ class DetectionNet:
         print "OBJETOS DETECTADOS"
         print top_labels
 
-        ground_truth = self.get_ground_truth(input_image, annt, top_labels)
+        ground_truth = self.get_ground_truth(input_image, annt, top_labels, ground_detection)
 
         print "GROUND_TRUTH"
         print ground_truth
@@ -127,18 +127,22 @@ class DetectionNet:
 
         rectangle = self.rectangle_intersection(ground_truth, ground_detection)
 
+        print "RECTANGLE_INTERSECTION"
         print rectangle
 
         area_intersection = self.area(rectangle)
 
+        print "AREA_INTERSECTION"
         print area_intersection
 
         area_total = self.area_total(ground_truth, ground_detection, area_intersection)
 
+        print "AREA_TOTAL"
         print area_total
 
         jaccard_index = self.jaccard_index(area_total, area_intersection)
 
+        print "JACCARD_INDEX"
         print jaccard_index
 
 
@@ -231,27 +235,58 @@ class DetectionNet:
 
         return positions_array
 
-    def get_ground_truth(self, input_image, annt, label_detection):
+    def get_ground_truth(self, input_image, annt, label_detection, ground_detection):
 
         file = open(annt, 'r')
 
         tree = ET.parse(file)
         root = tree.getroot()
 
+        names_xml = []
+        names_xml_final = []
+
+        for element in root.findall('object'):
+            name = element.find('name').text
+            names_xml.append(name)
+            bndbox = element.find('bndbox')
+            names_xml.append(bndbox[0].text) #xmin
+            names_xml.append(bndbox[1].text) #ymin
+            names_xml.append(bndbox[2].text) #xmax
+            names_xml.append(bndbox[3].text) #ymax
+            #names_xml.append(element[4][0].text) #xmin
+            #names_xml.append(element[4][1].text) #ymin
+            #names_xml.append(element[4][2].text) #xmax
+            #names_xml.append(element[4][3].text) #ymax
+            names_xml.append("Not Found")
+            names_xml.append("Not Correct Object")
+            names_xml_final.append(names_xml)
+            names_xml = []
+
+        print "VARIABLE_NOMBRES_XML"
+        print names_xml_final
+
+
         positions_array = []
         names_array = []
 
         for x in range(len(label_detection)):
             print "Buscando etiqueta detectada: " + label_detection[x]
-            for element in root.findall('object'):
-                name = element.find('name').text
-                print "Elemento del XML: " + name
-                if name == label_detection[x]:
-                    print "Encontrado: " + label_detection[x] + " = " + name 
-                    xmin = element[4][0].text
-                    ymin = element[4][1].text
-                    xmax = element[4][2].text
-                    ymax = element[4][3].text
+            for t in range(len(ground_detection)):
+                for i in range(len(names_xml_final)):
+                    if abs(int(ground_detection[t][0]) - int(names_xml_final[i][1])) <= 20 and abs(int(ground_detection[t][1]) - int(names_xml_final[i][2])) <= 20 and abs(int(ground_detection[t][2]) - int(names_xml_final[i][3])) <= 20 and abs(int(ground_detection[t][3]) - int(names_xml_final[i][4])) <= 20:
+                        names_xml_final[i][6] = "Correct Object"
+                        print "OBJETO CORRECTO"
+                        break
+                    print "Elemento del XML: " + names_xml_final[i][0]
+                if names_xml_final[i][0] == label_detection[x] and names_xml_final[i][5] == "Not Found" and names_xml_final[i][6] == "Correct Object":
+                    print "Encontrado: " + label_detection[x] + " = " + names_xml_final[i][0] 
+                    names_xml_final[i][5] = "Found"
+                    names_xml_final[i][6] = "Not Correct Object"
+                    name = names_xml_final[i][0]
+                    xmin = names_xml_final[i][1]
+                    ymin = names_xml_final[i][2]
+                    xmax = names_xml_final[i][3]
+                    ymax = names_xml_final[i][4]
                     print xmin, ymin, xmax, ymax
                     positions = []
                     positions.append(xmin)
@@ -262,6 +297,8 @@ class DetectionNet:
                     names_array.append(name)
                     break
             #break
+        print "VARIABLE_NOMBRES_XML_FINAL"
+        print names_xml_final
         return positions_array, names_array
 
 
@@ -272,8 +309,10 @@ dirsAnnotations = sorted(os.listdir(pathAnnotations))
 detec_array = []
 
 for x in range(len(dirsImages)):
-    if x == 5:
+    if x == 100:
         break
+    print "IMAGEN DE ENTRADA"
+    print pathImages + dirsImages[x]
     image = cv2.imread(pathImages + dirsImages[x])
     img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     img_rgb = cv2.cvtColor(img_gray,cv2.COLOR_GRAY2RGB)
@@ -284,5 +323,6 @@ for x in range(len(dirsImages)):
 jaccardIndex_file = open('jaccardIndex.txt', 'w')
 jaccardIndex_file.write("Jaccard Index\n")
 for x in range(len(detec_array)):
+    jaccardIndex_file.write(dirsAnnotations[x] +"\n")
     for i in range(len(detec_array[x][0])):
         jaccardIndex_file.write("%s" % str(detec_array[x][1][i]) + ": " + "%s\n" % str(detec_array[x][0][i]))
