@@ -12,7 +12,7 @@ from caffe.proto import caffe_pb2
 import cv2
 import xml.etree.ElementTree as ET
 
-input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_000783.jpg'
+input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_000423.jpg'
 
 class DetectionNet:
 
@@ -113,7 +113,7 @@ class DetectionNet:
 
             cv2.rectangle(img,(xmin,ymin),(xmax,ymax),(0,0,255),2) #Color BGR
 
-        ground_truth = self.get_ground_truth(input_image, top_labels)
+        ground_truth = self.get_ground_truth(input_image, top_labels, ground_detection)
 
         for i in range(len(ground_truth)):
             xmin = int(round(float(ground_truth[i][0])))
@@ -127,7 +127,7 @@ class DetectionNet:
         return img
 
 
-    def get_ground_truth(self, input_image, label_detection):
+    def get_ground_truth(self, input_image, label_detection, ground_detection):
 
         annotation = input_image.split(".")
 
@@ -140,20 +140,51 @@ class DetectionNet:
         tree = ET.parse(file)
         root = tree.getroot()
 
-        positions_array = []
-
+        names_xml = []
+        names_xml_final = []
 
         for element in root.findall('object'):
             name = element.find('name').text
-            print name
-            for x in range(len(label_detection)):
-                print x
-                print label_detection[x]
-                if name == label_detection[x]:
-                    xmin = element[4][0].text
-                    ymin = element[4][1].text
-                    xmax = element[4][2].text
-                    ymax = element[4][3].text
+            names_xml.append(name)
+            bndbox = element.find('bndbox')
+            names_xml.append(bndbox[0].text) #xmin
+            names_xml.append(bndbox[1].text) #ymin
+            names_xml.append(bndbox[2].text) #xmax
+            names_xml.append(bndbox[3].text) #ymax
+            #names_xml.append(element[4][0].text) #xmin
+            #names_xml.append(element[4][1].text) #ymin
+            #names_xml.append(element[4][2].text) #xmax
+            #names_xml.append(element[4][3].text) #ymax
+            names_xml.append("Not Found")
+            names_xml.append("Not Correct Object")
+            names_xml_final.append(names_xml)
+            names_xml = []
+
+        print "VARIABLE_NOMBRES_XML"
+        print names_xml_final
+
+
+        positions_array = []
+        names_array = []
+
+        for x in range(len(label_detection)):
+            print "Buscando etiqueta detectada: " + label_detection[x]
+            for t in range(len(ground_detection)):
+                for i in range(len(names_xml_final)):
+                    if abs(int(ground_detection[t][0]) - int(names_xml_final[i][1])) <= 40 and abs(int(ground_detection[t][1]) - int(names_xml_final[i][2])) <= 40 and abs(int(ground_detection[t][2]) - int(names_xml_final[i][3])) <= 40 and abs(int(ground_detection[t][3]) - int(names_xml_final[i][4])) <= 40:
+                        names_xml_final[i][6] = "Correct Object"
+                        print "OBJETO CORRECTO"
+                        break
+                    print "Elemento del XML: " + names_xml_final[i][0]
+                if names_xml_final[i][0] == label_detection[x] and names_xml_final[i][5] == "Not Found" and names_xml_final[i][6] == "Correct Object":
+                    print "Encontrado: " + label_detection[x] + " = " + names_xml_final[i][0] 
+                    names_xml_final[i][5] = "Found"
+                    names_xml_final[i][6] = "Not Correct Object"
+                    name = names_xml_final[i][0]
+                    xmin = names_xml_final[i][1]
+                    ymin = names_xml_final[i][2]
+                    xmax = names_xml_final[i][3]
+                    ymax = names_xml_final[i][4]
                     print xmin, ymin, xmax, ymax
                     positions = []
                     positions.append(xmin)
@@ -161,10 +192,11 @@ class DetectionNet:
                     positions.append(xmax)
                     positions.append(ymax)
                     positions_array.append(positions)
-                    print positions
-                    print positions_array
-                break
+                    names_array.append(name)
+                    break
             #break
+        print "VARIABLE_NOMBRES_XML_FINAL"
+        print names_xml_final
         return positions_array
 
 
