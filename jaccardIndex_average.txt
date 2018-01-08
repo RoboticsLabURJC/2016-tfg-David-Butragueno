@@ -1,0 +1,82 @@
+Jaccard Index Average
+
+AEROPLANE
+Numero de veces detectado: 217
+Jaccard Index Average: 0.888294500116
+
+BICYCLE
+Numero de veces detectado: 174
+Jaccard Index Average: 0.850015789784
+
+BIRD
+Numero de veces detectado: 320
+Jaccard Index Average: 0.867387618049
+
+BOAT
+Numero de veces detectado: 230
+Jaccard Index Average: 0.836357973071
+
+BOTTLE
+Numero de veces detectado: 173
+Jaccard Index Average: 0.783992867619
+
+BUS
+Numero de veces detectado: 106
+Jaccard Index Average: 0.898339001104
+
+CAR
+Numero de veces detectado: 541
+Jaccard Index Average: 0.843371301036
+
+CAT
+Numero de veces detectado: 314
+Jaccard Index Average: 0.913944427625
+
+CHAIR
+Numero de veces detectado: 491
+Jaccard Index Average: 0.824212275621
+
+COW
+Numero de veces detectado: 117
+Jaccard Index Average: 0.864286728992
+
+DININGTABLE
+Numero de veces detectado: 138
+Jaccard Index Average: 0.813477535819
+
+DOG
+Numero de veces detectado: 379
+Jaccard Index Average: 0.886535399874
+
+HORSE
+Numero de veces detectado: 219
+Jaccard Index Average: 0.867706590844
+
+MOTORBIKE
+Numero de veces detectado: 204
+Jaccard Index Average: 0.849772278624
+
+PERSON
+Numero de veces detectado: 3292
+Jaccard Index Average: 0.798371879907
+
+POTTEDPLANT
+Numero de veces detectado: 206
+Jaccard Index Average: 0.771373236023
+
+SHEPP
+Numero de veces detectado: 111
+Jaccard Index Average: 0.857312412318
+
+SOFA
+Numero de veces detectado: 163
+Jaccard Index Average: 0.790956777554
+
+TRAIN
+Numero de veces detectado: 122
+Jaccard Index Average: 0.894330957063
+
+TVMONITOR
+Numero de veces detectado: 233
+Jaccard Index Average: 0.802044018707
+
