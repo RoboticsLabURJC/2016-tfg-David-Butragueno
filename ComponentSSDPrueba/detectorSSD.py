@@ -14,10 +14,13 @@ if __name__ == '__main__':
 
     camera = Camera()
     print(camera)
-    detector = Detector()
-    print(detector)
+
     app = QtGui.QApplication(sys.argv)
     window = Gui()
+
+    detector = Detector(camera, window)
+    print(detector)
+
     window.setCamera(camera)
     window.show()
     window.setDetector(detector)

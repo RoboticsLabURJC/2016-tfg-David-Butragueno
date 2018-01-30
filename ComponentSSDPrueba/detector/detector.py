@@ -21,8 +21,15 @@ input_imageII = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_000187.
 
 class Detector():
 
-    def __init__(self):
+    def __init__(self, camera, gui):
+
         self.handleButtonON = False
+        ic = None
+        # Initializing the Ice run-time.
+        ic = Ice.initialize(sys.argv)
+
+        self.gui = gui
+        self.camera = camera
 
     def getImageDetected(self): 
 
@@ -37,12 +44,9 @@ class Detector():
 
     def update(self): #Updates the camera every time the thread changes
         
-        if self.detector:
-            self.lock.acquire()
-            self.image = self.detector.getImageData("RGB8")
-            self.height= self.image.description.height
-            self.width = self.image.description.width
-            self.lock.release()
+        img = self.camera.getImage()
+
+        self.gui.resultDetection(img)
 
     def handleButtonMemory(self):
         self.handleButtonON = not self.handleButtonON

@@ -3,6 +3,8 @@
 
 from PyQt4 import QtGui
 from PyQt4 import QtCore
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
 import numpy
 import sys
 
@@ -67,11 +69,18 @@ class Gui(QtGui.QWidget):
         scaledImageOut = img_out.scaled(self.imgPrincipal.size())
         self.imgPrincipal.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut))
 
-        image_detec = self.detector.getImageDetected()
-        img_detec_out = QtGui.QImage(image_detec.data, image_detec.shape[1], image_detec.shape[0], QtGui.QImage.Format_RGB888)
+        #image_detec = self.detector.getImageDetected()
+        #img_detec_out = QtGui.QImage(image_detec.data, image_detec.shape[1], image_detec.shape[0], QtGui.QImage.Format_RGB888)
 
-        scaledImageOut_Detection = img_detec_out.scaled(self.imgDetection.size())
-        self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut_Detection))
+        #scaledImageOut_Detection = img_detec_out.scaled(self.imgDetection.size())
+        #self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut_Detection))
+
+    def resultDetection(self, image_detec):
+        
+        image_detec = QImage(image_detec, image_detec.shape[1], image_detec.shape[0], QImage.Format_RGB888)
+        image_detec = QPixmap.fromImage(image_detec)
+
+        self.imgDetection.setPixmap(image_detec)
 
     def handleButton(self):
     	self.camera.handleButton()
