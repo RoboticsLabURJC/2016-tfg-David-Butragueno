@@ -16,7 +16,7 @@ if __name__ == '__main__':
     print(camera)
 
     app = QtGui.QApplication(sys.argv)
-    window = Gui()
+    window = Gui(camera)
 
     detector = Detector(camera, window)
     print(detector)

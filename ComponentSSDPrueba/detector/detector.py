@@ -24,6 +24,7 @@ class Detector():
     def __init__(self, camera, gui):
 
         self.handleButtonON = False
+
         ic = None
         # Initializing the Ice run-time.
         ic = Ice.initialize(sys.argv)
@@ -46,7 +47,7 @@ class Detector():
         
         img = self.camera.getImage()
 
-        self.gui.resultDetection(img)
+        self.gui.image_detec = img
 
     def handleButtonMemory(self):
         self.handleButtonON = not self.handleButtonON
