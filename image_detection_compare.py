@@ -12,7 +12,7 @@ from caffe.proto import caffe_pb2
 import cv2
 import xml.etree.ElementTree as ET
 
-input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_000423.jpg'
+input_image = '/home/davidbutra/data/VOCdevkit/VOC2012/JPEGImages/2007_009938.jpg'
 
 class DetectionNet:
 
@@ -23,8 +23,8 @@ class DetectionNet:
         self.labelmap = caffe_pb2.LabelMap()
         text_format.Merge(str(file.read()), self.labelmap)
 
-        model_def = '/home/davidbutra/caffe/models/VGGNet/VOC0712/SSD_300x300/deploy.prototxt'
-        model_weights = '/home/davidbutra/caffe/models/VGGNet/VOC0712/SSD_300x300/VGG_VOC0712_SSD_300x300_iter_120000.caffemodel'
+        model_def = '/home/davidbutra/caffe/models/VGGNet/VOC0712/SSD_300x300_coco/deploy.prototxt'
+        model_weights = '/home/davidbutra/caffe/models/VGGNet/VOC0712/SSD_300x300_coco/VGG_coco_SSD_300x300.caffemodel'
 
         self.net = caffe.Net(model_def,      # defines the structure of the model
                         model_weights,  # contains the trained weights
@@ -92,6 +92,8 @@ class DetectionNet:
         top_conf = det_conf[top_indices]
         top_label_indices = det_label[top_indices].tolist()
         top_labels = self.get_labelname(self.labelmap, top_label_indices)
+        print "OBJETOS DETECTADOS"
+        print top_labels
         top_xmin = det_xmin[top_indices]
         top_ymin = det_ymin[top_indices]
         top_xmax = det_xmax[top_indices]
