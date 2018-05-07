@@ -21,19 +21,19 @@ if __name__ == '__main__':
     detector = Detector(camera, window)
     print(detector)
 
-    window.setCamera(camera)
+    t_cam = ThreadCamera(camera)
+    t_cam.start()
+
+    t_detector = ThreadDetector(detector)
+    t_detector.start()
+
+    window.setCamera(camera, t_cam)
     window.show()
-    window.setDetector(detector)
+    window.setDetector(detector, t_detector)
     window.show()
 
-    t1 = ThreadCamera(camera)
-    t1.start()
-
-    t2 = ThreadDetector(detector)
-    t2.start()
-
-    t3 = ThreadGui(window)
-    t3.start()
+    t_gui = ThreadGui(window)
+    t_gui.start()
 
 
     sys.exit(app.exec_())

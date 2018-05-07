@@ -15,62 +15,59 @@ class Gui(QtGui.QWidget):
     def __init__(self, camera, parent=None):
 
         QtGui.QWidget.__init__(self, parent)
-        self.setWindowTitle("Detection")
-        self.resize(1210,740)
-        self.move(0,0)
+        self.setWindowTitle("Detection Component")
+        self.resize(1200,500)
+        self.move(150,50)
         self.updGUI.connect(self.update)
 
-
-        # BUTTON
-        self.button = QtGui.QPushButton('Pulsa para deteccion', self)
-        self.button.clicked.connect(self.handleButton)
-
-        # BUTTON
-        self.buttonMemory = QtGui.QPushButton('Deteccion continua', self)
-        self.buttonMemory.clicked.connect(self.handleButtonMemory)
-
-        #Original Image Label
-        #self.imgLabel=QtGui.QLabel(self)
-        #self.imgLabel.resize(640,480)
-        #self.imgLabel.move(150,50)
-        #self.imgLabel.show()
-
-        # IMAGE PRINCIPAL
+        # MAIN IMAGE
         self.imgPrincipal = QtGui.QLabel(self)
-        self.imgPrincipal.resize(1210,370)
-        self.imgPrincipal.move(0,0)
+        self.imgPrincipal.resize(450,350)
+        self.imgPrincipal.move(25,90)
         self.imgPrincipal.show()
 
-        # IMAGE DETECTION
+        # DETECTION IMAGE
         self.imgDetection = QtGui.QLabel(self)
-        self.imgDetection.resize(1210,370)
-        self.imgDetection.move(0,370)
+        self.imgDetection.resize(450,350)
+        self.imgDetection.move(725,90)
         self.imgDetection.show()
 
-        # Configuracion BOX
-        vbox = QtGui.QVBoxLayout()
-        vbox.addWidget(self.imgPrincipal)
-        vbox.addWidget(self.imgDetection)
-        vbox.addWidget(self.button)
-        vbox.addWidget(self.buttonMemory)
-        self.setLayout(vbox)
+        # BUTTON
+        self.buttonDetection = QtGui.QPushButton('Continuos', self)
+        self.buttonDetection.clicked.connect(self.toggle)
+        self.buttonDetection.move(550,100)
+        self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
 
-        self.image_detec = numpy.zeros((1210, 370), dtype=numpy.uint8) 
+
+        # Configuracion BOX
+        #vbox = QtGui.QVBoxLayout()
+        #vbox.addWidget(self.imgPrincipal)
+        #vbox.addWidget(self.imgDetection)
+        #vbox.addWidget(self.button)
+        #self.setLayout(vbox)
+
+        self.image_detec = numpy.zeros((1000, 600), dtype=numpy.uint8) 
 
         self.camera = camera
 
-    def setCamera(self,camera):
-        self.camera=camera
+    def setCamera(self,camera, t_camera):
 
-    def setDetector(self,detector):
+        self.camera=camera
+        self.t_camera=t_camera
+
+    def setDetector(self,detector,t_detector):
+
         self.detector=detector
+        self.t_detector = t_detector
 
     def update(self): #This function update the GUI for every time the thread change
+
         image = self.camera.getImage()
         img_out = QtGui.QImage(image.data, image.shape[1], image.shape[0], QtGui.QImage.Format_RGB888)
 
         scaledImageOut = img_out.scaled(self.imgPrincipal.size())
         self.imgPrincipal.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut))
+
 
         image_detec = QtGui.QImage(self.image_detec.data, self.image_detec.shape[1], self.image_detec.shape[0], QtGui.QImage.Format_RGB888)
 
@@ -78,8 +75,12 @@ class Gui(QtGui.QWidget):
         self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut_Detection))
 
 
-    def handleButton(self):
-    	self.camera.handleButton()
+    def toggle(self):
 
-    def handleButtonMemory(self):
-    	self.detector.handleButtonMemory()
+    	self.t_detector.handleButtonDetection()
+
+        if self.t_detector.is_activated:
+            self.buttonDetection.setStyleSheet('QPushButton {color:green;}')
+        else:
+            self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
+
