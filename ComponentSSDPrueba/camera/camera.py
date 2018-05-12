@@ -50,14 +50,13 @@ class Camera():
             exit()
             status = 1
 
-        self.handleButtonON = False
         caffe.set_mode_cpu()
 
 
     def getImage(self): #This function gets the image from the webcam and trasformates it for the network
         
         if self.camera:
-            self.lock.acquire()
+            #self.lock.acquire()
             image = np.zeros((self.height, self.width, 3), np.uint8)
             image = np.frombuffer(self.image.pixelData, dtype=np.uint8)
             image.shape = self.height, self.width, 3
@@ -73,7 +72,4 @@ class Camera():
             self.height= self.image.description.height
             self.width = self.image.description.width
             self.lock.release()
-        
 
-    def handleButton(self):
-        self.handleButtonON = not self.handleButtonON

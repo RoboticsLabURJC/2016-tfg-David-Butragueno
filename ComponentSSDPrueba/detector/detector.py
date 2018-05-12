@@ -136,8 +136,8 @@ class Detector():
         
         img = self.camera.getImage()
 
-        if self.handleButtonON:
-            img = self.detectiontest(img)
+        #if self.handleButtonON:
+         #   img = self.detectiontest(img)
 
         self.gui.image_detec = img
 

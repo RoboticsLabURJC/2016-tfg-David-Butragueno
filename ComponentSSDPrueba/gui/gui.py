@@ -26,11 +26,23 @@ class Gui(QtGui.QWidget):
         self.imgPrincipal.move(25,90)
         self.imgPrincipal.show()
 
-        # DETECTION IMAGE
+        #FPS MAIN IMAGE
+        self.fpsImgPrincipal = QtGui.QLabel(self)
+        self.fpsImgPrincipal.resize(50,40)
+        self.fpsImgPrincipal.move(220,450)
+        self.fpsImgPrincipal.show()
+
+        # DETECTED IMAGE
         self.imgDetection = QtGui.QLabel(self)
         self.imgDetection.resize(450,350)
         self.imgDetection.move(725,90)
         self.imgDetection.show()
+
+        #FPS DETECTED IMAGE
+        self.fpsImgDetection = QtGui.QLabel(self)
+        self.fpsImgDetection.resize(50,40)
+        self.fpsImgDetection.move(930,450)
+        self.fpsImgDetection.show()
 
         # BUTTON
         self.buttonDetection = QtGui.QPushButton('Continuos', self)
@@ -68,11 +80,13 @@ class Gui(QtGui.QWidget):
         scaledImageOut = img_out.scaled(self.imgPrincipal.size())
         self.imgPrincipal.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut))
 
-
         image_detec = QtGui.QImage(self.image_detec.data, self.image_detec.shape[1], self.image_detec.shape[0], QtGui.QImage.Format_RGB888)
 
         scaledImageOut_Detection = image_detec.scaled(self.imgDetection.size())
         self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut_Detection))
+
+        self.fpsImgPrincipal.setText("%d FPS" % (self.t_camera.framerate))
+        self.fpsImgDetection.setText("%d FPS" % (self.t_detector.framerate))
 
 
     def toggle(self):
