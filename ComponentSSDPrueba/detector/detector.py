@@ -21,8 +21,6 @@ class Detector():
 
     def __init__(self, camera, gui):
 
-        self.handleButtonON = False
-
         ic = None
         # Initializing the Ice run-time.
         ic = Ice.initialize(sys.argv)
@@ -127,19 +125,9 @@ class Detector():
             cv2.rectangle(img,(xmin,ymin),(xmax,ymax),color,2)
             cv2.putText(img,label_name,(xmin+5,ymin+10), font, 0.5,(255,0,0),2)
 
-        #self.handleButtonON = False
-
         return img
-        
+
 
     def update(self): #Updates the camera every time the thread changes
         
-        img = self.camera.getImage()
-
-        #if self.handleButtonON:
-         #   img = self.detectiontest(img)
-
-        self.gui.image_detec = img
-
-    def handleButtonDetection(self):
-        self.handleButtonON = not self.handleButtonON
+        self.img = self.camera.getImage()

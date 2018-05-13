@@ -3,10 +3,13 @@
 
 from PyQt4 import QtGui
 from PyQt4 import QtCore
+from PyQt4 import Qt
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
+from PyQt4.Qt import *
 import numpy
 import sys
+import cv2
 
 class Gui(QtGui.QWidget):
 
@@ -44,11 +47,29 @@ class Gui(QtGui.QWidget):
         self.fpsImgDetection.move(930,450)
         self.fpsImgDetection.show()
 
-        # BUTTON
-        self.buttonDetection = QtGui.QPushButton('Continuos', self)
+        # CONTINUOUS DETECTION BUTTON
+        self.buttonDetection = QtGui.QPushButton(self)
+        self.buttonDetection.setText('Continuos')
         self.buttonDetection.clicked.connect(self.toggle)
         self.buttonDetection.move(550,100)
         self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
+
+        # CONTINUOUS DETECTION BUTTON
+        self.buttonDetection = QtGui.QPushButton(self)
+        self.buttonDetection.setText('Detect Once')
+        self.buttonDetection.clicked.connect(self.toggle)
+        self.buttonDetection.move(550,100)
+        self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
+
+        self.logo_label = QtGui.QLabel(self)
+	self.logo_label.resize(150, 150)
+        self.logo_label.move(520, 300)
+	self.logo_label.setScaledContents(True)
+	
+	logo_img = QtGui.QImage()
+	logo_img.load('/home/davidbutra/Escritorio/JdeRobot.png')
+	self.logo_label.setPixmap(QtGui.QPixmap.fromImage(logo_img))
+	self.logo_label.show()
 
 
         # Configuracion BOX
@@ -58,7 +79,7 @@ class Gui(QtGui.QWidget):
         #vbox.addWidget(self.button)
         #self.setLayout(vbox)
 
-        self.image_detec = numpy.zeros((1000, 600), dtype=numpy.uint8) 
+        #self.image_detec = numpy.zeros((1000, 600), dtype=numpy.uint8) 
 
         self.camera = camera
 
@@ -74,16 +95,24 @@ class Gui(QtGui.QWidget):
 
     def update(self): #This function update the GUI for every time the thread change
 
-        image = self.camera.getImage()
-        img_out = QtGui.QImage(image.data, image.shape[1], image.shape[0], QtGui.QImage.Format_RGB888)
+        self.image = self.camera.getImage()
+        img_out = QtGui.QImage(self.image.data, self.image.shape[1], self.image.shape[0], QtGui.QImage.Format_RGB888)
 
         scaledImageOut = img_out.scaled(self.imgPrincipal.size())
         self.imgPrincipal.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut))
 
-        image_detec = QtGui.QImage(self.image_detec.data, self.image_detec.shape[1], self.image_detec.shape[0], QtGui.QImage.Format_RGB888)
+        if self.t_detector.is_activated:
+            self.image_detec = self.detector.detectiontest(self.detector.img)
+            img_detected = QtGui.QImage(self.image_detec.data, self.image_detec.shape[1], self.image_detec.shape[0], QtGui.QImage.Format_RGB888)
+            image_detec_final = img_detected.scaled(self.imgDetection.size())
 
-        scaledImageOut_Detection = image_detec.scaled(self.imgDetection.size())
-        self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(scaledImageOut_Detection))
+        else:
+            #self.image_detec = self.detector.img
+            image_detec_final = QtGui.QImage()
+            image_detec_final.load('/home/davidbutra/Escritorio/JdeRobot.png')
+
+
+        self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(image_detec_final))
 
         self.fpsImgPrincipal.setText("%d FPS" % (self.t_camera.framerate))
         self.fpsImgDetection.setText("%d FPS" % (self.t_detector.framerate))

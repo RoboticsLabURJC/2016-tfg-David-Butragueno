@@ -12,7 +12,8 @@ class ThreadDetector(threading.Thread):
         threading.Thread.__init__(self)
 
         self.t_cycle = 1500 # ms
-        self.is_activated = True
+        self.is_activated = False
+        self.framerate = 0
 
     def run(self):
 
@@ -30,7 +31,7 @@ class ThreadDetector(threading.Thread):
                 delta = max(self.t_cycle, dtms)
                 self.framerate = float(1000.0 / delta)
             else:
-                self.framerate = 31331
+                self.framerate = 9
 
             if(dtms < self.t_cycle):
                 time.sleep((self.t_cycle - dtms) / 1000.0);
