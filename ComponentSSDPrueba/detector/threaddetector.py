@@ -11,8 +11,9 @@ class ThreadDetector(threading.Thread):
         self.detector = detector
         threading.Thread.__init__(self)
 
-        self.t_cycle = 1500 # ms
+        self.t_cycle = 1500
         self.is_activated = False
+        self.runOnce_activated = False
         self.framerate = 0
 
     def run(self):
@@ -35,8 +36,6 @@ class ThreadDetector(threading.Thread):
 
             if(dtms < self.t_cycle):
                 time.sleep((self.t_cycle - dtms) / 1000.0);
-
-
 
     def handleButtonDetection(self):
         self.is_activated = not self.is_activated

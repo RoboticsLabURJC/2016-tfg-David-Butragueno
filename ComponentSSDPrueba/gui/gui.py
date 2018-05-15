@@ -54,16 +54,17 @@ class Gui(QtGui.QWidget):
         self.buttonDetection.move(550,100)
         self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
 
-        # CONTINUOUS DETECTION BUTTON
+        # ONE DETECTION BUTTON
         self.buttonDetection = QtGui.QPushButton(self)
         self.buttonDetection.setText('Detect Once')
-        self.buttonDetection.clicked.connect(self.toggle)
-        self.buttonDetection.move(550,100)
-        self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
+        self.buttonDetection.clicked.connect(self.detectOnce)
+        self.buttonDetection.move(550,450)
+        #self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
 
+        #JDEROBOT IMAGE
         self.logo_label = QtGui.QLabel(self)
 	self.logo_label.resize(150, 150)
-        self.logo_label.move(520, 300)
+        self.logo_label.move(520, 200)
 	self.logo_label.setScaledContents(True)
 	
 	logo_img = QtGui.QImage()
@@ -106,13 +107,15 @@ class Gui(QtGui.QWidget):
             img_detected = QtGui.QImage(self.image_detec.data, self.image_detec.shape[1], self.image_detec.shape[0], QtGui.QImage.Format_RGB888)
             image_detec_final = img_detected.scaled(self.imgDetection.size())
 
-        else:
-            #self.image_detec = self.detector.img
+            self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(image_detec_final))
+
+        elif not self.t_detector.runOnce_activated:
+
             image_detec_final = QtGui.QImage()
             image_detec_final.load('/home/davidbutra/Escritorio/JdeRobot.png')
+            image_detec_final = image_detec_final.scaled(self.imgDetection.size())
 
-
-        self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(image_detec_final))
+            self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(image_detec_final))
 
         self.fpsImgPrincipal.setText("%d FPS" % (self.t_camera.framerate))
         self.fpsImgDetection.setText("%d FPS" % (self.t_detector.framerate))
@@ -121,9 +124,25 @@ class Gui(QtGui.QWidget):
     def toggle(self):
 
     	self.t_detector.handleButtonDetection()
+        self.t_detector.runOnce_activated = False
 
         if self.t_detector.is_activated:
             self.buttonDetection.setStyleSheet('QPushButton {color:green;}')
         else:
             self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
+
+
+    def detectOnce(self):
+
+        if not self.t_detector.is_activated:
+
+            self.t_detector.runOnce_activated = True
+
+            self.image_detec = self.detector.detectiontest(self.detector.img)
+            img_detected = QtGui.QImage(self.image_detec.data, self.image_detec.shape[1], self.image_detec.shape[0], QtGui.QImage.Format_RGB888)
+            image_detec_final = img_detected.scaled(self.imgDetection.size())
+
+            self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(image_detec_final))
+
+ 
 
