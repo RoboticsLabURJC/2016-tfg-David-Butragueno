@@ -58,7 +58,7 @@ class Gui(QtGui.QWidget):
         self.buttonDetection = QtGui.QPushButton(self)
         self.buttonDetection.setText('Detect Once')
         self.buttonDetection.clicked.connect(self.detectOnce)
-        self.buttonDetection.move(550,450)
+        self.buttonDetection.move(550,410)
         #self.buttonDetection.setStyleSheet('QPushButton {color:red;}')
 
         #JDEROBOT IMAGE
@@ -117,8 +117,8 @@ class Gui(QtGui.QWidget):
 
             self.imgDetection.setPixmap(QtGui.QPixmap.fromImage(image_detec_final))
 
-        self.fpsImgPrincipal.setText("%d FPS" % (self.t_camera.framerate))
-        self.fpsImgDetection.setText("%d FPS" % (self.t_detector.framerate))
+        #self.fpsImgPrincipal.setText("%d FPS" % (self.t_camera.framerate))
+        #self.fpsImgDetection.setText("%d FPS" % (self.t_detector.framerate))
 
 
     def toggle(self):
