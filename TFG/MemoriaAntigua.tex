@@ -1,0 +1,973 @@
+\documentclass[a4paper, 12pt, oneside]{book}
+\usepackage[latin1]{inputenc}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage[spanish, es-lcroman]{babel} 
+\usepackage{graphicx}
+\usepackage{float}
+
+%Tab
+\newcommand\tab[1][0.3 cm]{\hspace*{#1}}
+
+\pagestyle{fancy} 
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-1in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{./logoURJC}
+\end{center}
+\end{figure}
+
+\begin{LARGE}
+ESCUELA TÉCNICA SUPERIOR DE INGENIERÍA DE TELECOMUNICACIÓN\\
+\end{LARGE}
+
+\vspace*{0.8in}
+
+\begin{Large}
+GRADO EN INGENIERÍA EN INGENIERÍA EN SISTEMAS AUDIOVISUALES Y MULTIMEDIA\\
+\end{Large}
+
+\vspace*{1in}
+
+\begin{Large}
+\textbf{TRABAJO FIN DE GRADO}\\
+\end{Large}
+
+\vspace*{1in}
+
+\begin{Large}
+DEEP LEARNING EN SENSORES RGBD\\
+\end{Large}
+
+\vspace*{0.8in}
+
+\begin{Large}
+Autor: David Butragueño Palomar\\
+Tutor:\\
+\end{Large}
+
+\vspace*{0.6in}
+
+\begin{large}
+Curso académico 2016/2017
+\end{large}
+
+\end{center}
+
+\end{titlepage}
+
+\newpage
+$\ $
+\thispagestyle{empty} 
+
+\chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
+\markboth{RESEUMEN}{RESUMEN} % encabezado
+\thispagestyle{empty}
+
+\chapter*{Agradecimientos} % si no queremos que añada la palabra "Capitulo"
+\markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado
+\thispagestyle{empty}
+
+\newpage
+$\ $
+\thispagestyle{empty} 
+
+\tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
+
+
+\listoffigures
+\thispagestyle{empty}
+\cleardoublepage
+
+ 
+\chapter{Introducción}
+\markboth{INTRODUCCIÓN}{INTRODUCCIÓN}
+\pagenumbering{arabic}
+
+
+\chapter{Infraestructura}
+\markboth{INFRAESTRUCTURA}{INFRAESTRUCTURA}
+
+\section{Caffe}
+\lhead[\thepage]{\thesection. Caffe}
+
+Caffe es un framework de aprendizaje profundo desarrollado por Berkeley AI Research (BAIR) y por contribuyentes de la comunidad. Fue creado por Yangqing Jia durante su doctorado en UC Berkeley. Caffe está publicado bajo la licencia BSD 2-Clause.
+
+\subsection{Línea de comandos}
+
+Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe} la cual es la herramienta utilizada por Caffe para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
+
+\begin{itemize}
+\item \textbf{Entrenamiento:}  Con el comando \textit{caffe train} es posible aprender modelos desde cero,  
+\item \textbf{Test:} El comando \textit{caffe test} puntúa los modelos ejecutándolos en la fase de test e informa de la salida de la red como su puntuación. En primer lugar se informa la puntuación por lotes de datos de entrada y finalmente el promedio general. 
+\item \textbf{Comparación:} El comando \textit{caffe time} compara el modelo capa a capa. Esto es util para comprobar el rendimiento del sistema y medir los tiempos de ejecución relativos a los modelos.
+\end{itemize}
+
+\subsection{Python}
+
+La interfaz de Python \textit{pycaffe} contiene el módulo de Caffe y sus propios scripts en la ruta caffe/python. Con el comando \textit{import caffe} se importará esta interfaz, pudiendo así cargar diferentes modelos de Caffe, manejar instrucciones de entrada/salida, visualizar redes y numerosas funcionalidades más. Todos los datos y parámetros se encuentran disponibles tanto para lectura como para escritura. Algunas de las tareas que se pueden realizar con está interfaz son:
+
+\begin{itemize}
+\item \textbf{caffe.Net} es la interfaz central para cargar, configurar y ejecutar modelos.
+\item \textbf{caffe.Classifier y caffe.Detector} proporcionan interfaces para tareas de clasificación y detección.
+\item \textbf{caffe.SGDSolver} se trata de la interfaz de resolución.
+\item \textbf{caffe.io} maneja funciones de entrada/salida con preprocesamiento.
+\item \textbf{caffe.draw} visualiza las arquitecturas de red.
+\end{itemize}
+
+\subsection{Capas de una red neuronal}\label{CapaRedNeuronal}
+
+Para crear un modelo de Caffe es necesario definir la arquitectura del mismo utilizando para ello un archivo de definición de buffer de protocolo (prototxt).
+
+\subsubsection{Capas de datos}
+
+Los datos entran en Caffe a través de las capas de datos las cuáles se encuentran en la parte inferior de las redes. Estos datos pueden provenir de bases de datos (LevelDB o LMDB), directamente de la memoria, o, cuando la eficiencia no es crítica, desde archivos en disco en formato HDF5 o formatos de imagen comunes.
+\\
+Tareas comunes de preprocesamiento de los datos de entrada, tales como escalado o reflejo, están disponibles especificando \textit{TransformationParameters} por algunas de las capas. Los tipos de capas "bias", "scale" y "crop" pueden ser útiles para el preprocesamiento de la entrada cuando la opción \textit{TransformationParameters} no está disponible.
+\\\\
+
+\begin{itemize}
+\item \textbf{Image Data:} Lee imágenes sin procesar.
+\item \textbf{Database:} Lee los datos de LevelLDB o LMDB.
+\item \textbf{HDF5 Input:} Lee los datos en formato HDF5 permitiendo que estos tengan dimensiones arbitrarias.
+\item \textbf{HDF5 Output:} Escribe datos en formato HDF5
+\item \textbf{Input:} Normalmente utilizada para redes que se están implementando.
+\item \textbf{Window Data:} 
+\item \textbf{Memory Data:} Lee archivos directamente desde memoria.
+\item \textbf{Dummy Data:} Utilizado para datos estáticos.
+\end{itemize}
+
+\subsubsection{Capas de visión}
+
+Las capas de visión, generalmente toman imágenes como datos de entradas y generan otras imágenes como salida aunque también pueden tomar datos de otros tipos y dimensiones. Una imagen puede tener un canal (\textit{c = 1}) si se trata de una imagen en escala de grises o 3 canales (\textit{c = 3}) si se trata de una imagen RGB. Pero en este contexto, las características distintivas para el tratamiento de las imágenes de entrada serán la altura y la anchura de las mismas. La mayoría de las capas de visión trabajan aplicando una operación particular sobre alguna región de la entrada para producir una región correspondiente a la salida.
+\\\\
+
+\begin{itemize}
+\item \textbf{Convolution Layer:} Convoluciona la imagen de entrada con un conjunto de filtros.
+\item \textbf{Pooling Layer:} Realiza \textit{pooling} de los datos de entrada utilizando para ello funciones de máximo, media o estocásticas.
+\item \textbf{Spatial Pyramid Pooling (SPP)} 
+\item \textbf{Crop} 
+\item \textbf{Deconvolution Layer:} Realiza uno convolución transpuesta.
+\item \textbf{Im2Col} 
+\end{itemize}
+
+\subsubsection{Capas recurrentes}
+
+\begin{itemize}
+\item \textbf{Recurrent}
+\item \textbf{RRNN}
+\item \textbf{Long-Short Term Memory (LSTM)}
+\end{itemize}
+
+\subsubsection{Capas comunes}
+
+\begin{itemize}
+\item \textbf{Inner Product:} Capa totalmente conectada
+\item \textbf{Dropout}
+\item \textbf{Embed}
+\end{itemize}
+
+\subsubsection{Capas de pérdida}
+
+Estas capas de pérdida conducen al aprendizaje comparando la salida obtenida con el valor de la entrada asignado así un coste para minimizarla.
+\\\\
+
+\begin{itemize}
+\item \textbf{Multinomial Logistic Loss}
+\item \textbf{Infogain Loss}
+\item \textbf{Softmax with Loss}
+\item \textbf{Sum-of-Squares / Euclidean}
+\item \textbf{Hinge / Margin}
+\item \textbf{Sigmoid Cross-Entropy Loss}
+\item \textbf{Accuracy / Top-k layer}
+\item \textbf{Contrastive Loss}
+\end{itemize}
+
+\subsubsection{Capas de normalización}
+
+\begin{itemize}
+\item \textbf{Local Response Normalization (LRN):} Normaliza regiones locales de los datos de entrada.
+\item \textbf{Mean Variance Normalization (MVN):} Realiza una normalización de contraste / normalización de instancia.
+\item \textbf{Batch Normalization:} Realiza normalizaciones sobre pequeños lotes de datos de entrada.
+\end{itemize}
+
+\subsubsection{Capas de activación}
+
+En general, estas capas son operados que toman un dato de la salida de la capa anterior y generan datos con las mismas dimensiones.
+\\\\
+
+\begin{itemize}
+\item \textbf{ReLU / Rectified-Linear and Leaky-ReLU:} Se trata de una función lineal, rectilínea con pendiente uniforme.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{./ReLu}
+\caption{Función de activación ReLu}
+\end{center}
+\end{figure}
+
+Se puede definir a partir de la siguiente ecuación:\\
+
+\begin{equation}
+f(x) = \left\lbrace
+\begin{array}{ll}
+\textup{0 si } x<0\\
+\textup{x si } x\geq 0
+\end{array}
+\right.
+\end{equation}
+
+\item \textbf{PReLU}
+
+\item \textbf{ELU}
+
+\item \textbf{Sigmoid}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=9cm]{./Sigmoid}
+\caption{Función de activación Sigmoide}
+\end{center}
+\end{figure}
+
+Se puede definir a partir de la siguiente ecuación:\\
+
+\[ f(x)=\frac{1}{1 + e ^ {-x}}\]
+
+\item \textbf{TanH}
+\item \textbf{Absolute Value}
+\item \textbf{Power} 
+
+\begin{equation}
+f(x) = (shift + scale * x) ^ {power}
+\end{equation}
+
+\item \textbf{Exp}
+
+\begin{equation}
+f(x) = base ^ {(shift + scale * x)}
+\end{equation}
+\item \textbf{Log}
+
+\begin{equation}
+f(x) = log(x)
+\end{equation}
+\item \textbf{BNLL}
+
+\begin{equation}
+f(x) = log(1 + exp(x))
+\end{equation}
+\\
+\item \textbf{Threshold}: Realiza la función de paso en el umbral definido por el usuario.
+\item \textbf{Bias} 
+\item \textbf{Scale}
+\end{itemize}
+
+
+\section{JdeRobot}
+\lhead[\thepage]{\thesection. JdeRobot}
+
+Se trata de un framework cuyo objetivo es desarrollar aplicaciones en robótica y visión por computadora. También tiene actuación en domótica y en escenarios con sensores, accionadores y software inteligente. Ha sido desarrollado para ayudar en la programación de este software inteligente. Está escrito principalmente utilizando el lenguaje C++ proporcionando un entorno de programación en el que el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos componentes pueden ejecutarse en diferentes equipos y están conectados mediante el middleware de comunicaciones ICE. Los componentes pueden estar escritos en C++, Python, Java y todos ellos ellos interactúan a través de interfaces ICE explícitas.\\
+
+JdeRobot simplifica el acceso a dispositivos hardware desde el programa de control. Obtener mediciones de sensores es tan simple como llamar a una función local y ordenar comandos de motor tan fácil como llamar a otra función local. La plataforma adjunta esas llamadas a invocaciones remotas sobre los componentes conectados al sensor o los dispositivos de accionamiento. También, pueden conectarse a sensores y activadores reales o simulados, tanto a nivel local como remoto utilizando para ello la red. Esas funciones construyen la API para la capa de abstracción del hardware. La aplicación robótica obtiene las lecturas del sensor y ordena los comandos del actuador usando esa API para desplegar su comportamiento. Se han desarrollado varios drivers para soportar diferentes sensores, activadores y simuladores. Los robots y sensores actualmente soportados son:
+\\
+\begin{itemize}
+\item \textbf{Sensores RGBD:} Kinect and Kinect2 de Microsoft, Asus Xtion
+\item \textbf{Robots con ruedas:} Kobuki (TurtleBot) de Yujin Robot y Pioneer de MobileRobotics Inc.
+\item \textbf{ArDrone quadrotor de Parrot}
+\item \textbf{Escáneres laser:} LMS de SICK, URG de Hokuyo y RPLidar
+\item \textbf{Simulador Gazebo}
+\item \textbf{Cámaras Firewire, cámaras USB, archivos de vídeo (mpeg, avi), cámaras IP (como Axis)}
+\end{itemize}
+
+JdeRobot  incluye varias herramientas de programación de robots y bibliotecas. En primer lugar, teleespectadores y teleoperadores para varios robots y sus sensores y motores. En segundo lugar, un componente de calibración de cámara y una herramienta de tunning para filtros de color. En tercer lugar, una herramienta llamada VisualHFSM para la programación del comportamiento del robot utilizando la jerarquía Finite State Machines. Además, también proporciona una biblioteca para desarrollar controladores difusos y otra para la geometría proyectiva y el procesamiento de la visión por computadora.
+\\
+
+Cada componente puede tener su propia interfaz gráfica de usuario o ninguna en absoluto. Actualmente, las bibliotecas GTK y Qt son compatibles, incluyéndose varios ejemplos de OpenGL para gráficos 3D con ambas bibliotecas.
+\\
+
+JdeRobot es un software de código abierto con licencia como GPL y LGPL. También utiliza software de terceros como el simulador Gazebo, ROS, OpenGL, GTK, Qt, Player, Stage, GSL, OpenCV, PCL, Eigen u Ogre.
+
+
+\subsection{CameraServer y CameraView}\label{Camera}
+
+CameraServer y CameraView es una configuración disponible para probar Jderobot.\\
+
+En primer lugar se tiene el archivo cameraserver.cfg, el cual tiene el siguiente código:\\
+
+\fbox{
+\begin{minipage}[b][1\height][t]{0.98\textwidth}
+\# client/server mode\\
+\# rpc=1 ; request=0\\
+CameraSrv.DefaultMode=1\\
+CameraSrv.TopicManager=IceStorm/TopicManager:default -t 5000 -p 10000\\
+
+\#General Config\\
+CameraSrv.Endpoints=default -h 0.0.0.0 -p 9999\\
+CameraSrv.NCameras=1\\
+CameraSrv.Camera.0.Name=cameraA\\
+\#0 corresponds to /dev/video0, 1 to /dev/video1, and so on...\\
+CameraSrv.Camera.0.Uri=0\\
+CameraSrv.Camera.0.FramerateN=25\\
+CameraSrv.Camera.0.FramerateD=1\\
+CameraSrv.Camera.0.Format=RGB8\\
+CameraSrv.Camera.0.ImageWidth=640\\
+CameraSrv.Camera.0.ImageHeight=480\\
+
+\# If you want a mirror image, set to 1\\
+CameraSrv.Camera.0.Mirror=1\\\\
+
+NamingService.Enabled=0\\
+NamingService.Proxy=NamingServiceJdeRobot:default -h 0.0.0.0 -p 10000\\
+\end{minipage}}
+\\
+
+Se pueden observar parámetros como por ejemplo el End Point en el que espera recibir peticiones, textit{CameraSrv.Endpoints=default -h 0.0.0.0 -p 9999}, el número de frames por segundo, textit{CameraSrv.Camera.0.FramerateN=25}, el formato de la imagen, textit{CameraSrv.Camera.0.Format=RGB8} y el ancho y largo de la imagen que se representará, textit{CameraSrv.Camera.0.ImageWidth=640 y CameraSrv.Camera.0.ImageHeight=480}.\\
+
+Posteriormente, se tiene el archivo cameraview.cfg, el cual tendrá en siguiente formato:\\
+
+\fbox{
+\begin{minipage}[b][1\height][t]{0.98\textwidth}
+Cameraview.Camera.Proxy=cameraA:default -h 0.0.0.0 -p 9999\\
+Cameraview.Camera.Format=RGB8
+\end{minipage}}
+\\
+
+Para la ejecución de esta configuración, habrá que arrancar en primer lugar cameraserver en un terminal.\\
+
+\fbox{
+\begin{minipage}[b][1\height][t]{0.98\textwidth}
+Cameraview.Camera.Proxy=cameraA:default -h 0.0.0.0 -p 9999\\
+Cameraview.Camera.Format=RGB8
+\end{minipage}}
+\\
+
+Para la ejecución de esta configuración, habrá que arrancar en primer lugar cameraserver en un terminal.\\
+
+\fbox{
+\begin{minipage}[b][0.9\height][t]{0.98\textwidth}
+./cameraserver --Ice.Config=cameraserver.cfg\\
+\end{minipage}}
+\\
+
+A continuación, en otro terminal, ejecutar cameraview.\\
+
+\fbox{
+\begin{minipage}[b][0.9\height][t]{0.98\textwidth}
+./cameraview --Ice.Config=cameraview.cfg\\
+\end{minipage}}
+\\
+
+\section{Bases de datos}
+\lhead[\thepage]{\thesection. Bases de datos}
+
+\subsection{VOC}\label{Camera}
+
+Esta base de datos contiene 11,530 imágenes de entrenamiento y validación que representan 27,450 objetos diferentes distribuidos en 20 clases. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador y una etiqueta de clase de objeto para cada objeto en una de las veinte clases presentes en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto de las veinte clases objetivo en la imagen de prueba. La siguiente imagen muestra un ejemplo de esta base de datos:
+
+Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, muchos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento / validación y prueba, y se pueden encontrar aquí. Específicamente, la distribución de objetos para la tarea de detección se muestra en la siguiente imagen.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=11cm]{./VOC2012_Statics}
+\caption{Estructura básica de anotaciones en COCO}
+\end{center}
+\end{figure}
+
+\subsection{COCO}\label{Camera}
+
+COCO es un conjunto de datos creado para la detección y segmentación de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
+\\
+\begin{itemize}
+\item Más de 300.000 imágenes
+\item 1.5 millones de instancias de objetos
+\item 80 categorias de objetos
+\end{itemize}
+
+Actualmente, COCO utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo JSON. Todas las anotaciones comparten la estructura de datos básica definida a continuación:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=11cm]{./Coco_Annotation_1}
+\caption{Estructura básica de anotaciones en COCO}
+\end{center}
+\end{figure}
+
+Para la tarea de detección, es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto (iscrowd = 0 en cuyo caso se usan polígonos) o una colección de objetos (iscrowd = 1 en cuyo caso se usa RLE). Tenga en cuenta que un solo objeto (iscrowd = 0) puede requerir múltiples polígonos, por ejemplo, si está ocluido. Las anotaciones de multitudes (iscrowd = 1) se utilizan para etiquetar grandes grupos de objetos (por ejemplo, una multitud de personas). Además, se proporciona un cuadro delimitador delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría a categoría y supercategoría.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=11cm]{./Coco_Annotation_2}
+\caption{Estructura básica de anotaciones en COCO}
+\end{center}
+\end{figure}
+
+En referencia a los datos, el conjunto de datos MS COCO se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, la segunda mitad se lanzará en 2015. La versión 2014 contiene 82,783 entrenamientos, 40,504 validaciones y 40,775 imágenes de prueba (aproximadamente 1/2 tren, 1/4 val y 1/4 prueba). Hay casi 270k personas segmentadas y un total de 886k instancias de objetos segmentados en los datos train + val 2014 solo. La versión acumulada de 2015 contendrá un total de 165,482 imágenes de trenes, 81,208 val y 81,434 de prueba.\\
+
+La distribución de los objetos en esta base de datos se puede obtener desde su sitio web. En la sección Explorar, es posible elegir y combinar cada uno de los objetos y observar cuántas imágenes aparecen. La distribución de cada uno de los objetos en el conjunto de entrenamiento / validación se muestra en la siguiente imagen:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=11cm]{./COCO_Statics}
+\caption{Estructura básica de anotaciones en COCO}
+\end{center}
+\end{figure}
+
+\chapter{Clasificación}
+\markboth{CLASIFICACIÓN}{CLASIFICACIÓN}
+
+\section{Red Neuronal}
+\lhead[\thepage]{\thesection. Red Neuronal}
+
+\subsection{Estructura de la red}
+
+En esta sección se explicará la estructura de la red que utilizaremos para la clasificación de los dígitos manuscritos que nos facilita la base de datos MNIST.
+\\\\
+En primer lugar, se especificará el nombre de la red, en este caso "not"
+\\\\
+\fbox{\parbox{0.98\linewidth}{name: "LeNet"}}
+\\\\
+Posteriormente, es necesario leer los datos de la base de datos LMDB. Para ello, se definirán 2 capas de datos, una para tomar los datos de entrenamiento y otra para los de test.\\
+
+A continuación se muestra la capa de datos para las imágenes de entrenamiento:
+\\\\
+\fbox{
+\begin{minipage}[b][0.95\height][t]{0.98\textwidth}
+layer \{\\
+  \tab name: "mnist"\\
+  \tab type: "Data"\\
+  \tab transform\_param \{\\
+    \tab \tab scale: 0.00390625\\
+  \tab \}\\
+  \tab data\_param \{\\
+    \tab \tab source: "mnist\_train\_lmdb"\\
+    \tab \tab backend: LMDB\\
+    \tab \tab batch\_size: 64\\
+  \tab \}\\
+  \tab top: "data"\\
+  \tab top: "label"\\
+\}\\
+\end{minipage}}
+\\\\
+
+
+Esta capa, con nombre '"mnist", tomará lo datos de un fichero con extensión LMDB y con nombre "mnist\_train\_lmdb".\\
+El factor de escala que actúa sobre las imágenes de entrada debe estar en el rango [0,1) teniendo en este caso un valor de 0.00390625. Es muy importante que los factores de transformación tenga el mismo valor en la capa de entrenamiento y en la de test, ya que si no es así se pueden generar resultados incorrectos.\\
+Finalmente, se utilizará un tamaño de lote de 64 imágenes, siendo éste de 100 para la capa de test.\\
+
+A continuación, se puede observar la estructura básica de las redes neuronales convolucionales (CNN), combinando capas de convolución con capas de pooling, finalizando con una capa totalmente conectada.
+En este caso, se utilizarán 2 capas de convolución y otras 2 de pooling.\\
+
+En primer lugar, la capa de convolución, recibe como entrada la imagen que se obtiene en la capa de datos, y aplica sobre ella un filtro o \textit{kernel}. Este proceso transforma la matriz de píxeles de la imagen original en otra matriz de características. Esta nueva imagen es esencialmente la original pero cada píxel tiene mucha más información ya que contiene información de la región en la que se encuentra el píxel, no sólo del píxel aislado.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=9cm]{./Convolution}
+\caption{Ejemplo convolución con tamaño del núcleo 2x2}
+\end{center}
+\end{figure}
+
+A continuación, se muestra la primera capa de convolución de la red:\\
+
+
+\fbox{
+\begin{minipage}[b][0.95\height][t]{0.98\textwidth}
+layer \{\\
+  \tab name: "conv1"\\
+  \tab type: "Convolution"\\
+  \tab param \{ lr\_mult: 1 \}\\
+  \tab param \{ lr\_mult: 2 \}\\
+  \tab convolution\_param \{\\
+    \tab \tab num\_output: 20\\
+    \tab \tab kernel\_size: 5\\
+    \tab \tab stride: 1\\
+    \tab \tab weight\_filler \{\\
+      \tab \tab \tab type: "xavier"\\
+    \tab \tab \}\\
+     \tab \tab bias\_filler \{\\
+      \tab \tab \tab type: "constant"\\
+    \tab \tab \}\\
+  \tab \}\\
+  \tab bottom: "data"\\
+  \tab top: "conv1"\\
+\}\\
+\end{minipage}}
+\\\\
+
+Esta capa tomará los datos de la capa de entrenamiento y los transformará utilizando un núcleo de convolución de 5X5, produciendo 20 salidas. Para inicializar los pesos se utilizará el algoritmo Xavier, el cuál determina automáticamente la escala de inicialización basándose en el número de entradas y salidas de cada neurona. Adicionalmente, el sesgo se inicializará como una constante, siendo esta por defecto 0.
+\\\\
+
+La capa de pooling se coloca generalmente después de la capa de convolución. Su utilidad principal radica en la reducción espacial de la imagen de entrada. Para ello, se divide el mapa de características obtenido anteriormente en un conjunto de bloques de m x n. A continuación, se aplica una función de agrupación para cada uno de los bloques. Tras este proceso, se obtendrá una matriz de características más pequeño. Dentro de las funciones de agrupación, destacan max pooling, el cual elige el valor más alto dentro del bloque y pooling promedio (average) el cual toma como respuesta de bloque el valor promedio de las respuestas del bloque.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{./Pooling}
+\caption{Pooling con función de agrupación del máximo}
+\end{center}
+\end{figure}
+
+A continuación, se muestra la primera capa de pooling de la red:\\
+
+\fbox{
+\begin{minipage}[b][1.05\height][t]{0.98\textwidth} 
+layer \{\\
+  \tab name: "pool1"\\
+  \tab type: "Pooling"\\
+  \tab pooling\_param \{\\
+    \tab \tab kernel\_size: 2\\
+    \tab \tab stride: 2\\
+    \tab \tab pool: MAX\
+  \tab \}\\
+  \tab bottom: "conv1"\\
+  \tab top: "pool1"\\
+\}
+\end{minipage}}
+\\\\
+
+Esta capa, tomará los datos de la capa de convolución anterior y utilizará bloques de 2x2 para dividir la imagen entrante. Para que no haya solapamiento entre bloques contiguos utilizará el parámetro \textit{stride = 2}. Finalmente, como función de agrupación utilizará el máximo, escogiendo el píxel con mayor nivel de intensidad de cada bloque.\\
+
+Posteriormente, aparecerán 2 capas totalmente conectadas separadas por la función de activación ReLu. La primera capa totalmente conectada tendrá 500 salidas, mientras que la segunda tendrá 10, las cuales hacen referencia al número total de salidas que tendrá la red neuronal, una para cada dígito entre el 0 y el 9.\\
+
+A continuación se muestra la primera capa totalmente conectada.\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+layer \{\\
+  \tab name: "ip1"\\
+  \tab type: "InnerProduct"\\
+  \tab param \{ lr\_mult: 1 \}\\
+  \tab param \{ lr\_mult: 2 \}\\
+  \tab inner\_product\_param \{\\
+    \tab \tab num\_output: 500\\
+    \tab \tab weight\_filler \{\\
+      \tab \tab \tab type: "xavier"\\
+    \tab \tab \}\\
+    \tab \tab bias\_filler \{\\
+      \tab \tab \tab type: "constant"\\
+    \tab \tab \}\\
+  \tab \}\\
+  bottom: "pool2"\\
+  top: "ip1"\\
+\}\\
+\end{minipage}}
+\\\\
+
+A continuación se muestra la capa de activación, la cual utiliza la función ReLu explicada en el apartado \ref{CapaRedNeuronal}.\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+layer \{\\
+  \tab name: "relu1"\\
+  \tab type: "ReLU"\\
+  \tab bottom: "ip1"\\
+  \tab top: "ip1"\\
+\}\\
+\end{minipage}}
+\\\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+layer \{\\
+  \tab name: "loss"\\
+  \tab type: "SoftmaxWithLoss"\\
+  \tab bottom: "ip2"\\
+  \tab bottom: "label"\\
+\}\\
+\end{minipage}}
+\\\\
+
+En la siguiente imagen se observa la estructura de la red explicada anteriormente:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=5cm]{./EstructuraRed}
+\caption{Estructura red neuronal}
+\end{center}
+\end{figure}
+
+\subsection{Definición del solucionador}
+
+El solucionador es el responsable de la optimización del modelo. Se define en un archivo con extensión \textit{.prototxt}, en este caso, \textit{lenet\_solver.prototxt}.\\
+
+Este solucionador calcula la precisión del modelo usando el conjunto de validación cada 100 iteraciones. El proceso de optimización tendrá una duración de máximo 10000 iteraciones y tomará una instantánea del modelo entrenado cada 500 iteraciones.\\
+
+En esta configuración, se empezará con una tasa de aprendizaje de 0.01 (\textit{base\_lr = 0.01}), la cual irá cayendo con un factor de 10000 (\textit{gamma = 0.0001}).\\
+
+El solucionador  \textit{lenet\_solver.prototxt} tendrá el siguiente aspecto. Se puede observar un comentario antes de cada sentencia indicando su funcionalidad:\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+\# The train/test net protocol buffer definition\\
+net: "examples/mnist/lenet\_train\_test.prototxt"\\
+\# test\_iter specifies how many forward passes the test should carry out.\\
+\# In the case of MNIST, we have test batch size 100 and 100 test iterations,\\
+\# covering the full 10,000 testing images.\\
+test\_iter: 100\\
+\# Carry out testing every 500 training iterations.\\
+test\_interval: 500\\
+\# The base learning rate, momentum and the weight decay of the network.\\
+base\_lr: 0.01\\
+momentum: 0.9\\
+weight\_decay: 0.0005\\
+\# The learning rate policy\\
+lr\_policy: "inv"\\
+gamma: 0.0001\\
+power: 0.75\\
+\# Display every 100 iterations\\
+display: 100\\
+\# The maximum number of iterations\\
+max\_iter: 10000\\
+\# snapshot intermediate results\\
+snapshot: 5000\\
+snapshot\_prefix: "examples/mnist/lenet"\\
+\# solver mode: CPU or GPU\\
+solver\_mode: GPU\\
+\end{minipage}}
+\\\\
+
+\subsection{Entrenamiento de la red}
+
+Tras la definición de la red y el solucionador, para entrenar el modelo hay que ejecutar, en la ruta donde se encuentre el directorio de caffe, el siguiente comando.\\
+
+\fbox{
+\begin{minipage}[b][0.68\height][t]{0.98\textwidth} 
+cd \$CAFFE\_ROOT\\
+./examples/mnist/train\_lenet.sh\\
+\end{minipage}}
+\\\\
+
+El script \textit{train\_lenet.sh} hará una llamada al solucionador que se quiera ejecutar.\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+\#!/usr/bin/env sh\\\\
+
+./build/tools/caffe train --solver=examples/mnist/lenet\_solver.prototxt\\
+
+\end{minipage}}
+\\\\
+
+Una vez entrenada la red, se generarán 2 ficheros:\\
+\begin{itemize}
+\item lenet\_iter\_10000.caffemodel: Es un binario que contiene el estado actual de los pesos para cada capa de la red.
+\item lenet\_iter\_10000.solverstate: Es un binario que contiene la información necesaria para continuar el entrenamiento del modelo desde donde se detuvo por última vez.
+\end{itemize}
+
+
+\section{Base de datos MNIST}
+\lhead[\thepage]{\thesection. Base de datos MNIST}
+
+La base de datos MNIST (Modified National Institute of Standards and Technology database) es una gran base de datos de dígitos escritos a mano que se utiliza comúnmente para el entrenamiento de sistemas de procesamiento de imágenes.\\\\
+Esta base de datos está compuesta por 60000 imágenes destinadas al entrenamiento y 10000 imágenes de prueba. Las imágenes están representadas en escala de grises con 256 niveles de intensidad y con un tamaño normalizado de 28x28 píxeles. Cada imagen está formada por un dígito escrito a mano comprendido entre el 0 y el 9, centrado y con el fondo negro, es decir, con un nivel de intensidad igual a 0.
+
+\subsection{Acceso a datos y etiquetas}\label{LMDB}
+
+La base de datos utilizada tendrá una extensión .lmdb. Lightning Memory-Mapped Database (LMDB) es una biblioteca de software que proporciona una base de datos de clave-valor de alto rendimiento. LMDB almacena los pares de datos de forma arbitraria utilizando arrays de bytes.\\
+
+Es posible trabajar fácilmente con bases de datos LMDB utilizando Python. En primer lugar, es necesario importar la librería de LMDB.\\
+
+\fbox{\parbox{0.98\linewidth}{import lmdb}}\\
+
+Posteriormente, se pueden utilizar los siguientes comandos.\\
+ 
+\fbox{
+\begin{minipage}[b][0.9\height][t]{0.98\textwidth}
+lmdb\_env = lmdb.open('Ruta donde se encuentra la base de datos')\\
+lmdb\_txn = lmdb\_env.begin()\\
+lmdb\_cursor = lmdb\_txn.cursor()\\
+datum = caffe.proto.caffe\_pb2.Datum()\\
+\end{minipage}}
+\\
+
+De esta manera tendremos a disposición los datos del archivo LMDB en formato Datum. Datum es una clase que almacena datos y opcionalmente etiquetas. Estos datos que guarda se representan con un array de 3 dimensiones: altura, anchura y canal.\\
+
+Posteriormente, se podrá diferenciar entre la propia imagen y su etiqueta. Para ello, se crearán 2 variables, una \textit{data} y \textit{label}, de la siguiente forma:\\
+
+\fbox{
+\begin{minipage}[b][0.9\height][t]{0.98\textwidth}
+for key, value in lmdb\_cursor:\\
+    \tab \tab datum.ParseFromString(value)\\
+    \tab \tab label = datum.label\\
+    \tab \tab data = caffe.io.datum\_to\_array(datum)\\
+\end{minipage}}
+\\
+
+Así, la variable \textit{data} será un array de 3 dimensiones con los niveles de intensidad de cada uno de los píxeles de cada imagen de la base de datos y la variable \textit{label} será un entero comprendido entre el 0 y el 9.\\
+
+\subsection{Sección de datos}
+
+Para entender mejor con que datos se va a trabajar, es necesario visualizar algún ejemplo de la base de datos MNIST. Con este fin, se utilizará el formato PGM (Portable Graymap Format) para representar las imágenes. Para conseguir una imagen .pgm hay que crear un documento que tenga el siguiente formato:\\
+
+\begin{itemize}
+\item En la primera línea escribir el código \textbf{P2} para identificar que lo que se quiere conseguir es una imagen con extensión pgm.
+\item En la segunda línea el ancho y el alto de la imagen, en nuestro caso \textbf{28 28}.
+\item En la tercera línea el número de grises entre el blanco y el negro, en nuestro caso \textbf{255}.
+\item Por último, escribir la intensidad de cada uno de los píxeles de la imagen perfectamente alineados.
+\end{itemize}
+
+La siguiente imagen muestra un ejemplo de una imagen en formato PGM.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=13cm]{./Data5}
+\caption{Fichero PGM}
+\end{center}
+\end{figure}
+
+Para crear este archivo se utilizará lo indicado en la sección \ref{LMDB}, utilizando la variable \textit{data} comentada anteriormente.\\
+
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=3cm]{./Cinco.png}
+\caption{Imagen base de datos MNIST}
+\end{center}
+\end{figure}
+
+\subsection{Sección de etiquetas}
+
+Una vez se conoce el aspecto que tienen las imágenes de la base de datos, es importante saber como están distribuidas sus 60000 muestras. Para ello, se utilizará la variable \textit{label} comentada en el apartado ref{LMDB}.\\
+
+\fbox{\parbox{0.98\linewidth}{label = datum.label}}
+\\
+
+Realizando un bucle que recorra toda la base de datos y creando un contador para cada uno de los dígitos, se podrá conocer la distribución de las imágenes dentro de la base de datos MNIST.
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+for key, value in lmdb\_cursor:\\
+    \tab \tab datum.ParseFromString(value)\\
+    \tab \tab label = datum.label\\
+    \tab \tab data = caffe.io.datum\_to\_array(datum)\\
+\tab \tab if label == 0:\\
+        \tab \tab \tab \tab Zero = Zero + 1\\
+\tab \tab elif label == 1:\\
+        \tab \tab \tab \tab One = One + 1\\
+\tab \tab elif label == 2:\\
+        \tab \tab \tab \tab Two = Two + 1\\
+\tab \tab elif label == 3:\\
+        \tab \tab \tab \tab Three = Three + 1\\
+\tab \tab elif label == 4:\\
+        \tab \tab \tab \tab Four = Four + 1\\
+\tab \tab elif label == 5:\\
+        \tab \tab \tab \tab Five = Five + 1\\
+\tab \tab elif label == 6:\\
+        \tab \tab \tab \tab Six = Six + 1\\
+\tab \tab elif label == 7:\\
+       \tab \tab \tab \tab Seven = Seven + 1\\
+\tab \tab elif label == 8:\\
+        \tab \tab \tab \tab Eight = Eight + 1\\
+\tab \tab elif label == 9:\\
+        \tab \tab \tab \tab Nine = Nine + 1\\
+\end{minipage}}
+\\\\
+
+Tras la ejecución de estos comandos, se obtienen los siguientes resultados:\\
+
+\begin{tabular}{|r|l|}
+  \hline
+  Dígito & Número de imágenes \\ \hline
+  Cero & 5923 \\ \hline
+  Uno & 6742 \\ \hline
+  Dos & 5958 \\ \hline
+  Tres & 6131 \\ \hline
+  Cuatro & 5842 \\ \hline
+  Cinco & 5421 \\ \hline
+  Seis & 5918 \\ \hline
+  Siete & 6265 \\ \hline
+  Ocho & 5851 \\ \hline
+  Nueve & 5949 \\
+  \hline
+\end{tabular}
+
+\section{Componente Python}
+\lhead[\thepage]{\thesection. Componente Python}
+
+Uno de los objetivos principales es utilizar una cámara para clasificar o detectar las imágenes que esta recoge. Para ello, se ha utilizado un GUI (Graphical User Interface) y la herramienta CameraServer proporcionada por JdeRobot explicada en el apartado \ref{Camera}.\\
+
+\subsection{GUI}
+
+La interfaz gráfica creada, utiliza PyQt4, el cual es uno de los bindings más populares de Python. Este GUI mostrará 3 pantallas:\\
+
+\begin{itemize}
+\item La ventana principal mostrará la imagen que captura la cámara.
+\item Otra pantalla mostrará la imagen transformada.
+\item Otra pantalla mostrará 10 etiquetas que harán referencia a cada uno de los números comprendidos entre el 0 y el 9, las cuales cambiarán de color en función del dígito que capte la cámara utilizada. 
+\end{itemize}
+
+
+En primer lugar, se definirán las diferentes ventanas que compondrán el GUI. Para cada una de ellas se escogerán parámetros como la posición, textit{move}, el tamaño, textit{resize}, o el estilo de la ventana, textit{setStyleSheetset}.
+\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+lab0=QtGui.QLabel(self)\\
+lab0.resize(30,30)\\
+lab0.move(835,450)\\
+lab0.setText('0')\\
+lab0.setAlignment(QtCore.Qt.AlignCenter)\\
+lab0.setStyleSheet("background-color: \#7FFFD4; color: \#000; font-size: 20px; border: 1px solid black;")\\
+self.numbers.append(lab0)\\
+\end{minipage}}
+\\\\
+
+Finalmente, se definirá la función textit{lightON}, la cual se encargará de cambiar el fondo de una de las 10 etiquetas en función del dígito que se identifique.\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth} 
+def lightON(self,out): \#This function turn on the light for the network output\\
+\tab \tab for number in self.numbers:\\
+\tab \tab\tab \tab number.setStyleSheet("background-color: \#7FFFD4; color: \#000; font-size: 20px; border: 1px solid black;")\\
+\tab \tab\tab \tab self.numbers[out].setStyleSheet("background-color: \#FFFF00; color: \#000; font-size: 20px; border: 1px solid black;")\\
+\end{minipage}}
+\\\\
+
+\subsection{Camara}
+
+En primer lugar, se definirán las variables \textit{model\_file} y \textit{petrained\_file}, las cuales harán referencia a la red utilizada para el entrenamiento y al fichero .caffemodel que contiene los pesos de cada capa de la red tras el entrenamiento.
+Posteriormente, se utilizará la función de caffe Classifier.\\
+
+\fbox{\parbox{0.98\linewidth}{self.net = caffe.Classifier(model\_file, pretrained\_file, image\_dims=(28, 28), raw\_scale=255)}}
+\\
+
+Tras esto, se definirán funciones para el tratamiento de la imagen de entrada. La función \textit{getImage} tomará la imagen captada por la cámara y la transformará para la red. Para ello, hará una llamada a la función \textit{transformImage}, la cual redimensionará la imagen de entrada a un tamaño de 28x28 píxeles y la convertirá en una imagen en escala de grises, para adaptarla al formato de las imágenes utilizadas para el entrenamiento de la red. Tras esto, se podrá aplicar un filtro, ya sea Canny, Sobel o Laplaciano.\\
+
+Finalmente, se definirá la función classification, la cual utilizará la variable net definida anteriormente para clasificar el dígito que se esta mostrando.\\
+
+\subsection{Ejecución}
+
+Para su ejecución, en primer lugar, habrá que arrancar la herramienta CameraServer explicada en el apartado \ref{Camera}.\\
+
+Tras esto, habrá que lanzar el script \textit{numberclassifier.py}, el cual iniciará 2 hilos o \textit{thread}, uno para la cámara y otro para el GUI.\\
+
+\fbox{
+\begin{minipage}[b][0.98\height][t]{0.98\textwidth}
+t1 = ThreadCamera(camera)\\
+t1.start()\\
+
+t2 = ThreadGui(window)\\
+t2.start()\\
+\end{minipage}}
+\\\\
+
+Para sincronizarlo con CameraServer habrá que crear un fichero de configuración, \textit{numberclassifier.cfg}, para que apunte al EndPoint en el que está escuchando CameraServer. Este fichero de configuración tendrá la siguiente apariencia:\\
+
+\fbox{\parbox{0.98\linewidth}{Numberclassifier.Camera.Proxy=cameraA:default -h localhost -p 9999}}
+\\
+
+Finalmente, el script \textit{numberclassifier.py} se lanzará utilizando el siguiente comando.\\
+
+\fbox{\parbox{0.98\linewidth}{python numberclassifier.py Ice.Config=numberclassifier.cfg}}
+\\
+
+\section{Pruebas}
+\lhead[\thepage]{\thesection. Pruebas}
+
+Para la realización de las pruebas se van a utilizar varias bases de datos con el objetivo de medir la capacidad de clasificación que tiene la red neuronal entrenada.\\
+Todas están bases de datos se van a crear a partir de la utilizada para el entrenamiento, es decir, la base de datos MNIST, pero utilizando diferentes tipos de filtros y funciones de translación, rotación y escalado entre otras, para observar cómo actúa la red frente a estas situaciones.\\
+Es posible la creación de las bases de datos con comandos Python. Como se comentó en el apartado \ref{LMDB}, se puede acceder a la imagen,  data,  y a su etiqueta asociada,  label.  A partir de aquí, operaremos con diferentes funciones de OpenCV sobre la variable data, transformando cada una de las imágenes de la base de datos.\\
+
+\subsection{Filtro Canny}
+
+El algoritmo Canny consiste, principalmente, en 3 grandes pasos:\\
+
+\begin{itemize}
+\item Obtención del gradiente: en este paso se calcula la magnitud y orientación del vector gradiente en cada píxel.
+\item Supresión no máxima: en este paso se consigue el adelgazamiento del ancho de los bordes obtenidos con el gradiente hasta lograr que estos tengan de un píxel de ancho.
+\item Histéresis del umbral: aquí se aplica una función de histéresis basada en 2 umbrales. Con este proceso se pretende reducir la posibilidad de aparición de contornos falsos.
+\end{itemize}
+
+OpenCV aplica todo esto en una función, \textit{cv2.Canny()}. El primer argumento es la imagen de entrada. El segundo y tercer argumento son el umbral mínimo y el umbral máximo respectivamente. El cuarto argumento hace referencia al tamaño del núcleo encargado de buscar gradientes de la imagen, el cual por defecto es 3. Finalmente, el último argumento es \textit{L2radient} que especifica la ecuación para encontrar la magnitud del gradiente. Por defecto este parámetro tiene valor \textit{false}, haciendo referencia a la ecuación \textit{Edge\_Gradient= |Gx| + |Gy|}.
+
+\subsection{Filtro Sobel}
+
+El filtro Sobel es uno de los más utilizados para el procesamiento de imágenes, en especial para la detección de bordes. Se trata de un operador diferencial discreto que calcula una aproximación al gradiente de la función de intensidad de una imagen. Para cada punto de la imagen a procesar, aplicando este filtro se obtiene tanto el vector gradiente correspondiente como la norma de ese vector. \\
+
+En OpenCV, el filtro sobel se simula utilizando la función \textit{cv2.Sobel()}
+
+\subsection{Filtro Laplaciano}
+
+El filtro Laplaciano es una medida 2-D isotrópica de la segunda derivada espacial de una imagen. Aplicar este filtro sobre una imagen destaca las regiones donde hay cambios de bruscos de intensidad y por lo tanto es un filtro muy utilizado en la detección de bordes.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{./MascarasLaplacianas}
+\caption{Máscaras de un filtro Laplaciano}
+\end{center}
+\end{figure}
+
+OpenCV aplica un filtro Laplaciano aplicando la función, \textit{cv2.Laplacian()}\\
+
+\subsection{Casos de pruebas}
+
+Para la realización de las pruebas, en primer lugar, se han creado 6 bases de datos con el objetivo de entrenar la red neuronal existente. Estas, se crearán a partir de la base de datos MNIST, es decir, constarán de 60000 imágenes para el entrenamiento, pero se aplicarán sobre ellas varias funciones de filtrado comentadas anteriormente. Se crearon una utilizando el filtro Canny, otra utilizando Sobel y otras 4 más usando el filtro Laplaciano variando el tamaño del núcleo [3,5,7,9].\\
+
+Posteriormente, se crearon 5 bases de datos para realizar el test de las redes neuronales entrenadas anteriormente. Con el objetivo de testear la precisión de la red, se han añadido a cada de ellas el negativo de cada una de las imágenes, siendo finalmente 20000 las imágenes totales de cada una de las bases de datos. De esta manera, tendremos las siguientes bases de datos:\\
+
+\begin{itemize}
+\item Base de datos con 10000 imágenes filtradas utilizando el filtro Canny y el negativo de cada una de ellas.
+\item Base de datos con 10000 imágenes filtradas utilizando el algoritmo de Sobel y el negativo de cada una de ellas.
+\item Base de datos con 10000 imágenes filtradas utilizando un filtro Laplaciano con tamaño de núcleo de 3 y el negativo de cada una de ellas.
+\item Base de datos con 10000 imágenes filtradas utilizando un filtro Laplaciano con tamaño de núcleo de 5 y el negativo de cada una de ellas.
+\item Base de datos con 10000 imágenes filtradas utilizando un filtro Laplaciano con tamaño de núcleo de 7 y el negativo de cada una de ellas.
+\item Base de datos con 10000 imágenes filtradas utilizando un filtro Laplaciano con tamaño de núcleo de 9 y el negativo de cada una de ellas.
+\end{itemize}
+
+Tras la realización del test, el resultado es el siguiente:\\
+
+Hasta ahora, las redes neuronales se han testeado con imágenes centradas y siempre del mismo tamaño. Para comprobar la precisión de la red ante imágenes de entrada de diferentes tamaños y posiciones, se han creado 6 nuevas bases de datos, cada una de ellas con 60000 imágenes. Todas ellas, utilizan el filtro Sobel sobre cada una de las imágenes y posteriormente se realizan varias transformaciones sobre cada imagen, dando lugar a que, dentro de la base de datos, existan los siguientes tipos de imágenes.\\
+
+\begin{itemize}
+\item Imágenes rotadas
+\item Imágenes en diferentes posiciones
+\item Imágenes de mayor o menor tamaño
+\item Imágenes con ruido gaussiano de varianza 0.2
+\item Imágenes con ruido gaussiano de varianza 0.5
+\item Imágenes utilizando todas las transformaciones anteriores.
+\end{itemize}
+
+Después de realizar el test, los resultados serían los siguientes:\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=13cm]{./Sobel_Transformation}
+\caption{Resultados tras varias transformaciones en las imágenes}
+\end{center}
+\end{figure}
+
+\chapter{Detección}
+\markboth{DETECCIÓN}{DETECCION}
+
+\section{Red Neuronal}
+\lhead[\thepage]{\thesection. Jaccard index}
+
+\subsection{Estructura de la red}
+
+\section{Jaccard index}
+\lhead[\thepage]{\thesection. Jaccard index}
+
+\section{Componente Python}
+\lhead[\thepage]{\thesection. Componente Python}
+
+\section{Medidor de calidad}
+\lhead[\thepage]{\thesection. Medidor de calidad}
+
+\chapter{Bibliografía}
+\markboth{Bibliografía}{Bibliografía}
+\bibliographystyle{acm}
+\bibliography{biblio}
+\bibliography{bibliografia}
+
+
+Edgar Nelson Sánchez Camperos y Alma Yolanda Alanís García: "Redes Neuronales: Conceptos fundamentales y aplicaciones a control automático"
+
+\end{document}

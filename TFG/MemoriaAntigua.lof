@@ -1,0 +1,19 @@
+\select@language {spanish}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Funci\'on de activaci\'on ReLu}}{6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Funci\'on de activaci\'on Sigmoide}}{7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Estructura b\'asica de anotaciones en COCO}}{12}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Estructura b\'asica de anotaciones en COCO}}{13}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Estructura b\'asica de anotaciones en COCO}}{14}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Estructura b\'asica de anotaciones en COCO}}{14}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ejemplo convoluci\'on con tama\~no del n\'ucleo 2x2}}{17}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Pooling con funci\'on de agrupaci\'on del m\'aximo}}{18}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Estructura red neuronal}}{21}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Fichero PGM}}{25}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Imagen base de datos MNIST}}{25}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces M\'ascaras de un filtro Laplaciano}}{31}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Resultados tras varias transformaciones en las im\'agenes}}{33}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

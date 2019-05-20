@@ -1,0 +1,30 @@
+\ifglsentryexists{IA}{}%
+{%
+\gls@defglossaryentry{IA}%
+{%
+name={IA},%
+sort={IA},%
+type={acronym},%
+first={Inteligencia Artificial\glsspace (IA)},%
+firstplural={Inteligencia Artificials\glsspace (IAs)},%
+text={IA},%
+plural={IAs},%
+description={Inteligencia Artificial},%
+descriptionplural={Inteligencia Artificial\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Inteligencia Artificial},%
+longplural={Inteligencia Artificials},%
+short={IA},%
+shortplural={IAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
