@@ -76,6 +76,9 @@
 	captionpos=b
 }
 
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
 \begin{document}
 
 \begin{titlepage}
@@ -125,10 +128,9 @@ $\ $
 \thispagestyle{empty} 
 
 \chapter*{Agradecimientos} % si no queremos que añada la palabra "Capitulo"
-\thispagestyle{empty}
+\pagenumbering{Roman}
 
 \chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
-\thispagestyle{empty}
 
 Una de las fuentes de inspiración matemáticas ha sido el continuo intento de formalizar el pensamiento humano. La complejidad para simular acciones humanas frente a otras teorías matemáticas ha hecho que se separen los campos de estudio y aplicación.\\
 
@@ -142,16 +144,17 @@ $\ $
 \thispagestyle{empty}
 \cleardoublepage
 
-
+\cleardoublepage % Í­ndice de figuras
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
-\addcontentsline{toc}{chapter}{Índice de figuras}
-\thispagestyle{empty}
-\cleardoublepage
 
 
+\renewcommand{\acronymname}{Acrónimos}
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Acrónimos}
 \printglossary[type=\acronymtype]
+
+\cleardoublepage
 
  
 \chapter{Introducción}
@@ -505,12 +508,10 @@ En el \textbf{Capítulo 4. Medidor de calidad} se medirán las prestaciones de la 
 En el \textbf{Capítulo 5. Conclusiones} se resumen las conclusiones obtenidas a lo largo del trabajo y se establecen algunas posibles líneas futuras de investigación en la línea de lo abordado en este trabajo.
 
 \chapter{Infraestructura}
-\markboth{INFRAESTRUCTURA}{INFRAESTRUCTURA}
 
 \section{Caffe}
-\lhead[\thepage]{\thesection. Caffe}
 
-Caffe es un framework de aprendizaje profundo desarrollado por Berkeley AI Research (BAIR) y por contribuyentes de la comunidad. Fue creado por Yangqing Jia durante su doctorado en UC Berkeley. Caffe está publicado bajo la licencia BSD 2-Clause.\\
+Caffe\cite{Caffe} es un framework de aprendizaje profundo desarrollado por Berkeley AI Research (BAIR) y por contribuyentes de la comunidad. Fue creado por Yangqing Jia durante su doctorado en UC Berkeley. Caffe está publicado bajo la licencia BSD 2-Clause.\\
 
 Los puntos que definen a este framework y que lo posicionan frente a otros softwares orientados al mismo objetivo son los siguientes:
 
@@ -648,7 +649,6 @@ Estas capas de pérdida conducen al aprendizaje comparando la salida obtenida con
 \subsubsection{Capas de activación}\label{CapasActivacion}
 
 En general, estas capas son operados que toman un dato de la salida de la capa anterior y generan datos con las mismas dimensiones.
-\\\\
 
 \begin{itemize}
 \item \textbf{ReLU / Rectified-Linear and Leaky-ReLU:} Se trata de una función lineal, rectilínea con pendiente uniforme.\\
@@ -719,7 +719,6 @@ f(x) = log(1 + exp(x))
 
 
 \section{JdeRobot}
-\lhead[\thepage]{\thesection. JdeRobot}
 
 Se trata de un framework cuyo objetivo es desarrollar aplicaciones en robótica y visión por computadora. También tiene actuación en domótica y en escenarios con sensores, accionadores y software inteligente. Ha sido desarrollado para ayudar en la programación de este software inteligente. Está escrito principalmente utilizando el lenguaje C++ proporcionando un entorno de programación en el que el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos componentes pueden ejecutarse en diferentes equipos y están conectados mediante el middleware de comunicaciones ICE. Los componentes pueden estar escritos en C++, Python, Java y todos ellos ellos interactúan a través de interfaces ICE explícitas.\\
 
@@ -734,8 +733,7 @@ JdeRobot simplifica el acceso a dispositivos hardware desde el programa de contr
 \item \textbf{Cámaras Firewire, cámaras USB, archivos de vídeo (mpeg, avi), cámaras IP (como Axis)}
 \end{itemize}
 
-JdeRobot incluye varias herramientas de programación de robots y bibliotecas. En primer lugar, teleespectadores y teleoperadores para varios robots y sus sensores y motores. En segundo lugar, un componente de calibración de cámara y una herramienta de tunning para filtros de color. En tercer lugar, una herramienta llamada VisualHFSM para la programación del comportamiento del robot utilizando la jerarquía Finite State Machines. Además, también proporciona una biblioteca para desarrollar controladores difusos y otra para la geometría proyectiva y el procesamiento de la visión por computadora.
-\\
+JdeRobot incluye varias herramientas de programación de robots y bibliotecas. En primer lugar, teleespectadores y teleoperadores para varios robots y sus sensores y motores. En segundo lugar, un componente de calibración de cámara y una herramienta de tunning para filtros de color. En tercer lugar, una herramienta llamada VisualHFSM para la programación del comportamiento del robot utilizando la jerarquía Finite State Machines. Además, también proporciona una biblioteca para desarrollar controladores difusos y otra para la geometría proyectiva y el procesamiento de la visión por computadora.\\
 
 Cada componente puede tener su propia interfaz gráfica de usuario o ninguna en absoluto. Actualmente, las bibliotecas GTK y Qt son compatibles, incluyéndose varios ejemplos de OpenGL para gráficos 3D con ambas bibliotecas.
 \\
@@ -750,15 +748,15 @@ Se trata de un componente facilitado por \textit{JdeRobot} que actúa como servid
 Para el uso correcto de este componente, es necesario editar un fichero de configuración en función de las necesidades concretas de la máquina. En este archivo, con extensión \textit{cfg}, se pueden definir varios parámetros:
 
 \begin{itemize}
-\item \textit{EndPoint} del servidor que va a recibir la petición
-\item Número de cámaras que se usarán
+\item \textit{EndPoint} del servidor que va a recibir la petición.
+\item Número de cámaras que se usarán.
 \item Configuración de las cámaras. Se podrán modificar los siguientes parámetros relacionados con las cámaras:
 \begin{itemize}
-\item Nombre de la cámara
+\item Nombre de la cámara.
 \item El parámetro URI que define la fuente de vídeo.
 \item Numerador y denominador de \textit{frame rate}
-\item Formato de la imagen
-\item Altura y anchura de las imágenes
+\item Formato de la imagen.
+\item Altura y anchura de las imágenes.
 \end{itemize}
 \end{itemize}
 
@@ -808,7 +806,6 @@ La biblioteca es totalmente compatible con subprocesos y admite el acceso simult
 \end{comment}
 
 \section{Bases de datos}\label{BBDD}
-\lhead[\thepage]{\thesection. Bases de datos}
 
 \subsection{PascalVOC}\label{VOC}
 
