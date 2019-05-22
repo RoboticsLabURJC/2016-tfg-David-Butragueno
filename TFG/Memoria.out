@@ -27,8 +27,8 @@
 \BOOKMARK [1][-]{section.2.2}{JdeRobot}{chapter.2}% 27
 \BOOKMARK [2][-]{subsection.2.2.1}{CameraServer}{section.2.2}% 28
 \BOOKMARK [1][-]{section.2.3}{Bases de datos}{chapter.2}% 29
-\BOOKMARK [2][-]{subsection.2.3.1}{PascalVOC}{section.2.3}% 30
-\BOOKMARK [2][-]{subsection.2.3.2}{COCO}{section.2.3}% 31
+\BOOKMARK [2][-]{subsection.2.3.1}{PASCAL Visual Object Classes}{section.2.3}% 30
+\BOOKMARK [2][-]{subsection.2.3.2}{Common Objects in Context}{section.2.3}% 31
 \BOOKMARK [0][-]{chapter.3}{Detecci\363n con Single Shot MultiBox y Caffe}{}% 32
 \BOOKMARK [1][-]{section.3.1}{T\351cnica Single Shot MultiBox Detection}{chapter.3}% 33
 \BOOKMARK [2][-]{subsection.3.1.1}{Arquitectura}{section.3.1}% 34

@@ -28,8 +28,8 @@
 \contentsline {section}{\numberline {2.2}JdeRobot}{29}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}CameraServer}{30}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Bases de datos}{31}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}PascalVOC}{31}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}COCO}{33}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.1}PASCAL Visual Object Classes}{31}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Common Objects in Context}{33}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Detecci\'on con Single Shot MultiBox y Caffe}{37}{chapter.3}
 \contentsline {section}{\numberline {3.1}T\'ecnica Single Shot MultiBox Detection}{37}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Arquitectura}{38}{subsection.3.1.1}

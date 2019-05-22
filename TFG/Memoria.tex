@@ -388,7 +388,7 @@ El AP es una forma especializada de AA. Un flujo de trabajo de AA comienza por l
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=8cm]{./MarcoIA}
-\caption{Marco de la Inteligencia Artificial. Imagen obtenida de \cite{MachineLearning&DeepLearning}}
+\caption{Marco de la Inteligencia Artificial. Imagen obtenida de \cite{MachineLearning&DeepLearning}}.
 \label{MArcoIA}
 \end{center}
 \end{figure}
@@ -524,7 +524,7 @@ Los puntos que definen a este framework y que lo posicionan frente a otros softw
 
 \subsection{Línea de comandos}
 
-Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe} la cuál es la herramienta utilizada por este software para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
+Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe}\cite{CaffeInterface} la cuál es la herramienta utilizada por este software para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
 
 \begin{itemize}
 \item \textbf{Entrenamiento:}  Con el comando \textit{caffe train} es posible aprender modelos desde cero, reanudar el aprendizaje a partir de \textit{snapshots} guardadas y ajustar los modelos a los nuevos datos y tareas.
@@ -536,7 +536,7 @@ Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe} la 
 
 \subsection{Python}
 
-La interfaz de Python \textit{pycaffe} contiene el módulo de Caffe y sus propios scripts en la ruta caffe/python. Con el comando \textit{import caffe} se importará esta interfaz, pudiendo así cargar diferentes modelos de Caffe, manejar instrucciones de entrada/salida, visualizar redes y numerosas funcionalidades más. Todos los datos y parámetros se encuentran disponibles tanto para lectura como para escritura. Algunas de las tareas que se pueden realizar con está interfaz son:
+La interfaz de Python \textit{pycaffe}\cite{CaffeInterface} contiene el módulo de Caffe y sus propios scripts en la ruta caffe/python. Con el comando \textit{import caffe} se importará esta interfaz, pudiendo así cargar diferentes modelos de Caffe, manejar instrucciones de entrada/salida, visualizar redes y numerosas funcionalidades más. Todos los datos y parámetros se encuentran disponibles tanto para lectura como para escritura. Algunas de las tareas que se pueden realizar con está interfaz son:
 
 \begin{itemize}
 \item \textbf{caffe.Net} es la interfaz central para cargar, configurar y ejecutar modelos.
@@ -550,7 +550,7 @@ La interfaz de Python \textit{pycaffe} contiene el módulo de Caffe y sus propios
 
 Para crear un modelo de Caffe es necesario definir la arquitectura del mismo utilizando para ello un archivo de definición de buffer de protocolo (prototxt).\\
 
-Las capas de Caffe y sus parámetros están especificados en la definición del buffer de protocolo para el proyecto, en el archivo caffe.proto\footnote{\url{https://github.com/BVLC/caffe/blob/master/src/caffe/proto/caffe.proto}}.
+Las capas de Caffe y sus parámetros están especificados en la definición del buffer de protocolo para el proyecto, en el archivo caffe.proto\footnote{\url{https://github.com/BVLC/caffe/blob/master/src/caffe/proto/caffe.proto}}. Además, existe documentación\cite{CaffeLayers} dónde se pueden examinar las características principales de los diferentes tipos de capas en Caffe, así como de los subtipos de cada una de ellas.
 
 \subsubsection{Capas de datos}
 
@@ -651,7 +651,7 @@ Estas capas de pérdida conducen al aprendizaje comparando la salida obtenida con
 En general, estas capas son operados que toman un dato de la salida de la capa anterior y generan datos con las mismas dimensiones.
 
 \begin{itemize}
-\item \textbf{ReLU / Rectified-Linear and Leaky-ReLU:} Se trata de una función lineal, rectilínea con pendiente uniforme.\\
+\item \textbf{ReLU / Rectified-Linear and Leaky-ReLU:} Se trata de una función lineal, rectilínea con pendiente uniforme.
 
 \begin{figure}[H]
 \begin{center}
@@ -660,7 +660,7 @@ En general, estas capas son operados que toman un dato de la salida de la capa a
 \end{center}
 \end{figure}
 
-Se puede definir a partir de la siguiente ecuación:\\
+Se puede definir a partir de la siguiente ecuación:
 
 \begin{equation}
 f(x) = \left\lbrace
@@ -722,8 +722,8 @@ f(x) = log(1 + exp(x))
 
 Se trata de un framework cuyo objetivo es desarrollar aplicaciones en robótica y visión por computadora. También tiene actuación en domótica y en escenarios con sensores, accionadores y software inteligente. Ha sido desarrollado para ayudar en la programación de este software inteligente. Está escrito principalmente utilizando el lenguaje C++ proporcionando un entorno de programación en el que el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos componentes pueden ejecutarse en diferentes equipos y están conectados mediante el middleware de comunicaciones ICE. Los componentes pueden estar escritos en C++, Python, Java y todos ellos ellos interactúan a través de interfaces ICE explícitas.\\
 
-JdeRobot simplifica el acceso a dispositivos hardware desde el programa de control. Obtener mediciones de sensores es tan simple como llamar a una función local y ordenar comandos de motor tan fácil como llamar a otra función local. La plataforma adjunta esas llamadas a invocaciones remotas sobre los componentes conectados al sensor o los dispositivos de accionamiento. También, pueden conectarse a sensores y activadores reales o simulados, tanto a nivel local como remoto utilizando para ello la red. Esas funciones construyen la API para la capa de abstracción del hardware. La aplicación robótica obtiene las lecturas del sensor y ordena los comandos del actuador usando esa API para desplegar su comportamiento. Se han desarrollado varios drivers para soportar diferentes sensores, activadores y simuladores. Los robots y sensores actualmente soportados son:
-\\
+JdeRobot\cite{JdeRobot} simplifica el acceso a dispositivos hardware desde el programa de control. Obtener mediciones de sensores es tan simple como llamar a una función local y ordenar comandos de motor tan fácil como llamar a otra función local. La plataforma adjunta esas llamadas a invocaciones remotas sobre los componentes conectados al sensor o los dispositivos de accionamiento. También, pueden conectarse a sensores y activadores reales o simulados, tanto a nivel local como remoto utilizando para ello la red. Esas funciones construyen la API para la capa de abstracción del hardware. La aplicación robótica obtiene las lecturas del sensor y ordena los comandos del actuador usando esa API para desplegar su comportamiento. Se han desarrollado varios drivers para soportar diferentes sensores, activadores y simuladores. Los robots y sensores actualmente soportados son:
+
 \begin{itemize}
 \item \textbf{Sensores RGBD:} Kinect and Kinect2 de Microsoft, Asus Xtion
 \item \textbf{Robots con ruedas:} Kobuki (TurtleBot) de Yujin Robot y Pioneer de MobileRobotics Inc.
@@ -807,16 +807,16 @@ La biblioteca es totalmente compatible con subprocesos y admite el acceso simult
 
 \section{Bases de datos}\label{BBDD}
 
-\subsection{PascalVOC}\label{VOC}
+\subsection{PASCAL Visual Object Classes}\label{VOC}
 
-Esta base de datos contiene \textbf{11.530} imágenes de entrenamiento y validación que representan \textbf{27.450} objetos diferentes distribuidos en \textbf{20 clases}. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
+PASCAL Visual Object Classes\cite{PascalVocHome} o PascalVOC, es una base de datos que contiene \textbf{11.530} imágenes de entrenamiento y validación que representan \textbf{27.450} objetos diferentes distribuidos en \textbf{20 clases}. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
 
 Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, algunos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento / validación y prueba. Específicamente, la distribución de objetos para la tarea de detección se muestra en la siguiente imagen.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./VOC2012_Statics}
-\caption{Distribución de objetos en PascalVOC.}
+\caption{Distribución de objetos en PascalVOC. Imagen obtenida de \cite{PascalVocData}}.
 \end{center}
 \end{figure}
 
@@ -860,9 +860,9 @@ Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existent
 	</object>
 \end{lstlisting}
 
-\subsection{COCO}\label{COCO}
+\subsection{Common Objects in Context}\label{COCO}
 
-COCO es un conjunto de datos creado para la detección y segmentación de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
+Common Objects in Context\cite{CocoHome}, conocido como COCO por sus siglas, es un conjunto de datos creado para la detección y segmentación de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
 
 \begin{itemize}
 \item Más de 300.000 imágenes
@@ -875,7 +875,7 @@ Actualmente, COCO utiliza 3 tipos de anotaciones: instancias de objetos, puntos 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_1}
-\caption{Estructura básica de anotaciones en COCO.}
+\caption{Estructura básica de anotaciones en COCO. Imagen obtenida de \cite{CocoAnnotations}}.
 \end{center}
 \end{figure}
 
@@ -884,7 +884,7 @@ Para la tarea de detección, es de especial interés la anotación usando instancia
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_2}
-\caption{Estructura básica de anotaciones en COCO.}
+\caption{Estructura básica de anotaciones en COCO. Imagen obtenida de \cite{CocoAnnotations}}.
 \label{AnnotacionesCoco2}
 \end{center}
 \end{figure}
@@ -2018,6 +2018,37 @@ Deep Learning.
 \newblock{Deep Learning (Aprendizaje profundo). Tres cosas que es necesario saber}.
 \newblock {\url{hhttps://es.mathworks.com/discovery/deep-learning.html}}
 
+\bibitem{CaffeInterface}
+Caffe, Deep Learning Framework.
+\newblock {Interfaces.}
+\newblock {\url{http://caffe.berkeleyvision.org/tutorial/interfaces.html}}
+
+\bibitem{CaffeLayers}
+Caffe, Deep Learning Framework.
+\newblock {Layer Catalogue.}
+\newblock {\url{https://caffe.berkeleyvision.org/tutorial/layers.html}}
+
+\bibitem{JdeRobot}
+JdeRobot.
+\newblock {an open source toolkit for Robotics and Computer Vision!.}
+\newblock {\url{https://jderobot.org/Main_Page}}
+
+\bibitem{PascalVocHome}
+The PASCAL Visual Object Classes Homepage.
+\newblock {\url{http://host.robots.ox.ac.uk/pascal/VOC/}}
+
+\bibitem{PascalVocData}
+PASCAL VOC2012 Database Statistics
+\newblock {\url{http://host.robots.ox.ac.uk/pascal/VOC/voc2012/dbstats.html}}
+
+\bibitem{CocoHome}
+COCO, Common Objects in Context.
+\newblock {\url{http://cocodataset.org/#home}}
+
+\bibitem{CocoAnnotations}
+COCO, Common Objects in Context.
+\newblock {Data format.}
+\newblock {\url{http://cocodataset.org/#format-data}}
 
 \bibitem{SSD}
 Wei Liu ,Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed , Cheng-Yang Fu, Alexander C. Berg.
