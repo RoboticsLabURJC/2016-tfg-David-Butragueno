@@ -50,6 +50,8 @@
 
 %Tab
 \newcommand\tab[1][0.3 cm]{\hspace*{#1}}
+\let\olditemize\itemize
+\def\itemize{\olditemize\itemsep=0pt }
 
 
 \makeatletter
@@ -619,25 +621,39 @@ Existen varios tipos capas de visión, dónde se pueden destacar los más comunes, 
 
 \begin{itemize}
 \item \textbf{Inner Product:} Este tipo de capa trata la entrada como un vector simple y produce una salida en forma de otro vector, estableciendo la altura y la anchura de cada \textit{blob} a 1.
-\item \textbf{Dropout}
+\item \textbf{Dropout:} Las capas Dropout son las encargadas de abordar el problema del sobreentrenamiento en las redes neuronales. El concepto central es que cada capa oculta de la red neuronal entreanada con Dropout debe aprender a trabajar con muestras de otras capas elegidas aleatoriamente. Esto hace que, cada capa oculta de la red sea más robusta y sea capaz de crear características útiles por si misma sin depender de otras capas ocultas para corregir sus errores, además de evitar que exista una gran co-adaptación entre cada una de ellas.
+\begin{comment}
 \item \textbf{Embed}
+\end{comment}
 \end{itemize}
 
 \subsubsection{Capas de pérdida}
 
-Estas capas de pérdida conducen al aprendizaje comparando la salida obtenida con el valor de la entrada asignado así un coste para minimizarla.
+Estas capas son las encargadas de propagar la función de pérdida durante el entrenamiento de la red neuronal. Esta función de pérdida toma las predicciones que realiza el modelo y los valores objetivos, es decir, los que realmente se espera que la red produzca, y calcula cuán lejos se está de ese valor, comprobando de esta manera como funciona la red para un ejemplo específico. Esta función ajusta los pesos de la red reduciendo la pérdida del modelo para cada ejemplo.\\
+
+En Caffe, la pérdida se calcula con la propagación hacia adelante de la red. Cada capa toma un conjunto de datos de entrada y produce unos datos de salida. Algunas de las salidas de estas capas pueden utilizarse para calcular la pérdida del modelo. Algunas de las capas de pérdida definidas en Caffe son las siguientes:
 
 \begin{itemize}
+\begin{comment}
 \item \textbf{Multinomial Logistic Loss}
 \item \textbf{Infogain Loss}
-\item \textbf{Softmax with Loss}
-\item \textbf{Sum-of-Squares / Euclidean}
+\end{comment}
+\item \textbf{Softmax with Loss:} Esta capa toma un vector \textit{N-dimensaional} de números reales y lo transforma en otro vector de números reales dentro del rango (0,1).
+\begin{equation}
+p_{i}=\frac{e^{a_{i}}}{\sum_{k=1}^{N}e^{a}_{k}}
+\end{equation}
+\item \textbf{Sum-of-Squares / Euclidean:} Calcula la suma de cuadrados de diferencias de sus dos entradas.
+\begin{comment}
 \item \textbf{Hinge / Margin}
-\item \textbf{Sigmoid Cross-Entropy Loss}
-\item \textbf{Accuracy / Top-k layer}
+\end{comment}
+\item \textbf{Sigmoid Cross-Entropy Loss:} Calcula las pérdidas logísticas cruzadas, a menudo utilizadas para predecir objetivos interpretados como probabilidades.
+\item \textbf{Accuracy / Top-k layer:} Dado un ejemplo específico de entrada en la red neuronal, califica la salida de la red con respecto a lo que se esperaba que fuera la salida de ésta. 
+\begin{comment}
 \item \textbf{Contrastive Loss}
+\end{comment}
 \end{itemize}
 
+\begin{comment}
 \subsubsection{Capas de normalización}
 
 \begin{itemize}
@@ -645,23 +661,14 @@ Estas capas de pérdida conducen al aprendizaje comparando la salida obtenida con
 \item \textbf{Mean Variance Normalization (MVN):} Realiza una normalización de contraste / normalización de instancia.
 \item \textbf{Batch Normalization:} Realiza normalizaciones sobre pequeños lotes de datos de entrada.
 \end{itemize}
+\end{comment}
 
 \subsubsection{Capas de activación}\label{CapasActivacion}
 
-En general, estas capas son operados que toman un dato de la salida de la capa anterior y generan datos con las mismas dimensiones.
+Estas capas son las encargadas de ejecutar la función de activación sobre las diferentes capas de la red neuronal. En general, estas capas son operandos que toman un dato de la salida de la capa anterior y generan datos con las mismas dimensiones ejecutando la función de activación que se haya definido. Algunas de las más comunes son las siguientes:
 
 \begin{itemize}
-\item \textbf{ReLU / Rectified-Linear and Leaky-ReLU:} Se trata de una función lineal, rectilínea con pendiente uniforme.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=7cm]{./ReLu}
-\caption{Función de activación ReLu.}
-\end{center}
-\end{figure}
-
-Se puede definir a partir de la siguiente ecuación:
-
+\item \textbf{Rectified Linear Unit (ReLU):} Se trata de una función lineal rectilínea con pendiente uniforme. La salida de esta función es 0 si la entrada es menor que 0 y la salida bruta en caso contrario, es decir, si la entrada es mayor que 0, la salida es igual a la entrada.
 \begin{equation}
 f(x) = \left\lbrace
 \begin{array}{ll}
@@ -671,30 +678,45 @@ f(x) = \left\lbrace
 \right.
 \end{equation}
 
+Esta función es no linear y tiene la ventaja de no tener errores en la propagación hacia atrás durante el entrenamiento de la red. Gráficamente, se puede representar como muestra la imagen \ref{ReLu}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{./ReLu}
+\caption{Función de activación ReLu.}
+\label{ReLu}
+\end{center}
+\end{figure}
+
+\begin{comment}
 \item \textbf{PReLU}
-
 \item \textbf{ELU}
+\end{comment}
 
-\item \textbf{Sigmoid}
+\item \textbf{Sigmoid:} Muchos procesos de aprendizaje automático, e incluso sucesos naturales muestran una aceleración considerable intermedia al cambio de estado con periodos de adaptación entre estados, esta evolución es descrita por la función sigmoide:
+
+\begin{equation}
+f(x)=\frac{1}{1 + e ^ {-x}}
+\end{equation}
+
+A menudo la función sigmoide se refiere al caso particular de la función logística, que tiene una típica forma de "S". Gráficamente, se puede representar como se muestra en la imagen \ref{Sigmoid}.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=9cm]{./Sigmoid}
 \caption{Función de activación Sigmoide.}
+\label{Sigmoid}
 \end{center}
 \end{figure}
 
-Se puede definir a partir de la siguiente ecuación:\\
-
-\[ f(x)=\frac{1}{1 + e ^ {-x}}\]
-
+\begin{comment}
 \item \textbf{TanH}
 \item \textbf{Absolute Value}
 \item \textbf{Power} 
 
 \begin{equation}
 f(x) = (shift + scale * x) ^ {power}
-\end{equation}
+\end{equation}}
 
 \item \textbf{Exp}
 
@@ -711,39 +733,49 @@ f(x) = log(x)
 \begin{equation}
 f(x) = log(1 + exp(x))
 \end{equation}
-\\
+
 \item \textbf{Threshold}: Realiza la función de paso en el umbral definido por el usuario.
 \item \textbf{Bias} 
 \item \textbf{Scale}
+\end{comment}
 \end{itemize}
-
 
 \section{JdeRobot}
 
-Se trata de un framework cuyo objetivo es desarrollar aplicaciones en robótica y visión por computadora. También tiene actuación en domótica y en escenarios con sensores, accionadores y software inteligente. Ha sido desarrollado para ayudar en la programación de este software inteligente. Está escrito principalmente utilizando el lenguaje C++ proporcionando un entorno de programación en el que el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos componentes pueden ejecutarse en diferentes equipos y están conectados mediante el middleware de comunicaciones ICE. Los componentes pueden estar escritos en C++, Python, Java y todos ellos ellos interactúan a través de interfaces ICE explícitas.\\
+JdeRobot\cite{JdeRobot} es un \textit{software} creado para desarrollar aplicaciones en robótica y visión artificial. Este campo de acción incluye la utilización de sensores, como por ejemplo cámaras, actuadores y software inteligente. Está escrito principalmente utilizando los lenguaje C++ y Python proporcionando un entorno de programación distribuido basado en componentes donde el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos elementos pueden ejecutarse en diferentes equipos y están conectados mediante el \textit{middleware} de comunicaciones ICE (Internet Comunication Engine) o mediante mensajes ROS (Robot Operating System). Los componentes interactúan a través de interfaces explícitas. Cada uno de ellos puede tener su propia interfaz gráfica de usuario independiente o ninguna.\\
 
-JdeRobot\cite{JdeRobot} simplifica el acceso a dispositivos hardware desde el programa de control. Obtener mediciones de sensores es tan simple como llamar a una función local y ordenar comandos de motor tan fácil como llamar a otra función local. La plataforma adjunta esas llamadas a invocaciones remotas sobre los componentes conectados al sensor o los dispositivos de accionamiento. También, pueden conectarse a sensores y activadores reales o simulados, tanto a nivel local como remoto utilizando para ello la red. Esas funciones construyen la API para la capa de abstracción del hardware. La aplicación robótica obtiene las lecturas del sensor y ordena los comandos del actuador usando esa API para desplegar su comportamiento. Se han desarrollado varios drivers para soportar diferentes sensores, activadores y simuladores. Los robots y sensores actualmente soportados son:
+JdeRobot simplifica el acceso a dispositivos hardware desde el programa de aplicación. Obtener mediciones de sensores se realiza con llamadas a funciones locales. La plataforma conecta las llamadas al \textit{driver} de los componentes los cuales están conectados a los sensores o activadores, que pueden ser reales o simulados y remotos o locales. Estas funciones construyen la API para la capa de abstracción de hardware. Los robots y sensores actualmente soportados son:
 
 \begin{itemize}
-\item \textbf{Sensores RGBD:} Kinect and Kinect2 de Microsoft, Asus Xtion
-\item \textbf{Robots con ruedas:} Kobuki (TurtleBot) de Yujin Robot y Pioneer de MobileRobotics Inc.
-\item \textbf{ArDrone quadrotor de Parrot}
-\item \textbf{Escáneres laser:} LMS de SICK, URG de Hokuyo y RPLidar
-\item \textbf{Simulador Gazebo}
-\item \textbf{Cámaras Firewire, cámaras USB, archivos de vídeo (mpeg, avi), cámaras IP (como Axis)}
+\item \textbf{Sensores RGBD:} Kinect and Kinect2 de Microsoft, Asus Xtion.
+\item \textbf{Robots con ruedas:} TurtleBot de Yujin Robot y Pioneer de MobileRobotics Inc.
+\item ArDrone quadrotor de Parrot.
+\item \textbf{Escáneres laser:} LMS de SICK, URG de Hokuyo y RPLidar.
+\item \textbf{Simulador Gazebo}.
+\item Cámaras Firewire, cámaras USB, archivos de vídeo, como mpeg o avi, y cámaras IP, como Axis.
 \end{itemize}
 
+\begin{comment}
 JdeRobot incluye varias herramientas de programación de robots y bibliotecas. En primer lugar, teleespectadores y teleoperadores para varios robots y sus sensores y motores. En segundo lugar, un componente de calibración de cámara y una herramienta de tunning para filtros de color. En tercer lugar, una herramienta llamada VisualHFSM para la programación del comportamiento del robot utilizando la jerarquía Finite State Machines. Además, también proporciona una biblioteca para desarrollar controladores difusos y otra para la geometría proyectiva y el procesamiento de la visión por computadora.\\
+\end{comment}
 
-Cada componente puede tener su propia interfaz gráfica de usuario o ninguna en absoluto. Actualmente, las bibliotecas GTK y Qt son compatibles, incluyéndose varios ejemplos de OpenGL para gráficos 3D con ambas bibliotecas.
-\\
+JdeRobot incluye varias herramientas y librerías de programación de robots, las cuales se especifican a continuación:
 
-JdeRobot es un software de código abierto con licencia como GPL y LGPL. También utiliza software de terceros como el simulador Gazebo, ROS, OpenGL, GTK, Qt, Player, Stage, GSL, OpenCV, PCL, Eigen u Ogre.
+\begin{itemize}
+\item Teleoperadores para varios robots, viendo sus sensores y dirigiendo sus motores. Algunos de ellos están basados en la web y funcionan en \textit{smartphones}. 
+\item La herramienta \textit{VisualStates} para programar el comportamiento de robots.
+\item La herramienta \textit{Scratch2JdeRobot} para la programación de robots, incluyendo drones, con lenguaje gráfico estándar.
+\item Un calibrador de cámara.
+\item Una herramienta para ajustar los filtros de color.
+\item Una librería para desarrollar controladores y otra para el procesamiento de visión por computadora.
+\end{itemize}
+
+JdeRobot es un software de código abierto con licencia GPL y LGPL. También utiliza software de terceros como el simulador Gazebo, ROS, OpenGL, GTK, Qt, Player, Stage, GSL, OpenCV, PCL, Eigen u Ogre.
 
 
 \subsection{CameraServer}\label{Camera}
 
-Se trata de un componente facilitado por \textit{JdeRobot} que actúa como servidor de imágenes proporcionando a las aplicaciones de estas imágenes procedentes de un número determinado de cámaras, ya sean reales o simuladas, o de un archivo de vídeo.\\
+Se trata de un componente facilitado por JdeRobot que actúa como servidor de imágenes proporcionando a las aplicaciones de estas imágenes procedentes de un número determinado de cámaras, ya sean reales o simuladas, o de un archivo de vídeo.\\
 
 Para el uso correcto de este componente, es necesario editar un fichero de configuración en función de las necesidades concretas de la máquina. En este archivo, con extensión \textit{cfg}, se pueden definir varios parámetros:
 
@@ -807,16 +839,21 @@ La biblioteca es totalmente compatible con subprocesos y admite el acceso simult
 
 \section{Bases de datos}\label{BBDD}
 
+Para conseguir un sistema entrenado que sea capaz de reconocer ciertos objetos dada una imagen de entrada es necesario contar con un gran conjunto de datos. Dentro de estos conjuntos, es necesario que haya ejemplos destinados al entrenamiento de la red, otros a la validación de ésta y otros a las pruebas o \textit{test} de las prestaciones de ésta. Además de estos ejemplos, deben existir unos ficheros denominados anotaciones dónde se especifican las coordenadas y etiqueta de los objetos de cada una de las imágenes pertenecientes a los conjuntos de entrenamiento y validación.\\
+
+Durante este trabajo, se han utilizado 2 bases de datos diferentes. A continuación se presentan sus principales características, la cantidad de imágenes que hay en cada uno de los conjuntos y la estructura y tipo de fichero en la que se definen las anotaciones.
+
 \subsection{PASCAL Visual Object Classes}\label{VOC}
 
-PASCAL Visual Object Classes\cite{PascalVocHome} o PascalVOC, es una base de datos que contiene \textbf{11.530} imágenes de entrenamiento y validación que representan \textbf{27.450} objetos diferentes distribuidos en \textbf{20 clases}. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
+PASCAL Visual Object Classes\cite{PascalVocHome} o PascalVOC, es una base de datos que contiene 11.530 imágenes de entrenamiento y validación que representan 27.450 objetos diferentes distribuidos en 20 clases. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
 
-Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, algunos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento / validación y prueba. Específicamente, la distribución de objetos para la tarea de detección se muestra en la siguiente imagen.
+Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, algunos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento yvalidación. Específicamente, la distribución de objetos para la tarea de detección se muestra en la imagen \ref{VOC2012_Statics}.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./VOC2012_Statics}
 \caption{Distribución de objetos en PascalVOC. Imagen obtenida de \cite{PascalVocData}}.
+\label{VOC2012_Statics}
 \end{center}
 \end{figure}
 
@@ -870,16 +907,17 @@ Common Objects in Context\cite{CocoHome}, conocido como COCO por sus siglas, es 
 \item 80 categorias de objetos
 \end{itemize}
 
-Actualmente, COCO utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo JSON. Todas las anotaciones comparten la estructura de datos básica definida a continuación:
+Actualmente, COCO utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo JSON. Todas las anotaciones comparten la estructura de datos básica definida en la imagen \ref{CocoAnnotations}:
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_1}
 \caption{Estructura básica de anotaciones en COCO. Imagen obtenida de \cite{CocoAnnotations}}.
+\label{CocoAnnotations}
 \end{center}
 \end{figure}
 
-Para la tarea de detección, es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto (\textit{iscrowd = 0} en cuyo caso se usan polígonos) o una colección de objetos (\textit{iscrowd = 1} en cuyo caso se usa RLE). Hay que tener en cuenta que un solo objeto (\textit{iscrowd = 0}) puede requerir múltiples polígonos. Las anotaciones de multitudes (\textit{iscrowd = 1}) se utilizan para etiquetar grandes grupos de objetos, como por ejemplo, una multitud de personas. Además, se proporciona un cuadro delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría y supercategoría.
+Para la tarea de detección, es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto, en cuyo caso se usan polígonos, o una colección de objetos, en cuyo caso se usa RLE. Hay que tener en cuenta que un solo objeto puede requerir múltiples polígonos. Las anotaciones de multitudes se utilizan para etiquetar grandes grupos de objetos, como por ejemplo, una multitud de personas. Además, se proporciona un cuadro delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría y supercategoría.
 
 \begin{figure}[H]
 \begin{center}
@@ -889,7 +927,7 @@ Para la tarea de detección, es de especial interés la anotación usando instancia
 \end{center}
 \end{figure}
 
-En referencia a los datos, el conjunto de datos MS COCO se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, mientras que la segunda mitad se lanzó en 2015. La versión 2014 contiene \textbf{82.783} imágenes para el entrenamiento, \textbf{40.504} para validaciones y \textbf{40.775} imágenes de prueba (aproximadamente 1/2 de imágenes de entrenamiento, 1/4 de validación y 1/4 de prueba). Hay casi 270 mil personas segmentadas y un total de 886 mil instancias de objetos segmentados en los datos de entrenamiento y validación. La versión acumulada de 2015 contendrá un total de \textbf{165.482} imágenes de entrenamiento, \textbf{81.208} de validación y \textbf{81.434} de prueba.\\
+En referencia a los datos, el conjunto de datos MS COCO se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, mientras que la segunda mitad se lanzó en 2015. La versión 2014 contiene 82.783 imágenes para el entrenamiento, 40.504 para validaciones y 40.775 imágenes de prueba (aproximadamente 1/2 de imágenes de entrenamiento, 1/4 de validación y 1/4 de prueba). Hay casi 270 mil personas segmentadas y un total de 886 mil instancias de objetos segmentados en los datos de entrenamiento y validación. La versión acumulada de 2015 contendrá un total de 165.482 imágenes de entrenamiento, 81.208 de validación y 81.434 de prueba.\\
 
 La distribución de los objetos en esta base de datos se puede obtener desde su sitio web. En la sección \textit{Explorar}, es posible elegir y combinar cada uno de los objetos y observar cuántas imágenes aparecen. La distribución de cada uno de los objetos en el conjunto de entrenamiento / validación se muestra en la siguiente imagen:
 
