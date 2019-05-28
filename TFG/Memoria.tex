@@ -939,12 +939,10 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 \end{figure}
 
 \chapter{Detección con Single Shot MultiBox y Caffe}
-\markboth{DETECCIÓN}{DETECCION}
 
 \section{Técnica Single Shot MultiBox Detection}
-\lhead[\thepage]{\thesection. Técnica SSD}
 
-Single Shot MultiBox Detector (SSD) es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a finales de noviembre de 2016 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como PascalVOC y COCO. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre:
+Single Shot MultiBox Detector\cite{SSD}, o SSD por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a finales de noviembre de 2016 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como PascalVOC y COCO. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
 
 \begin{itemize}
 \item \textbf{Single Shot:}  Hace referencia a que la tareas de localización y clasificación de objetos se realizan en un único paso hacia adelante de la red.
@@ -1010,16 +1008,15 @@ La principal diferencia entre el entrenamiento usando la técnica SSD y el entren
 \end{itemize}
 
 \section{Single Shot MultiBox Detection en Caffe}\label{SSDCaffe}
-\lhead[\thepage]{\thesection. SSD en Caffe}
 
-Tras entender el funcionamiento de la técnica SSD, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán algunos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica SSD \cite{CaffeSSD}. Particularmente, se utilizarán 2 modelos, uno que utiliza la base de datos PascalVOC y otro que utiliza COCO, con el objetivo de realizar una primera y pequeña comparación entre la capacidad para detectar determinados objetos que tienen las redes entrenadas con ambas bases de datos.
+Tras entender el funcionamiento de la técnica SSD, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán algunos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica SSD\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}. Particularmente, se utilizarán 2 modelos, uno que utiliza la base de datos PascalVOC y otro que utiliza COCO, con el objetivo de realizar una primera y pequeña comparación entre la capacidad para detectar determinados objetos que tienen las redes entrenadas con ambas bases de datos.
 
 \begin{itemize}
 \item \textbf{PascalVOC07+12-SSD300x300:} Se trata de un modelo entrenado por el conjunto de las imágenes de entrenamiento de la base de datos PascalVOC de 2007 y 2012, con unas dimensiones de 300x300 píxeles.
 \item \textbf{COCO-SSD300x300:} Se trata de un modelo entrenado utilizando la base de datos COCO. Se utiliza una dimensión de imagen de 300x300 píxeles.
 \end{itemize}
 
-Tras definir los modelos que se usarán, se crea el script \textit{image\_detection.py}, el cual, a partir de una imagen de entrada, realizará una serie de transformaciones sobre esta con el objetivo de adaptarla a la entrada de la red neuronal, la introducirá dentro de ésta y finalmente generará como salida esa misma imagen con las \textit{bounding boxes} sobre los objetos detectados. Este script será creado a partir del fichero \textit{ssd\_detect.ipynb}, desarrollado por los creadores de SSD y facilitado en su repositorio \cite{CaffeSSD}.\\
+Tras definir los modelos que se usarán, se crea el script \textit{image\_detection.py}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno/blob/master/image_detection.py}}, el cual, a partir de una imagen de entrada, realizará una serie de transformaciones sobre esta con el objetivo de adaptarla a la entrada de la red neuronal, la introducirá dentro de ésta y finalmente generará como salida esa misma imagen con las \textit{bounding boxes} sobre los objetos detectados. Este script será creado a partir del fichero \textit{ssd\_detect.ipynb}\footnote{\url{https://github.com/weiliu89/caffe/blob/ssd/examples/ssd_detect.ipynb}}, desarrollado por los creadores de SSD.\\
 
 En primer lugar, se definen 3 ficheros que tendrán gran importancia a lo largo del proceso de detección:
 
@@ -1059,21 +1056,21 @@ def get_labelname(self,labelmap, labels):
 
 Finalmente, se define la función \textit{detection\_test}, la cual toma una imagen como entrada y retorna esta misma imagen con las bounding boxes de los objetos detectados superpuestas.
 
-\begin{itemize}
-\item Primero, esta función realiza una serie de transformaciones para adaptar la imagen de entrada a la red neuronal entrenada. Para ello, se utiliza la función \textit{Transformer} proporcionada por caffe. 
-\item Después, la imagen transformada se introduce en la red usando el siguiente código.\\
+Primero, esta función realiza una serie de transformaciones para adaptar la imagen de entrada a la red neuronal entrenada. Para ello, se utiliza la función \textit{Transformer} proporcionada por caffe.\\
+
+Después, la imagen transformada se introduce en la red usando el siguiente código.\\
 
 \begin{lstlisting}[frame=single]
 self.net.blobs['data'].data[...] = transformed_image
 \end{lstlisting}
 
-\item Después de esto, comienza la parte de la detección. Para ello, se utiliza la siguiente función de Caffe, la cual devuelve las detecciones obtenidas.\\
+Después de esto, comienza la parte de la detección. Para ello, se utiliza la siguiente función de Caffe, la cual devuelve las detecciones obtenidas.\\
 
 \begin{lstlisting}[frame=single]
 detections = self.net.forward()['detection_out']
 \end{lstlisting}
 
-\item Esta salida es parseada en varios vectores que contienen las etiquetas de los objetos detectados, su confianza y las coordenadas de su \textit{bounding box}.\\
+Esta salida es parseada en varios vectores que contienen las etiquetas de los objetos detectados, su confianza y las coordenadas de su \textit{bounding box}.\\
 
 \begin{lstlisting}[frame=single]
 det_label = detections[0,0,:,1] 
@@ -1084,7 +1081,7 @@ det_xmax = detections[0,0,:,5]
 det_ymax = detections[0,0,:,6]
 \end{lstlisting}
 
-\item Es importante no seleccionar todas las detecciones obtenidas, ya que algunas de ellas con un valor de confianza bajo pueden no ser tan precisas como se desee. Para ello, se usa un filtro que elige las detecciones con un nivel de confianza mayor a 0.6.\\
+Es importante no seleccionar todas las detecciones obtenidas, ya que algunas de ellas con un valor de confianza bajo pueden no ser tan precisas como se desee. Para ello, se usa un filtro que elige las detecciones con un nivel de confianza mayor a 0.6.\\
 
 \begin{lstlisting}[frame=single]
 # Get detections with confidence higher than 0.6. 
@@ -1102,20 +1099,17 @@ top_xmax = det_xmax[top_indices]
 top_ymax = det_ymax[top_indices] 
 \end{lstlisting}
 
-\end{itemize}
-
 
 \section{Detector de objetos}
-\lhead[\thepage]{\thesection. Detector de objetos}
 
 \subsection{Estructura de la red}\label{Estructura}
 
-En esta sección se explicará la estructura de la red neuronal, la cual entrenaremos con las bases de datos definidas en los apartados \ref{VOC} y \ref{COCO} pare realizar posteriormente la detección de objetos sobre una imagen de entrada.\\
+En esta sección se explicará la estructura de la red neuronal, la cual entrenaremos con las bases de datos definidas en los apartados \ref{VOC} y \ref{COCO} para realizar posteriormente la detección de objetos sobre una imagen de entrada.\\
 
-En primer lugar, se especificará el nombre de la red, en este caso \\'VGG\_VOC0712\_SSD\_300x300\_deploy'.\\
+En primer lugar, se especificará el nombre de la red, en este caso \\'VGG\_VOC0712\_COCO\_SSD\_300x300'.\\
 
 \begin{lstlisting}[frame=single]
-name: "VGG_VOC0712_SSD_300x300_deploy"
+name: "VGG_VOC0712_COCO_SSD_300x300"
 \end{lstlisting}
 
 Al inicio, también es necesario definir la dimensiones que tendrán las imágenes usadas para el entrenamiento. Tanto en PascalVOC como COCO, las imágenes tienen una dimensión de 300x300 y un formato RGB, definiéndose en la red de la siguiente manera:\\
@@ -1228,6 +1222,7 @@ layer {
 \end{lstlisting}
 
 Las dimensiones de salida están especificadas en \textit{reshape\_param}. Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además, se aceptan 2 valores especiales para definir cualquier que se desee.
+
 \begin{itemize}
 \item Si se utiliza el valor \textbf{0} se copiará la dimensión de la capa inferior, es decir, si la capa inferior tiene 2 como su primera dimensión, la capa superior tendrá 2 como su primera dimensión.
 \item Si se utiliza \textbf{-1} se reducirá este valor de las otras dimensiones.
@@ -1373,9 +1368,7 @@ Por lo tanto, para este caso, se creo un \textit{script} adicional, a partir de 
 
 Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en forma de fichero binario con extensión \textit{.caffemodel} que contiene los pesos existentes en cada una de las capas de la red neuronal en ese momento del entrenamiento.
 
-\section{Componente 
- detector}
-\lhead[\thepage]{\thesection. Componente JdeRobot detector}\label{ComponenteDetector}
+\section{Componente detector}
 
 Con el objetivo de entender mejor todo lo comentado anteriormente, se desarrolla un componente en Python que, a partir del \textit{Camera Server} de JdeRobot explicado en el apartado \ref{Camera}, será capaz de realizar la detección en tiempo real de las imágenes captadas por la cámara. La imagen \ref{ComponenteDetector} muestra un diagrama de bloques con el diseño de este componente.\\
 
