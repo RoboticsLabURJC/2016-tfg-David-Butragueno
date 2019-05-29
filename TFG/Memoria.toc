@@ -33,16 +33,16 @@
 \contentsline {section}{\numberline {3.1}T\'ecnica Single Shot MultiBox Detection}{37}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Arquitectura}{38}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Entrenamiento}{40}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Single Shot MultiBox Detection en Caffe}{41}{section.3.2}
-\contentsline {section}{\numberline {3.3}Detector de objetos}{44}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Estructura de la red}{44}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Definici\'on del solucionador}{50}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Entrenamiento de la red}{52}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Componente detector}{54}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Hilo Camera}{55}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Hilo Detector}{56}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Hilo GUI}{57}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Ejecuci\'on}{58}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.2}Single Shot MultiBox Detection en Caffe}{42}{section.3.2}
+\contentsline {section}{\numberline {3.3}Detector de objetos}{45}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Estructura de la red}{45}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Definici\'on del solucionador}{51}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Entrenamiento de la red}{53}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Componente detector}{55}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Hilo Camera}{56}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Hilo Detector}{57}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Hilo GUI}{58}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Ejecuci\'on}{59}{subsection.3.4.4}
 \contentsline {chapter}{\numberline {4}Medidor de calidad}{61}{chapter.4}
 \contentsline {section}{\numberline {4.1}Comparaci\'on \textit {bounding boxes} real y detectada}{61}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}PascalVOC}{61}{subsection.4.1.1}

@@ -628,6 +628,7 @@ Existen varios tipos capas de visión, dónde se pueden destacar los más comunes, 
 \end{itemize}
 
 \subsubsection{Capas de pérdida}
+\label{CapasPerdidaSection}
 
 Estas capas son las encargadas de propagar la función de pérdida durante el entrenamiento de la red neuronal. Esta función de pérdida toma las predicciones que realiza el modelo y los valores objetivos, es decir, los que realmente se espera que la red produzca, y calcula cuán lejos se está de ese valor, comprobando de esta manera como funciona la red para un ejemplo específico. Esta función ajusta los pesos de la red reduciendo la pérdida del modelo para cada ejemplo.\\
 
@@ -942,15 +943,15 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 
 \section{Técnica Single Shot MultiBox Detection}
 
-Single Shot MultiBox Detector\cite{SSD}, o SSD por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a finales de noviembre de 2016 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como PascalVOC y COCO. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
+Single Shot MultiBox Detector\cite{SSD}, o SSD por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como PascalVOC y COCO. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
 
 \begin{itemize}
 \item \textbf{Single Shot:}  Hace referencia a que la tareas de localización y clasificación de objetos se realizan en un único paso hacia adelante de la red.
-\item \textbf{MultiBox:} Es el nombre de una técnica para regresión de \textit{bounding box} desarrollada por Szegedy.
-\item \textbf{Detector:} La red neuronal se trata de un detector de objetos que también clasifica esos objetos detectados.
+\item \textbf{MultiBox:} Es el nombre de una técnica para regresión de \textit{bounding box} que es utilizada como referencia.\ref{MultiBox}.
+\item \textbf{Detector:} La red neuronal se trata de un detector de objetos que también se encarga de clasificarlos.
 \end{itemize}
 
-En el momento de la predicción, la red neuronal genera las puntuaciones para cada categoría de objetos en cada cuadro predeterminado y produce ajustes en este cuadro para ajustarse mejor a la forma del objeto. Además, la red combina predicciones de múltiples mapas de características con diferentes resoluciones para manejar de forma natural objetos de varios tamaños.
+En el momento de la predicción, la red neuronal genera las puntuaciones para cada categoría de objetos en cada cuadro predeterminado y produce modificaciones en este cuadro para ajustarse mejor a la forma del objeto. Además, la red combina predicciones de múltiples mapas de características con diferentes resoluciones para manejar de forma natural objetos de varios tamaños. 
 
 \begin{figure}[H]
 \begin{center}
@@ -964,10 +965,11 @@ En el momento de la predicción, la red neuronal genera las puntuaciones para cad
 
 \subsection{Arquitectura}\label{ArquitecturaSSDSection}
 
-El modelo SSD se basa en una red convolucional que produce un conjunto de recuadros delimitadores o \textit{bounding boxes} de tamaño fijo y puntuaciones para la presencia de instancias de clases de objetos dentro de esos cuadros, seguido por un paso de supresión no máxima para producir las detecciones finales. Las primeras capas de la red se basan en una arquitectura VGG-16 pero descartando las capas totalmente conectadas de ésta. La razón por la que se usa VGG-16 es su gran desempeño en la clasificación de imágenes de alta calidad. En lugar de las capas totalmente conectadas de VGG, se agregaron un conjunto de capas convolucionales auxiliares, lo que permite extraer características en múltiples escalas y disminuir progresivamente el tamaño de la imagen de entrada. Posteriormente, se agrega una estructura auxiliar a la red para producir detecciones. Esta estructura tiene las siguientes características claves:
+El modelo SSD se basa en una red convolucional que produce un conjunto de recuadros delimitadores o \textit{bounding boxes} de tamaño fijo y puntuaciones para la presencia de instancias de clases de objetos dentro de esos cuadros, seguido por un paso de supresión no máxima para producir las detecciones finales. Las primeras capas de la red se basan en una arquitectura VGG-16\cite{VGG} pero descartando las capas totalmente conectadas de ésta. La razón por la que se usa VGG-16 es su gran desempeño en la clasificación de imágenes de alta calidad. En lugar de las capas totalmente conectadas de VGG, se agregaron un conjunto de capas convolucionales auxiliares, lo que permite extraer características en múltiples escalas y disminuir progresivamente el tamaño de la imagen de entrada. Posteriormente, se agrega una estructura auxiliar a la red para producir detecciones. Esta estructura tiene las siguientes características claves:
 
 \begin{itemize}
 \item \textbf{Mapas de características con múltiples escalas para la detección:}  Se agregan varias capas de convolucionales al final de la estructura estándar comentada anteriormente. Estas capas disminuyen de forma progresiva el tamaño de la imagen de entrada y permiten predecir detecciones a múltiples escalas. 
+
 \item \textbf{Predictores convolucionales para la detección:}  Cada capa de características añadida puede producir un conjunto fijo de predicciones de detección utilizando para ello un conjunto de filtros convolucionales. Estos filtros están indicados en la parte superior de la arquitectura de la red SSD en la figura \ref{ArquitecturaSSD}. Para una capa de características de tamaño \textit{m X n} con \textit{p} canales, el elemento básico para predecir los parámetros de una posible detección es un núcleo pequeño de 3 x 3 x \textit{p} el cuál produce una puntuación para una categoría determinada. En cada una de las posiciones por donde se aplica el filtro, éste produce un valor de salida.
 
 \begin{figure}[H]
@@ -978,7 +980,7 @@ El modelo SSD se basa en una red convolucional que produce un conjunto de recuad
 \end{center}
 \end{figure}
 
-\item \textbf{Cajas predeterminadas y relaciones de aspecto:} Se asocian un conjunto de cuadros delimitadores por defecto con cada celda del mapa de características. Los cuadros predeterminados marcan el mapa de características de un manera convolucional, por lo que la posición de cada cuadro con respecto a su celda es fija. En cada celda del mapa de características, se predicen los desplazamientos relativos a las formas de los cuadros predeterminados en cada una de las celdas, así como la puntuación por clase que indica la presencia de una instancia de clase en cada uno de los cuadros delimitadores. Específicamente, para cada cuadro \textit{k} en una posición determinada se calcula la puntuación de clase \textit{c} y los 4 desplazamientos relativos a la forma del cuadro por defecto original. Como resultado se obtienen \textit{(c + 4)k} filtros que se aplican alrededor de cada ubicación en el mapa de características, produciendo \textit{(c + 4)kmn} de salidas para un mapa de \textit{m} x \textit{n}. Se permiten diferentes formas para los cuadros predeterminados en los mapas de características con el objetivo de discretizar el espacio para las posibles formas que tengan las cuadros delimitadores de salida.
+\item \textbf{Cajas predeterminadas y relaciones de aspecto:} Se asocian un conjunto de cuadros delimitadores por defecto con cada celda del mapa de características. Los cuadros predeterminados marcan el mapa de características de un manera convolucional, por lo que la posición de cada cuadro con respecto a su celda es fija. En cada celda del mapa de características, se predicen los desplazamientos relativos a las formas de los cuadros predeterminados en cada una de las celdas, así como la puntuación por clase que indica la presencia de una instancia de clase en cada uno de los cuadros delimitadores. Específicamente, para cada cuadro \textit{k} en una posición determinada se calcula la puntuación de clase \textit{c} y los 4 desplazamientos relativos a la forma del cuadro por defecto original. Como resultado se obtienen \textit{(c + 4)k} filtros que se aplican alrededor de cada ubicación en el mapa de características, produciendo \textit{(c + 4)kmn} salidas para un mapa de \textit{m} x \textit{n}. Se permiten diferentes formas para los cuadros predeterminados en los mapas de características con el objetivo de discretizar el espacio para las posibles formas que tengan las cuadros delimitadores de salida.
 \end{itemize}
 
 \begin{figure}[H]
@@ -994,7 +996,13 @@ El modelo SSD se basa en una red convolucional que produce un conjunto de recuad
 La principal diferencia entre el entrenamiento usando la técnica SSD y el entrenamiento de un detector típico, es que la información a cerca de los cuadros delimitadores reales debe asignarse a salidas específicas dentro del conjunto fijo de salidas del detector. Tras realizar esta asignación, la función de pérdida y la propagación hacia atrás son aplicadas de extremo a extremo. El proceso de entrenamiento también implica elegir el conjunto de cuadros y escalas predeterminados para la detección.
 
 \begin{itemize}
-\item \textbf{Negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \textit{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.\\
+\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, explicado en el apartado \ref{IoUSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \textit{IoU} máximo.
+
+\item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de SSD es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
+
+\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después.
+
+\item \textbf{Ejemplos negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \textit{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -1732,6 +1740,7 @@ La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que genera
 
 \section{Índice Jaccard}
 \lhead[\thepage]{\thesection. Índice Jaccard}
+\label{IoUSection}
 
 El índice Jaccard, también conocido como \textbf{Intersection over Union}, es una estadística utilizada para comparar la similitud y la diversidad de conjuntos de muestras. Este índice mide la similitud entre conjuntos de muestras finitas y se define como el tamaño de la intersección dividido por el tamaño de la unión de los conjuntos de muestras.\\
 
@@ -2085,11 +2094,18 @@ COCO, Common Objects in Context.
 Wei Liu ,Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed , Cheng-Yang Fu, Alexander C. Berg.
 \newblock {Single Shot MultiBox Detector}
 
-
 \bibitem{SSD_2}
 Single Shot MultiBox Detection.
 \newblock{Understanding SSD MultiBox? - ?RealTime Object Detection In Deep Learning}.
 \newblock {\url{https://towardsdatascience.com/understanding-ssd-multibox-real-time-object-detection-in-deep-learning-495ef744fab}}
+
+\bibitem{VGG}
+Simonyan,K.,Zisserman,A.:
+\newblock {Simonyan,K.,Zisserman,A.:Very deep convolutional networks for large-scale image recognition. In: NIPS. (2015)}
+
+\bibitem{MultiBox}
+Erhan, D., Szegedy, C., Toshev, A., Anguelov, D.:
+\newblock {Scalable object detection using deep neural networks. In: CVPR. (2014)}
 
 
 

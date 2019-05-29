@@ -27,9 +27,9 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Framework SSD. Imagen obtenida de \cite {SSD}.\relax }}{38}{figure.caption.23}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Arquitectura SSD. Imagen obtenida de \cite {SSD}.\relax }}{39}{figure.caption.24}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Arquitectura VGG-16. Imagen obtenida de \cite {SSD_2}.\relax }}{40}{figure.caption.25}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Ejemplo de uso de negativos en el entrenamiento SSD. Imagen obtenida de \cite {SSD_2}.\relax }}{41}{figure.caption.26}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Ejecuci\'on de entrenamiento de la red neuronal.\relax }}{54}{figure.caption.27}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema del Componente Detector.\relax }}{55}{figure.caption.28}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Ejemplo de uso de negativos en el entrenamiento SSD. Imagen obtenida de \cite {SSD_2}.\relax }}{42}{figure.caption.26}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Ejecuci\'on de entrenamiento de la red neuronal.\relax }}{55}{figure.caption.27}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema del Componente Detector.\relax }}{56}{figure.caption.28}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Comparacion bounding boxes real y detectada con imagen de la BBDD PascalVOC.\relax }}{65}{figure.caption.29}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD COCO.\relax }}{71}{figure.caption.30}
