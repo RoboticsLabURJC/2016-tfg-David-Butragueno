@@ -42,14 +42,15 @@
 \BOOKMARK [2][-]{subsection.3.4.2}{Hilo Detector}{section.3.4}% 42
 \BOOKMARK [2][-]{subsection.3.4.3}{Hilo GUI}{section.3.4}% 43
 \BOOKMARK [2][-]{subsection.3.4.4}{Ejecuci\363n}{section.3.4}% 44
-\BOOKMARK [0][-]{chapter.4}{Medidor de calidad}{}% 45
-\BOOKMARK [1][-]{section.4.1}{Comparaci\363n bounding boxes real y detectada}{chapter.4}% 46
-\BOOKMARK [2][-]{subsection.4.1.1}{PascalVOC}{section.4.1}% 47
-\BOOKMARK [2][-]{subsection.4.1.2}{COCO}{section.4.1}% 48
-\BOOKMARK [1][-]{section.4.2}{\315ndice Jaccard}{chapter.4}% 49
-\BOOKMARK [1][-]{section.4.3}{C\341lculo del \355ndice Jaccard}{chapter.4}% 50
-\BOOKMARK [1][-]{section.4.4}{Resultado final}{chapter.4}% 51
-\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 52
-\BOOKMARK [1][-]{section.5.1}{Conclusiones}{chapter.5}% 53
-\BOOKMARK [1][-]{section.5.2}{L\355neas futuras}{chapter.5}% 54
-\BOOKMARK [0][-]{chapter*.34}{Bibliograf\355a}{}% 55
+\BOOKMARK [2][-]{subsection.3.4.5}{Detecci\363n condicional}{section.3.4}% 45
+\BOOKMARK [0][-]{chapter.4}{Medidor de calidad}{}% 46
+\BOOKMARK [1][-]{section.4.1}{Comparaci\363n bounding boxes real y detectada}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.1.1}{PascalVOC}{section.4.1}% 48
+\BOOKMARK [2][-]{subsection.4.1.2}{COCO}{section.4.1}% 49
+\BOOKMARK [1][-]{section.4.2}{\315ndice Jaccard}{chapter.4}% 50
+\BOOKMARK [1][-]{section.4.3}{C\341lculo del \355ndice Jaccard}{chapter.4}% 51
+\BOOKMARK [1][-]{section.4.4}{Resultado final}{chapter.4}% 52
+\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 53
+\BOOKMARK [1][-]{section.5.1}{Conclusiones}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.2}{L\355neas futuras}{chapter.5}% 55
+\BOOKMARK [0][-]{chapter*.36}{Bibliograf\355a}{}% 56

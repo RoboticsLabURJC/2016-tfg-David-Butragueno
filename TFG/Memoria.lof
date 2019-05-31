@@ -30,10 +30,12 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Ejemplo de uso de negativos en el entrenamiento SSD. Imagen obtenida de \cite {SSD_2}.\relax }}{42}{figure.caption.26}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Ejecuci\'on de entrenamiento de la red neuronal.\relax }}{55}{figure.caption.27}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema del Componente Detector.\relax }}{56}{figure.caption.28}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Ejecuci\'on del componente detector usando el bot\'on de detecci\'on \'unica.\relax }}{60}{figure.caption.29}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Ejecuci\'on del componente detector condicional usando el bot\'on de detecci\'on \'unica.\relax }}{61}{figure.caption.30}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparacion bounding boxes real y detectada con imagen de la BBDD PascalVOC.\relax }}{65}{figure.caption.29}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD COCO.\relax }}{71}{figure.caption.30}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Intersecci\'on y uni\'on sobre 2 conjuntos A y B.\relax }}{71}{figure.caption.31}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Intersection over Union.\relax }}{72}{figure.caption.32}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Evaluaci\'on loU.\relax }}{73}{figure.caption.33}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparacion bounding boxes real y detectada con imagen de la BBDD PascalVOC.\relax }}{67}{figure.caption.31}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD COCO.\relax }}{73}{figure.caption.32}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Intersecci\'on y uni\'on sobre 2 conjuntos A y B.\relax }}{73}{figure.caption.33}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Intersection over Union.\relax }}{74}{figure.caption.34}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Evaluaci\'on loU.\relax }}{75}{figure.caption.35}
 \addvspace {10\p@ }

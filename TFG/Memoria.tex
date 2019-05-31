@@ -2,7 +2,6 @@
 
 \usepackage[latin1]{inputenc}
 \usepackage{tocloft}
-\usepackage{fancyhdr}
 \usepackage[spanish, es-lcroman]{babel} 
 \usepackage{graphicx}
 \usepackage{float}
@@ -38,7 +37,6 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhf{}
 \lhead[\rightmark]{}
 \rhead[]{\leftmark}
 \cfoot{\thepage}
@@ -52,15 +50,6 @@
 \newcommand\tab[1][0.3 cm]{\hspace*{#1}}
 \let\olditemize\itemize
 \def\itemize{\olditemize\itemsep=0pt }
-
-
-\makeatletter
-\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
-\hbox{}%
-\thispagestyle{empty}%
-\newpage%
-\if@twocolumn\hbox{}\newpage\fi\fi\fi}
-\makeatother
 
 \lstset{
 	float=hbp,
@@ -1000,9 +989,9 @@ La principal diferencia entre el entrenamiento usando la técnica SSD y el entren
 
 \item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de SSD es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
 
-\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después.
+\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto. Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La imagen \ref{FrameworkSSD} muestra 2 ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el framework. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional. Dentro del marco de SSD, se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica, se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico. Combinando predicciones para todas las cajas por defecto con diferentes escalas y relaciones de aspecto de todas las ubicaciones de los mapas de características, se consigue un conjunto diverso de predicciones, abarcando varios tamaños y formas de objetos de entrada. Por ejemplo, en la imagen \ref{FrameworkSSD}, el perro está emparejado con una caja por defecto en el mapa de características 4x4, pero con ninguna en el mapa de características 8x8. Esto se debe a que esas cajas tienen escalas diferentes y no coinciden con la caja del perro, y por lo tanto se consideran como negativos durante el entrenamiento.
 
-\item \textbf{Ejemplos negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \textit{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.\\
+\item \textbf{Ejemplos negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \textit{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.
 
 \begin{figure}[H]
 \begin{center}
@@ -1109,6 +1098,8 @@ top_ymax = det_ymax[top_indices]
 
 
 \section{Detector de objetos}
+
+Para conseguir el sistema detector de objetos que se pretende, antes hay que definir en varios aspectos que afectarán a las prestaciones que tendrá el modelo una vez finalizado. En esta sección, se explicará la arquitectura que tendrá la red neuronal que se utilizará, los parámetros que se usarán para el entrenamiento de ésta y los conjuntos de datos de entrenamiento con los que se alimentará a la red. Finalmente, se describirá un componente detector de objetos desarrollado, que se puede utilizar para la comprobar las capacidades del modelo entrenado.
 
 \subsection{Estructura de la red}\label{Estructura}
 
@@ -1229,7 +1220,7 @@ layer {
 }
 \end{lstlisting}
 
-Las dimensiones de salida están especificadas en \textit{reshape\_param}. Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además, se aceptan 2 valores especiales para definir cualquier que se desee.
+Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además, se aceptan 2 valores especiales para definir cualquier que se desee.
 
 \begin{itemize}
 \item Si se utiliza el valor \textbf{0} se copiará la dimensión de la capa inferior, es decir, si la capa inferior tiene 2 como su primera dimensión, la capa superior tendrá 2 como su primera dimensión.
@@ -1259,7 +1250,7 @@ Suponiendo que se recibe una entrada \textit{n\_i * c\_i * h * w} para cada capa
 \end{itemize}
 \end{itemize}
 
-Finalmente, se define la capa que determina la salida.\\
+Finalmente, se define la capa que determina la salida, que determinará los parámetros necesarios para clasificar los objetos detectados durante el entrenamiento.\\
 
 \begin{lstlisting}[frame=single]
 layer {
@@ -1277,24 +1268,20 @@ layer {
     share_location: true
     background_label_id: 0
     nms_param {
-      nms_threshold: 0.449999988079
+      nms_threshold: 0.45
       top_k: 400
     }
     save_output_param {
-      output_directory: "/home/davidbutra/data/VOCdevkit/
-      				results/VOC2007/SSD_300x300/Main"
-      output_name_prefix: "comp4_det_test_"
-      output_format: "VOC"
       label_map_file: "data/VOC0712/labelmap_voc.prototxt"
-      name_size_file: "data/VOC0712/test_name_size.txt"
-      num_test_image: 4952
     }
     code_type: CENTER_SIZE
     keep_top_k: 200
-    confidence_threshold: 0.00999999977648
+    confidence_threshold: 0.01
   }
 }
 \end{lstlisting}
+
+Además de especificar las capas alimentarán la entrada de ésta, se pueden destacar los parámetros \textit{num\_classes}, que determina el número de clases de objetos existentes o \textit{label\_map\_file} que indica la ruta del fichero dónde se definen estas clases.
 
 \subsection{Definición del solucionador}
 
@@ -1377,6 +1364,7 @@ Por lo tanto, para este caso, se creo un \textit{script} adicional, a partir de 
 Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en forma de fichero binario con extensión \textit{.caffemodel} que contiene los pesos existentes en cada una de las capas de la red neuronal en ese momento del entrenamiento.
 
 \section{Componente detector}
+\label{ComponenteDetectorSection}
 
 Con el objetivo de entender mejor todo lo comentado anteriormente, se desarrolla un componente en Python que, a partir del \textit{Camera Server} de JdeRobot explicado en el apartado \ref{Camera}, será capaz de realizar la detección en tiempo real de las imágenes captadas por la cámara. La imagen \ref{ComponenteDetector} muestra un diagrama de bloques con el diseño de este componente.\\
 
@@ -1441,6 +1429,7 @@ Tras el constructor de la clase GUI, se definirá la función \textit{update(self)
 Finalmente, se definirán las 2 funciones asociadas a los 2 botones creados anteriormente. La función \textit{toggle(self)} estará asociada al botón \textit{Continuos} y hará que tras pulsarlo, comience la detección continua de las imágenes captadas en tiempo real. Por otro lado, la función \textit{detectOnce(self)} estará asociada al botón \textit{Detect Once} y hará que al hacer \textit{click} sobre él, se realice la detección únicamente sobre el frame que se estaba mostrando por la cámara en ese momento exacto.
 
 \subsection{Ejecución}
+\label{Ejecucion}
 
 El proceso de ejecución de este componente estará divido en 2 pasos. Uno será el encargado de lanzar el servidor de imágenes, utilizando para ello el componente \textit{Camera Server} de JdeRobot. El otro será el encargado de lanzar el propio componente detector explicado en las secciones anteriores.\\
 
@@ -1458,7 +1447,41 @@ python detectorSSD.py --Ice.Config=detectorSSD.cfg
 
 En primer lugar se hará referencia al script principal del componente, \textit{detectorSSD.py}, cuyo objetivo es lanzar los 3 hilos que lo forman. Posteriormente se especifica el fichero de configuración \textit{detectorSSD.cfg} gracias al cual se tendrá comunicación con el servidor de imágenes. Este fichero tiene una propiedad en la que se define el nombre de la cámara, el cual tiene que ser el mismo que el definido anteriormente en el fichero \textit{cameraserver.cfg} para que dicha conexión sea efectiva.\\
 
-Finalmente, tras lanzar ambos comandos, se obtiene el componente detector explicado. A continuación se muestran 2 imágenes donde se aprecia el funcionamiento del componente. La imagen \ref{DeteccionContinua} se puede observar como se comporta la aplicación cuando se pulsa el botón encargado de realizar la detección continua. Por otro lado, la imagen \ref{DeteccionUnica} muestra el funcionamiento del componente tras pulsar el botón encargado de la detección única.
+Finalmente, tras lanzar ambos comandos, se obtiene el componente detector explicado. A continuación se muestran 2 imágenes donde se aprecia el funcionamiento del componente. La imagen \ref{ComponenteDetectorPython} se puede observar como se comporta la aplicación, en este caso, pulsando el botón encargado de realizar la detección única.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{./DetectionComponentPython}
+\caption{Ejecución del componente detector usando el botón de detección única.}
+\label{ComponenteDetectorPython}
+\end{center}
+\end{figure}
+
+\subsection{Detección condicional}
+
+En ocasiones, se quiere realizar tareas de detección sobre uno o varios objetos en concreto, obviando los demás que se han definido durante el entrenamiento de la red neuronal.\\
+
+Para ello, en el fichero de configuración, se añadirá una línea en la cual se especificará las etiquetas de los objetos que se quieren detectar. Para la prueba de este componente condicional, se modificará este fichero en función de la demostración realizada anteriormente, en la que se detecto una pantalla y una botella.\\
+
+\begin{lstlisting}[frame=single]
+DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999 
+#Write all objects that yo want to detect separated by one space. 
+DetectorSSD.Labels=bottle
+\end{lstlisting}
+
+Tras esto, a partir de la variable DetectorSSD.Labels creada, se recorrerá el fichero \textit{labelmap.prototxt}, el cual contiene todos los objetos para los que se ha preparada a la red. Si alguna de las etiquetas existentes coinciden con las especificadas en el fichero de configuración, se creará el archivo \textit{labelmap\_conditional.prototxt}, que contendrá los objetos definidos. De esta manera, se tendrá un mapa de etiquetas con únicamente los objetos sobre los que se quiere realizar la detección.\\
+
+La arquitectura de este componente será exactamente igual que la mostrada en la imagen \ref{ComponenteDetector}, utilizando los 3 hilos de ejecución explicados en el apartado \ref{ComponenteDetectorSection}. Por último, la ejecución del componente se realizará de la forma explicada en el apartado \ref{Ejecucion}.\\
+
+En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de este componente de detección condicional, utilizando el fichero de configuración mostrado anteriormente:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{./DetectionComponentPythonConditional}
+\caption{Ejecución del componente detector condicional usando el botón de detección única.}
+\label{ComponenteDetectorPythonConditional}
+\end{center}
+\end{figure}
 
 \chapter{Medidor de calidad}
 \markboth{MEDIDOR DE CALIDAD}{MEDIDOR DE CALIDAD}
@@ -2096,7 +2119,7 @@ Wei Liu ,Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed , Cheng
 
 \bibitem{SSD_2}
 Single Shot MultiBox Detection.
-\newblock{Understanding SSD MultiBox? - ?RealTime Object Detection In Deep Learning}.
+\newblock{Understanding SSD MultiBox - RealTime Object Detection In Deep Learning}.
 \newblock {\url{https://towardsdatascience.com/understanding-ssd-multibox-real-time-object-detection-in-deep-learning-495ef744fab}}
 
 \bibitem{VGG}
