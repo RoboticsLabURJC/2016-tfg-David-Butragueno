@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, spanish, chapterprefix, numbers=noenddot]{book}
+\documentclass[a4paper, 12pt, twoside]{book}
 
 \usepackage[latin1]{inputenc}
 \usepackage{tocloft}
@@ -13,9 +13,8 @@
 \usepackage[a4paper,top=3cm, bottom=3cm, inner=2.5cm, outer=2.5cm]{geometry}
 
 \usepackage[acronym, nonumberlist]{glossaries}
-\renewcommand{\acronymname}{Acrónimos}
 \makeglossaries
-\input{0-Acronimos}
+\includeonly{Acronimos}
 
 \makeatletter
 \renewcommand{\@makeschapterhead}[1]{%
@@ -69,6 +68,15 @@
 
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
+
+\makeatletter
+\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}%
+\thispagestyle{empty}%
+\newpage%
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
 
 \begin{document}
 
@@ -127,10 +135,12 @@ Una de las fuentes de inspiración matemáticas ha sido el continuo intento de for
 
 Durante este trabajo se ha desarrollado un componente detector en tiempo real utilizando una red neuronal entrenada con Caffe. En primer lugar, se realiza un estudia de la insfraestructura que se ha utilizado durante la realización del proyecto. Se definen las principales características de las herramientas Caffe y JdeRobot, utilizadas para el entrenamiento de la red y para el componente en vivo respectivamente. Posteriormente, se realiza un estudio de las bases de datos que se usarán, PascalVoc y COCO, especificando el número total de imágenes, como están distribuidos los objetos y el formato de sus ficheros de anotaciones. Tras la definición de la infraestructura, se realiza una introducción a la técnica \textit{Single Shot MultiBox Detection}, la cual será la usada para el entrenamiento. Después, se muestra un ejemplo práctico en el que se integra Caffe en esta técnica. Finalmente, se introduce el concepto de \textit{índice Jaccard} 0 \textit{Intersection Over Union}, con el que es posible evaluar la calidad en la detección de las redes que hemos utilizado durante el proyecto.
 
+
 \newpage
 $\ $
 \thispagestyle{empty} 
 
+\cleardoublepage
 \tableofcontents
 \thispagestyle{empty}
 \cleardoublepage
@@ -140,13 +150,11 @@ $\ $
 \listoffigures
 
 
-\renewcommand{\acronymname}{Acrónimos}
-\cleardoublepage
+\renewcommand{\acronymname}{Acronimos}
 \addcontentsline{toc}{chapter}{Acrónimos}
 \printglossary[type=\acronymtype]
 
 \cleardoublepage
-
  
 \chapter{Introducción}
 \pagenumbering{arabic}
@@ -192,13 +200,13 @@ El conjunto de un gran número de neuronas conectadas entre sí forman la llamada 
 
 El deseo de crear y desarrollar aplicaciones que simulen el comportamiento humano es algo que lleva existiendo desde hace mucho tiempo. Durante las última décadas, ha ido aumentando gradualmente el progreso en la construcción de máquinas inteligentes que puedan ejecutar ciertas tareas tal y como la realizaría un ser humano. Este área se denomina Inteligencia Artificial (IA) \cite{IA_Introduccion}.\\
 
-Para llevar a cabo este propósito, dentro del ámbito de la IA, han surgido varias técnicas como el \textit{Machine Learning} o aprendizaje automático (AA) y más recientemente el \textit{Deep Learning} o aprendizaje profundo (AP) el cual surgió para solucionar las limitaciones que presentaba el AA. El objetivo de estas técnicas es crear algoritmos con los que las máquinas sean capaces de \textit{aprender} ciertos comportamientos.\\
+Para llevar a cabo este propósito, dentro del ámbito de la \acrshort{IA}, han surgido varias técnicas como el \textit{Machine Learning} o aprendizaje automático (AA) y más recientemente el \textit{Deep Learning} o aprendizaje profundo (AP) el cual surgió para solucionar las limitaciones que presentaba el AA. El objetivo de estas técnicas es crear algoritmos con los que las máquinas sean capaces de \textit{aprender} ciertos comportamientos.\\
 
 Este trabajo se encuadra en el contexto del AP, con el objetivo de detectar objetos en imágenes. Durante el desarrollo del mismo, y debido a la utilización del \textit{Deep Learning}, se utilizarán las redes neuronales artificiales (RNA), más concretamente el tipo llamado redes neuronales convolucionales (CNN, del inglés \textit{Convolutional Neural Network}), y la técnica \textit{Single Shot MultiBox Detection} (SSD), conceptos que serán explicados y desarrollados más adelante.
 
 \section{Inteligencia artificial y aprendizaje automático}
 
-El concepto de IA no tiene una definición específica. No existe un consenso entre los científicos e ingenieros que tratan el problema de la IA. Tal vez, una de las definiciones que se puede considerar más ajustada es la reflejada en la \textit{Encyclopedia of Artificial Inteligence} \cite{IA_Encyclopedia}:\\
+El concepto de \acrshort{IA} no tiene una definición específica. No existe un consenso entre los científicos e ingenieros que tratan el problema de la IA. Tal vez, una de las definiciones que se puede considerar más ajustada es la reflejada en la \textit{Encyclopedia of Artificial Inteligence} \cite{IA_Encyclopedia}:\\
 
 \textbf{La IA es un campo de la ciencia y la ingeniería que se ocupa de la compresión, desde el punto de vista informático, de lo que se denomina comúnmente comportamiento inteligente. También se ocupa de la creación de artefactos que exhiben ese comportamiento.}\\
 
@@ -398,6 +406,7 @@ Una ventaja fundamental de las redes de aprendizaje profundo es que suelen segui
 
 
 \section{Antecedentes en el proyecto JdeRobot}
+\label{AntecedentesJdeRobot}
 
 Actualmente, en JdeRobot ya se han desarrollado varios trabajos basados en la inteligencia artificial y más concretamente en deep learning. En ellos se han utilizado algunos de los softwares mencionados anteriormente para entrenar una o varias redes neuronales. Tras ello, se han abordado tareas de clasificación y detección de objetos analizando tras ellos la capacidad que tenían las redes neuronales ya entrenadas para realizar ese cometido.\\
 
@@ -1097,7 +1106,7 @@ top_ymax = det_ymax[top_indices]
 \end{lstlisting}
 
 
-\section{Detector de objetos}
+\section{Detector de objetos}\label{DetectorObjetosSection}
 
 Para conseguir el sistema detector de objetos que se pretende, antes hay que definir en varios aspectos que afectarán a las prestaciones que tendrá el modelo una vez finalizado. En esta sección, se explicará la arquitectura que tendrá la red neuronal que se utilizará, los parámetros que se usarán para el entrenamiento de ésta y los conjuntos de datos de entrenamiento con los que se alimentará a la red. Finalmente, se describirá un componente detector de objetos desarrollado, que se puede utilizar para la comprobar las capacidades del modelo entrenado.
 
@@ -1487,7 +1496,6 @@ En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de e
 \markboth{MEDIDOR DE CALIDAD}{MEDIDOR DE CALIDAD}
 
 \section{Comparación \textit{bounding boxes} real y detectada}
-\lhead[\thepage]{\thesection. Comparación \textit{BBs} real y detectada}
 
 En el apartado \ref{SSDCaffe} se ha explicado como se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para PascalVOC y COCO tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros XML y para la segunda ficheros JSON, por lo que se utilizarán 2 scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
 
@@ -1762,7 +1770,6 @@ La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que genera
 \end{figure}
 
 \section{Índice Jaccard}
-\lhead[\thepage]{\thesection. Índice Jaccard}
 \label{IoUSection}
 
 El índice Jaccard, también conocido como \textbf{Intersection over Union}, es una estadística utilizada para comparar la similitud y la diversidad de conjuntos de muestras. Este índice mide la similitud entre conjuntos de muestras finitas y se define como el tamaño de la intersección dividido por el tamaño de la unión de los conjuntos de muestras.\\
@@ -1809,9 +1816,8 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \end{center}
 \end{figure}
 
-
+\begin{comment}
 \section{Cálculo del índice Jaccard}
-\lhead[\thepage]{\thesection. Calculo del índice Jaccard}
 
 Se partirá de los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} pero ahora los scripts crearán un fichero mostrando el índice Jaccard calculado para cada uno de los objetos de las 2 bases de datos. Estos 2 nuevos \textit{scripts}, a diferencia de los anteriores, recibirán un conjunto de imágenes, por lo que el primer paso para realizarlos será preparar los datos de entrada.\\
 
@@ -1963,12 +1969,26 @@ if detec_array[x][1][i] == "aeroplane":
 
 El código anterior comparará una variable creada con el nombre de una de las etiquetas de las base de datos con la etiqueta de cada objeto detectado, 
 
+\end{comment}
 \section{Resultado final}
-\lhead[\thepage]{\thesection. Resultado final}
 
+En este apartado se procederá a realizar las pruebas necesarias para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se medirán, serán las 2 preentrenadas con las bases de datos PascalVoc y Coco, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos personalizada explicada en el apartado \ref{DetectorObjetosSection}.\\
+
+Para medir las prestaciones de cada uno de los modelos, se va a utilizar la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} de JdeRobot, comentada en el apartado \ref{AntecedentesJdeRobot}. Esta herramienta permite la utilización de varias bases de datos, entre las que se encuentran las utilizadas durante este trabajo, PascalVoc y COCO, además de varios frameworks para el aprendizaje profundo, incluyendo Caffe.\\
+
+Como datos de entrada para medir el rendimiento de los modelos, con \textit{Detection Suite} se pueden utilizar un banco de imágenes con sus respectivas anotaciones, vídeos grabados o las imágenes que capta una cámara en tiempo real. Para este caso, se decidió utilizar un \textit{testing set} formado por imágenes junto con sus anotaciones. Lo más importante, es que estás imágenes seleccionadas no hayan sido utilizadas para entrenar ninguno de los modelos que se compararán, ya que esto falsearía las medidas obtenidas. En el repositorio de la técnica SSD\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, hay un enlace para descargarse varias imágenes junto con sus anotaciones del conjunto de test de la base de datos PascalVoc. Este banco de ejemplos está formado por 4952 imágenes en los que hay etiquetados 14976 objetos de 20 clases diferentes. En la figura \ref{testImages} se puede observar como están distribuidos los 14976 objetos mencionados anteriormente en cada una de las clases existentes:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{./TestImages}
+\caption{Distribución de las imágenes de test.}
+\label{testImages}
+\end{center}
+\end{figure}
+
+Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se utilizará la herramienta llamada \textit{Automatic Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Automatic-Evaluation}}.
 
 \chapter{Conclusiones}
-\markboth{CONCLUSIONES}{CONCLUSIONES}
 
 En este capítulo se van a exponer las principales conclusiones obtenidas durante el desarrollo de este trabajo. Además, se propondrán varias líneas de trabajo futuras para continuar con la tarea realizada.
 
