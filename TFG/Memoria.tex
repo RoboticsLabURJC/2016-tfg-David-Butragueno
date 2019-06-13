@@ -14,7 +14,7 @@
 
 \usepackage[acronym, nonumberlist]{glossaries}
 \makeglossaries
-\includeonly{Acronimos}
+\include{Acronimos}
 
 \makeatletter
 \renewcommand{\@makeschapterhead}[1]{%
@@ -133,7 +133,7 @@ $\ $
 
 Una de las fuentes de inspiración matemáticas ha sido el continuo intento de formalizar el pensamiento humano. La complejidad para simular acciones humanas frente a otras teorías matemáticas ha hecho que se separen los campos de estudio y aplicación.\\
 
-Durante este trabajo se ha desarrollado un componente detector en tiempo real utilizando una red neuronal entrenada con Caffe. En primer lugar, se realiza un estudia de la insfraestructura que se ha utilizado durante la realización del proyecto. Se definen las principales características de las herramientas Caffe y JdeRobot, utilizadas para el entrenamiento de la red y para el componente en vivo respectivamente. Posteriormente, se realiza un estudio de las bases de datos que se usarán, PascalVoc y COCO, especificando el número total de imágenes, como están distribuidos los objetos y el formato de sus ficheros de anotaciones. Tras la definición de la infraestructura, se realiza una introducción a la técnica \textit{Single Shot MultiBox Detection}, la cual será la usada para el entrenamiento. Después, se muestra un ejemplo práctico en el que se integra Caffe en esta técnica. Finalmente, se introduce el concepto de \textit{índice Jaccard} 0 \textit{Intersection Over Union}, con el que es posible evaluar la calidad en la detección de las redes que hemos utilizado durante el proyecto.
+Durante este trabajo se ha desarrollado un componente detector en tiempo real utilizando una red neuronal entrenada con Caffe. En primer lugar, se realiza un estudia de la insfraestructura que se ha utilizado durante la realización del proyecto. Se definen las principales características de las herramientas Caffe y JdeRobot, utilizadas para el entrenamiento de la red y para el componente en vivo respectivamente. Posteriormente, se realiza un estudio de las bases de datos que se usarán, \acrshort{PascalVOC} y \acrshort{COCO}, especificando el número total de imágenes, como están distribuidos los objetos y el formato de sus ficheros de anotaciones. Tras la definición de la infraestructura, se realiza una introducción a la técnica \textit{Single Shot MultiBox Detection}, la cual será la usada para el entrenamiento. Después, se muestra un ejemplo práctico en el que se integra Caffe en esta técnica. Finalmente, se introduce el concepto de \textit{índice Jaccard} 0 \textit{Intersection Over Union}, con el que es posible evaluar la calidad en la detección de las redes que hemos utilizado durante el proyecto.
 
 
 \newpage
@@ -149,12 +149,11 @@ $\ $
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 
-
-\renewcommand{\acronymname}{Acronimos}
+\cleardoublepage
+\renewcommand{\acronymname}{Acrónimos}
 \addcontentsline{toc}{chapter}{Acrónimos}
 \printglossary[type=\acronymtype]
-
-\cleardoublepage
+ 
  
 \chapter{Introducción}
 \pagenumbering{arabic}
@@ -198,21 +197,21 @@ El conjunto de un gran número de neuronas conectadas entre sí forman la llamada 
 
 \section{Contexto y motivación}
 
-El deseo de crear y desarrollar aplicaciones que simulen el comportamiento humano es algo que lleva existiendo desde hace mucho tiempo. Durante las última décadas, ha ido aumentando gradualmente el progreso en la construcción de máquinas inteligentes que puedan ejecutar ciertas tareas tal y como la realizaría un ser humano. Este área se denomina Inteligencia Artificial (IA) \cite{IA_Introduccion}.\\
+El deseo de crear y desarrollar aplicaciones que simulen el comportamiento humano es algo que lleva existiendo desde hace mucho tiempo. Durante las última décadas, ha ido aumentando gradualmente el progreso en la construcción de máquinas inteligentes que puedan ejecutar ciertas tareas tal y como la realizaría un ser humano. Este área se denomina Inteligencia Artificial \acrshort{IA} \cite{IA_Introduccion}.\\
 
-Para llevar a cabo este propósito, dentro del ámbito de la \acrshort{IA}, han surgido varias técnicas como el \textit{Machine Learning} o aprendizaje automático (AA) y más recientemente el \textit{Deep Learning} o aprendizaje profundo (AP) el cual surgió para solucionar las limitaciones que presentaba el AA. El objetivo de estas técnicas es crear algoritmos con los que las máquinas sean capaces de \textit{aprender} ciertos comportamientos.\\
+Para llevar a cabo este propósito, dentro del ámbito de la \acrshort{IA}, han surgido varias técnicas como el \textit{Machine Learning} o aprendizaje automático \acrshort{AA} y más recientemente el \textit{Deep Learning} o aprendizaje profundo (\acrshort{AP}) el cual surgió para solucionar las limitaciones que presentaba el \acrshort{AA}. El objetivo de estas técnicas es crear algoritmos con los que las máquinas sean capaces de \textit{aprender} ciertos comportamientos.\\
 
-Este trabajo se encuadra en el contexto del AP, con el objetivo de detectar objetos en imágenes. Durante el desarrollo del mismo, y debido a la utilización del \textit{Deep Learning}, se utilizarán las redes neuronales artificiales (RNA), más concretamente el tipo llamado redes neuronales convolucionales (CNN, del inglés \textit{Convolutional Neural Network}), y la técnica \textit{Single Shot MultiBox Detection} (SSD), conceptos que serán explicados y desarrollados más adelante.
+Este trabajo se encuadra en el contexto del \acrshort{AP}, con el objetivo de detectar objetos en imágenes. Durante el desarrollo del mismo, y debido a la utilización del \textit{Deep Learning}, se utilizarán las redes neuronales artificiales (\acrshort{RNA}), más concretamente el tipo llamado redes neuronales convolucionales (\acrshort{CNN}, del inglés \textit{Convolutional Neural Network}), y la técnica \textit{Single Shot MultiBox Detection} (\acrshort{SSD}), conceptos que serán explicados y desarrollados más adelante.
 
 \section{Inteligencia artificial y aprendizaje automático}
 
-El concepto de \acrshort{IA} no tiene una definición específica. No existe un consenso entre los científicos e ingenieros que tratan el problema de la IA. Tal vez, una de las definiciones que se puede considerar más ajustada es la reflejada en la \textit{Encyclopedia of Artificial Inteligence} \cite{IA_Encyclopedia}:\\
+El concepto de \acrshort{IA} no tiene una definición específica. No existe un consenso entre los científicos e ingenieros que tratan el problema de la \acrshort{IA}. Tal vez, una de las definiciones que se puede considerar más ajustada es la reflejada en la \textit{Encyclopedia of Artificial Inteligence} \cite{IA_Encyclopedia}:\\
 
-\textbf{La IA es un campo de la ciencia y la ingeniería que se ocupa de la compresión, desde el punto de vista informático, de lo que se denomina comúnmente comportamiento inteligente. También se ocupa de la creación de artefactos que exhiben ese comportamiento.}\\
+\textbf{La \acrshort{IA} es un campo de la ciencia y la ingeniería que se ocupa de la compresión, desde el punto de vista informático, de lo que se denomina comúnmente comportamiento inteligente. También se ocupa de la creación de artefactos que exhiben ese comportamiento.}\\
 
-Tras esta definición, se puede deducir que en el seno de la IA como ciencia y tecnología se han ido acumulando conocimientos sobre cómo emular las diversas capacidades del ser humano para exhibir comportamientos inteligentes y se han desarrollado sistemas cada vez más perfeccionados que reproducen parcialmente dichas capacidades \cite{IA}.\\
+Tras esta definición, se puede deducir que en el seno de la \acrshort{IA} como ciencia y tecnología se han ido acumulando conocimientos sobre cómo emular las diversas capacidades del ser humano para exhibir comportamientos inteligentes y se han desarrollado sistemas cada vez más perfeccionados que reproducen parcialmente dichas capacidades \cite{IA}.\\
 
-Para cubrir este objetivo, la IA abarca varios campos de aplicación. A continuación se explican brevemente algunas de las áreas más importante donde se aplica \cite{IA_2}:
+Para cubrir este objetivo, la \acrshort{IA} abarca varios campos de aplicación. A continuación se explican brevemente algunas de las áreas más importante donde se aplica \cite{IA_2}:
 \begin{itemize}
 \item \textbf{Tratamiento de lenguajes naturales:} Este campo abarca aplicaciones que realicen traducciones entre idiomas, interfaces hombre-máquina que permitan consultar una base de datos o dar órdenes a un sistema operativo que permita una comunicación más amigable y fluida con el usuario.
 \item \textbf{Sistemas expertos:} Aquí se engloban aquellos sistemas dónde la experiencia de personal cualificado se incorpora a dichos sistemas para conseguir deducciones más cercanas a la realidad.
@@ -221,7 +220,7 @@ Para cubrir este objetivo, la IA abarca varios campos de aplicación. A continuac
 \item \textbf{Aprendizaje:} Modelización de conductas para su posterior implantación en computadoras.  
 \end{itemize}
 
-Dentro de la IA, surge un nuevo concepto denominado \textit{Machine Learning} o aprendizaje automático (AA). El AA es una disciplina científica del ámbito de la IA cuyo objetivo es desarrollar técnicas que permitan a las computadoras aprender automáticamente. Más concretamente, se trata de crear aplicaciones capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos. Se puedes definir, por lo tanto, como un proceso de inducción del conocimiento. Se dice que un sistema tiene la \textit{capacidad de aprender} si adquiere y procesa información acerca de su desempeño y del ambiente que lo rodea, para mejorar dicho desempeño.\\
+Dentro de la \acrshort{IA}, surge un nuevo concepto denominado \textit{Machine Learning} o aprendizaje automático \acrshort{AA}. El \acrshort{AA} es una disciplina científica del ámbito de la \acrshort{IA} cuyo objetivo es desarrollar técnicas que permitan a las computadoras aprender automáticamente. Más concretamente, se trata de crear aplicaciones capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos. Se puedes definir, por lo tanto, como un proceso de inducción del conocimiento. Se dice que un sistema tiene la \textit{capacidad de aprender} si adquiere y procesa información acerca de su desempeño y del ambiente que lo rodea, para mejorar dicho desempeño.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -237,17 +236,17 @@ La experiencia ha demostrado que un sistema que utiliza la técnica de \textit{Ma
 
 \subsection{Aplicaciones}
 
-Actualmente, los grandes avances tecnológicos y las mejores en los algoritmos de AA ha hecho que estas técnicas se utilicen en un gran número de aplicaciones, tanto a nivel de negocio como a nivel de investigación. A continuación, se enumeran algunas de las aplicaciones más importantes desarrolladas o pendientes de desarrollar en el futuro basadas en el AA.
+Actualmente, los grandes avances tecnológicos y las mejoras en los algoritmos de \acrshort{AA} ha hecho que estas técnicas se utilicen en un gran número de aplicaciones, tanto a nivel de negocio como a nivel de investigación. A continuación, se enumeran algunas de las aplicaciones más importantes desarrolladas o pendientes de desarrollar en el futuro basadas en el \acrshort{AA}.
 
 \begin{itemize}
-\item \textbf{Conducción autónoma:} El hecho de que un coche pueda ser dirigido sin la acción directa del ser humano es una de las investigaciones más llamativas en el ámbito de la IA. Los investigadores del ámbito de la automoción emplean el AA para detectar automáticamente objetos tales como señales de stop y semáforos. Además, el AA se utiliza para detectar peatones, lo que contribuye a reducir los accidentes.
-\item \textbf{Automatización industrial:} El AA está ayudando a mejorar la seguridad de los trabajadores en entornos con maquinaria pesada, gracias a la detección automática de personas u objetos cuando se encuentran a una distancia no segura de las máquinas.
+\item \textbf{Conducción autónoma:} El hecho de que un coche pueda ser dirigido sin la acción directa del ser humano es una de las investigaciones más llamativas en el ámbito de la \acrshort{IA}. Los investigadores del ámbito de la automoción emplean el \acrshort{AA} para detectar automáticamente objetos tales como señales de stop y semáforos. Además, el \acrshort{AA} se utiliza para detectar peatones, lo que contribuye a reducir los accidentes.
+\item \textbf{Automatización industrial:} El \acrshort{AA} está ayudando a mejorar la seguridad de los trabajadores en entornos con maquinaria pesada, gracias a la detección automática de personas u objetos cuando se encuentran a una distancia no segura de las máquinas.
 \item \textbf{Electrónica:} El aprendizaje electrónico se usa en la audición automatizada y la traducción del habla. Por ejemplo, los dispositivos de asistencia doméstica que responden a la voz y conocen sus preferencias se basan en aplicaciones de aprendizaje profundo.
-\item \textbf{Investigación médica:} En el ámbito de la salud, como por ejemplo al revisar una mamografía, los algoritmos de AA pueden procesar más información y detectar más patrones que una mente humana. Además, el AA también se puede utilizar para advertir los factores de riesgo de enfermedad en poblaciones grandes.
+\item \textbf{Investigación médica:} En el ámbito de la salud, como por ejemplo al revisar una mamografía, los algoritmos de \acrshort{AA} pueden procesar más información y detectar más patrones que una mente humana. Además, el \acrshort{AA} también se puede utilizar para advertir los factores de riesgo de enfermedad en poblaciones grandes.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=9cm]{./CancerDL}
-\caption{Ejemplo de AA aplicado a la detección de cáncer de mama. Imagen obtenida de \cite{CancerMamaDeepLearning}.}
+\caption{Ejemplo de \acrshort{AA} aplicado a la detección de cáncer de mama. Imagen obtenida de \cite{CancerMamaDeepLearning}.}
 \label{MArcoIA}
 \end{center}
 \end{figure}
@@ -257,7 +256,7 @@ Actualmente, los grandes avances tecnológicos y las mejores en los algoritmos de
 
 Muchas variedades de redes adaptativas han demostrado ser prácticas enfrentándose a problemas de gran dificultad, convirtiendo el estudio de sus propiedades matemáticas y computacionales en un campo muy interesante de estudio.\\
 
-Por ello, a partir de las redes neuronales biológicas, se crean las redes neuronales artificiales (RNA) las cuales son modelos simplificados de las redes neuronales biológicas. Tratan de imitar las capacidades del cerebro para resolver ciertos problemas complejos como reconocimiento de patrones o control moto-sensorial.\\
+Por ello, a partir de las redes neuronales biológicas, se crean las redes neuronales artificiales (\acrshort{RNA}) las cuales son modelos simplificados de las redes neuronales biológicas. Tratan de imitar las capacidades del cerebro para resolver ciertos problemas complejos como reconocimiento de patrones o control moto-sensorial.\\
 
 Consisten en un gran número de elementos simples de procesamiento llamados nodos o neuronas que están organizados en capas. En el modelo de una neurona artificial, representado en la figura \ref{ModeloRedNeuronal}, se pueden identificar varios elementos\cite{RNN}.
 
@@ -275,7 +274,7 @@ Consisten en un gran número de elementos simples de procesamiento llamados nodos
 \end{center}
 \end{figure}
 
-Para definir totalmente una RNA, hay que especificar el conexionado existentes entre cada una de las neuronas que lo forman. Éstas se agrupan en capas, cada una de ellas con un número de neuronas variable y comportamiento similar, constituyendo varias capas de una red neuronal.\\
+Para definir totalmente una \acrshort{RNA}, hay que especificar el conexionado existentes entre cada una de las neuronas que lo forman. Éstas se agrupan en capas, cada una de ellas con un número de neuronas variable y comportamiento similar, constituyendo varias capas de una red neuronal.\\
 
 Cada capa está conectada total o parcialmente a la que se encuentra inmediatamente después, excepto la última capa, que constituye la salida total de la red neuronal. Existen 3 tipos de capas \cite{TiposCapasRNA}:
 
@@ -295,7 +294,7 @@ Cada capa está conectada total o parcialmente a la que se encuentra inmediatamen
 
 Cada neurona está conectada con otras neuronas mediante enlaces de comunicación, cada uno de los cuales tiene asociado un peso. Los pesos representan la información que será usada por la red neuronal para resolver un problema determinado.\\
 
-Así, las RNA son sistemas adaptativos que aprenden de la experiencia, es decir, aprenden a llevar a cabo ciertas tareas mediante un entrenamiento con ejemplos ilustrativos. Mediante este entrenamiento o aprendizaje, las redes neuronales artificiales crean su propia representación interna del problema. Posteriormente, pueden responder adecuadamente cuando se les presentan situaciones a las que no habían sido expuestas anteriormente, es decir, las RNA son capaces de generalizar de casos anteriores a casos nuevos.
+Así, las \acrshort{RNA} son sistemas adaptativos que aprenden de la experiencia, es decir, aprenden a llevar a cabo ciertas tareas mediante un entrenamiento con ejemplos ilustrativos. Mediante este entrenamiento o aprendizaje, las redes neuronales artificiales crean su propia representación interna del problema. Posteriormente, pueden responder adecuadamente cuando se les presentan situaciones a las que no habían sido expuestas anteriormente, es decir, las \acrshort{RNA} son capaces de generalizar de casos anteriores a casos nuevos.
 
 \subsection{Aprendizaje en redes neuronales artificiales}
 
@@ -319,14 +318,14 @@ Una vez obtenidos y guardados los pesos óptimos en la fase de entrenamiento, es 
 \subsection{Redes neuronales convolucionales}\label{CNN_section}
 
 \begin{comment}
-Uno de los tipos más populares de redes neuronales profundas son las conocidas como redes neuronales convolucionales (CNN). Las CNN eliminan la necesidad de una extracción de características manual, por lo que no es necesario identificar las características utilizadas para clasificar las imágenes. La CNN funciona mediante la extracción de características directamente de las imágenes. Las características relevantes no se entrenan previamente; se aprenden mientras la red se entrena con una colección de imágenes.\\
+Uno de los tipos más populares de redes neuronales profundas son las conocidas como redes neuronales convolucionales (\acrshort{CNN}). Las \acrshort{CNN} eliminan la necesidad de una extracción de características manual, por lo que no es necesario identificar las características utilizadas para clasificar las imágenes. La \acrshort{CNN} funciona mediante la extracción de características directamente de las imágenes. Las características relevantes no se entrenan previamente; se aprenden mientras la red se entrena con una colección de imágenes.\\
 \end{comment}
 
-Una CNN, es uno de los tipos de RNA más utilizadas en el ámbito de la IA, más específicamente del reconocimiento de patrones, como por ejemplo visión artificial o reconocimiento de voz.\\
+Una \acrshort{CNN}, es uno de los tipos de \acrshort{RNA} más utilizadas en el ámbito de la \acrshort{IA}, más específicamente del reconocimiento de patrones, como por ejemplo visión artificial o reconocimiento de voz.\\
 
-La idea básica de las CNN es construir propiedades de invarianza en redes neuronales mediante la creación de modelos invariables para ciertas transformaciones en la entrada.\\
+La idea básica de las \acrshort{CNN} es construir propiedades de invarianza en redes neuronales mediante la creación de modelos invariables para ciertas transformaciones en la entrada.\\
 
-Para ello, las CNN utilizan una arquitectura especial, mostrada en la figura \ref{ModeloCNN} y compuesta de una capa de convolución y otra de submuestreo. La capa de convolución implementa la función de convolución, mientras que en la capa de submuestreo se realiza el \textit{pooling}, que se encarga de generar características invariantes calculando estadísticas de las activaciones de convolución a partir de un pequeño campo receptivo. 
+Para ello, las \acrshort{CNN} utilizan una arquitectura especial, mostrada en la figura \ref{ModeloCNN} y compuesta de una capa de convolución y otra de submuestreo. La capa de convolución implementa la función de convolución, mientras que en la capa de submuestreo se realiza el \textit{pooling}, que se encarga de generar características invariantes calculando estadísticas de las activaciones de convolución a partir de un pequeño campo receptivo. 
 
 \begin{figure}[H]
 \begin{center}
@@ -336,7 +335,7 @@ Para ello, las CNN utilizan una arquitectura especial, mostrada en la figura \re
 \end{center}
 \end{figure}
 
-En las CNN, cada neurona de la capa oculta está conectada a un pequeño campo de la capa anterior, el cual será llamado campo receptivo. En la capa de convolución, las neuronas están organizadas en múltiples capas ocultas paralelas, llamadas mapas de características,  de tal manera que cada neurona en un mapa de características está conectada a un campo receptivo local. Para cada mapa de características, todas las neuronas comparten el mismo parámetro de peso que se conoce como filtro o kernel \cite{CNN}.
+En las \acrshort{CNN}, cada neurona de la capa oculta está conectada a un pequeño campo de la capa anterior, el cual será llamado campo receptivo. En la capa de convolución, las neuronas están organizadas en múltiples capas ocultas paralelas, llamadas mapas de características,  de tal manera que cada neurona en un mapa de características está conectada a un campo receptivo local. Para cada mapa de características, todas las neuronas comparten el mismo parámetro de peso que se conoce como filtro o kernel \cite{CNN}.
 
 \begin{figure}[H]
 \begin{center}
@@ -356,33 +355,33 @@ A continuación se definen brevemente algunos de los softwares más utilizados par
 \item Uno de los softwares más populares y extendidos actualmente es la plataforma llamada Caffe\cite{Caffe}. Este trabajo ha sido desarrollado utilizando este software, por lo que se detallarán sus características principales más adelante.
 \item \textbf{TensorFlow}\cite{TensorFlow} es una biblioteca software de código abierto diseñada para el cálculo numérico de alto rendimiento. Su arquitectura flexible permite una fácil implementación de computación en una gran variedad de plataformas, tales como CPUs ó GPs, y desde escritorios hasta clústeres de servidores y dispositivos móviles y periféricos. Fue diseñado originalmente por investigadores e ingenieros de Google. Este software cuenta con un sólido soporte para el aprendizaje automático y el aprendizaje profundo y el flexible núcleo de computación numérica del que dispone hace que puede ser utilizado en muchos otros dominios científicos.
 
-\item \textbf{Keras}\cite{Keras} es una API de redes neuronales de alto nivel escrita en Python y capaz de ejecutarse sobre TensorFlow, CNTK o Theano. Fue desarrolla con el objetivo principal de permitir una experimentación rápida. El enfoque de este software es que el poder pasar de la idea al resultado en el menor tiempo posible es la clave para hacer una buena experimentación.\\
+\item \textbf{Keras}\cite{Keras} es una \acrshort{API} de redes neuronales de alto nivel escrita en Python y capaz de ejecutarse sobre TensorFlow, CNTK o Theano. Fue desarrolla con el objetivo principal de permitir una experimentación rápida. El enfoque de este software es que el poder pasar de la idea al resultado en el menor tiempo posible es la clave para hacer una buena experimentación.\\
 
 Las características y ventajas principales que pueden definir a esta librería se definen a continuación.
 
 \begin{itemize}
-\item \textbf{Facilidad de uso:} Keras es una API diseñada para seres humanos, no para máquinas. Sigue las mejores prácticas para reducir la carga cognitiva: ofrece APIs consistentes y simples, las cuales minimizan el número de acciones de usuario requeridas para casos de uso común y proporciona comentarios claros y procesables ante el error del usuario.
+\item \textbf{Facilidad de uso:} Keras es una \acrshort{API} diseñada para seres humanos, no para máquinas. Sigue las mejores prácticas para reducir la carga cognitiva: ofrece APIs consistentes y simples, las cuales minimizan el número de acciones de usuario requeridas para casos de uso común y proporciona comentarios claros y procesables ante el error del usuario.
 \item \textbf{Modularidad:} Un modelo se entiende como una secuencia o un gráfico de módulos independientes y completamente configurables que se pueden conectar con la menor cantidad de restricciones posible. En particular, las capas neuronales, las funciones de costos, los optimizadores, los esquemas de inicialización, las funciones de activación y los esquemas de regularización se tratan de módulos independientes que se puede combinar para crear nuevos modelos.
 \item \textbf{Facilmente extensible:} Los nuevos módulos son simples de agregar, ya sea como nuevas clases o como funciones. Al crearlos se permite una total expresividad, lo que hace de Keras una librería altamente adecuada para la investigación avanzada.
 \item \textbf{Trabaja con Python:} No hay archivos de configuración de modelos definidos en un formato declarativo. Los modelos se escriben en código de Python, el cual permite fácilmente la extensión y es compacto y fácil de depurar.
 \end{itemize}
-\item \textbf{Darknet\cite{Darknet}:} Se trata de un framework de código abierto de redes neuronales escrito en C y CUDA. En su página web oficial se pueden observar varios de los trabajos desarrollados por sus creadores. Algunos de los más destacados son su componente detector en tiempo real, utilizando para el entrenamiento de la red la base de datos COCO, la cual se utilizará en este trabajo, y su clasificador de imágenes para el reto 1000-class ImageNet.
+\item \textbf{Darknet\cite{Darknet}:} Se trata de un framework de código abierto de redes neuronales escrito en C y CUDA. En su página web oficial se pueden observar varios de los trabajos desarrollados por sus creadores. Algunos de los más destacados son su componente detector en tiempo real, utilizando para el entrenamiento de la red la base de datos \acrshort{COCO}, la cual se utilizará en este trabajo, y su clasificador de imágenes para el reto 1000-class ImageNet.
 \end{itemize}
 
 
 \section{Deep Learning}
 
-Como solución a los problemas que presenta el aprendizaje automático, surge el término de \textit{Deep Learning} o aprendizaje profundo (AP) y es entonces cuando tanto este término como el de \textit{Machine Learning} toman mayor relevancia. Por lo tanto, el AP es un conjunto de algoritmos que pertenecen a la clase AA que intentan modelar abstracciones de alto nivel usando arquitecturas compuestas de transformaciones no lineales múltiples.\\
+Como solución a los problemas que presenta el aprendizaje automático, surge el término de \textit{Deep Learning} o aprendizaje profundo (\acrshort{AP}) y es entonces cuando tanto este término como el de \textit{Machine Learning} toman mayor relevancia. Por lo tanto, el \acrshort{AP} es un conjunto de algoritmos que pertenecen a la clase \acrshort{AA} que intentan modelar abstracciones de alto nivel usando arquitecturas compuestas de transformaciones no lineales múltiples.\\
 
 Se pueden relacionar fácilmente los ámbitos del aprendizaje profundo y las redes neuronales. Las redes neuronales artificiales son un paradigma de aprendizaje automático inspirado en las neuronas de los sistemas nerviosos biológicos.\\
 
-La mayor parte de los métodos de aprendizaje emplean arquitecturas de redes neuronales, por lo que, a menudo, los modelos de aprendizaje profundo se denominan redes neuronales profundas. Unas de las RNA más utilizadas en el AP son las CNN, explicadas en el apartado \ref{CNN_section}.En el contexto de la detección de imágenes, que es donde se encuadra este TFG, las CNN resultan idóneas ya que con ésta técnica se procesa cada imagen por secciones en lugar de tener un parámetro por cada píxel de ésta.\\
+La mayor parte de los métodos de aprendizaje emplean arquitecturas de redes neuronales, por lo que, a menudo, los modelos de aprendizaje profundo se denominan redes neuronales profundas. Unas de las \acrshort{RNA} más utilizadas en el \acrshort{AP} son las \acrshort{CNN}, explicadas en el apartado \ref{CNN_section}.En el contexto de la detección de imágenes, que es donde se encuadra este TFG, las \acrshort{CNN} resultan idóneas ya que con ésta técnica se procesa cada imagen por secciones en lugar de tener un parámetro por cada píxel de ésta.\\
 
 El término profundo suele hacer referencia al número de capas ocultas en la red neuronal. Las redes neuronales tradicionales solo contienen dos o tres capas ocultas, mientras que las redes profundas pueden tener hasta 150.\\
 
 La gran precisión que se consigue utilizando técnicas de \textit{Deep Learning} contribuye a que se satisfagan las expectativas de los usuarios, y resulta crucial en aplicaciones críticas para la seguridad, tales como los vehículos sin conductor. Los últimos avances en el ámbito del aprendizaje profundo han llegado a un punto en el que este supera a las personas en algunas tareas, como por ejemplo, en la clasificación de objetos presentes en imágenes, lo cual tiene una gran importancia en el ámbito de la medicina, ya que con estas técnicas se pueden detectar, por ejemplo en radiografías, elementos que habían sido obviados por el ser humano.\\
 
-El AP es una forma especializada de AA. Un flujo de trabajo de AA comienza por la extracción manual de las características relevantes de la imagen. Estas características se utilizan entonces para crear un modelo que categoriza los objetos de la imagen. Con un flujo de trabajo de AP, las características relevantes se extraen directamente de la imagen.\\
+El \acrshort{AP} es una forma especializada de \acrshort{AA}. Un flujo de trabajo de \acrshort{AA} comienza por la extracción manual de las características relevantes de la imagen. Estas características se utilizan entonces para crear un modelo que categoriza los objetos de la imagen. Con un flujo de trabajo de \acrshort{AP}, las características relevantes se extraen directamente de la imagen.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -392,7 +391,7 @@ El AP es una forma especializada de AA. Un flujo de trabajo de AA comienza por l
 \end{center}
 \end{figure}
 
-Otra diferencia clave es que con los algoritmos de AP la escala aumenta con los datos, mientras que, en el caso del aprendizaje superficial, existe convergencia. El aprendizaje superficial hace referencia a los métodos de AA que llegan a un punto muerto en cierto nivel de rendimiento cuando se agregan más ejemplos y datos de entrenamiento a la red.\\
+Otra diferencia clave es que con los algoritmos de \acrshort{AP} la escala aumenta con los datos, mientras que, en el caso del aprendizaje superficial, existe convergencia. El aprendizaje superficial hace referencia a los métodos de  que llegan a un punto muerto en cierto nivel de rendimiento cuando se agregan más ejemplos y datos de entrenamiento a la red.\\
 
 Una ventaja fundamental de las redes de aprendizaje profundo es que suelen seguir mejorando a medida que aumenta el tamaño de los datos.\\
 
@@ -408,7 +407,7 @@ Una ventaja fundamental de las redes de aprendizaje profundo es que suelen segui
 \section{Antecedentes en el proyecto JdeRobot}
 \label{AntecedentesJdeRobot}
 
-Actualmente, en JdeRobot ya se han desarrollado varios trabajos basados en la inteligencia artificial y más concretamente en deep learning. En ellos se han utilizado algunos de los softwares mencionados anteriormente para entrenar una o varias redes neuronales. Tras ello, se han abordado tareas de clasificación y detección de objetos analizando tras ellos la capacidad que tenían las redes neuronales ya entrenadas para realizar ese cometido.\\
+Actualmente, en JdeRobot ya se han desarrollado varios trabajos basados en la inteligencia artificial y más concretamente en \textit{Deep Learning}. En ellos se han utilizado algunos de los softwares mencionados anteriormente para entrenar una o varias redes neuronales. Tras ello, se han abordado tareas de clasificación y detección de objetos analizando tras ellos la capacidad que tenían las redes neuronales ya entrenadas para realizar ese cometido.\\
 
 Nuria Oyaga\footnote{\url{https://jderobot.org/Noyaga-tfg}} realizó un trabajo basado en la clasificación de dígitos manuscritos. Para el estudio y utilización de las redes neuronales usó la plataforma \textit{Caffe}, la cual provee de una red básica ideal para  comenzar en el campo de la clasificación.\\
 
@@ -451,9 +450,9 @@ Por otra parte, David Pascual\footnote{\url{https://jderobot.org/Dpascual-tfg}},
 \end{center}
 \end{figure}
 
-En lo referente a la detección de objetos, en JdeRobot también se han desarrollado varios proyectos. En primer lugar, se puede destacar \textit{DeepLearning Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} que se trata de un conjunto de herramientas que simplifican la evaluación de los conjuntos de datos de detección de objetos más comunes con varias redes neuronales de detección de objetos.\\
+En lo referente a la detección de objetos, en JdeRobot también se han desarrollado varios proyectos. En primer lugar, se puede destacar \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} que se trata de un conjunto de herramientas que simplifican la evaluación de los conjuntos de datos de detección de objetos más comunes con varias redes neuronales de detección de objetos.\\
 
-La idea principal es ofrecer una infraestructura genérica para evaluar los algoritmos de detección de objetos contra un conjunto de datos y calcular las estadísticas más comunes, tales como \textit{Intersecion Over Union}, \textit{precision} y \textit{recall}. Esta herramienta acepta un gran número de bases de datos internacionales como PascalVOC y permite la comparación de varias arquitecturas de \textit{Deep Learning} utilizando exactamente la misma prueba.
+La idea principal es ofrecer una infraestructura genérica para evaluar los algoritmos de detección de objetos contra un conjunto de datos y calcular las estadísticas más comunes, tales como \textit{Intersecion Over Union}, \textit{precision} y \textit{recall}. Esta herramienta acepta un gran número de bases de datos internacionales como \acrshort{PascalVOC} y permite la comparación de varias arquitecturas de \textit{Deep Learning} utilizando exactamente la misma prueba.
 
 \begin{figure}[H]
 \begin{center}
@@ -467,12 +466,12 @@ Además, Nacho Condés\footnote{\url{https://jderobot.org/Naxvm-tfg}} ha desarroll
 
 \section{Objetivos}\label{Objetivos}
 
-El objetivo principal de este proyecto es el entendimiento de las redes neuronales y el Aprendizaje Profundo o Deep Learning aplicado al problema de la detección de objetos. A partir de lo desarrollado y estudiado durante este trabajo, se pueden identificar varios subobjetivos necesarios para conseguir el objetivo principal. 
+El objetivo principal de este proyecto es el entendimiento de las redes neuronales y el Aprendizaje Profundo o \textit{Deep Learning} aplicado al problema de la detección de objetos. A partir de lo desarrollado y estudiado durante este trabajo, se pueden identificar varios subobjetivos necesarios para conseguir el objetivo principal. 
 
 \begin{itemize}
 \item \textbf{Estudio de la plataforma Caffe:} Se definen en un primer lugar sus principales características y posteriormente se utiliza para el entrenamiento de una red neuronal.
 \item \textbf{Estudio de varias bases de datos aplicadas a la detección,} la distribución de los diferentes objetos dentro de sus imágenes y el formato de sus ficheros de anotaciones.
-\item \textbf{Estudio de la técnica SSD: } Se definen las principales características de esta técnica en su aplicación en la detección de objetos y posteriormente se integra con Caffe para realizar casos prácticos.
+\item \textbf{Estudio de la técnica \acrshort{SSD}: } Se definen las principales características de esta técnica en su aplicación en la detección de objetos y posteriormente se integra con Caffe para realizar casos prácticos.
 \item \textbf{Desarrollo de un componente detector} que sea capaz de localizar los objetos existentes en las imágenes captadas por una cámara en tiempo real.
 \item \textbf{Creación de una base de datos personalizada:} A partir de bases de datos predefinidas, se creará una adicional que contendrá la información de todas ellas.
 \item \textbf{Entrenamiento de una red neuronal:} Utilizando Caffe y la base de datos creada se entrenará un red para posteriormente evaluar sus resultados y compararlos con los de otras red preentrenadas.
@@ -501,7 +500,7 @@ En el \textbf{Capítulo 1. Introducción}, se expone el contexto general del traba
 
 En el \textbf{Capítulo 2. Infraestructura} se especifican todos los elemento \textit{software} utilizados durante el trabajo, incluyendo la plataforma Caffe especializada en redes neuronales, el entorno JdeRobot y las bases de datos usadas para el entrenamiento.\\
 
-En el \textbf{Capítulo 3. Detección con Single Shot MultiBox y Caffe}, en un primer lugar se define  de forma amplia y teórica las características principales de la técnica SSD. Finalmente, se muestra un ejemplo de como integrar esta técnica en la plataforma Caffe, y se muestra el componente creado cuyo objetivo es la detección de objetos en tiempo real.\\
+En el \textbf{Capítulo 3. Detección con Single Shot MultiBox y Caffe}, en un primer lugar se define  de forma amplia y teórica las características principales de la técnica \acrshort{SSD}. Finalmente, se muestra un ejemplo de como integrar esta técnica en la plataforma Caffe, y se muestra el componente creado cuyo objetivo es la detección de objetos en tiempo real.\\
 
 En el \textbf{Capítulo 4. Medidor de calidad} se medirán las prestaciones de la red entrenad y alguna preentrenada con diferentes bases de datos. Se explicará el concepto de \textit{índice Jaccard} y se describirán detalladamente los \textit{scripts} creados para calcular este parámetro. Finalmente, se realizará una breve introducción a la herramienta \textit{Detection Suite} y se utilizará para evaluar los resultados obtenidos y compararlos, proporcionando posteriormente una explicación detallada a éstos.\\
 
@@ -554,7 +553,7 @@ Las capas de Caffe y sus parámetros están especificados en la definición del buf
 
 \subsubsection{Capas de datos}
 
-Los datos entran en Caffe a través de las capas de datos, las cuáles se encuentran en la parte inferior de las redes. Estos datos pueden proceder de bases de datos (LevelDB o LMDB), directamente de la memoria, o, cuando la eficiencia no es crítica, desde archivos en disco en formato HDF5 o formatos de imagen comunes.\\
+Los datos entran en Caffe a través de las capas de datos, las cuáles se encuentran en la parte inferior de las redes. Estos datos pueden proceder de bases de datos (LevelDB o \acrshort{LMDB}), directamente de la memoria, o, cuando la eficiencia no es crítica, desde archivos en disco en formato HDF5 o formatos de imagen comunes.\\
 
 Este tipo de capas son las encargadas de realizar tareas comunes de preprocesamiento de los datos de entrada, tales como sustracción media o escalado, especificando para ello los parámetros de transformación de la propia capa.\\
 
@@ -562,7 +561,7 @@ Todos los sub-tipos de este tipo de capa, se especifican a continuación:
 
 \begin{itemize}
 \item \textbf{Image Data:} Lee imágenes sin procesar.
-\item \textbf{Database:} Lee los datos de ficheros LevelLDB o LMDB.
+\item \textbf{Database:} Lee los datos de ficheros LevelLDB o \acrshort{LMDB}.
 \item \textbf{HDF5 Input:} Lee los datos en formato HDF5 permitiendo que estos tengan dimensiones arbitrarias.
 \item \textbf{HDF5 Output:} Escribe datos en formato HDF5
 \item \textbf{Input:} Normalmente utilizada para redes que se están siendo desplegadas.
@@ -667,7 +666,7 @@ p_{i}=\frac{e^{a_{i}}}{\sum_{k=1}^{N}e^{a}_{k}}
 Estas capas son las encargadas de ejecutar la función de activación sobre las diferentes capas de la red neuronal. En general, estas capas son operandos que toman un dato de la salida de la capa anterior y generan datos con las mismas dimensiones ejecutando la función de activación que se haya definido. Algunas de las más comunes son las siguientes:
 
 \begin{itemize}
-\item \textbf{Rectified Linear Unit (ReLU):} Se trata de una función lineal rectilínea con pendiente uniforme. La salida de esta función es 0 si la entrada es menor que 0 y la salida bruta en caso contrario, es decir, si la entrada es mayor que 0, la salida es igual a la entrada.
+\item \textbf{Rectified Linear Unit (\acrshort{ReLU}):} Se trata de una función lineal rectilínea con pendiente uniforme. La salida de esta función es 0 si la entrada es menor que 0 y la salida bruta en caso contrario, es decir, si la entrada es mayor que 0, la salida es igual a la entrada.
 \begin{equation}
 f(x) = \left\lbrace
 \begin{array}{ll}
@@ -682,7 +681,7 @@ Esta función es no linear y tiene la ventaja de no tener errores en la propagaci
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=7cm]{./ReLu}
-\caption{Función de activación ReLu.}
+\caption{Función de activación \acrshort{ReLU}.}
 \label{ReLu}
 \end{center}
 \end{figure}
@@ -743,7 +742,7 @@ f(x) = log(1 + exp(x))
 
 JdeRobot\cite{JdeRobot} es un \textit{software} creado para desarrollar aplicaciones en robótica y visión artificial. Este campo de acción incluye la utilización de sensores, como por ejemplo cámaras, actuadores y software inteligente. Está escrito principalmente utilizando los lenguaje C++ y Python proporcionando un entorno de programación distribuido basado en componentes donde el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos elementos pueden ejecutarse en diferentes equipos y están conectados mediante el \textit{middleware} de comunicaciones ICE (Internet Comunication Engine) o mediante mensajes ROS (Robot Operating System). Los componentes interactúan a través de interfaces explícitas. Cada uno de ellos puede tener su propia interfaz gráfica de usuario independiente o ninguna.\\
 
-JdeRobot simplifica el acceso a dispositivos hardware desde el programa de aplicación. Obtener mediciones de sensores se realiza con llamadas a funciones locales. La plataforma conecta las llamadas al \textit{driver} de los componentes los cuales están conectados a los sensores o activadores, que pueden ser reales o simulados y remotos o locales. Estas funciones construyen la API para la capa de abstracción de hardware. Los robots y sensores actualmente soportados son:
+JdeRobot simplifica el acceso a dispositivos hardware desde el programa de aplicación. Obtener mediciones de sensores se realiza con llamadas a funciones locales. La plataforma conecta las llamadas al \textit{driver} de los componentes los cuales están conectados a los sensores o activadores, que pueden ser reales o simulados y remotos o locales. Estas funciones construyen la \acrshort{API} para la capa de abstracción de hardware. Los robots y sensores actualmente soportados son:
 
 \begin{itemize}
 \item \textbf{Sensores RGBD:} Kinect and Kinect2 de Microsoft, Asus Xtion.
@@ -796,9 +795,9 @@ Para el uso correcto de este componente, es necesario editar un fichero de confi
 
 \subsection{eXtensible Markup Language}
 
-\textbf{XML} (eXtensible Markup Language - Lenguaje de Marcas Extensible) es un meta-lenguaje que permite definir lenguajes de marcas, desarrollado por \textit{World Wide Web Consortium} (W3C) y utilizado para almacenar datos de forma legible. A diferencia de otros lenguajes, XML da soporte a bases de datos, siendo útil cuando varias aplicaciones deben comunicarse entre sí o integrar información.\\
+\textbf{\acrshort{XML}} (eXtensible Markup Language - Lenguaje de Marcas Extensible) es un meta-lenguaje que permite definir lenguajes de marcas, desarrollado por \textit{World Wide Web Consortium} (W3C) y utilizado para almacenar datos de forma legible. A diferencia de otros lenguajes, \acrshort{XML} da soporte a bases de datos, siendo útil cuando varias aplicaciones deben comunicarse entre sí o integrar información.\\
 
-XML presenta varias ventajas frente a otros lenguajes, las cuales se definen a continuación:
+\acrshort{XML} presenta varias ventajas frente a otros lenguajes, las cuales se definen a continuación:
 
 \begin{itemize}
 \item Es extensible, es decir, después de ser diseñado y puesto en producción, es posible la adición de nuevas etiquetas.
@@ -806,17 +805,17 @@ XML presenta varias ventajas frente a otros lenguajes, las cuales se definen a c
 \item Se transforman datos en información, pues se les añade un significado concreto y y se les asocia a un contexto, con lo cual existe flexibilidad para estructurar documentos.
 \end{itemize}
 
-La tecnología XML busca dar solución el problema de expresar información estructurada de la manera más abstracta y reutilizable posible. Que la información sea estructurada quiere decir que se compone de partes bien definidas, y que esas partes, a su vez, se componen de otras partes. De esta forma, surge un árbol de partes de información. Estas partes se llaman \textit{elementos} y vienen definidas mediante \textit{etiquetas}.\\
+La tecnología \acrshort{XML} busca dar solución el problema de expresar información estructurada de la manera más abstracta y reutilizable posible. Que la información sea estructurada quiere decir que se compone de partes bien definidas, y que esas partes, a su vez, se componen de otras partes. De esta forma, surge un árbol de partes de información. Estas partes se llaman \textit{elementos} y vienen definidas mediante \textit{etiquetas}.\\
 
 Una etiqueta consiste en una marca hecha en el documento, que señala una porción de éste como un elemento. Se trata de información con un sentido claro y definido. Las etiquetas tienen la forma <nombre>, donde \textit{nombre} es el nombre del elemento que se está señalando.\\
 
-En la sección \ref{VOC} se puede observar un ejemplo de la estructura de un archivo XML.\\
+En la sección \ref{VOC} se puede observar un ejemplo de la estructura de un archivo \acrshort{XML}.\\
 
 \subsection{JavaScript Object Notation}
 
-\textbf{JSON} (JavaScript Object Notation - Notación de Objetos de JavaScript) es un formato basado en texto estándar para representar datos estructurados en la sintaxis de objetos de JavaScript. Es comúnmente utilizado para transmitir datos en aplicaciones web, como por ejemplo enviar datos desde el servidor al cliente, haciendo posible que esos datos puedan ser mostrados en páginas web. Aunque es muy parecido a la sintaxis de objeto literal de JavaScript, puede ser utilizado independientemente de éste, y muchos ambientes de programación poseen la capacidad analizar, parsear y generar ficheros JSON.\\
+\textbf{\acrshort{JSON}} (JavaScript Object Notation - Notación de Objetos de JavaScript) es un formato basado en texto estándar para representar datos estructurados en la sintaxis de objetos de JavaScript. Es comúnmente utilizado para transmitir datos en aplicaciones web, como por ejemplo enviar datos desde el servidor al cliente, haciendo posible que esos datos puedan ser mostrados en páginas web. Aunque es muy parecido a la sintaxis de objeto literal de JavaScript, puede ser utilizado independientemente de éste, y muchos ambientes de programación poseen la capacidad analizar, parsear y generar ficheros \acrshort{JSON}.\\
 
-La tecnología JSON tiene varios tipos de datos disponibles, los cuales se presentan a continuación:\\
+La tecnología \acrshort{JSON} tiene varios tipos de datos disponibles, los cuales se presentan a continuación:\\
 
 \begin{itemize}
 \item \textbf{Números:} Se permiten números negativos y opcionalmente pueden contener parte fraccional separada por puntos.
@@ -827,11 +826,11 @@ La tecnología JSON tiene varios tipos de datos disponibles, los cuales se presen
 \item \textbf{Objetos:} Son colecciones no ordenadas de pares \textit{clave:valor} separados por comas y dispuestas entre llaves. La clave tiene que ser una cadena mientras que el valor puede ser de cualquier tipo.
 \end{itemize}
 
-En la sección \ref{COCO} se puede observar un ejemplo de la estructura de un archivo JSON.\\
+En la sección \ref{COCO} se puede observar un ejemplo de la estructura de un archivo \acrshort{JSON}.\\
 
 \subsection{Lightning Memory-Mapped Database}
 
-\textbf{LMDB} (Lightning Memory-Mapped Database) es una biblioteca de gestión de bases de datos modelada en la API de BerkeleyDB. Toda la base de datos está modelada como un mapa de memoria, y todos los datos recuperados de ella son datos devueltos directamente de la memoria asignada.\\
+\textbf{\acrshort{LMDB}} (Lightning Memory-Mapped Database) es una biblioteca de gestión de bases de datos modelada en la \acrshort{API} de BerkeleyDB. Toda la base de datos está modelada como un mapa de memoria, y todos los datos recuperados de ella son datos devueltos directamente de la memoria asignada.\\
 
 La biblioteca es totalmente compatible con subprocesos y admite el acceso simultáneo de lectura y escritura desde múltiples procesos o hilos. Las páginas de datos utilizan una estrategia que permite que no se sobreescriban las páginas con datos activos, lo cual brinda además resistencia a la corrupción de la base de datos. Las escrituras están totalmente serializadas, es decir, solo se permite una escritura de forma simultánea. La estructura de la base de datos tiene múltiples versiones para que las lecturas se ejecuten sin bloqueos; las escrituras sobre ésta no bloquean a las lecturas, y las lecturas no bloquean las escrituras.
 \end{comment}
@@ -844,19 +843,19 @@ Durante este trabajo, se han utilizado 2 bases de datos diferentes. A continuaci
 
 \subsection{PASCAL Visual Object Classes}\label{VOC}
 
-PASCAL Visual Object Classes\cite{PascalVocHome} o PascalVOC, es una base de datos que contiene 11.530 imágenes de entrenamiento y validación que representan 27.450 objetos diferentes distribuidos en 20 clases. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
+PASCAL Visual Object Classes\cite{PascalVocHome} o \acrshort{PascalVOC}, es una base de datos que contiene 11.530 imágenes de entrenamiento y validación que representan 27.450 objetos diferentes distribuidos en 20 clases. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
 
 Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, algunos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento yvalidación. Específicamente, la distribución de objetos para la tarea de detección se muestra en la imagen \ref{VOC2012_Statics}.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./VOC2012_Statics}
-\caption{Distribución de objetos en PascalVOC. Imagen obtenida de \cite{PascalVocData}}.
+\caption{Distribución de objetos en \acrshort{PascalVOC}. Imagen obtenida de \cite{PascalVocData}}.
 \label{VOC2012_Statics}
 \end{center}
 \end{figure}
 
-En cuanto a los archivos de anotaciones, estos tienen un formato XML. En primer lugar, aparecen algunas etiquetas informativas acerca de la imagen, como la etiqueta \textit{filename} que indica el nombre de la imagen, o la etiqueta \textit{database} que indica el nombre de la base de datos.\\
+En cuanto a los archivos de anotaciones, estos tienen un formato \acrshort{XML}. En primer lugar, aparecen algunas etiquetas informativas acerca de la imagen, como la etiqueta \textit{filename} que indica el nombre de la imagen, o la etiqueta \textit{database} que indica el nombre de la base de datos.\\
 
 \begin{lstlisting}[frame=single]
 	<folder>VOC2012</folder>
@@ -898,7 +897,7 @@ Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existent
 
 \subsection{Common Objects in Context}\label{COCO}
 
-Common Objects in Context\cite{CocoHome}, conocido como COCO por sus siglas, es un conjunto de datos creado para la detección y segmentación de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
+Common Objects in Context\cite{CocoHome}, conocido como \acrshort{COCO} por sus siglas, es un conjunto de datos creado para la detección y segmentación de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
 
 \begin{itemize}
 \item Más de 300.000 imágenes
@@ -906,34 +905,34 @@ Common Objects in Context\cite{CocoHome}, conocido como COCO por sus siglas, es 
 \item 80 categorias de objetos
 \end{itemize}
 
-Actualmente, COCO utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo JSON. Todas las anotaciones comparten la estructura de datos básica definida en la imagen \ref{CocoAnnotations}:
+Actualmente, \acrshort{COCO} utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo \acrshort{JSON}. Todas las anotaciones comparten la estructura de datos básica definida en la imagen \ref{CocoAnnotations}:
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_1}
-\caption{Estructura básica de anotaciones en COCO. Imagen obtenida de \cite{CocoAnnotations}}.
+\caption{Estructura básica de anotaciones en \acrshort{COCO}. Imagen obtenida de \cite{CocoAnnotations}}.
 \label{CocoAnnotations}
 \end{center}
 \end{figure}
 
-Para la tarea de detección, es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto, en cuyo caso se usan polígonos, o una colección de objetos, en cuyo caso se usa RLE. Hay que tener en cuenta que un solo objeto puede requerir múltiples polígonos. Las anotaciones de multitudes se utilizan para etiquetar grandes grupos de objetos, como por ejemplo, una multitud de personas. Además, se proporciona un cuadro delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría y supercategoría.
+Para la tarea de detección, es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto, en cuyo caso se usan polígonos, o una colección de objetos, en cuyo caso se usa Run-Length Encoding, RLE, que es una forma de compresión de datos. Hay que tener en cuenta que un solo objeto puede requerir múltiples polígonos. Las anotaciones de multitudes se utilizan para etiquetar grandes grupos de objetos, como por ejemplo, una multitud de personas. Además, se proporciona un cuadro delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría y supercategoría.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_2}
-\caption{Estructura básica de anotaciones en COCO. Imagen obtenida de \cite{CocoAnnotations}}.
+\caption{Estructura básica de anotaciones en \acrshort{COCO}. Imagen obtenida de \cite{CocoAnnotations}}.
 \label{AnnotacionesCoco2}
 \end{center}
 \end{figure}
 
-En referencia a los datos, el conjunto de datos MS COCO se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, mientras que la segunda mitad se lanzó en 2015. La versión 2014 contiene 82.783 imágenes para el entrenamiento, 40.504 para validaciones y 40.775 imágenes de prueba (aproximadamente 1/2 de imágenes de entrenamiento, 1/4 de validación y 1/4 de prueba). Hay casi 270 mil personas segmentadas y un total de 886 mil instancias de objetos segmentados en los datos de entrenamiento y validación. La versión acumulada de 2015 contendrá un total de 165.482 imágenes de entrenamiento, 81.208 de validación y 81.434 de prueba.\\
+En referencia a los datos, el conjunto de datos \acrshort{COCO} se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, mientras que la segunda mitad se lanzó en 2015. La versión 2014 contiene 82.783 imágenes para el entrenamiento, 40.504 para validaciones y 40.775 imágenes de prueba (aproximadamente 1/2 de imágenes de entrenamiento, 1/4 de validación y 1/4 de prueba). Hay casi 270 mil personas segmentadas y un total de 886 mil instancias de objetos segmentados en los datos de entrenamiento y validación. La versión acumulada de 2015 contendrá un total de 165.482 imágenes de entrenamiento, 81.208 de validación y 81.434 de prueba.\\
 
 La distribución de los objetos en esta base de datos se puede obtener desde su sitio web. En la sección \textit{Explorar}, es posible elegir y combinar cada uno de los objetos y observar cuántas imágenes aparecen. La distribución de cada uno de los objetos en el conjunto de entrenamiento / validación se muestra en la siguiente imagen:
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./COCO_Statics}
-\caption{Distribución de objetos en COCO.}
+\caption{Distribución de objetos en \acrshort{COCO}.}
 \end{center}
 \end{figure}
 
@@ -941,11 +940,11 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 
 \section{Técnica Single Shot MultiBox Detection}
 
-Single Shot MultiBox Detector\cite{SSD}, o SSD por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como PascalVOC y COCO. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
+Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
 
 \begin{itemize}
 \item \textbf{Single Shot:}  Hace referencia a que la tareas de localización y clasificación de objetos se realizan en un único paso hacia adelante de la red.
-\item \textbf{MultiBox:} Es el nombre de una técnica para regresión de \textit{bounding box} que es utilizada como referencia.\ref{MultiBox}.
+\item \textbf{MultiBox:} Es el nombre de una técnica para regresión de \textit{bounding box} que es utilizada como referencia.\cite{MultiBox}.
 \item \textbf{Detector:} La red neuronal se trata de un detector de objetos que también se encarga de clasificarlos.
 \end{itemize}
 
@@ -954,26 +953,26 @@ En el momento de la predicción, la red neuronal genera las puntuaciones para cad
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./FrameworkSSD}
-\caption{Framework SSD. Imagen obtenida de \cite{SSD}.}
+\caption{Framework \acrshort{SSD}. Imagen obtenida de \cite{SSD}.}
 \label{FrameworkSSD}
 \end{center}
 \end{figure}
 
-(a) SSD solo necesita una imagen de entrada y los cuadros delimitadores reales para cada objeto durante el entrenamiento. De una manera convolucional, se evalúa un pequeño conjunto de cuadros predeterminados (p.ej. 4) de diferentes relaciones de aspecto para cada ubicación de éstos en varios mapas de características a diferentes escalas (p. ej 8 x 8 y 4 x 4 en (b) y (c). Para cada cuadro predeterminado se predicen tanto los desplazamiento de forma como la confianza para todas las categorías de objetos (\textit{(c1, c2, ..., cp)}). En el momento del entrenamiento, se comparan estos cuadros predeterminados con los cuadros reales.
+(a) \acrshort{SSD} solo necesita una imagen de entrada y los cuadros delimitadores reales para cada objeto durante el entrenamiento. De una manera convolucional, se evalúa un pequeño conjunto de cuadros predeterminados (p.ej. 4) de diferentes relaciones de aspecto para cada ubicación de éstos en varios mapas de características a diferentes escalas (p. ej 8 x 8 y 4 x 4 en (b) y (c). Para cada cuadro predeterminado se predicen tanto los desplazamiento de forma como la confianza para todas las categorías de objetos (\textit{(c1, c2, ..., cp)}). En el momento del entrenamiento, se comparan estos cuadros predeterminados con los cuadros reales.
 
 \subsection{Arquitectura}\label{ArquitecturaSSDSection}
 
-El modelo SSD se basa en una red convolucional que produce un conjunto de recuadros delimitadores o \textit{bounding boxes} de tamaño fijo y puntuaciones para la presencia de instancias de clases de objetos dentro de esos cuadros, seguido por un paso de supresión no máxima para producir las detecciones finales. Las primeras capas de la red se basan en una arquitectura VGG-16\cite{VGG} pero descartando las capas totalmente conectadas de ésta. La razón por la que se usa VGG-16 es su gran desempeño en la clasificación de imágenes de alta calidad. En lugar de las capas totalmente conectadas de VGG, se agregaron un conjunto de capas convolucionales auxiliares, lo que permite extraer características en múltiples escalas y disminuir progresivamente el tamaño de la imagen de entrada. Posteriormente, se agrega una estructura auxiliar a la red para producir detecciones. Esta estructura tiene las siguientes características claves:
+El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunto de recuadros delimitadores o \textit{bounding boxes} de tamaño fijo y puntuaciones para la presencia de instancias de clases de objetos dentro de esos cuadros, seguido por un paso de supresión no máxima para producir las detecciones finales. Las primeras capas de la red se basan en una arquitectura VGG-16\cite{VGG} pero descartando las capas totalmente conectadas de ésta. La razón por la que se usa VGG-16 es su gran desempeño en la clasificación de imágenes de alta calidad. En lugar de las capas totalmente conectadas de VGG, se agregaron un conjunto de capas convolucionales auxiliares, lo que permite extraer características en múltiples escalas y disminuir progresivamente el tamaño de la imagen de entrada. Posteriormente, se agrega una estructura auxiliar a la red para producir detecciones. Esta estructura tiene las siguientes características claves:
 
 \begin{itemize}
 \item \textbf{Mapas de características con múltiples escalas para la detección:}  Se agregan varias capas de convolucionales al final de la estructura estándar comentada anteriormente. Estas capas disminuyen de forma progresiva el tamaño de la imagen de entrada y permiten predecir detecciones a múltiples escalas. 
 
-\item \textbf{Predictores convolucionales para la detección:}  Cada capa de características añadida puede producir un conjunto fijo de predicciones de detección utilizando para ello un conjunto de filtros convolucionales. Estos filtros están indicados en la parte superior de la arquitectura de la red SSD en la figura \ref{ArquitecturaSSD}. Para una capa de características de tamaño \textit{m X n} con \textit{p} canales, el elemento básico para predecir los parámetros de una posible detección es un núcleo pequeño de 3 x 3 x \textit{p} el cuál produce una puntuación para una categoría determinada. En cada una de las posiciones por donde se aplica el filtro, éste produce un valor de salida.
+\item \textbf{Predictores convolucionales para la detección:}  Cada capa de características añadida puede producir un conjunto fijo de predicciones de detección utilizando para ello un conjunto de filtros convolucionales. Estos filtros están indicados en la parte superior de la arquitectura de la red \acrshort{SSD} en la figura \ref{ArquitecturaSSD}. Para una capa de características de tamaño \textit{m} x \textit{n} con \textit{p} canales, el elemento básico para predecir los parámetros de una posible detección es un núcleo pequeño de 3 x 3 x \textit{p} el cuál produce una puntuación para una categoría determinada. En cada una de las posiciones por donde se aplica el filtro, éste produce un valor de salida.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=15cm]{./SSD_Architecture}
-\caption{Arquitectura SSD. Imagen obtenida de \cite{SSD}.}
+\caption{Arquitectura \acrshort{SSD}. Imagen obtenida de \cite{SSD}.}
 \label{ArquitecturaSSD}
 \end{center}
 \end{figure}
@@ -991,38 +990,38 @@ El modelo SSD se basa en una red convolucional que produce un conjunto de recuad
 
 \subsection{Entrenamiento}
 
-La principal diferencia entre el entrenamiento usando la técnica SSD y el entrenamiento de un detector típico, es que la información a cerca de los cuadros delimitadores reales debe asignarse a salidas específicas dentro del conjunto fijo de salidas del detector. Tras realizar esta asignación, la función de pérdida y la propagación hacia atrás son aplicadas de extremo a extremo. El proceso de entrenamiento también implica elegir el conjunto de cuadros y escalas predeterminados para la detección.
+La principal diferencia entre el entrenamiento usando la técnica \acrshort{SSD} y el entrenamiento de un detector típico, es que la información a cerca de los cuadros delimitadores reales debe asignarse a salidas específicas dentro del conjunto fijo de salidas del detector. Tras realizar esta asignación, la función de pérdida y la propagación hacia atrás son aplicadas de extremo a extremo. El proceso de entrenamiento también implica elegir el conjunto de cuadros y escalas predeterminados para la detección.
 
 \begin{itemize}
-\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, explicado en el apartado \ref{IoUSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \textit{IoU} máximo.
+\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, \acrshort{IoU}, explicado en el apartado \ref{IoUSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
 
-\item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de SSD es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
+\item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de \acrshort{SSD} es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
 
-\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto. Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La imagen \ref{FrameworkSSD} muestra 2 ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el framework. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional. Dentro del marco de SSD, se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica, se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico. Combinando predicciones para todas las cajas por defecto con diferentes escalas y relaciones de aspecto de todas las ubicaciones de los mapas de características, se consigue un conjunto diverso de predicciones, abarcando varios tamaños y formas de objetos de entrada. Por ejemplo, en la imagen \ref{FrameworkSSD}, el perro está emparejado con una caja por defecto en el mapa de características 4x4, pero con ninguna en el mapa de características 8x8. Esto se debe a que esas cajas tienen escalas diferentes y no coinciden con la caja del perro, y por lo tanto se consideran como negativos durante el entrenamiento.
+\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto. Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La imagen \ref{FrameworkSSD} muestra 2 ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el framework. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional. Dentro del marco de \acrshort{SSD}, se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica, se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico. Combinando predicciones para todas las cajas por defecto con diferentes escalas y relaciones de aspecto de todas las ubicaciones de los mapas de características, se consigue un conjunto diverso de predicciones, abarcando varios tamaños y formas de objetos de entrada. Por ejemplo, en la imagen \ref{FrameworkSSD}, el perro está emparejado con una caja por defecto en el mapa de características 4x4, pero con ninguna en el mapa de características 8x8. Esto se debe a que esas cajas tienen escalas diferentes y no coinciden con la caja del perro, y por lo tanto se consideran como negativos durante el entrenamiento.
 
-\item \textbf{Ejemplos negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \textit{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.
+\item \textbf{Ejemplos negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \acrshort{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./HardNegativeMining}
-\caption{Ejemplo de uso de negativos en el entrenamiento SSD. Imagen obtenida de \cite{SSD_2}.}
+\caption{Ejemplo de uso de negativos en el entrenamiento \acrshort{SSD}. Imagen obtenida de \cite{SSD_2}.}
 \label{VGG-16}
 \end{center}
 \end{figure}
 
-\item \textbf{Aumento de datos:} El aumento de datos, tanto en la técnica SSD como en muchas otras aplicaciones de aprendizaje profundo, ha sido crucial para que la red neuronal sea mucho más robusta frente a diferentes tamaños y formas de objetos a la entrada de ésta. Con este fin, se generaron ejemplos de entrenamiento con parches de la imagen original con diferentes relaciones de IoU (p.ej. 0.1, 0.3, 0.5, etc). Además, cada imagen se gira horizontalmente de forma aleatoria con una probabilidad de 0.5, asegurando así que los objetos aparezcan con la misma probabilidad a la izquierda que a la derecha. 
+\item \textbf{Aumento de datos:} El aumento de datos, tanto en la técnica \acrshort{SSD} como en muchas otras aplicaciones de aprendizaje profundo, ha sido crucial para que la red neuronal sea mucho más robusta frente a diferentes tamaños y formas de objetos a la entrada de ésta. Con este fin, se generaron ejemplos de entrenamiento con parches de la imagen original con diferentes relaciones de \acrshort{IoU} (p.ej. 0.1, 0.3, 0.5, etc). Además, cada imagen se gira horizontalmente de forma aleatoria con una probabilidad de 0.5, asegurando así que los objetos aparezcan con la misma probabilidad a la izquierda que a la derecha. 
 \end{itemize}
 
 \section{Single Shot MultiBox Detection en Caffe}\label{SSDCaffe}
 
-Tras entender el funcionamiento de la técnica SSD, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán algunos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica SSD\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}. Particularmente, se utilizarán 2 modelos, uno que utiliza la base de datos PascalVOC y otro que utiliza COCO, con el objetivo de realizar una primera y pequeña comparación entre la capacidad para detectar determinados objetos que tienen las redes entrenadas con ambas bases de datos.
+Tras entender el funcionamiento de la técnica \acrshort{SSD}, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán algunos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}. Particularmente, se utilizarán 2 modelos, uno que utiliza la base de datos \acrshort{PascalVOC} y otro que utiliza \acrshort{COCO}, con el objetivo de realizar una primera y pequeña comparación entre la capacidad para detectar determinados objetos que tienen las redes entrenadas con ambas bases de datos.
 
 \begin{itemize}
-\item \textbf{PascalVOC07+12-SSD300x300:} Se trata de un modelo entrenado por el conjunto de las imágenes de entrenamiento de la base de datos PascalVOC de 2007 y 2012, con unas dimensiones de 300x300 píxeles.
-\item \textbf{COCO-SSD300x300:} Se trata de un modelo entrenado utilizando la base de datos COCO. Se utiliza una dimensión de imagen de 300x300 píxeles.
+\item \textbf{PascalVOC07+12-SSD300x300:} Se trata de un modelo entrenado por el conjunto de las imágenes de entrenamiento de la base de datos \acrshort{PascalVOC} de 2007 y 2012, con unas dimensiones de 300x300 píxeles.
+\item \textbf{COCO-SSD300x300:} Se trata de un modelo entrenado utilizando la base de datos \acrshort{COCO}. Se utiliza una dimensión de imagen de 300x300 píxeles.
 \end{itemize}
 
-Tras definir los modelos que se usarán, se crea el script \textit{image\_detection.py}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno/blob/master/image_detection.py}}, el cual, a partir de una imagen de entrada, realizará una serie de transformaciones sobre esta con el objetivo de adaptarla a la entrada de la red neuronal, la introducirá dentro de ésta y finalmente generará como salida esa misma imagen con las \textit{bounding boxes} sobre los objetos detectados. Este script será creado a partir del fichero \textit{ssd\_detect.ipynb}\footnote{\url{https://github.com/weiliu89/caffe/blob/ssd/examples/ssd_detect.ipynb}}, desarrollado por los creadores de SSD.\\
+Tras definir los modelos que se usarán, se crea el script \textit{image\_detection.py}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno/blob/master/image_detection.py}}, el cual, a partir de una imagen de entrada, realizará una serie de transformaciones sobre esta con el objetivo de adaptarla a la entrada de la red neuronal, la introducirá dentro de ésta y finalmente generará como salida esa misma imagen con las \textit{bounding boxes} sobre los objetos detectados. Este script será creado a partir del fichero \textit{ssd\_detect.ipynb}\footnote{\url{https://github.com/weiliu89/caffe/blob/ssd/examples/ssd_detect.ipynb}}, desarrollado por los creadores de \acrshort{SSD}.\\
 
 En primer lugar, se definen 3 ficheros que tendrán gran importancia a lo largo del proceso de detección:
 
@@ -1120,7 +1119,7 @@ En primer lugar, se especificará el nombre de la red, en este caso \\'VGG\_VOC07
 name: "VGG_VOC0712_COCO_SSD_300x300"
 \end{lstlisting}
 
-Al inicio, también es necesario definir la dimensiones que tendrán las imágenes usadas para el entrenamiento. Tanto en PascalVOC como COCO, las imágenes tienen una dimensión de 300x300 y un formato RGB, definiéndose en la red de la siguiente manera:\\
+Al inicio, también es necesario definir la dimensiones que tendrán las imágenes usadas para el entrenamiento. Tanto en \acrshort{PascalVOC} como \acrshort{COCO}, las imágenes tienen una dimensión de 300x300 y un formato RGB, definiéndose en la red de la siguiente manera:\\
 
 \begin{lstlisting}[frame=single]
 input_shape {
@@ -1131,7 +1130,7 @@ input_shape {
 }
 \end{lstlisting}
 
-Como se ha explicado en la sección \ref{ArquitecturaSSDSection}, la arquitectura de la red neuronal en la técnica SSD se basa en las redes convolucionales, por lo que a continuación se pueden observar varias capas de convolución combinadas con capas de pooling.\\
+Como se ha explicado en la sección \ref{ArquitecturaSSDSection}, la arquitectura de la red neuronal en la técnica \acrshort{SSD} se basa en las redes convolucionales, por lo que a continuación se pueden observar varias capas de convolución combinadas con capas de pooling.\\
 
 En primer lugar, se define la capa de convolución, cuyo funcionamiento se ha explicado en la sección \ref{CapasVision}.\\
 
@@ -1184,7 +1183,7 @@ layer {
 
 Esta capa tomará los datos de la capa de convolución anterior y utilizará bloques de 2x2 para dividir la imagen entrante. Para que no haya solapamiento entre bloques contiguos utilizará el parámetro \textit{stride = 2}. Finalmente, como función de agrupación utilizará el máximo, escogiendo el píxel con mayor nivel de intensidad de cada bloque.\\
 
-Entre las capas da convolución y pooling, se intercalan varias capas de activación, utilizando la función ReLU, explicada en el apartado \ref{CapasActivacion}.\\
+Entre las capas da convolución y pooling, se intercalan varias capas de activación, utilizando la función \acrshort{ReLU}, explicada en el apartado \ref{CapasActivacion}.\\
 
 \begin{lstlisting}[frame=single]
 layer {
@@ -1343,22 +1342,22 @@ eval_type: "detection"
 ap_version: "11point"
 \end{lstlisting}
 
-Uno de los primeros parámetros que hay que especificar es \textit{type}, el cual determina el tipo de solucionador que se va a utilizar. En Caffe existen 6 tipos diferentes de solucionadores, cuyas características y funcionalidades se pueden consultar en la documentación oficial de Caffe\footnote{\url{http://caffe.berkeleyvision.org/tutorial/solver.html}}. Para este caso en particular, se ha utilizado el tipo \textit{SGD, Stochastic Gradient Descent}.\\
+Uno de los primeros parámetros que hay que especificar es \textit{type}, el cual determina el tipo de solucionador que se va a utilizar. En Caffe existen 6 tipos diferentes de solucionadores, cuyas características y funcionalidades se pueden consultar en la documentación oficial de Caffe\footnote{\url{http://caffe.berkeleyvision.org/tutorial/solver.html}}. Para este caso en particular, se ha utilizado el tipo SGD, Stochastic Gradient Descent.\\
 
 Otros de los parámetros que se pueden destacar dentro este fichero son, \textit{train\_net} y \textit{test\_net} que muestran la localización de los ficheros que especifican la estructura de la red; \textit{solver\_mode}, que específica si se va a utilizar la unidad central o la unidad gráfica de procesamiento, en este caso será CPU; \textit{base\_lr}, que fija el ritmo de aprendizaje, \textit{learning rate}, durante el entrenamiento; \textit{lr\_policy} que determina la política que seguirá la ritmo de aprendizaje, en este caso será \textit{step}, que indica que cada cierto tiempo se reducirá la tasa de aprendizaje; \textit{gamma} que especifica cuanto se va a reducir el \textit{learning rate} cada \textit{step}; \textit{stepsize} que determina cada cuantas iteraciones o \textit{steps} se reducirá el ritmo de aprendizaje; \textit{max\_iter}, que define el número máximo de iteraciones que se van a realizar en el entrenamiento;
 
 \subsection{Entrenamiento de la red}
 
-Antes de comenzar el entrenamiento de la red neuronal, es necesario definir las imágenes con las que vamos a alimentar a ésta durante el el proceso. Pare este caso, se decidió crear una base de datos personalizada la cuál contendrá tanto las imágenes de entrenamiento de PascalVoc de los años 2007 y 2012 como las de COCO. Para componerla, es necesario obtener los ficheros \textit{.lmdb} que incluyen toda la información de ambas bases de datos. Para ello, se dispone de los siguientes recursos y documentación:
+Antes de comenzar el entrenamiento de la red neuronal, es necesario definir las imágenes con las que vamos a alimentar a ésta durante el el proceso. Pare este caso, se decidió crear una base de datos personalizada la cuál contendrá tanto las imágenes de entrenamiento de \acrshort{PascalVOC} de los años 2007 y 2012 como las de \acrshort{COCO}. Para componerla, es necesario obtener los ficheros \textit{.lmdb} que incluyen toda la información de ambas bases de datos. Para ello, se dispone de los siguientes recursos y documentación:
 
 \begin{itemize}
-\item En el repositorio \textit{GIT} de los desarrolladores de la técnica SSD\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, se explica paso a paso todo el proceso para crear los ficheros LMDB que contendrán las imágenes y anotaciones de la base de datos PascalVoc.
-\item En el repositorio \textit{GIT} referenciado\footnote{\url{https://github.com/intel/caffe/tree/master/data/coco}} se explica como crear los ficheros LMDB que contendrán la información de la base de datos COCO.
+\item En el repositorio Git de los desarrolladores de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, se explica paso a paso todo el proceso para crear los ficheros \acrshort{LMDB} que contendrán las imágenes y anotaciones de la base de datos \acrshort{PascalVOC}.
+\item En el repositorio Git referenciado\footnote{\url{https://github.com/intel/caffe/tree/master/data/coco}} se explica como crear los ficheros \acrshort{LMDB} que contendrán la información de la base de datos \acrshort{COCO}.
 \end{itemize}
 
-Tras esto, se creó el \textit{script create\_lmdb.py}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno/blob/master/create_lmdb.py}} que será el encargado de fusionar en un único fichero LMDB toda la información de ambas bases de datos existente en los archivos creados anteriormente.\\
+Tras esto, se creó el \textit{script create\_lmdb.py}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno/blob/master/create_lmdb.py}} que será el encargado de fusionar en un único fichero \acrshort{LMDB} toda la información de ambas bases de datos existente en los archivos creados anteriormente.\\
 
-Para el entrenamiento de la red neuronal, los desarrolladores de SSD generaron varios \textit{scripts} que cumplen este objetivo. Particularmente, se destacan los \textit{scripts} \textit{ssd\_pascal.py} y \textit{ssd\_coco.py}, facilitados en el repositorio oficial de los creadores de esta técnica, y cuya finalidad es el entrenamiento de la red utilizando las imágenes de entrenamiento y validación de las bases de datos PascalVoc y COCO respectivamente. En estos \textit{scripts} se encuentran tanto las rutas de todos los ficheros necesarios para el entrenamiento, ya sea el modelo, el mapa de etiquetas, el solucionador o los archivos que alimentaran a la red de imágenes durante el proceso, como las rutas dónde se almacenaran los resultados del entrenamiento. Finalmente, a partir de los datos provistos, se crean la red neuronal y el solucionador, necesarios para lanzar el entrenamiento.\\
+Para el entrenamiento de la red neuronal, los desarrolladores de \acrshort{SSD} generaron varios \textit{scripts} que cumplen este objetivo. Particularmente, se destacan los \textit{scripts} \textit{ssd\_pascal.py} y \textit{ssd\_coco.py}, facilitados en el repositorio oficial de los creadores de esta técnica, y cuya finalidad es el entrenamiento de la red utilizando las imágenes de entrenamiento y validación de las bases de datos \acrshort{PascalVOC} y \acrshort{COCO} respectivamente. En estos \textit{scripts} se encuentran tanto las rutas de todos los ficheros necesarios para el entrenamiento, ya sea el modelo, el mapa de etiquetas, el solucionador o los archivos que alimentaran a la red de imágenes durante el proceso, como las rutas dónde se almacenaran los resultados del entrenamiento. Finalmente, a partir de los datos provistos, se crean la red neuronal y el solucionador, necesarios para lanzar el entrenamiento.\\
 
 Por lo tanto, para este caso, se creo un \textit{script} adicional, a partir de los mencionados anteriormente, modificando todos los datos necesarios.Tras la ejecución de este \textit{script}, comienza el entrenamiento, mostrando por la pantalla del terminal información del propio proceso cada 10 iteraciones.\\
 
@@ -1380,9 +1379,9 @@ Con el objetivo de entender mejor todo lo comentado anteriormente, se desarrolla
 Para mejorar el rendimiento de este componente, se ha desacoplado en 3 hilos de ejecución que serán explicados a continuación:
 
 \begin{itemize}
-\item \textit{Hilo Camera:} Será el encargado de capturar las imágenes captadas por la cámara utilizando para ello el servidor de imágenes, \textit{Camera Server}. Esta imagen será enviada al \textit{hilo GUI} para su visualización y al \textit{hilo Detector} para su procesamiento. 
-\item  \textit{Hilo Detector:} Este hilo será el encargado de la detección. Para ello, realiza las transformaciones que sean necesarias de la imagen que recibe desde el \textit{hilo Camera}, y, como se ha explicado en el apartado \ref{SSDCaffe}, realiza la detección de ésta. Tras generar como salida la misma imagen con las \textit{bounding boxes} de los objetos detectados superpuestas, la envía al \textit{hilo GUI} para su visualización.
-\item \textit{Hilo GUI:} Será el encargado del aspecto gráfico de la aplicación, mostrando tanto la imagen real captada por la cámara como la imagen tras su procesamiento y la detección de objetos.
+\item \textit{Hilo Camera:} Será el encargado de capturar las imágenes captadas por la cámara utilizando para ello el servidor de imágenes, \textit{Camera Server}. Esta imagen será enviada al \textit{hilo \acrshort{GUI}} para su visualización y al \textit{hilo Detector} para su procesamiento. 
+\item  \textit{Hilo Detector:} Este hilo será el encargado de la detección. Para ello, realiza las transformaciones que sean necesarias de la imagen que recibe desde el \textit{hilo Camera}, y, como se ha explicado en el apartado \ref{SSDCaffe}, realiza la detección de ésta. Tras generar como salida la misma imagen con las \textit{bounding boxes} de los objetos detectados superpuestas, la envía al \textit{hilo \acrshort{GUI}} para su visualización.
+\item \textit{Hilo \acrshort{GUI}:} Será la interfaz gráfica de usuario, o Graphical User Interface, \acrshort{GUI}, es decir, el componente encargado del aspecto gráfico de la aplicación, mostrando tanto la imagen real captada por la cámara como la imagen tras su procesamiento y la detección de objetos.
 \end{itemize}
 
 \begin{figure}[H]
@@ -1397,7 +1396,7 @@ Para mejorar el rendimiento de este componente, se ha desacoplado en 3 hilos de 
 
 Este hilo será el encargado de obtener la imagen capturada por la cámara, la cual será visualizada en el hilo encargado de la parte gráfica. Este hilo podrá ser referencia con el nombre de la clase, \textit{Camera()}.\\
 
-Al inicializar esta clase, en el constructor, se especifica que se va a realizar una referencia externa, en forma de fichero de configuración. De esta manera, el hilo \textit{Camera()} se podrá conectar con el componente JdeRobot \textit{Camera Server}, y de así adquirir la imágenes que éste provee. El fichero de configuración, que se especifica en línea de comandos cuando se ejecuta el componente, se muestra a continuación.\\
+Al inicializar esta clase, en el constructor, se especifica que se va a realizar una referencia externa, en forma de fichero de configuración. De esta manera, el \textit{hilo Camera} se podrá conectar con el componente JdeRobot \textit{Camera Server}, y de así adquirir la imágenes que éste provee. El fichero de configuración, que se especifica en línea de comandos cuando se ejecuta el componente, se muestra a continuación.\\
 
 \begin{lstlisting}[frame=single]
 DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999
@@ -1433,7 +1432,7 @@ Posteriormente, se definen las ventanas donde se visualizarán las 2 imágenes com
 
 Finalmente, se crean 2 botones, los cuales serán los encargados de controlar el proceso de detección. Estos botones, además de venir definidos por del parámetro \textit{move} para determinar su posición, se les añadirá la función \textit{setStyleSheet} con el objetivo de asociarles un color. Adicionalmente, utilizando \textit{clicked.connect} se les asignará la función que se ejecutará cuando se haga \textit{click} sobre cada uno de los 2 botones.\\
 
-Tras el constructor de la clase GUI, se definirá la función \textit{update(self)} que actualizará la ejecución de este hilo. Aquí, se asignarán a cada una de las ventanas creadas la imagen captada de la cámara y la imagen con las detecciones obtenidas según corresponda.\\
+Tras el constructor de la clase \acrshort{GUI}, se definirá la función \textit{update(self)} que actualizará la ejecución de este hilo. Aquí, se asignarán a cada una de las ventanas creadas la imagen captada de la cámara y la imagen con las detecciones obtenidas según corresponda.\\
 
 Finalmente, se definirán las 2 funciones asociadas a los 2 botones creados anteriormente. La función \textit{toggle(self)} estará asociada al botón \textit{Continuos} y hará que tras pulsarlo, comience la detección continua de las imágenes captadas en tiempo real. Por otro lado, la función \textit{detectOnce(self)} estará asociada al botón \textit{Detect Once} y hará que al hacer \textit{click} sobre él, se realice la detección únicamente sobre el frame que se estaba mostrando por la cámara en ese momento exacto.
 
@@ -1497,7 +1496,7 @@ En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de e
 
 \section{Comparación \textit{bounding boxes} real y detectada}
 
-En el apartado \ref{SSDCaffe} se ha explicado como se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para PascalVOC y COCO tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros XML y para la segunda ficheros JSON, por lo que se utilizarán 2 scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
+En el apartado \ref{SSDCaffe} se ha explicado como se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para \acrshort{PascalVOC} y \acrshort{COCO} tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros \acrshort{XML} y para la segunda ficheros \acrshort{JSON}, por lo que se utilizarán 2 scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
 
 \subsection{PascalVOC}\label{ComparePascalVOC}
 
@@ -1515,9 +1514,9 @@ file_annotations = "/" + annotation[1] + "/" +  annotation[2]
 +"/" + 'Annotations' + "/" + annotation[7] + ".xml"
 \end{lstlisting}
 
-Realizando los 2 \textit{split} tendremos todas las partes de la ruta separadas dentro de la variable \textit{annotation}. Posteriormente, concatenando cada parte de la ruta con "/", sustituyendo \textit{JPEGImages} por \textit{Annotations}, e incluyendo el formato de los ficheros de anotaciones, es decir, \textit{xml}, tendremos la ruta del fichero de anotaciones correspondiente a la imagen de entrada.\\
+Realizando los 2 \textit{split} tendremos todas las partes de la ruta separadas dentro de la variable \textit{annotation}. Posteriormente, concatenando cada parte de la ruta con "/", sustituyendo \textit{JPEGImages} por \textit{Annotations}, e incluyendo el formato de los ficheros de anotaciones, es decir, \acrshort{XML}, tendremos la ruta del fichero de anotaciones correspondiente a la imagen de entrada.\\
 
-Posteriormente, se utilizarán comandos \textit{Python} creados para la lectura de ficheros \textit{XML}, específicamente \textit{parse} y \textit{getroot}.\\
+Posteriormente, se utilizarán comandos \textit{Python} creados para la lectura de ficheros \acrshort{XML}, específicamente \textit{parse} y \textit{getroot}.\\
 
 \begin{lstlisting}[frame=single]
 tree = ET.parse(file)
@@ -1526,7 +1525,7 @@ root = tree.getroot()
 
 A partir de este código, tendremos acceso a los elementos del fichero de anotaciones utilizando para ello la variable \textit{root}.\\
 
-Después de esto, comenzará el primer bucle de esta función. Éste será el encargado de guardar en una variable varios datos de cada uno de los objetos existentes en el fichero de anotaciones. En primer lugar, el bucle buscará y recorrerá todas las etiquetas \textit{object} del \textit{xml}. Para ello se utilizará el comando de Python \textit{findall} sobre la variable \textit{root} definida anteriormente.\\
+Después de esto, comenzará el primer bucle de esta función. Éste será el encargado de guardar en una variable varios datos de cada uno de los objetos existentes en el fichero de anotaciones. En primer lugar, el bucle buscará y recorrerá todas las etiquetas \textit{object} del \acrshort{XML}. Para ello se utilizará el comando de Python \textit{findall} sobre la variable \textit{root} definida anteriormente.\\
 
 \begin{lstlisting}[frame=single]
 for element in root.findall('object'):
@@ -1618,14 +1617,14 @@ La imagen \ref{DetectionCompare} muestra un ejemplo de una salida que generaría 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./image_detection_compare}
-\caption{Comparacion bounding boxes real y detectada con imagen de la BBDD PascalVOC.}
+\caption{Comparacion bounding boxes real y detectada con imagen de la BBDD \acrshort{PascalVOC}.}
 \label{DetectionCompare}
 \end{center}
 \end{figure}
 
 \subsection{COCO}\label{CompareCOCO}
 
-Como se ha explicado en la sección \ref{COCO}, las anotaciones de esta base de datos están almacenadas en archivos de formato JSON, por lo que para conseguir las coordenadas reales de los objetos habrá que utilizar comandos que permitan recorrer este tipo de ficheros. Antes de realizar la función principal que devuelva la imagen con las \textit{bounding boxes} real y detectada superpuestas, se crearán varios métodos que recorrerán el fichero de anotaciones, preparando así los datos para ser tratados posteriormente.\\
+Como se ha explicado en la sección \ref{COCO}, las anotaciones de esta base de datos están almacenadas en archivos de formato \acrshort{JSON}, por lo que para conseguir las coordenadas reales de los objetos habrá que utilizar comandos que permitan recorrer este tipo de ficheros. Antes de realizar la función principal que devuelva la imagen con las \textit{bounding boxes} real y detectada superpuestas, se crearán varios métodos que recorrerán el fichero de anotaciones, preparando así los datos para ser tratados posteriormente.\\
 
 En primer lugar, se definirá la función \textit{get\_image\_id}, la cual se encargará de obtener el \textit{id} de la imagen de entrada, que será necesario para encontrar las anotaciones correspondientes a ésta. Este \textit{id} se puede conseguir a partir del \textit{path} de la imagen \textit{jpg}, el cual se pasa como parámetro de la función.\\
 
@@ -1666,7 +1665,7 @@ annotations_final.append(annotations)
 annotations = []
 \end{lstlisting}
 
-El objetivo de la tercera función será recuperar todas las etiquetas e \textit{ids} de la base de datos. Para ello, como anteriormente, se buscará un objeto en todo el fichero JSON de anotaciones, en este caso, el llamado \textit{categories}.\\
+El objetivo de la tercera función será recuperar todas las etiquetas e \textit{ids} de la base de datos. Para ello, como anteriormente, se buscará un objeto en todo el fichero \acrshort{JSON} de anotaciones, en este caso, el llamado \textit{categories}.\\
 
 \begin{lstlisting}[frame=single]
 jsonFileCategories = jsonFile["categories"]
@@ -1681,7 +1680,7 @@ for c in jsonFileCategories:
          labels_ids_array = []
 \end{lstlisting}
 
-La cuarta y última función, se trata de \textit{recover\_id} y se encargará de recuperar el \textit{id} de los objetos detectados. Este \textit{id} es un número entero que hace referencia a cada uno de los objetos existentes en la base de datos COCO. A esta función se le pasarán como parámetros 2 arrays. El primero de ellos hará referencia a todas las etiquetas de cada objeto detectado anteriormente. El segundo se referirá a todos los \textit{ids} y nombre de etiquetas de la base de datos recuperados anteriormente.\\
+La cuarta y última función, se trata de \textit{recover\_id} y se encargará de recuperar el \textit{id} de los objetos detectados. Este \textit{id} es un número entero que hace referencia a cada uno de los objetos existentes en la base de datos \acrshort{COCO}. A esta función se le pasarán como parámetros 2 arrays. El primero de ellos hará referencia a todas las etiquetas de cada objeto detectado anteriormente. El segundo se referirá a todos los \textit{ids} y nombre de etiquetas de la base de datos recuperados anteriormente.\\
 
 \begin{lstlisting}[frame=single]
     def recover_id(self, labels_detected_array, labels_ids_array):
@@ -1723,7 +1722,7 @@ xmax = xmin + int(image_annotations[c][3])
 ymax = ymin + int(image_annotations[c][4])
 \end{lstlisting}
 
-En la base de datos COCO, a diferencia de PascalVOC, los 2 últimos valores referentes a las coordenadas, definen la anchura y altura de las \textit{bounding boxes} por lo que para conseguir los valores correctos de \textit{xmax} e \textit{ymax} habrá que sumar a \textit{xmin} e \textit{ymin} la anchura y altura respectivamente.\\
+En la base de datos \acrshort{COCO}, a diferencia de \acrshort{PascalVOC}, los 2 últimos valores referentes a las coordenadas, definen la anchura y altura de las \textit{bounding boxes} por lo que para conseguir los valores correctos de \textit{xmax} e \textit{ymax} habrá que sumar a \textit{xmin} e \textit{ymin} la anchura y altura respectivamente.\\
 
 La asociación de \textit{ids} realizada anteriormente no garantiza que ese objeto definido en las anotaciones haga referencia al objeto detectado. En la imagen de entrada y en las anotaciones pueden existir varias instancias de objetos con el mismo identificador, por lo que es necesario realizar otra comprobación adicional.\\
 
@@ -1764,7 +1763,7 @@ La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que genera
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./imageDetectionCompareCOCO}
-\caption{Comparación bounding boxes real y detectada con imagen de la BBDD COCO.}
+\caption{Comparación bounding boxes real y detectada con imagen de la BBDD \acrshort{COCO}.}
 \label{DetectionCompareCOCO}
 \end{center}
 \end{figure}
@@ -1772,7 +1771,7 @@ La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que genera
 \section{Índice Jaccard}
 \label{IoUSection}
 
-El índice Jaccard, también conocido como \textbf{Intersection over Union}, es una estadística utilizada para comparar la similitud y la diversidad de conjuntos de muestras. Este índice mide la similitud entre conjuntos de muestras finitas y se define como el tamaño de la intersección dividido por el tamaño de la unión de los conjuntos de muestras.\\
+El índice Jaccard, también conocido como \textit{Intersection over Union}, es una estadística utilizada para comparar la similitud y la diversidad de conjuntos de muestras. Este índice mide la similitud entre conjuntos de muestras finitas y se define como el tamaño de la intersección dividido por el tamaño de la unión de los conjuntos de muestras.\\
 
 \begin{equation}
 J(A,B) = \frac{|A\cap B|}{|A\cup B|} = \frac{|A\cap B|}{|A| + |B| - |A\cap B|}
@@ -1785,13 +1784,14 @@ J(A,B) = \frac{|A\cap B|}{|A\cup B|} = \frac{|A\cap B|}{|A| + |B| - |A\cap B|}
 \end{center}
 \end{figure}
 
-Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá como J(A,B) = 1.
+Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 1.
 
 \begin{equation}
 0\leq J(A,B) \leq  1
 \end{equation}
-\\
-Por lo tanto, el índice Jaccard o \textbf{Intersection over Union} (loU) se puede definir gráficamente de la siguiente manera:
+
+
+Por lo tanto, el índice Jaccard o \acrshort{IoU} puede definir gráficamente tal y como representa la imagen \ref{IntersectionOverUnion}:
 
 \begin{figure}[H]
 \begin{center}
@@ -1822,7 +1822,7 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 Se partirá de los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} pero ahora los scripts crearán un fichero mostrando el índice Jaccard calculado para cada uno de los objetos de las 2 bases de datos. Estos 2 nuevos \textit{scripts}, a diferencia de los anteriores, recibirán un conjunto de imágenes, por lo que el primer paso para realizarlos será preparar los datos de entrada.\\
 
 \begin{itemize}
-\item Para el script que evaluará las imágenes de la base de datos PascalVOC, utilizaremos la ruta a las imágenes y a los ficheros de anotaciones. A partir de esto, se crearán 2 variables las cuales contendrán un listado con todos los archivos.\\
+\item Para el script que evaluará las imágenes de la base de datos \acrshort{PascalVOC}, utilizaremos la ruta a las imágenes y a los ficheros de anotaciones. A partir de esto, se crearán 2 variables las cuales contendrán un listado con todos los archivos.\\
 
 \begin{lstlisting}[frame=single]
 dirsImages = sorted(os.listdir(pathImages))
@@ -1845,7 +1845,7 @@ for x in range(len(dirsImages)):
 
 A esta función se le pasará como parámetro la imagen de entrada y su ruta y devolverá el índice Jaccard obtenido para cada uno de los objetos de la imagen de entrada. Después, introducirá estos valores en la variable \textit{detec\_array}.\\
 
-\item Para el script que evaluará las imágenes de la base de datos COCO, la única diferencia será que solo habrá que listar la carpeta donde se encuentran las imágenes. En esta base de datos existe un único fichero de anotaciones que contiene todos los datos reales de cada una de las imágenes de ella por lo que no será necesario asociar cada imagen a un fichero de anotaciones. Posteriormente, se llamará al bucle de la misma manera que se ha comentado en el punto anterior.
+\item Para el script que evaluará las imágenes de la base de datos \acrshort{COCO}, la única diferencia será que solo habrá que listar la carpeta donde se encuentran las imágenes. En esta base de datos existe un único fichero de anotaciones que contiene todos los datos reales de cada una de las imágenes de ella por lo que no será necesario asociar cada imagen a un fichero de anotaciones. Posteriormente, se llamará al bucle de la misma manera que se ha comentado en el punto anterior.
 \end{itemize}
 
 Con los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} tenemos disponibles las \textit{bounding boxes} reales y detectadas necesarias para calcular el índice Jaccard. Ahora, los 2 nuevos \textit{scripts} creados no pintarán estas cajas delimitadoras dentro de la imagen si no que las utilizarán para calcular el índice. Para ello, se crearán 4 nuevas funciones, las cuales se explican a continuación.\\ 
@@ -1957,7 +1957,7 @@ jaccard_index_array.append(jaccard_index)
 
 Una vez conseguido el valor del índice Jaccard, la función \textit{detectiontest} devolverá 2 arrays. El primero con el valor del índice Jaccard obtenido y el segundo con todas las etiquetas de los objetos detectados. Estos 2 arrays se pueden relacionar con el índice, ya que el valor del índice Jaccard en una determinada posición del array es el obtenido para el objeto existente en la misma posición del segundo array.\\
 
-Como se ha comentado al principio de esta sección, ambos \textit{scripts}, tanto el que utiliza las imágenes de entrada de PascalVOC como el que utiliza las de COCO, llamarán a la función \textit{detectiontest} una vez por cada imagen de entrada, guardando el resultado obtenido en cada llamada al método en la variable \textit{detec\_array}.\\
+Como se ha comentado al principio de esta sección, ambos \textit{scripts}, tanto el que utiliza las imágenes de entrada de \acrshort{PascalVOC} como el que utiliza las de \acrshort{COCO}, llamarán a la función \textit{detectiontest} una vez por cada imagen de entrada, guardando el resultado obtenido en cada llamada al método en la variable \textit{detec\_array}.\\
 
 Cuando se obtengan todos los valores del índice Jaccard que se desee, se generarán 2 ficheros, que mostrarán las estadísticas de los datos obtenidos. El primer fichero se llamará \textit{jaccardIndex.txt} y mostrará el índice Jaccard para cada uno de los objetos detectados en cada una de las imágenes. Para ello se recorrerá la variable \textit{detec\_array} relacionando los índices de éste.\\
 
@@ -1972,11 +1972,11 @@ El código anterior comparará una variable creada con el nombre de una de las eti
 \end{comment}
 \section{Resultado final}
 
-En este apartado se procederá a realizar las pruebas necesarias para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se medirán, serán las 2 preentrenadas con las bases de datos PascalVoc y Coco, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos personalizada explicada en el apartado \ref{DetectorObjetosSection}.\\
+En este apartado se procederá a realizar las pruebas necesarias para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se medirán, serán las 2 preentrenadas con las bases de datos \acrshort{PascalVOC} y \acrshort{COCO}, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos personalizada explicada en el apartado \ref{DetectorObjetosSection}.\\
 
-Para medir las prestaciones de cada uno de los modelos, se va a utilizar la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} de JdeRobot, comentada en el apartado \ref{AntecedentesJdeRobot}. Esta herramienta permite la utilización de varias bases de datos, entre las que se encuentran las utilizadas durante este trabajo, PascalVoc y COCO, además de varios frameworks para el aprendizaje profundo, incluyendo Caffe.\\
+Para medir las prestaciones de cada uno de los modelos, se va a utilizar la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} de JdeRobot, comentada en el apartado \ref{AntecedentesJdeRobot}. Esta herramienta permite la utilización de varias bases de datos, entre las que se encuentran las utilizadas durante este trabajo, \acrshort{PascalVOC} y \acrshort{COCO}, además de varios frameworks para el aprendizaje profundo, incluyendo Caffe.\\
 
-Como datos de entrada para medir el rendimiento de los modelos, con \textit{Detection Suite} se pueden utilizar un banco de imágenes con sus respectivas anotaciones, vídeos grabados o las imágenes que capta una cámara en tiempo real. Para este caso, se decidió utilizar un \textit{testing set} formado por imágenes junto con sus anotaciones. Lo más importante, es que estás imágenes seleccionadas no hayan sido utilizadas para entrenar ninguno de los modelos que se compararán, ya que esto falsearía las medidas obtenidas. En el repositorio de la técnica SSD\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, hay un enlace para descargarse varias imágenes junto con sus anotaciones del conjunto de test de la base de datos PascalVoc. Este banco de ejemplos está formado por 4952 imágenes en los que hay etiquetados 14976 objetos de 20 clases diferentes. En la figura \ref{testImages} se puede observar como están distribuidos los 14976 objetos mencionados anteriormente en cada una de las clases existentes:
+Como datos de entrada para medir el rendimiento de los modelos, con \textit{Detection Suite} se pueden utilizar un banco de imágenes con sus respectivas anotaciones, vídeos grabados o las imágenes que capta una cámara en tiempo real. Para este caso, se decidió utilizar un \textit{testing set} formado por imágenes junto con sus anotaciones. Lo más importante, es que estás imágenes seleccionadas no hayan sido utilizadas para entrenar ninguno de los modelos que se compararán, ya que esto falsearía las medidas obtenidas. En el repositorio de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, hay un enlace para descargarse varias imágenes junto con sus anotaciones del conjunto de test de la base de datos \acrshort{PascalVOC}. Este banco de ejemplos está formado por 4952 imágenes en los que hay etiquetados 14976 objetos de 20 clases diferentes. En la figura \ref{testImages} se puede observar como están distribuidos los 14976 objetos mencionados anteriormente en cada una de las clases existentes:
 
 \begin{figure}[H]
 \begin{center}
@@ -1994,23 +1994,31 @@ En este capítulo se van a exponer las principales conclusiones obtenidas durante
 
 \section{Conclusiones}
 
-El desarrollo de este trabajo ha permitido llegar a una serie de conclusiones relacionadas con el aprendizaje profundo utilizando redes neuronales artificiales entrenadas usando la herramienta Caffe. Las conclusiones serán expuestas siguiendo los \textit{sub-objetivos} expuestos en la sección \ref{Objetivos}.
+El desarrollo de este trabajo ha permitido llegar a una serie de conclusiones relacionadas con el aprendizaje profundo utilizando redes neuronales artificiales entrenadas usando la herramienta Caffe. Además, la extracción de varios estadísticos al testear estas redes neuronales, ha permitido medir de manera objetiva las prestaciones de éstas y sacar conclusiones de cómo actúan en la detección de objetos. Las conclusiones serán expuestas siguiendo los \textit{sub-objetivos} expuestos en la sección \ref{Objetivos}.
 
 \begin{description}
 \item[Estudio de la plataforma Caffe]\hfill 
 \vspace{5pt}
 \\
-La plataforma Caffe es una herramienta de gran utilidad para el trabajo con redes neuronales ya que el entrenamiento se ejecuta de una forma muy sencilla, además de aportar varios ejemplos para introducirse en el ámbito de la inteligencia artificial con los problemas de clasificación y detección. 
-\item[Estudio de varias bases de datos aplicadas a la detección]
-\item[Estudio de la técnica SSD]
+La plataforma Caffe es una herramienta de gran utilidad para el trabajo con redes neuronales y uno de los frameworks con mayor uso y reconocimiento actualmente. La forma tan sencilla con la que es posible realizar el entrenamiento de un modelo, hace que sea una herramienta muy intuitiva, reforzando su uso frente a otros. Además, aporta varios ejemplos relacionados con la clasificación y detección de objetos, siendo un buen punto de partida para introducirse en el mundo de la inteligencia artificial. 
+\item[Estudio de varias bases de datos aplicadas a la detección]\hfill
+\vspace{5pt}
+\\
+Con el estudio de  \acrshort{PascalVOC} y  \acrshort{COCO}, se ha podido comprobar cuáles son los puntos que definen y diferencian a las bases de datos creadas para el entrenamiento de redes neuronales dedicadas a la detección. La cantidad de imágenes que las componen y cómo están distribuidos los objetos presentes en ellas, las anotaciones y etiquetado de los objetos de estas imágenes y el formato de estás y el número de clases de objetos existentes en ellas. Además, con las pruebas realizadas se ha podido comprobar como se comportan redes entrenadas con ellas.
+\item[Estudio de la técnica \acrshort{SSD}]
 \item[Desarrollo de un componente detector]\hfill 
 \vspace{5pt}
 \\
-El componente Python desarrollado ofrece buenos resultados con las redes neuronales entrenadas previamente. El desacoplar la tarea en 3 hilos, dedicando uno únicamente al proceso de detección, hace que la aplicación sea más robusta evitando que ésta baje su rendimiento debido a la detección, ya que se realiza a la velocidad que pueda soportar la CPU del equipo utilizado.
-\item[Cálculo del \textit{índice Jaccard} o \textit{Intersection Over Union}]\hfill 
+El componente Python desarrollado ofrece buenos resultados con las redes neuronales entrenadas previamente. El desacoplar la tarea en 3 hilos, dedicando uno únicamente al proceso de detección, hace que la aplicación sea más robusta evitando que ésta baje su rendimiento debido a la detección, ya que se realiza a la velocidad que pueda soportar la CPU del equipo utilizado. Se trata del primer contacto a la hora de comparar el rendimiento de las redes utilizadas ya que se puede observar de manera visual la capacidad que tienen los modelos para detectar objetos.
+\item[Creación de una base de datos personalizada]\hfill
 \vspace{5pt}
 \\
-El \textit{índice Jaccard} o \textit{Intersection Over Union} es un parámetro de gran utilidad para conocer las prestaciones y eficacia de una red neuronal entrenada. Gracias a él, se pueden comparar fácilmente varias redes neuronales con el objetivo de hacerlas más robustas.
+Se ha propuesto un \textit{script} escrito en Python para la creación de bases de datos personalizadas a partir de ficheros \acrshort{LMDB}. De esta manera, se podrán crear conjuntos de imágenes en función de las necesidades que se requieran y utilizarlas para entrenar, validar o testear una red neuronal.
+\item[Entrenamiento de una red neuronal]\hfill
+\vspace{5pt}
+\\
+Se han definido los puntos necesarios para entrenar una red neuronal en Caffe. En primer lugar, la estructura de la red neuronal sobre la que se realizará el entrenamiento, dónde se puede comprobar cada una de las capas existentes y el funcionamiento de cada uno de ellas. Posteriormente, de explica el funcionamiento del solucionador del entrenamiento en Caffe, con el que se pueden conocer los parámetros con los que se va a entrenar la red y poder ajustarlos en función de las necesidades. Finalmente, se expone el \textit{script} necesario para ejecutar el entrenamiento, dónde sale a relucir la facilidad con la que es posible entrenar un modelo en Caffe.
+\item[Realización de experimentos con la herramienta \textit{Detection Suite} de JdeRobot]\hfill
 \end{description}
 
 \section{Líneas futuras}

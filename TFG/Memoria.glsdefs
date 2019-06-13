@@ -1,6 +1,6 @@
-\ifglsentryexists{IA}{}%
+\ifglsentryexists{ia}{}%
 {%
-\gls@defglossaryentry{IA}%
+\gls@defglossaryentry{ia}%
 {%
 name={IA},%
 sort={IA},%
