@@ -1,5 +1,3 @@
-\glossaryentry{PascalVOC?\glossentry{PascalVOC}|setentrycounter[]{page}\glsnumberformat}{III}
-\glossaryentry{COCO?\glossentry{COCO}|setentrycounter[]{page}\glsnumberformat}{III}
 \glossaryentry{AA?\glossentry{AA}|setentrycounter[]{page}\glsnumberformat}{VII}
 \glossaryentry{ReLU?\glossentry{ReLU}|setentrycounter[]{page}\glsnumberformat}{VII}
 \glossaryentry{PascalVOC?\glossentry{PascalVOC}|setentrycounter[]{page}\glsnumberformat}{VII}
@@ -148,5 +146,7 @@
 \glossaryentry{PascalVOC?\glossentry{PascalVOC}|setentrycounter[]{page}\glsnumberformat}{75}
 \glossaryentry{PascalVOC?\glossentry{PascalVOC}|setentrycounter[]{page}\glsnumberformat}{77}
 \glossaryentry{COCO?\glossentry{COCO}|setentrycounter[]{page}\glsnumberformat}{77}
+\glossaryentry{SSD?\glossentry{SSD}|setentrycounter[]{page}\glsnumberformat}{78}
+\glossaryentry{SSD?\glossentry{SSD}|setentrycounter[]{page}\glsnumberformat}{78}
 \glossaryentry{SSD?\glossentry{SSD}|setentrycounter[]{page}\glsnumberformat}{78}
 \glossaryentry{LMDB?\glossentry{LMDB}|setentrycounter[]{page}\glsnumberformat}{78}

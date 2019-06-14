@@ -131,9 +131,18 @@ $\ $
 
 \chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
 
+\begin{comment}
 Una de las fuentes de inspiración matemáticas ha sido el continuo intento de formalizar el pensamiento humano. La complejidad para simular acciones humanas frente a otras teorías matemáticas ha hecho que se separen los campos de estudio y aplicación.\\
+\end{comment}
 
-Durante este trabajo se ha desarrollado un componente detector en tiempo real utilizando una red neuronal entrenada con Caffe. En primer lugar, se realiza un estudia de la insfraestructura que se ha utilizado durante la realización del proyecto. Se definen las principales características de las herramientas Caffe y JdeRobot, utilizadas para el entrenamiento de la red y para el componente en vivo respectivamente. Posteriormente, se realiza un estudio de las bases de datos que se usarán, \acrshort{PascalVOC} y \acrshort{COCO}, especificando el número total de imágenes, como están distribuidos los objetos y el formato de sus ficheros de anotaciones. Tras la definición de la infraestructura, se realiza una introducción a la técnica \textit{Single Shot MultiBox Detection}, la cual será la usada para el entrenamiento. Después, se muestra un ejemplo práctico en el que se integra Caffe en esta técnica. Finalmente, se introduce el concepto de \textit{índice Jaccard} 0 \textit{Intersection Over Union}, con el que es posible evaluar la calidad en la detección de las redes que hemos utilizado durante el proyecto.
+Durante este trabajo se ha abordado el tema de la Inteligencia Artificial, más en concreto del \textit{Deep Learning}, explicando sus características y funcionalidades que hacen posible crear modelos o sistemas que simulen el comportamiento humano. El objetivo principal del trabajo es entrenar una red neuronal y la posterior medición y comparación de prestaciones de ésta con otros modelos preentrenados a la hora de realizar la detección de objetos.\\
+
+En primer lugar, se realiza un estudio de la infraestructura que se ha utilizado durante la realización del proyecto. Se definen las principales características de las herramientas Caffe y JdeRobot, utilizadas para el entrenamiento del modelo y para la creación de un componente detector en tiempo real. Posteriormente, se realiza un estudio de las bases de datos que se usarán, PASCAL Visual Object Classes y Common Objects in Context, especificando el número total de imágenes, como están distribuidos los objetos y el formato de sus ficheros de anotaciones.\\
+
+Tras la definición de la infraestructura, se realiza una introducción a la técnica \textit{Single Shot MultiBox Detection}, la cual será la usada en la red neuronal que se entrenará. Después, se muestra un ejemplo práctico en el que se integra Caffe en esta técnica. Tras esto, se explica todo el proceso de entrenamiento del modelo, explicando la estructura de la red y los parámetros con los que realizará dicho entrenamiento. Por último, se explica como se desarrollo el componente detector comentado anteriormente y se muestra un ejemplo de se ejecución.\\
+
+
+Finalmente, se introduce el concepto de índice Jaccard, se procede a realizar las pruebas necesarias para comparar las prestaciones tanto de la red entrenada como de los modelos ya existentes comentados anteriormente y se exponen las conclusiones tras la realización del proyecto además de posibles líneas futuras a seguir.
 
 
 \newpage
@@ -878,7 +887,7 @@ Después, aparece el grupo de etiquetas \textit{size}, donde se indican el ancho 
 	</size>
 \end{lstlisting}
 
-Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existentes en la imagen. Destacan la etiqueta \textit{name}, la cual indica el nombre de la etiqueta del objeto, y el grupo \textit{bndbox}, que representa la \textit{bounding box} a partir de las coordenadas \textit{x\_{min}}, \textit{y\_{min}}, \textit{x\_{max}} y \textit{y\_{max}}.\\
+Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existentes en la imagen. Destacan la etiqueta \textit{name}, la cual indica el nombre de la etiqueta del objeto, y el grupo \textit{bndbox}, que representa la \textit{bounding box} a partir de las coordenadas \textit{x\_{min}}, \textit{y\_{min}}, \textit{x\_{max}} e \textit{y\_{max}}.\\
 
 \begin{lstlisting}[frame=single]
 	<object>
@@ -2005,7 +2014,10 @@ La plataforma Caffe es una herramienta de gran utilidad para el trabajo con rede
 \vspace{5pt}
 \\
 Con el estudio de  \acrshort{PascalVOC} y  \acrshort{COCO}, se ha podido comprobar cuáles son los puntos que definen y diferencian a las bases de datos creadas para el entrenamiento de redes neuronales dedicadas a la detección. La cantidad de imágenes que las componen y cómo están distribuidos los objetos presentes en ellas, las anotaciones y etiquetado de los objetos de estas imágenes y el formato de estás y el número de clases de objetos existentes en ellas. Además, con las pruebas realizadas se ha podido comprobar como se comportan redes entrenadas con ellas.
-\item[Estudio de la técnica \acrshort{SSD}]
+\item[Estudio de la técnica \acrshort{SSD}]\hfill
+\vspace{5pt}
+\\
+Se exponen las principales características de esta técnica, tanto en el modelo que se propone como a la hora del entrenamiento. Se explica como la utilización de cajas delimitadoras con múltiples escalas conectadas con mapas de características permite modelar las diferentes formas de los objetos. Además, la utilización de un modelo con varias capas convolucionales permite que la imagen de entrada disminuya de tamaño paulatinamente, obteniendo así características en múltiples escalas y generando salidas más precisas. Los desarrolladores de \acrshort{SSD} la integran con Caffe, exponiendo varios ejemplos y redes preentrenadas, que son un buen punto de partida para conocer los resultados que da un modelo que utiliza esta técnica.Además, la integración con este framework hace posible el entrenamiento de un modelo \acrshort{SSD} para su posterior estudio.
 \item[Desarrollo de un componente detector]\hfill 
 \vspace{5pt}
 \\
