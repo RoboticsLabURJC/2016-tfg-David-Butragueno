@@ -34,23 +34,23 @@
 \contentsline {subsection}{\numberline {3.1.1}Arquitectura}{38}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Entrenamiento}{40}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Single Shot MultiBox Detection en Caffe}{42}{section.3.2}
-\contentsline {section}{\numberline {3.3}Detector de objetos}{45}{section.3.3}
+\contentsline {section}{\numberline {3.3}Detector de objetos}{46}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Estructura de la red}{46}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Definici\'on del solucionador}{51}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Entrenamiento de la red}{53}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Componente detector}{55}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Hilo Camera}{56}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Hilo Detector}{57}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Hilo GUI}{58}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Ejecuci\'on}{59}{subsection.3.4.4}
-\contentsline {subsection}{\numberline {3.4.5}Detecci\'on condicional}{60}{subsection.3.4.5}
+\contentsline {subsection}{\numberline {3.3.2}Definici\'on del solucionador}{52}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Entrenamiento de la red}{54}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Componente detector}{56}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Hilo Camera}{57}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Hilo Detector}{58}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Hilo GUI}{59}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Ejecuci\'on}{60}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Detecci\'on condicional}{61}{subsection.3.4.5}
 \contentsline {chapter}{\numberline {4}Medidor de calidad}{63}{chapter.4}
 \contentsline {section}{\numberline {4.1}Comparaci\'on \textit {bounding boxes} real y detectada}{63}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}PascalVOC}{63}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}COCO}{68}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}\'Indice Jaccard}{73}{section.4.2}
 \contentsline {section}{\numberline {4.3}Resultado final}{75}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusiones}{77}{chapter.5}
-\contentsline {section}{\numberline {5.1}Conclusiones}{77}{section.5.1}
-\contentsline {section}{\numberline {5.2}L\IeC {\'\i }neas futuras}{79}{section.5.2}
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{81}{chapter*.39}
+\contentsline {chapter}{\numberline {5}Conclusiones}{79}{chapter.5}
+\contentsline {section}{\numberline {5.1}Conclusiones}{79}{section.5.1}
+\contentsline {section}{\numberline {5.2}L\IeC {\'\i }neas futuras}{81}{section.5.2}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{83}{chapter*.40}

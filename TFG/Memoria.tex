@@ -9,7 +9,7 @@
 \usepackage{verbatim} % comentarios
 \usepackage{mathtools}
 \usepackage{subfig}
-\usepackage{hyperref}
+\usepackage[breaklinks=true]{hyperref}
 \usepackage[a4paper,top=3cm, bottom=3cm, inner=2.5cm, outer=2.5cm]{geometry}
 
 \usepackage[acronym, nonumberlist]{glossaries}
@@ -1113,6 +1113,20 @@ top_xmax = det_xmax[top_indices]
 top_ymax = det_ymax[top_indices] 
 \end{lstlisting}
 
+A continuación, se muestran 2 ejemplos de la salida de este \textit{script} utilizando los modelos comentados anteriormente y una imagen del conjunto de test de la base de datos \acrshort{PascalVOC}, la cuál será utilizada para realizar las pruebas explicadas en el apartado \ref{ResultadoFinalSection}
+
+\begin{figure}[H]
+\begin{center}
+\subfloat[]{
+\includegraphics[width=7.8cm]{./DetectionCompareVOC}}
+\subfloat[]{
+\includegraphics[width=7.8cm]{./DetectionCompareCOCO}}
+\caption{(a) Detección con modelo entrenado con \acrshort{PascalVOC}. (b) Detección con modelo entrenado con \acrshort{COCO}.}
+\label{DetectionCompare}
+\end{center}
+\end{figure}
+
+Como se puede observar en las 2 imágenes superiores, el modelo entrenado con \acrshort{COCO} ha detectado una persona, un coche y una moto mientras que el modelo entrenado con \acrshort{PascalVOC} únicamente ha detectado el coche y la moto. Estas 2 imágenes representan el punto de inicio que se abordará en la sección \ref{ResultadoFinalSection} y que tratará de la comparación de prestaciones de varias redes neuronales.
 
 \section{Detector de objetos}\label{DetectorObjetosSection}
 
@@ -1370,6 +1384,8 @@ Para el entrenamiento de la red neuronal, los desarrolladores de \acrshort{SSD} 
 
 Por lo tanto, para este caso, se creo un \textit{script} adicional, a partir de los mencionados anteriormente, modificando todos los datos necesarios.Tras la ejecución de este \textit{script}, comienza el entrenamiento, mostrando por la pantalla del terminal información del propio proceso cada 10 iteraciones.\\
 
+Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en forma de fichero binario con extensión \textit{.caffemodel} que contiene los pesos existentes en cada una de las capas de la red neuronal en ese momento del entrenamiento.\\
+
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./TrainNet}
@@ -1378,7 +1394,7 @@ Por lo tanto, para este caso, se creo un \textit{script} adicional, a partir de 
 \end{center}
 \end{figure}
 
-Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en forma de fichero binario con extensión \textit{.caffemodel} que contiene los pesos existentes en cada una de las capas de la red neuronal en ese momento del entrenamiento.
+Por último, cuando finalizan las iteraciones definidas en el solucionador, en este caso 120000, se crear el fichero final con los pesos de la red una vez finalizado el entrenamiento, con el mismo formato que el de las \textit{snapshots} comentado anteriormente.
 
 \section{Componente detector}
 \label{ComponenteDetectorSection}
@@ -1980,6 +1996,7 @@ El código anterior comparará una variable creada con el nombre de una de las eti
 
 \end{comment}
 \section{Resultado final}
+\label{ResultadoFinalSection}
 
 En este apartado se procederá a realizar las pruebas necesarias para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se medirán, serán las 2 preentrenadas con las bases de datos \acrshort{PascalVOC} y \acrshort{COCO}, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos personalizada explicada en el apartado \ref{DetectorObjetosSection}.\\
 
@@ -1995,7 +2012,33 @@ Como datos de entrada para medir el rendimiento de los modelos, con \textit{Dete
 \end{center}
 \end{figure}
 
-Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se utilizará la herramienta llamada \textit{Automatic Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Automatic-Evaluation}}.
+Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usará la herramienta llamada \textit{Automatic Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Automatic-Evaluation}}, que no utiliza la interfaz gráfica de \textit{Detection Suite}, ya que se ejecuta por línea de comandos. Esta herramienta es capaz de evaluar múltiples redes utilizando un único conjunto de datos o varios conjuntos de datos en una sola ejecución. Lo único que se necesita es un archivo de configuración donde se especifiquen los detalles sobre as redes y los conjuntos de datos. En este archivo, que tendrá extensión \textit{yml}, se definirán en primer lugar los conjuntos de datos, especificando la ruta donde se encuentran las anotaciones, \textit{inputPath}, la implementación de base da datos a la que pertenece este conjunto de datos, \textit{readerImplementation} y el fichero donde se especifica las etiquetas de los objetos existentes, \textit{readerNames}. Posteriormente, se definirá la información a cerca de las redes, especificando los pesos, \textit{inferencerWeights}, la estructura de ésta, \textit{inferencerConfig}, el framework utilizado, \textit{inferencerImplementation} y el conjunto de clases de objetos, \textit{inferencerNames}. Finalmente, se especificará la ruta de salida dónde quiere que se guarden los datos que se generen, \textit{outputCSVPath}. A continuación, se muestra un ejemplo de la estructura de este archivo de configuración:\\
+
+\begin{lstlisting}[frame=single]
+Datasets:
+-
+  inputPath: {PATH}/VOC2007/Annotations
+  readerImplementation: Pascal VOC
+  readerNames: {PATH}/voc.names
+  
+Inferencers:
+-
+  inferencerWeights:         {PATH}/VGG_VOC0712_SSD_300x300_iter_120000.caffemodel
+  inferencerConfig:          {PATH}/deploy.prototxt
+  inferencerImplementation:  caffe
+  inferencerNames:           {PATH}/voc.names
+
+outputCSVPath: {PATH}/output
+\end{lstlisting}
+
+Para este caso, el fichero de configuración tendrá un único conjunto de datos, es decir, las imágenes de test de la base de datos \acrshort{PascalVOC} comentadas anteriormente, y 3 definiciones de red, es decir, las 2 preentrenadas con \acrshort{PascalVOC} y \acrshort{COCO} y la red entrenada con la base de datos personalizada.\\
+
+Tras esto, solo faltaría arrancar la aplicación. Para ello, habrá que navegar hasta el directorio \textit{build/Tools/AutoEvaluator} y ejecutar el \textit{script autoEvaluator} pasándosele el archivo de configuración como parámetro:\\
+
+\begin{lstlisting}[frame=single]
+./autoEvaluator -c config.yml
+\end{lstlisting}
+
 
 \chapter{Conclusiones}
 
