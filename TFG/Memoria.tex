@@ -1821,7 +1821,7 @@ Por lo tanto, el índice Jaccard o \acrshort{IoU} puede definir gráficamente tal 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=8cm]{./loU}
-\caption{Intersection over Union.}
+\caption{Intersection over Union. Imagen obtenida de \cite{IndiceJaccard}}
 \label{IntersectionOverUnion}
 \end{center}
 \end{figure}
@@ -1837,7 +1837,7 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./loU_score}
-\caption{Evaluación loU.}
+\caption{Evaluación loU. Imagen obtenida de \cite{IndiceJaccard}}
 \end{center}
 \end{figure}
 
@@ -2081,8 +2081,10 @@ Se han definido los puntos necesarios para entrenar una red neuronal en Caffe. E
 Tras la exposición de las conclusiones, se enumeran varias líneas de investigación que ayudarían a continuar con lo desarrollado durante este trabajo.
 
 \begin{itemize}
-\item Una línea de investigación cercana a la abordada sería la de detección de objetos utilizando algunos de los softwares adicionales para redes neuronales explicados en el apartado \ref{SoftwaresRNN}.
-\item
+\item Una línea de investigación cercana a la abordada sería la de detección de objetos utilizando algunos de los softwares adicionales para redes neuronales explicados en el apartado \ref{SoftwaresRNN}. De esta manera es posible contrastar como funciona cada framework y elegir cualquiera de ellos en función de lo requerido.
+\item Dado que \textit{Detection Suite} soporta otras bases de datos, como YOLO\cite{YOLO} o ImageNet\cite{ImageNet}, sería interesante utilizarlas para entrenar una red y así ver los resultados que genera la utilización de cada un de ellas.
+\item Otro punto interesante a abordar, sería el etiquetado de imágenes para crear una propia base de datos y entrenar, validar y testear una red con ella.
+\item En relación a las pruebas realizadas, se podría usar la interfaz gráfica de \textit{Detection Suite} utilizando vídeos grabados previamente o las imágenes captadas por una cámara en tiempo real. Así, se puede comprobar como actúan las redes que se evalúen detectando objetos en movimiento.
 \end{itemize}
 
 \begin{thebibliography}{X}
@@ -2212,6 +2214,18 @@ Simonyan,K.,Zisserman,A.:
 \bibitem{MultiBox}
 Erhan, D., Szegedy, C., Toshev, A., Anguelov, D.:
 \newblock {Scalable object detection using deep neural networks. In: CVPR. (2014)}
+
+\bibitem{IndiceJaccard}
+Índice Jaccard.
+\newblock {\url{https://en.wikipedia.org/wiki/Jaccard_index}}
+
+\bibitem{YOLO}
+YOLO: Real-Time Object Detection.
+\newblock {\url{https://pjreddie.com/darknet/yolo/}}
+
+\bibitem{ImageNet}
+ImageNet.
+\newblock {\url{http://www.image-net.org/}}
 
 
 
