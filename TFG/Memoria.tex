@@ -949,7 +949,7 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 
 \section{Técnica Single Shot MultiBox Detection}
 
-Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \textit{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
+Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \acrshort{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
 
 \begin{itemize}
 \item \textbf{Single Shot:}  Hace referencia a que la tareas de localización y clasificación de objetos se realizan en un único paso hacia adelante de la red.
@@ -1002,7 +1002,7 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 La principal diferencia entre el entrenamiento usando la técnica \acrshort{SSD} y el entrenamiento de un detector típico, es que la información a cerca de los cuadros delimitadores reales debe asignarse a salidas específicas dentro del conjunto fijo de salidas del detector. Tras realizar esta asignación, la función de pérdida y la propagación hacia atrás son aplicadas de extremo a extremo. El proceso de entrenamiento también implica elegir el conjunto de cuadros y escalas predeterminados para la detección.
 
 \begin{itemize}
-\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, \acrshort{IoU}, explicado en el apartado \ref{IoUSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
+\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, \acrshort{IoU}, explicado en el apartado \ref{ParametrosEvaluacionSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
 
 \item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de \acrshort{SSD} es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
 
@@ -1389,7 +1389,7 @@ Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./TrainNet}
-\caption{Ejecución de entrenamiento de la red neuronal.}
+\caption{Ejecución del entrenamiento de la red neuronal.}
 \label{EjecucionTrain}
 \end{center}
 \end{figure}
@@ -1771,8 +1771,9 @@ ground_truth_final.append(ground_truth)
 ground_truth = []
 \end{lstlisting}
 
-Finalmente, las \textit{bounding boxes} reales se pintarán sobre la imagen de entrada a partir del array devuelto en la función anterior utilizando el siguiente código:\\
+Finalmente, las \textit{bounding boxes} reales se pintarán sobre la imagen de entrada a partir del array devuelto en la función anterior. La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que generaría este \textit{script}. La \textit{bounding box} de color verde hace referencia a las coordenadas reales del objeto, mientras que la \textit{bounding box} de color rojo encuadra el objeto detectado.\\
 
+\begin{comment}
 \begin{lstlisting}[frame=single]
 for i in range(len(ground_truth)):
 	xmin = ground_truth[i][0]
@@ -1782,8 +1783,7 @@ for i in range(len(ground_truth)):
 
 	cv2.rectangle(img,(xmin,ymin),(xmax,ymax),(0,255,0),2)#Color BGR
 \end{lstlisting}
-
-La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que generaría este \textit{script}. La \textit{bounding box} de color verde hace referencia a las coordenadas reales del objeto, mientras que la \textit{bounding box} de color rojo encuadra el objeto detectado.
+\end{comment}
 
 \begin{figure}[H]
 \begin{center}
@@ -1793,9 +1793,20 @@ La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que genera
 \end{center}
 \end{figure}
 
-\section{Índice Jaccard}
-\label{IoUSection}
+\section{Parámetros de evaluación}
+\label{ParametrosEvaluacionSection}
 
+Existentes varios parámetros cuya calculo e interpretación hacen posible la evaluación de la capacidad que tienen determinados sistemas a la hora de detectar objetos. En esta sección se explicarán los que se calcularán posteriormente en el apartado \ref{ResultadoFinalSection} tras evaluar con \textit{Detection Suite} las redes utilizadas durante este trabajo.
+
+\begin{description}
+\item[mean Average Precision y mean Average Recall]\hfill 
+\vspace{5pt}
+\\
+El mean Average Precision, \acrshort{mAP}, y el mean Average Recall, \acrshort{mAR}, son 2 métricas muy populares utilizadas para medir la precisión de los detectores de objetos.
+
+\item[Índice Jaccard]\hfill 
+\vspace{5pt}
+\\
 El índice Jaccard, también conocido como \textit{Intersection over Union}, es una estadística utilizada para comparar la similitud y la diversidad de conjuntos de muestras. Este índice mide la similitud entre conjuntos de muestras finitas y se define como el tamaño de la intersección dividido por el tamaño de la unión de los conjuntos de muestras.\\
 
 \begin{equation}
@@ -1840,6 +1851,8 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \caption{Evaluación loU. Imagen obtenida de \cite{IndiceJaccard}}
 \end{center}
 \end{figure}
+
+\end{description}
 
 \begin{comment}
 \section{Cálculo del índice Jaccard}
@@ -2012,6 +2025,7 @@ Como datos de entrada para medir el rendimiento de los modelos, con \textit{Dete
 \end{center}
 \end{figure}
 
+\begin{comment}
 Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usará la herramienta llamada \textit{Automatic Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Automatic-Evaluation}}, que no utiliza la interfaz gráfica de \textit{Detection Suite}, ya que se ejecuta por línea de comandos. Esta herramienta es capaz de evaluar múltiples redes utilizando un único conjunto de datos o varios conjuntos de datos en una sola ejecución. Lo único que se necesita es un archivo de configuración donde se especifiquen los detalles sobre as redes y los conjuntos de datos. En este archivo, que tendrá extensión \textit{yml}, se definirán en primer lugar los conjuntos de datos, especificando la ruta donde se encuentran las anotaciones, \textit{inputPath}, la implementación de base da datos a la que pertenece este conjunto de datos, \textit{readerImplementation} y el fichero donde se especifica las etiquetas de los objetos existentes, \textit{readerNames}. Posteriormente, se definirá la información a cerca de las redes, especificando los pesos, \textit{inferencerWeights}, la estructura de ésta, \textit{inferencerConfig}, el framework utilizado, \textit{inferencerImplementation} y el conjunto de clases de objetos, \textit{inferencerNames}. Finalmente, se especificará la ruta de salida dónde quiere que se guarden los datos que se generen, \textit{outputCSVPath}. A continuación, se muestra un ejemplo de la estructura de este archivo de configuración:\\
 
 \begin{lstlisting}[frame=single]
@@ -2038,7 +2052,45 @@ Tras esto, solo faltaría arrancar la aplicación. Para ello, habrá que navegar ha
 \begin{lstlisting}[frame=single]
 ./autoEvaluator -c config.yml
 \end{lstlisting}
+\end{comment}
 
+Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usarán 2 de ellas existentes en su interfaz gráfica. En primer lugar, se utilizará la herramienta \textit{Detector}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Detector}} que ejecuta modelos entrenados sobre un conjunto de datos generando la detección de objetos sobre las imágenes que lo forman. La imagen \ref{DetectorDetectionSuite} muestra el aspecto de esta interfaz.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=15cm]{./Detector}
+\caption{Interfaz gráfica de la herramienta \textit{Detector}.}
+\label{DetectorDetectionSuite}
+\end{center}
+\end{figure}
+
+Como se muestra en la imagen anterior, para utilizar esta herramienta hay que definir varios parámetros como \textit{Input Dataset}, dónde se establece la ruta de los ficheros de anotaciones del conjunto de datos, así como de las imágenes, las cuales deben estar en el mismo directorio, \textit{Net Weights}, dónde se definen los pesos de la red que se quiere evaluar, \textit{Dataset Names} que hace referencia a las etiquetas de los objetos existentes, \textit{Net Configuration} que especifica la estructura de la red neuronal. En el apartado \textit{Inferencer Implementation}, se define el framework utilizado dentro de los disponibles en la aplicación\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/FrameWorks}}. Para el caso exclusivo de Caffe, hay que especificar varios parámetros adicionales tales como el umbral de confianza en las detecciones realizadas, definido para estos casos en 0.5 y el factor de escala, dimensiones de las imágenes de entrada y sustracción media para los canales de color BGR, obtenidos del repositorio de \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Model-Zoo}} en función del modelo utilizado. Finalmente, es posible especificar la carpeta en la que se desea que se guarden los resultados obtenidos.\\
+
+Tras definir todos los parámetros, es posible comenzar con la detección pulsando el botón \textit{Detect}. Mientras se está ejecutando esta herramienta, se van mostrando todas las imágenes con las \textit{bounding boxes} de los objetos detectados y por terminal la confianza de cada detección, como se muestra en la imagen \ref{DetectorExecutionDetectionSuite}.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=15cm]{./DetectionExecution}
+\caption{Ejecución de la herramienta \textit{Detector}.}
+\label{DetectorExecutionDetectionSuite}
+\end{center}
+\end{figure}
+
+Cuando termina la ejecución, se genera la salida en forma de fichero de anotaciones. Como se puede observar en la imagen \ref{DetectorDetectionSuite} se ha especificado como implementación de base de datos, \textit{Dataset Implementation}, \acrshort{PascalVOC}, por lo que las anotaciones generadas tendrán las características de las de esta base de datos, explicadas en el apartado \ref{VOC}. Por lo tanto, se crearán tantos ficheros \acrshort{XML} como imágenes, es decir, 4952, dónde se especificarán las coordenadas de cada uno de los objetos detectados.\\
+
+Tras la utilización del detector, se usará la herramienta \textit{Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Evaluator}} de \textit{Detection Suite}. Esta herramienta evalúa los resultados obtenidos anteriormente con el detector generando un archivo CSV que contiene los resultados generales además de los específicos para cada una de las clases existentes en el conjunto de datos dado. Las métricas calculadas son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases y para cada una de las clases utilizando 10 umbrales de \acrshort{IoU} entre 0.5 y 9.5, además del cómputo de tiempo de evaluación. La imagen \ref{EvaluatorDetectionSuite} muestra el aspecto de la interfaz del evaluador de \textit{Detection Suite}.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=15cm]{./Evaluator}
+\caption{Interfaz gráfica de la herramienta \textit{Evaluator}.}
+\label{EvaluatorDetectionSuite}
+\end{center}
+\end{figure}
+
+Para utilizar esta herramienta es necesario definir varios parámetros como \textit{Input Ground Thruth Dataset} e \textit{Input Ground Thruth Dataset}, que especifican el directorio dónde se encuentran las anotaciones reales del conjunto de datos de test y el directorio de las anotaciones generadas tras la detección respectivamente y \textit{Dataset Names} y \textit{Reader Dataset Implementation} que especifican el fichero con los nombre de los objetos existentes y la base de datos utilizada, tanto para las anotaciones reales como para las detectadas.\\
+
+Tras esto, se puede comenzar con la evaluación de los modelos. Cuando finaliza la ejecución, se muestra por terminal el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases utilizando los 10 umbrales comentados anteriormente del \acrshort{IoU}. Además, se muestra el \acrshort{mAP} y \acrshort{mAR} medio de estos umbrales.
 
 \chapter{Conclusiones}
 

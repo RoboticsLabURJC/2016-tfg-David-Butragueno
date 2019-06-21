@@ -31,15 +31,18 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces (a) Detecci\'on con modelo entrenado con \acrshort {PascalVOC}. (b) Detecci\'on con modelo entrenado con \acrshort {COCO}.\relax }}{46}{figure.caption.29}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{46}{subfigure.5.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{46}{subfigure.5.2}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Ejecuci\'on de entrenamiento de la red neuronal.\relax }}{56}{figure.caption.30}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Ejecuci\'on del entrenamiento de la red neuronal.\relax }}{56}{figure.caption.30}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Esquema del Componente Detector.\relax }}{57}{figure.caption.31}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Ejecuci\'on del componente detector usando el bot\'on de detecci\'on \'unica.\relax }}{61}{figure.caption.32}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Ejecuci\'on del componente detector condicional usando el bot\'on de detecci\'on \'unica.\relax }}{62}{figure.caption.33}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Comparacion bounding boxes real y detectada con imagen de la BBDD \acrshort {PascalVOC}.\relax }}{67}{figure.caption.34}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD \acrshort {COCO}.\relax }}{73}{figure.caption.35}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD \acrshort {COCO}.\relax }}{72}{figure.caption.35}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Intersecci\'on y uni\'on sobre 2 conjuntos A y B.\relax }}{73}{figure.caption.36}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Intersection over Union. Imagen obtenida de \cite {IndiceJaccard}\relax }}{74}{figure.caption.37}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Evaluaci\'on loU. Imagen obtenida de \cite {IndiceJaccard}\relax }}{75}{figure.caption.38}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Evaluaci\'on loU. Imagen obtenida de \cite {IndiceJaccard}\relax }}{74}{figure.caption.38}
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Distribuci\'on de las im\'agenes de test.\relax }}{76}{figure.caption.39}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Detector}.\relax }}{77}{figure.caption.40}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Ejecuci\'on de la herramienta \textit {Detector}.\relax }}{78}{figure.caption.41}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Evaluator}.\relax }}{79}{figure.caption.42}
 \addvspace {10\p@ }
