@@ -1,6 +1,7 @@
 \select@language {spanish}
-\contentsline {chapter}{\'{I}ndice de figuras}{VII}{chapter*.2}
-\contentsline {chapter}{Acr\'onimos}{IX}{chapter*.2}
+\contentsline {chapter}{\'{I}ndice de figuras}{IX}{chapter*.2}
+\contentsline {chapter}{\'Indice de tablas}{XI}{chapter*.2}
+\contentsline {chapter}{Acr\'onimos}{XIII}{chapter*.2}
 \contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Contexto y motivaci\'on}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Inteligencia artificial y aprendizaje autom\'atico}{2}{section.1.2}
@@ -50,7 +51,7 @@
 \contentsline {subsection}{\numberline {4.1.2}COCO}{68}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Par\'ametros de evaluaci\'on}{72}{section.4.2}
 \contentsline {section}{\numberline {4.3}Resultado final}{75}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusiones}{81}{chapter.5}
-\contentsline {section}{\numberline {5.1}Conclusiones}{81}{section.5.1}
-\contentsline {section}{\numberline {5.2}L\IeC {\'\i }neas futuras}{83}{section.5.2}
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{85}{chapter*.43}
+\contentsline {chapter}{\numberline {5}Conclusiones}{83}{chapter.5}
+\contentsline {section}{\numberline {5.1}Conclusiones}{83}{section.5.1}
+\contentsline {section}{\numberline {5.2}L\IeC {\'\i }neas futuras}{85}{section.5.2}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{87}{chapter*.49}

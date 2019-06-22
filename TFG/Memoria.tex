@@ -2,7 +2,7 @@
 
 \usepackage[latin1]{inputenc}
 \usepackage{tocloft}
-\usepackage[spanish, es-lcroman]{babel} 
+\usepackage[spanish, es-lcroman, es-tabla]{babel} 
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{listings}
@@ -11,6 +11,7 @@
 \usepackage{subfig}
 \usepackage[breaklinks=true]{hyperref}
 \usepackage[a4paper,top=3cm, bottom=3cm, inner=2.5cm, outer=2.5cm]{geometry}
+\usepackage{multirow}
 
 \usepackage[acronym, nonumberlist]{glossaries}
 \makeglossaries
@@ -157,6 +158,10 @@ $\ $
 \cleardoublepage % Í­ndice de figuras
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
+
+\cleardoublepage % Í­ndice de tablas
+\addcontentsline{toc}{chapter}{Índice de tablas}
+\listoftables
 
 \cleardoublepage
 \renewcommand{\acronymname}{Acrónimos}
@@ -2090,7 +2095,106 @@ Tras la utilización del detector, se usará la herramienta \textit{Evaluator}\foo
 
 Para utilizar esta herramienta es necesario definir varios parámetros como \textit{Input Ground Thruth Dataset} e \textit{Input Ground Thruth Dataset}, que especifican el directorio dónde se encuentran las anotaciones reales del conjunto de datos de test y el directorio de las anotaciones generadas tras la detección respectivamente y \textit{Dataset Names} y \textit{Reader Dataset Implementation} que especifican el fichero con los nombre de los objetos existentes y la base de datos utilizada, tanto para las anotaciones reales como para las detectadas.\\
 
-Tras esto, se puede comenzar con la evaluación de los modelos. Cuando finaliza la ejecución, se muestra por terminal el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases utilizando los 10 umbrales comentados anteriormente del \acrshort{IoU}. Además, se muestra el \acrshort{mAP} y \acrshort{mAR} medio de estos umbrales.
+Tras esto, se puede comenzar con la evaluación de los modelos. Cuando finaliza la ejecución, la primera métrica que podemos comparar es el tiempo que ha tomado \textit{Detection Suite} para evaluar cada una de las redes utilizadas. La tabla \ref{TiemposEvaluacionTable} muestra una comparativa del tiempo que ha requerido la evaluación de cada uno de los modelos.\\
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|c|c|}
+			\cline{2-4}   
+			\multicolumn{1}{c|}{} & \textbf{VOC} & \textbf{COCO} & \textbf{Custom}\\ \hline
+			\textbf{Tiempo de Evaluación [s]} & 4.90815 & 6.6475 & 5.28746\\ \cline{1-4}
+		\end{tabular}
+	\caption{Tiempo requerido para la evaluación de cada modelo.}
+	\label{TiemposEvaluacionTable}
+\end{table}
+
+Se puede observar que el modelo preentrenado con \acrshort{PascalVOC} ha sido el que más rápido ha realizado la evaluación, siendo el modelo preentrenado con \acrshort{COCO} el más lento. El modelo entrenado con la base de datos personalizada se encuentra en medio aunque muy cercano en tiempos al modelo \acrshort{PascalVOC}. Teniendo en cuenta las 4952 imágenes del conjunto de test, se puede considerar que la evaluación se ha realizado en tiempos óptimos, sin existir, en este caso, gran diferencia entre los modelos, ya que entre el más lento y el más rápido la diferencia es de 1.7 segundos.\\
+
+Otras métricas que se muestra por terminal cuando el proceso finaliza son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases utilizando los 10 umbrales comentados anteriormente del \acrshort{IoU}. Además, se muestra el \acrshort{mAP} y \acrshort{mAR} medio de estos umbrales. La tabla \ref{mAPTable} muestra el \acrshort{mAP} para cada uno de los umbrales mencionados.\\
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\cline{2-11}  
+			\multicolumn{1}{c|}{} & \multicolumn{10}{c|}{\textbf{Umbrales IoU}} \\ \cline{2-11} 
+			\multicolumn{1}{c|}{} & \textbf{0.5} & \textbf{0.55} & \textbf{0.6} &  \textbf{0.65} & \textbf{0.7} & \textbf{0.75} & \textbf{0.8} & \textbf{0.85} & \textbf{0.9} & \textbf{0.95}\\ \hline
+			\textbf{VOC} & 0.488 & 0.470 & 0.439 & 0.396 & 0.345 & 0.280 & 0.197 & 0.116 & 0.043 & 0.003 \\ \cline{1-11}
+			\textbf{COCO} & 0.495 & 0.476 & 0.442 & 0.401 & 0.349 & 0.277 & 0.194 & 0.112 & 0.035 & 0.002\\ \cline{1-11}
+			\textbf{Custom} & 0.652 & 0.693 & 0.597 & 0.557 & 0.501 & 0.427 & 0.401 & 0.392 & 0.317 & 0.288\\ \cline{1-11}
+		\end{tabular}
+	\caption{\acrshort{mAP} conjunto para 10 umbrales de \acrshort{IoU} de los 3 modelos evaluados.}
+	\label{mAPTable}
+\end{table}
+
+Una tendencia común de los 3 modelos es que a media que aumenta el umbral de \acrshort{IoU}, el valor de \acrshort{mAP} va disminuyendo hasta valores bastantes bajos. Comparando cada modelo, en primer lugar, se observa unas métricas bastante similares en los 2 modelos preentrenados, teniendo el modelo de \acrshort{COCO} mejores valores de \acrshort{mAP} en los umbrales de \acrshort{IoU} menores a 0.75, siendo superado por el modelo \acrshort{PascalVOC} en los umbrales superiores.  Para el modelo entrenado se observa gran mejora en los valores de \acrshort{mAP}, tanto en los valores bajos del umbral de \acrshort{IoU} como en los altos.\\
+
+Tras el análisis del \acrshort{mAP}, se mostrará un comparativa del \acrshort{mAR} para cada uno de los 10 umbrales de \acrshort{IoU}. La tabla \ref{mARTable} muestra estos datos:
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\cline{2-11}  
+			\multicolumn{1}{c|}{} & \multicolumn{10}{c|}{\textbf{Umbrales IoU}} \\ \cline{2-11} 
+			\multicolumn{1}{c|}{} & \textbf{0.5} & \textbf{0.55} & \textbf{0.6} &  \textbf{0.65} & \textbf{0.7} & \textbf{0.75} & \textbf{0.8} & \textbf{0.85} & \textbf{0.9} & \textbf{0.95}\\ \hline
+			\textbf{VOC} & 0.708 & 0.693 & 0.669 & 0.629 & 0.582 & 0.516 & 0.422 & 0.309 & 0.171 & 0.039 \\ \cline{1-11}
+			\textbf{COCO} & 0.736 & 0.721 & 0.691 & 0.653 & 0.603 & 0.528 & 0.432 & 0.315 & 0.161 & 0.030\\ \cline{1-11}
+			\textbf{Custom} & 0.854 & 0.837 & 0.811 & 0.777 & 0.728 & 0.662 & 0.601 & 0.545 & 0.486 & 0.403\\ \cline{1-11}
+		\end{tabular}
+	\caption{\acrshort{mAR} conjunto para 10 umbrales de \acrshort{IoU} de los 3 modelos evaluados.}
+	\label{mARTable}
+\end{table}
+
+Al igual que con el \acrshort{mAP}, se observa una disminución de los valores a medida que aumenta el valor del umbral, aunque los valores para cada uno de ellos son superiores a los calculados del \acrshort{mAP}. Comparando los modelos preentrenados, \acrshort{COCO} obtiene mejores valores que \acrshort{PascalVOC} excepto en los umbrales 0.9 y 0.95. En cuanto al modelos entrenado, al igual que para el  \acrshort{mAP}, obtiene considerables mejoras respecto a los modelos preentrenados. Finalmente, la tabla \ref{mAP&mARTable} muestra el valor medio conjunto de los 10 umbrales de \acrshort{IoU}, tanto de \acrshort{mAP} como de \acrshort{mAR}, para cada uno de los modelos evaluados.\\
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|c|}
+			\cline{2-3}  
+			\multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{IoU=0.5:0.95}} \\ \cline{2-3}
+			\multicolumn{1}{c|}{} & \textbf{mAP} & \textbf{mAR}\\ \hline
+			\textbf{VOC} & 0.278 & 0.473\\ \cline{1-3}
+			\textbf{COCO} & 0.278 & 0.487\\ \cline{1-3}
+			\textbf{Custom} & 0.483 & 0.670 \\ \cline{1-3}
+		\end{tabular}
+	\caption{Comparativa conjunta de \acrshort{mAP} y \acrshort{mAR} de la media de los 10 umbrales de \acrshort{IoU} para cada uno de los 3 modelos evaluados.}
+	\label{mAP&mARTable}
+\end{table}
+
+En las métricas conjuntas para todos los umbrales se observa que para el \acrshort{mAP} los modelos preentrenados de \acrshort{PascalVOC} y \acrshort{COCO} tienen el mismo valor, mientras que el modelo entrenado tiene una mejora del 42.4\% con respecto a ambos. En cuanto al \acrshort{mAR}, el modelos preentrenado de \acrshort{COCO} tiene un valor ligeramente superior al de \acrshort{PascalVOC}, siendo superado por el modelos entrenado en un 27.3\% y un 29.4\% respectivamente.\\
+
+En el fichero CSV, comentado anteriormente, que devuelve la herramienta \textit{Evaluator} cuando finaliza su ejecución, se pueden observar los valores de \acrshort{mAP} y \acrshort{mAR} pero individualmente para cada uno de los 20 objetos sobre los que se ha realizado la detección.\\
+
+\begin{table}[H]
+	\centering
+	\resizebox{16cm}{!} {
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\cline{2-21}  
+			\multicolumn{1}{c|}{} & \multicolumn{20}{c|}{\textbf{Objetos}} \\ \cline{2-21} 
+			\multicolumn{1}{c|}{} & \textbf{aero} & \textbf{bike} & \textbf{bird} &  \textbf{boat} & \textbf{bottle} & \textbf{bus} & \textbf{car} & \textbf{cat} & \textbf{chair} & \textbf{cow} & \textbf{table} & \textbf{dog} & \textbf{horse} & \textbf{mbike} & \textbf{person} & \textbf{plant} & \textbf{sheep} & \textbf{sofa} & \textbf{train} & \textbf{tv}\\ \hline
+			\textbf{VOC} & 0.32 & 0.35 & 0.24 & 0.15 & 0.09 & 0.41 & 0.32 & 0.46 & 0.12 & 0.27 & 0.22 & 0.36 & 0.40 & 0.34 & 0.24 & 0.10 & 0.25 & 0.26 & 0.41 & 0.26 \\ \cline{1-21}
+			\textbf{COCO} & 0.736 & 0.721 & 0.691 & 0.653 & 0.603 & 0.528 & 0.432 & 0.315 & 0.161 & 0.030 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
+			\textbf{Custom} & 0.854 & 0.837 & 0.811 & 0.777 & 0.728 & 0.662 & 0.601 & 0.545 & 0.486 & 0.403 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
+		\end{tabular}
+		}
+	\caption{\acrshort{mAP} medio de los 10 umbrales de \acrshort{IoU} para cada uno de los objetos en las 3 redes evaluadas.}
+	\label{mAPTableObjects}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\resizebox{16cm}{!} {
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\cline{2-21}  
+			\multicolumn{1}{c|}{} & \multicolumn{20}{c|}{\textbf{Objetos}} \\ \cline{2-21} 
+			\multicolumn{1}{c|}{} & \textbf{aero} & \textbf{bike} & \textbf{bird} &  \textbf{boat} & \textbf{bottle} & \textbf{bus} & \textbf{car} & \textbf{cat} & \textbf{chair} & \textbf{cow} & \textbf{table} & \textbf{dog} & \textbf{horse} & \textbf{mbike} & \textbf{person} & \textbf{plant} & \textbf{sheep} & \textbf{sofa} & \textbf{train} & \textbf{tv}\\ \hline
+			\textbf{VOC} & 0.708 & 0.693 & 0.669 & 0.629 & 0.582 & 0.516 & 0.422 & 0.309 & 0.171 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 \\ \cline{1-21}
+			\textbf{COCO} & 0.736 & 0.721 & 0.691 & 0.653 & 0.603 & 0.528 & 0.432 & 0.315 & 0.161 & 0.030 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
+			\textbf{Custom} & 0.854 & 0.837 & 0.811 & 0.777 & 0.728 & 0.662 & 0.601 & 0.545 & 0.486 & 0.403 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
+		\end{tabular}
+		}
+	\caption{\acrshort{mAR} medio de los 10 umbrales de \acrshort{IoU} para cada uno de los objetos en las 3 redes evaluadas.}
+	\label{mARTableObjects}
+\end{table}
 
 \chapter{Conclusiones}
 

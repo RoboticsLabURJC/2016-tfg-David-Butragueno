@@ -1,55 +1,56 @@
 \BOOKMARK [0][-]{chapter*.2}{\315ndice de figuras}{}% 1
-\BOOKMARK [0][-]{chapter*.2}{Acr\363nimos}{}% 2
-\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 3
-\BOOKMARK [1][-]{section.1.1}{Contexto y motivaci\363n}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.2}{Inteligencia artificial y aprendizaje autom\341tico}{chapter.1}% 5
-\BOOKMARK [2][-]{subsection.1.2.1}{Aplicaciones}{section.1.2}% 6
-\BOOKMARK [1][-]{section.1.3}{Redes neuronales artificiales}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.3.1}{Aprendizaje en redes neuronales artificiales}{section.1.3}% 8
-\BOOKMARK [2][-]{subsection.1.3.2}{Redes neuronales convolucionales}{section.1.3}% 9
-\BOOKMARK [2][-]{subsection.1.3.3}{Entornos software para redes neuronales}{section.1.3}% 10
-\BOOKMARK [1][-]{section.1.4}{Deep Learning}{chapter.1}% 11
-\BOOKMARK [1][-]{section.1.5}{Antecedentes en el proyecto JdeRobot}{chapter.1}% 12
-\BOOKMARK [1][-]{section.1.6}{Objetivos}{chapter.1}% 13
-\BOOKMARK [1][-]{section.1.7}{Metodolog\355a}{chapter.1}% 14
-\BOOKMARK [1][-]{section.1.8}{Estructura de la memoria}{chapter.1}% 15
-\BOOKMARK [0][-]{chapter.2}{Infraestructura}{}% 16
-\BOOKMARK [1][-]{section.2.1}{Caffe}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.1.1}{L\355nea de comandos}{section.2.1}% 18
-\BOOKMARK [2][-]{subsection.2.1.2}{Python}{section.2.1}% 19
-\BOOKMARK [2][-]{subsection.2.1.3}{Capas de una red neuronal}{section.2.1}% 20
-\BOOKMARK [3][-]{subsubsection.2.1.3.1}{Capas de datos}{subsection.2.1.3}% 21
-\BOOKMARK [3][-]{subsubsection.2.1.3.2}{Capas de visi\363n}{subsection.2.1.3}% 22
-\BOOKMARK [3][-]{subsubsection.2.1.3.3}{Capas comunes}{subsection.2.1.3}% 23
-\BOOKMARK [3][-]{subsubsection.2.1.3.4}{Capas de p\351rdida}{subsection.2.1.3}% 24
-\BOOKMARK [3][-]{subsubsection.2.1.3.5}{Capas de activaci\363n}{subsection.2.1.3}% 25
-\BOOKMARK [1][-]{section.2.2}{JdeRobot}{chapter.2}% 26
-\BOOKMARK [2][-]{subsection.2.2.1}{CameraServer}{section.2.2}% 27
-\BOOKMARK [1][-]{section.2.3}{Bases de datos}{chapter.2}% 28
-\BOOKMARK [2][-]{subsection.2.3.1}{PASCAL Visual Object Classes}{section.2.3}% 29
-\BOOKMARK [2][-]{subsection.2.3.2}{Common Objects in Context}{section.2.3}% 30
-\BOOKMARK [0][-]{chapter.3}{Detecci\363n con Single Shot MultiBox y Caffe}{}% 31
-\BOOKMARK [1][-]{section.3.1}{T\351cnica Single Shot MultiBox Detection}{chapter.3}% 32
-\BOOKMARK [2][-]{subsection.3.1.1}{Arquitectura}{section.3.1}% 33
-\BOOKMARK [2][-]{subsection.3.1.2}{Entrenamiento}{section.3.1}% 34
-\BOOKMARK [1][-]{section.3.2}{Single Shot MultiBox Detection en Caffe}{chapter.3}% 35
-\BOOKMARK [1][-]{section.3.3}{Detector de objetos}{chapter.3}% 36
-\BOOKMARK [2][-]{subsection.3.3.1}{Estructura de la red}{section.3.3}% 37
-\BOOKMARK [2][-]{subsection.3.3.2}{Definici\363n del solucionador}{section.3.3}% 38
-\BOOKMARK [2][-]{subsection.3.3.3}{Entrenamiento de la red}{section.3.3}% 39
-\BOOKMARK [1][-]{section.3.4}{Componente detector}{chapter.3}% 40
-\BOOKMARK [2][-]{subsection.3.4.1}{Hilo Camera}{section.3.4}% 41
-\BOOKMARK [2][-]{subsection.3.4.2}{Hilo Detector}{section.3.4}% 42
-\BOOKMARK [2][-]{subsection.3.4.3}{Hilo GUI}{section.3.4}% 43
-\BOOKMARK [2][-]{subsection.3.4.4}{Ejecuci\363n}{section.3.4}% 44
-\BOOKMARK [2][-]{subsection.3.4.5}{Detecci\363n condicional}{section.3.4}% 45
-\BOOKMARK [0][-]{chapter.4}{Medidor de calidad}{}% 46
-\BOOKMARK [1][-]{section.4.1}{Comparaci\363n bounding boxes real y detectada}{chapter.4}% 47
-\BOOKMARK [2][-]{subsection.4.1.1}{PascalVOC}{section.4.1}% 48
-\BOOKMARK [2][-]{subsection.4.1.2}{COCO}{section.4.1}% 49
-\BOOKMARK [1][-]{section.4.2}{Par\341metros de evaluaci\363n}{chapter.4}% 50
-\BOOKMARK [1][-]{section.4.3}{Resultado final}{chapter.4}% 51
-\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 52
-\BOOKMARK [1][-]{section.5.1}{Conclusiones}{chapter.5}% 53
-\BOOKMARK [1][-]{section.5.2}{L\355neas futuras}{chapter.5}% 54
-\BOOKMARK [0][-]{chapter*.43}{Bibliograf\355a}{}% 55
+\BOOKMARK [0][-]{chapter*.2}{\315ndice de tablas}{}% 2
+\BOOKMARK [0][-]{chapter*.2}{Acr\363nimos}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Contexto y motivaci\363n}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Inteligencia artificial y aprendizaje autom\341tico}{chapter.1}% 6
+\BOOKMARK [2][-]{subsection.1.2.1}{Aplicaciones}{section.1.2}% 7
+\BOOKMARK [1][-]{section.1.3}{Redes neuronales artificiales}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.3.1}{Aprendizaje en redes neuronales artificiales}{section.1.3}% 9
+\BOOKMARK [2][-]{subsection.1.3.2}{Redes neuronales convolucionales}{section.1.3}% 10
+\BOOKMARK [2][-]{subsection.1.3.3}{Entornos software para redes neuronales}{section.1.3}% 11
+\BOOKMARK [1][-]{section.1.4}{Deep Learning}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.5}{Antecedentes en el proyecto JdeRobot}{chapter.1}% 13
+\BOOKMARK [1][-]{section.1.6}{Objetivos}{chapter.1}% 14
+\BOOKMARK [1][-]{section.1.7}{Metodolog\355a}{chapter.1}% 15
+\BOOKMARK [1][-]{section.1.8}{Estructura de la memoria}{chapter.1}% 16
+\BOOKMARK [0][-]{chapter.2}{Infraestructura}{}% 17
+\BOOKMARK [1][-]{section.2.1}{Caffe}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.1.1}{L\355nea de comandos}{section.2.1}% 19
+\BOOKMARK [2][-]{subsection.2.1.2}{Python}{section.2.1}% 20
+\BOOKMARK [2][-]{subsection.2.1.3}{Capas de una red neuronal}{section.2.1}% 21
+\BOOKMARK [3][-]{subsubsection.2.1.3.1}{Capas de datos}{subsection.2.1.3}% 22
+\BOOKMARK [3][-]{subsubsection.2.1.3.2}{Capas de visi\363n}{subsection.2.1.3}% 23
+\BOOKMARK [3][-]{subsubsection.2.1.3.3}{Capas comunes}{subsection.2.1.3}% 24
+\BOOKMARK [3][-]{subsubsection.2.1.3.4}{Capas de p\351rdida}{subsection.2.1.3}% 25
+\BOOKMARK [3][-]{subsubsection.2.1.3.5}{Capas de activaci\363n}{subsection.2.1.3}% 26
+\BOOKMARK [1][-]{section.2.2}{JdeRobot}{chapter.2}% 27
+\BOOKMARK [2][-]{subsection.2.2.1}{CameraServer}{section.2.2}% 28
+\BOOKMARK [1][-]{section.2.3}{Bases de datos}{chapter.2}% 29
+\BOOKMARK [2][-]{subsection.2.3.1}{PASCAL Visual Object Classes}{section.2.3}% 30
+\BOOKMARK [2][-]{subsection.2.3.2}{Common Objects in Context}{section.2.3}% 31
+\BOOKMARK [0][-]{chapter.3}{Detecci\363n con Single Shot MultiBox y Caffe}{}% 32
+\BOOKMARK [1][-]{section.3.1}{T\351cnica Single Shot MultiBox Detection}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.1.1}{Arquitectura}{section.3.1}% 34
+\BOOKMARK [2][-]{subsection.3.1.2}{Entrenamiento}{section.3.1}% 35
+\BOOKMARK [1][-]{section.3.2}{Single Shot MultiBox Detection en Caffe}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.3}{Detector de objetos}{chapter.3}% 37
+\BOOKMARK [2][-]{subsection.3.3.1}{Estructura de la red}{section.3.3}% 38
+\BOOKMARK [2][-]{subsection.3.3.2}{Definici\363n del solucionador}{section.3.3}% 39
+\BOOKMARK [2][-]{subsection.3.3.3}{Entrenamiento de la red}{section.3.3}% 40
+\BOOKMARK [1][-]{section.3.4}{Componente detector}{chapter.3}% 41
+\BOOKMARK [2][-]{subsection.3.4.1}{Hilo Camera}{section.3.4}% 42
+\BOOKMARK [2][-]{subsection.3.4.2}{Hilo Detector}{section.3.4}% 43
+\BOOKMARK [2][-]{subsection.3.4.3}{Hilo GUI}{section.3.4}% 44
+\BOOKMARK [2][-]{subsection.3.4.4}{Ejecuci\363n}{section.3.4}% 45
+\BOOKMARK [2][-]{subsection.3.4.5}{Detecci\363n condicional}{section.3.4}% 46
+\BOOKMARK [0][-]{chapter.4}{Medidor de calidad}{}% 47
+\BOOKMARK [1][-]{section.4.1}{Comparaci\363n bounding boxes real y detectada}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.1.1}{PascalVOC}{section.4.1}% 49
+\BOOKMARK [2][-]{subsection.4.1.2}{COCO}{section.4.1}% 50
+\BOOKMARK [1][-]{section.4.2}{Par\341metros de evaluaci\363n}{chapter.4}% 51
+\BOOKMARK [1][-]{section.4.3}{Resultado final}{chapter.4}% 52
+\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 53
+\BOOKMARK [1][-]{section.5.1}{Conclusiones}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.2}{L\355neas futuras}{chapter.5}% 55
+\BOOKMARK [0][-]{chapter*.49}{Bibliograf\355a}{}% 56
