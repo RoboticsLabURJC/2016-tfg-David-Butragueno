@@ -48,9 +48,11 @@
 \BOOKMARK [1][-]{section.4.1}{Comparaci\363n bounding boxes real y detectada}{chapter.4}% 48
 \BOOKMARK [2][-]{subsection.4.1.1}{PascalVOC}{section.4.1}% 49
 \BOOKMARK [2][-]{subsection.4.1.2}{COCO}{section.4.1}% 50
-\BOOKMARK [1][-]{section.4.2}{Par\341metros de evaluaci\363n}{chapter.4}% 51
-\BOOKMARK [1][-]{section.4.3}{Resultado final}{chapter.4}% 52
-\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 53
-\BOOKMARK [1][-]{section.5.1}{Conclusiones}{chapter.5}% 54
-\BOOKMARK [1][-]{section.5.2}{L\355neas futuras}{chapter.5}% 55
-\BOOKMARK [0][-]{chapter*.49}{Bibliograf\355a}{}% 56
+\BOOKMARK [1][-]{section.4.2}{M\351tricas de evaluaci\363n}{chapter.4}% 51
+\BOOKMARK [2][-]{subsection.4.2.1}{Precisi\363n y Recall}{section.4.2}% 52
+\BOOKMARK [2][-]{subsection.4.2.2}{\315ndice Jaccard}{section.4.2}% 53
+\BOOKMARK [1][-]{section.4.3}{Resultado final}{chapter.4}% 54
+\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 55
+\BOOKMARK [1][-]{section.5.1}{Conclusiones}{chapter.5}% 56
+\BOOKMARK [1][-]{section.5.2}{L\355neas futuras}{chapter.5}% 57
+\BOOKMARK [0][-]{chapter*.49}{Bibliograf\355a}{}% 58

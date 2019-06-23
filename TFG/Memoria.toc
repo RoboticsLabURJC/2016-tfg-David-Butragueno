@@ -49,7 +49,9 @@
 \contentsline {section}{\numberline {4.1}Comparaci\'on \textit {bounding boxes} real y detectada}{63}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}PascalVOC}{63}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}COCO}{68}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Par\'ametros de evaluaci\'on}{72}{section.4.2}
+\contentsline {section}{\numberline {4.2}M\'etricas de evaluaci\'on}{72}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Precisi\'on y Recall}{73}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}\'Indice Jaccard}{73}{subsection.4.2.2}
 \contentsline {section}{\numberline {4.3}Resultado final}{75}{section.4.3}
 \contentsline {chapter}{\numberline {5}Conclusiones}{83}{chapter.5}
 \contentsline {section}{\numberline {5.1}Conclusiones}{83}{section.5.1}

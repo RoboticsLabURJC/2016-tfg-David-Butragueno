@@ -38,9 +38,9 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Comparacion bounding boxes real y detectada con imagen de la BBDD \acrshort {PascalVOC}.\relax }}{67}{figure.caption.34}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD \acrshort {COCO}.\relax }}{72}{figure.caption.35}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Intersecci\'on y uni\'on sobre 2 conjuntos A y B.\relax }}{73}{figure.caption.36}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Intersecci\'on y uni\'on sobre 2 conjuntos A y B.\relax }}{74}{figure.caption.36}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Intersection over Union. Imagen obtenida de \cite {IndiceJaccard}\relax }}{74}{figure.caption.37}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Evaluaci\'on loU. Imagen obtenida de \cite {IndiceJaccard}\relax }}{74}{figure.caption.38}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Evaluaci\'on loU. Imagen obtenida de \cite {IndiceJaccard}\relax }}{75}{figure.caption.38}
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Distribuci\'on de las im\'agenes de test.\relax }}{76}{figure.caption.39}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Detector}.\relax }}{77}{figure.caption.40}
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Ejecuci\'on de la herramienta \textit {Detector}.\relax }}{78}{figure.caption.41}

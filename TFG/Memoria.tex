@@ -514,9 +514,9 @@ En el \textbf{Capítulo 1. Introducción}, se expone el contexto general del traba
 
 En el \textbf{Capítulo 2. Infraestructura} se especifican todos los elemento \textit{software} utilizados durante el trabajo, incluyendo la plataforma Caffe especializada en redes neuronales, el entorno JdeRobot y las bases de datos usadas para el entrenamiento.\\
 
-En el \textbf{Capítulo 3. Detección con Single Shot MultiBox y Caffe}, en un primer lugar se define  de forma amplia y teórica las características principales de la técnica \acrshort{SSD}. Finalmente, se muestra un ejemplo de como integrar esta técnica en la plataforma Caffe, y se muestra el componente creado cuyo objetivo es la detección de objetos en tiempo real.\\
+En el \textbf{Capítulo 3. Detección con Single Shot MultiBox y Caffe}, en un primer lugar se define de forma amplia y teórica las características principales de la técnica \acrshort{SSD}. Después, se definen todos los elementos necesarios para el entrenamiento de una red neuronal en Caffe y su posterior ejecución. Finalmente, se muestra un ejemplo de como integrar esta técnica en la plataforma Caffe, y se muestra el componente creado cuyo objetivo es la detección de objetos en tiempo real.\\
 
-En el \textbf{Capítulo 4. Medidor de calidad} se medirán las prestaciones de la red entrenad y alguna preentrenada con diferentes bases de datos. Se explicará el concepto de \textit{índice Jaccard} y se describirán detalladamente los \textit{scripts} creados para calcular este parámetro. Finalmente, se realizará una breve introducción a la herramienta \textit{Detection Suite} y se utilizará para evaluar los resultados obtenidos y compararlos, proporcionando posteriormente una explicación detallada a éstos.\\
+En el \textbf{Capítulo 4. Medidor de calidad} se medirán las prestaciones de la red neuronal entrena y 2 preentrenadas con diferentes bases de datos y comentadas durante el trabajo. Se explicarán las métricas utilizadas para la evaluación de los modelos para su posterior análisis. Finalmente, se realizará una breve introducción a la herramienta \textit{Detection Suite} y se utilizará para evaluar los resultados obtenidos y compararlos, proporcionando posteriormente una explicación detallada a éstos.\\
 
 En el \textbf{Capítulo 5. Conclusiones} se resumen las conclusiones obtenidas a lo largo del trabajo y se establecen algunas posibles líneas futuras de investigación en la línea de lo abordado en este trabajo.
 
@@ -1007,7 +1007,7 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 La principal diferencia entre el entrenamiento usando la técnica \acrshort{SSD} y el entrenamiento de un detector típico, es que la información a cerca de los cuadros delimitadores reales debe asignarse a salidas específicas dentro del conjunto fijo de salidas del detector. Tras realizar esta asignación, la función de pérdida y la propagación hacia atrás son aplicadas de extremo a extremo. El proceso de entrenamiento también implica elegir el conjunto de cuadros y escalas predeterminados para la detección.
 
 \begin{itemize}
-\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, \acrshort{IoU}, explicado en el apartado \ref{ParametrosEvaluacionSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
+\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, \acrshort{IoU}, explicado en el apartado \ref{IoUSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
 
 \item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de \acrshort{SSD} es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
 
@@ -1798,20 +1798,36 @@ for i in range(len(ground_truth)):
 \end{center}
 \end{figure}
 
-\section{Parámetros de evaluación}
-\label{ParametrosEvaluacionSection}
+\section{Métricas de evaluación}
+\label{MetricasEvaluacionSection}
 
 Existentes varios parámetros cuya calculo e interpretación hacen posible la evaluación de la capacidad que tienen determinados sistemas a la hora de detectar objetos. En esta sección se explicarán los que se calcularán posteriormente en el apartado \ref{ResultadoFinalSection} tras evaluar con \textit{Detection Suite} las redes utilizadas durante este trabajo.
 
-\begin{description}
-\item[mean Average Precision y mean Average Recall]\hfill 
-\vspace{5pt}
-\\
-El mean Average Precision, \acrshort{mAP}, y el mean Average Recall, \acrshort{mAR}, son 2 métricas muy populares utilizadas para medir la precisión de los detectores de objetos.
+\subsection{Precisión y Recall}
+\label{mAPmARSection}
 
-\item[Índice Jaccard]\hfill 
-\vspace{5pt}
-\\
+Varias de las métricas utilizadas a la hora de evaluar el rendimiento de modelos creados para la detección de objetos se enfocan en la capacidad que tiene el detector para realizar buenas detecciones. Para este objetivo, se pueden destacar 2 medidas:
+
+\begin{itemize}
+\item \textbf{Precisión,} mide cómo de precisas son las detecciones, es decir, qué porcentaje de las predicciones son correctas.
+\begin{equation}
+Precision = \frac{TP}{TP + FP}
+\end{equation}
+donde TP es el número total de verdaderos positivos y FP el número de falsos positivos.
+\item \textbf{Recall,} mide cómo de bien el modelo encuentra los positivos.
+\begin{equation}
+Precision = \frac{TP}{TP + FN}
+\end{equation}
+donde FP es el número de falsos negativos.
+\end{itemize}
+
+Utilizando estas métricas, un determinado modelo de detección, además de devolver las detecciones realizadas, devolverá las probabilidades de que dichas detecciones sean acertadas. Fijando diferentes umbrales, se pueden obtener los valores \textit{Average Precision} y \textit{Average Recall} que hacen referencia a la precisión y \textit{recall} media para un determinado umbral y para las diferentes clases existentes en un modelo. Normalmente, los detectores de objetos suelen tener múltiples clases y es posible que se necesita medir el promedio de precisión o \textit{recall} medio para todas las clases. Así, los parámetros \textit{mean Average Precision} y \textit{mean Average Recall} dan una visión más general de cómo el detector es capaz de actuar para todas las clases. Por ejemplo, el \acrshort{mAP} para N clases:
+\begin{equation}
+mAP = \frac{1}{N} {\sum_{class=1}^{N}{AP}_{class}}
+\end{equation}
+\subsection{Índice Jaccard}
+\label{IoUSection}
+
 El índice Jaccard, también conocido como \textit{Intersection over Union}, es una estadística utilizada para comparar la similitud y la diversidad de conjuntos de muestras. Este índice mide la similitud entre conjuntos de muestras finitas y se define como el tamaño de la intersección dividido por el tamaño de la unión de los conjuntos de muestras.\\
 
 \begin{equation}
@@ -1825,10 +1841,10 @@ J(A,B) = \frac{|A\cap B|}{|A\cup B|} = \frac{|A\cap B|}{|A| + |B| - |A\cap B|}
 \end{center}
 \end{figure}
 
-Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 1.
-
+Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 1. Para cualquier coincidencia de los 2 conjuntos, el \acrshort{IoU} estará comprendido entre 0 y 1, tal y como se define en la ecuación \ref{IoUEquation}.
 \begin{equation}
 0\leq J(A,B) \leq  1
+\label{IoUEquation}
 \end{equation}
 
 
@@ -1856,8 +1872,6 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \caption{Evaluación loU. Imagen obtenida de \cite{IndiceJaccard}}
 \end{center}
 \end{figure}
-
-\end{description}
 
 \begin{comment}
 \section{Cálculo del índice Jaccard}
@@ -2059,7 +2073,7 @@ Tras esto, solo faltaría arrancar la aplicación. Para ello, habrá que navegar ha
 \end{lstlisting}
 \end{comment}
 
-Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usarán 2 de ellas existentes en su interfaz gráfica. En primer lugar, se utilizará la herramienta \textit{Detector}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Detector}} que ejecuta modelos entrenados sobre un conjunto de datos generando la detección de objetos sobre las imágenes que lo forman. La imagen \ref{DetectorDetectionSuite} muestra el aspecto de esta interfaz.\\
+Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usarán 2 de ellas existentes en su interfaz gráfica. En primer lugar, se utilizará la herramienta \textit{Detector}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Detector}} que ejecuta modelos entrenados sobre un conjunto de datos de prueba, generando así la detección de objetos sobre las imágenes que lo forman. La imagen \ref{DetectorDetectionSuite} muestra el aspecto de esta interfaz.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -2083,7 +2097,7 @@ Tras definir todos los parámetros, es posible comenzar con la detección pulsando
 
 Cuando termina la ejecución, se genera la salida en forma de fichero de anotaciones. Como se puede observar en la imagen \ref{DetectorDetectionSuite} se ha especificado como implementación de base de datos, \textit{Dataset Implementation}, \acrshort{PascalVOC}, por lo que las anotaciones generadas tendrán las características de las de esta base de datos, explicadas en el apartado \ref{VOC}. Por lo tanto, se crearán tantos ficheros \acrshort{XML} como imágenes, es decir, 4952, dónde se especificarán las coordenadas de cada uno de los objetos detectados.\\
 
-Tras la utilización del detector, se usará la herramienta \textit{Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Evaluator}} de \textit{Detection Suite}. Esta herramienta evalúa los resultados obtenidos anteriormente con el detector generando un archivo CSV que contiene los resultados generales además de los específicos para cada una de las clases existentes en el conjunto de datos dado. Las métricas calculadas son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases y para cada una de las clases utilizando 10 umbrales de \acrshort{IoU} entre 0.5 y 9.5, además del cómputo de tiempo de evaluación. La imagen \ref{EvaluatorDetectionSuite} muestra el aspecto de la interfaz del evaluador de \textit{Detection Suite}.\\
+Tras la utilización del detector, se usará la herramienta \textit{Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Evaluator}} de \textit{Detection Suite}. Esta herramienta evalúa los resultados obtenidos anteriormente con el detector generando un archivo CSV que contiene los resultados generales además de los específicos para cada una de las clases existentes en el conjunto de datos dado. Las métricas calculadas son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases y para cada una de las clases utilizando 10 umbrales de \acrshort{IoU} entre 0.5 y 9.5, además del cómputo de tiempo de evaluación. Los resultados obtenidos por \textit{Detection Suite} están basados en la \acrshort{API} de \acrshort{COCO}\footnote{\url{https://github.com/cocodataset/cocoapi}}, por lo que, como se dice en su página oficial\footnote{\url{http://cocodataset.org/detection-eval}}, no habrá distinción ente \textit{Average Precision} y \acrshort{mAP}, al igual que entre \textit{Average Recall} y \acrshort{mAR}, ya que se asume que la diferencia está clara en el contexto. La imagen \ref{EvaluatorDetectionSuite} muestra el aspecto de la interfaz del evaluador de \textit{Detection Suite}.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -2120,13 +2134,13 @@ Otras métricas que se muestra por terminal cuando el proceso finaliza son el \ac
 			\multicolumn{1}{c|}{} & \textbf{0.5} & \textbf{0.55} & \textbf{0.6} &  \textbf{0.65} & \textbf{0.7} & \textbf{0.75} & \textbf{0.8} & \textbf{0.85} & \textbf{0.9} & \textbf{0.95}\\ \hline
 			\textbf{VOC} & 0.488 & 0.470 & 0.439 & 0.396 & 0.345 & 0.280 & 0.197 & 0.116 & 0.043 & 0.003 \\ \cline{1-11}
 			\textbf{COCO} & 0.495 & 0.476 & 0.442 & 0.401 & 0.349 & 0.277 & 0.194 & 0.112 & 0.035 & 0.002\\ \cline{1-11}
-			\textbf{Custom} & 0.652 & 0.693 & 0.597 & 0.557 & 0.501 & 0.427 & 0.401 & 0.392 & 0.317 & 0.288\\ \cline{1-11}
+			\textbf{Custom} & 0.810 & 0.770 & 0.693 & 0.627 & 0.569 & 0.547 & 0.491 & 0.432 & 0.387 & 0.358\\ \cline{1-11}
 		\end{tabular}
 	\caption{\acrshort{mAP} conjunto para 10 umbrales de \acrshort{IoU} de los 3 modelos evaluados.}
 	\label{mAPTable}
 \end{table}
 
-Una tendencia común de los 3 modelos es que a media que aumenta el umbral de \acrshort{IoU}, el valor de \acrshort{mAP} va disminuyendo hasta valores bastantes bajos. Comparando cada modelo, en primer lugar, se observa unas métricas bastante similares en los 2 modelos preentrenados, teniendo el modelo de \acrshort{COCO} mejores valores de \acrshort{mAP} en los umbrales de \acrshort{IoU} menores a 0.75, siendo superado por el modelo \acrshort{PascalVOC} en los umbrales superiores.  Para el modelo entrenado se observa gran mejora en los valores de \acrshort{mAP}, tanto en los valores bajos del umbral de \acrshort{IoU} como en los altos.\\
+Una tendencia común de los 3 modelos es que a media que aumenta el umbral de \acrshort{IoU}, el valor de \acrshort{mAP} va disminuyendo. Comparando cada modelo, en primer lugar, se observa unas métricas bastante similares en los 2 modelos preentrenados, teniendo el modelo de \acrshort{COCO} mejores valores de \acrshort{mAP} en los umbrales de \acrshort{IoU} menores a 0.75, siendo superado por el modelo \acrshort{PascalVOC} en los umbrales superiores.  Para el modelo entrenado se observa gran mejora en los valores de \acrshort{mAP}, tanto en los valores bajos del umbral de \acrshort{IoU} como en los altos.\\
 
 Tras el análisis del \acrshort{mAP}, se mostrará un comparativa del \acrshort{mAR} para cada uno de los 10 umbrales de \acrshort{IoU}. La tabla \ref{mARTable} muestra estos datos:
 
@@ -2138,7 +2152,7 @@ Tras el análisis del \acrshort{mAP}, se mostrará un comparativa del \acrshort{mA
 			\multicolumn{1}{c|}{} & \textbf{0.5} & \textbf{0.55} & \textbf{0.6} &  \textbf{0.65} & \textbf{0.7} & \textbf{0.75} & \textbf{0.8} & \textbf{0.85} & \textbf{0.9} & \textbf{0.95}\\ \hline
 			\textbf{VOC} & 0.708 & 0.693 & 0.669 & 0.629 & 0.582 & 0.516 & 0.422 & 0.309 & 0.171 & 0.039 \\ \cline{1-11}
 			\textbf{COCO} & 0.736 & 0.721 & 0.691 & 0.653 & 0.603 & 0.528 & 0.432 & 0.315 & 0.161 & 0.030\\ \cline{1-11}
-			\textbf{Custom} & 0.854 & 0.837 & 0.811 & 0.777 & 0.728 & 0.662 & 0.601 & 0.545 & 0.486 & 0.403\\ \cline{1-11}
+			\textbf{Custom} & 0.874 & 0.857 & 0.831 & 0.797 & 0.748 & 0.682 & 0.621 & 0.565 & 0.486 & 0.403\\ \cline{1-11}
 		\end{tabular}
 	\caption{\acrshort{mAR} conjunto para 10 umbrales de \acrshort{IoU} de los 3 modelos evaluados.}
 	\label{mARTable}
@@ -2154,15 +2168,15 @@ Al igual que con el \acrshort{mAP}, se observa una disminución de los valores a 
 			\multicolumn{1}{c|}{} & \textbf{mAP} & \textbf{mAR}\\ \hline
 			\textbf{VOC} & 0.278 & 0.473\\ \cline{1-3}
 			\textbf{COCO} & 0.278 & 0.487\\ \cline{1-3}
-			\textbf{Custom} & 0.483 & 0.670 \\ \cline{1-3}
+			\textbf{Custom} & 0.568 & 0.686 \\ \cline{1-3}
 		\end{tabular}
 	\caption{Comparativa conjunta de \acrshort{mAP} y \acrshort{mAR} de la media de los 10 umbrales de \acrshort{IoU} para cada uno de los 3 modelos evaluados.}
 	\label{mAP&mARTable}
 \end{table}
 
-En las métricas conjuntas para todos los umbrales se observa que para el \acrshort{mAP} los modelos preentrenados de \acrshort{PascalVOC} y \acrshort{COCO} tienen el mismo valor, mientras que el modelo entrenado tiene una mejora del 42.4\% con respecto a ambos. En cuanto al \acrshort{mAR}, el modelos preentrenado de \acrshort{COCO} tiene un valor ligeramente superior al de \acrshort{PascalVOC}, siendo superado por el modelos entrenado en un 27.3\% y un 29.4\% respectivamente.\\
+En las métricas conjuntas para todos los umbrales se observa que para el \acrshort{mAP} los modelos preentrenados de \acrshort{PascalVOC} y \acrshort{COCO} tienen el mismo valor, mientras que el modelo entrenado tiene una mejora del 51.05\% con respecto a ambos. En cuanto al \acrshort{mAR}, el modelos preentrenado de \acrshort{COCO} tiene un valor ligeramente superior al de \acrshort{PascalVOC}, siendo superado por el modelos entrenado en un 29\% y un 31.04\% respectivamente.\\
 
-En el fichero CSV, comentado anteriormente, que devuelve la herramienta \textit{Evaluator} cuando finaliza su ejecución, se pueden observar los valores de \acrshort{mAP} y \acrshort{mAR} pero individualmente para cada uno de los 20 objetos sobre los que se ha realizado la detección.\\
+En el fichero CSV, comentado anteriormente, que devuelve la herramienta \textit{Evaluator} cuando finaliza su ejecución, se pueden observar los valores de \acrshort{mAP} y \acrshort{mAR} pero individualmente para cada uno de los 20 objetos sobre los que se ha realizado la detección. Las tablas \ref{mAPTableObjects} y \ref{mARTableObjects} muestran los valores de \acrshort{mAP} y \acrshort{mAR} respectivamente para cada objeto.\\
 
 \begin{table}[H]
 	\centering
@@ -2172,8 +2186,8 @@ En el fichero CSV, comentado anteriormente, que devuelve la herramienta \textit{
 			\multicolumn{1}{c|}{} & \multicolumn{20}{c|}{\textbf{Objetos}} \\ \cline{2-21} 
 			\multicolumn{1}{c|}{} & \textbf{aero} & \textbf{bike} & \textbf{bird} &  \textbf{boat} & \textbf{bottle} & \textbf{bus} & \textbf{car} & \textbf{cat} & \textbf{chair} & \textbf{cow} & \textbf{table} & \textbf{dog} & \textbf{horse} & \textbf{mbike} & \textbf{person} & \textbf{plant} & \textbf{sheep} & \textbf{sofa} & \textbf{train} & \textbf{tv}\\ \hline
 			\textbf{VOC} & 0.32 & 0.35 & 0.24 & 0.15 & 0.09 & 0.41 & 0.32 & 0.46 & 0.12 & 0.27 & 0.22 & 0.36 & 0.40 & 0.34 & 0.24 & 0.10 & 0.25 & 0.26 & 0.41 & 0.26 \\ \cline{1-21}
-			\textbf{COCO} & 0.736 & 0.721 & 0.691 & 0.653 & 0.603 & 0.528 & 0.432 & 0.315 & 0.161 & 0.030 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
-			\textbf{Custom} & 0.854 & 0.837 & 0.811 & 0.777 & 0.728 & 0.662 & 0.601 & 0.545 & 0.486 & 0.403 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
+			\textbf{COCO} & 0.33 & 0.30 & 0.24 & 0.15 & 0.10 & 0.42 & 0.32 & 0.45 & 0.14 & 0.33 & 0.16 & 0.38 & 0.39 & 0.31 & 0.25 & 0.10 & 0.27 & 0.25 & 0.39 & 0.27\\ \cline{1-21}
+			\textbf{Custom} & 0.62 & 0.70 & 0.54 & 0.42 & 0.39 & 0.70 & 0.61 & 0.72 & 0.40 & 0.61 & 0.47 & 0.65 & 0.66 & 0.64 & 0.58 & 0.38 & 0.54 & 0.55 & 0.69 & 0.54\\ \cline{1-21}
 		\end{tabular}
 		}
 	\caption{\acrshort{mAP} medio de los 10 umbrales de \acrshort{IoU} para cada uno de los objetos en las 3 redes evaluadas.}
@@ -2187,14 +2201,16 @@ En el fichero CSV, comentado anteriormente, que devuelve la herramienta \textit{
 			\cline{2-21}  
 			\multicolumn{1}{c|}{} & \multicolumn{20}{c|}{\textbf{Objetos}} \\ \cline{2-21} 
 			\multicolumn{1}{c|}{} & \textbf{aero} & \textbf{bike} & \textbf{bird} &  \textbf{boat} & \textbf{bottle} & \textbf{bus} & \textbf{car} & \textbf{cat} & \textbf{chair} & \textbf{cow} & \textbf{table} & \textbf{dog} & \textbf{horse} & \textbf{mbike} & \textbf{person} & \textbf{plant} & \textbf{sheep} & \textbf{sofa} & \textbf{train} & \textbf{tv}\\ \hline
-			\textbf{VOC} & 0.708 & 0.693 & 0.669 & 0.629 & 0.582 & 0.516 & 0.422 & 0.309 & 0.171 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 \\ \cline{1-21}
-			\textbf{COCO} & 0.736 & 0.721 & 0.691 & 0.653 & 0.603 & 0.528 & 0.432 & 0.315 & 0.161 & 0.030 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
-			\textbf{Custom} & 0.854 & 0.837 & 0.811 & 0.777 & 0.728 & 0.662 & 0.601 & 0.545 & 0.486 & 0.403 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039 & 0.039\\ \cline{1-21}
+			\textbf{VOC} & 0.53 & 0.50 & 0.41 & 0.33 & 0.20 & 0.62 & 0.52 & 0.65 & 0.30 & 0.48 & 0.45 & 0.60 & 0.58 & 0.50 & 0.46 & 0.26 & 0.43 & 0.53 & 0.63 & 0.52 \\ \cline{1-21}
+			\textbf{COCO} & 0.53 & 0.48 & 0.41 & 0.32 & 0.25 & 0.65 & 0.55 & 0.65 & 0.33 & 0.53 & 0.48 & 0.61 & 0.56 & 0.51 & 0.48 & 0.27 & 0.46 & 0.57 & 0.63 & 0.48\\ \cline{1-21}
+			\textbf{Custom} & 0.74 & 0.69 & 0.64 & 0.55 & 0.46 & 0.82 & 0.74 & 0.84 & 0.52 & 0.72 & 0.67 & 0.80 & 0.75 & 0.71 & 0.65 & 0.51 & 0.65 & 0.73 & 0.80 & 0.73\\ \cline{1-21}
 		\end{tabular}
 		}
 	\caption{\acrshort{mAR} medio de los 10 umbrales de \acrshort{IoU} para cada uno de los objetos en las 3 redes evaluadas.}
 	\label{mARTableObjects}
 \end{table}
+
+Tanto los valores de \acrshort{mAP} como de \acrshort{mAR} de cada objeto se encuentran alrededor de la media general mostrada en la tabla \ref{mAP&mARTable} sin haber demasiadas diferencias entre los valores más altos y los más bajos. Una característica común, es que, tanto los objetos con valores altos como bajos de \acrshort{mAP} y \acrshort{mAR}, mantienen su posición en cada uno de los 3 modelos evaluados. Por ejemplo, la detección de gatos representa uno de los valores más altos para cada modelo, mientras que la detección de botellas representa valores bajos en relación con los demás objetos.
 
 \chapter{Conclusiones}
 
@@ -2216,7 +2232,7 @@ Con el estudio de  \acrshort{PascalVOC} y  \acrshort{COCO}, se ha podido comprob
 \item[Estudio de la técnica \acrshort{SSD}]\hfill
 \vspace{5pt}
 \\
-Se exponen las principales características de esta técnica, tanto en el modelo que se propone como a la hora del entrenamiento. Se explica como la utilización de cajas delimitadoras con múltiples escalas conectadas con mapas de características permite modelar las diferentes formas de los objetos. Además, la utilización de un modelo con varias capas convolucionales permite que la imagen de entrada disminuya de tamaño paulatinamente, obteniendo así características en múltiples escalas y generando salidas más precisas. Los desarrolladores de \acrshort{SSD} la integran con Caffe, exponiendo varios ejemplos y redes preentrenadas, que son un buen punto de partida para conocer los resultados que da un modelo que utiliza esta técnica.Además, la integración con este framework hace posible el entrenamiento de un modelo \acrshort{SSD} para su posterior estudio.
+Se exponen las principales características de esta técnica, tanto en el modelo que se propone como a la hora del entrenamiento. Se explica como la utilización de cajas delimitadoras con múltiples escalas conectadas con mapas de características permite modelar las diferentes formas de los objetos. Además, la utilización de un modelo con varias capas convolucionales permite que la imagen de entrada disminuya de tamaño paulatinamente, obteniendo así características en múltiples escalas y generando salidas más precisas. Los desarrolladores de \acrshort{SSD} integran esta técnica con Caffe, exponiendo varios ejemplos y redes preentrenadas, que son un buen punto de partida para conocer los resultados que da un modelo que utiliza esta técnica.Además, la integración con este framework hace posible el entrenamiento de un modelo \acrshort{SSD} para su posterior estudio.
 \item[Desarrollo de un componente detector]\hfill 
 \vspace{5pt}
 \\
@@ -2228,8 +2244,11 @@ Se ha propuesto un \textit{script} escrito en Python para la creación de bases d
 \item[Entrenamiento de una red neuronal]\hfill
 \vspace{5pt}
 \\
-Se han definido los puntos necesarios para entrenar una red neuronal en Caffe. En primer lugar, la estructura de la red neuronal sobre la que se realizará el entrenamiento, dónde se puede comprobar cada una de las capas existentes y el funcionamiento de cada uno de ellas. Posteriormente, de explica el funcionamiento del solucionador del entrenamiento en Caffe, con el que se pueden conocer los parámetros con los que se va a entrenar la red y poder ajustarlos en función de las necesidades. Finalmente, se expone el \textit{script} necesario para ejecutar el entrenamiento, dónde sale a relucir la facilidad con la que es posible entrenar un modelo en Caffe.
+Se han definido los puntos necesarios para entrenar una red neuronal en Caffe. En primer lugar, la estructura de la red neuronal sobre la que se ha realizado el entrenamiento, dónde se puede comprobar cada una de las capas existentes y el funcionamiento de cada uno de ellas. Posteriormente, de explica el funcionamiento del solucionador del entrenamiento en Caffe, con el que se pueden conocer los parámetros con los que se va a entrenar la red y poder ajustarlos en función de las necesidades. Finalmente, se expone el \textit{script} necesario para ejecutar el entrenamiento, dónde sale a relucir la facilidad con la que es posible entrenar un modelo en Caffe.
 \item[Realización de experimentos con la herramienta \textit{Detection Suite} de JdeRobot]\hfill
+\vspace{5pt}
+\\
+Se han explicado las métricas que calcula \textit{Detection Suite} y que se han utilizado para evaluar los modelos. Esta introducción ha hecho que fuera más fácil interpretar posteriormente los resultados obtenidos. Después, con la utilización de \textit{Detection Suite} se han podido comprobar varias de las funcionalidades que tiene esta herramienta. Primero, con el detector, se ha comprobado como de una forma muy sencilla, se puede realizar la detección de objetos sobre un gran conjunto de datos. Después, con el evaluador, se ha verificado que con \textit{Detection Suite} de una forma muy sencilla e intuitiva, se pueden calcular diferentes métricas de varios modelos. Finalmente, evaluando los datos obtenidos, se ha podido verificar que con una rede neuronal entrenado se obtienen mejores valores tanto de \acrshort{mAP} como de \acrshort{mAR}, mejorando estos valores en alrededor de un 50\% y un 30\% respectivamente.
 \end{description}
 
 \section{Líneas futuras}
@@ -2241,6 +2260,7 @@ Tras la exposición de las conclusiones, se enumeran varias líneas de investigaci
 \item Dado que \textit{Detection Suite} soporta otras bases de datos, como YOLO\cite{YOLO} o ImageNet\cite{ImageNet}, sería interesante utilizarlas para entrenar una red y así ver los resultados que genera la utilización de cada un de ellas.
 \item Otro punto interesante a abordar, sería el etiquetado de imágenes para crear una propia base de datos y entrenar, validar y testear una red con ella.
 \item En relación a las pruebas realizadas, se podría usar la interfaz gráfica de \textit{Detection Suite} utilizando vídeos grabados previamente o las imágenes captadas por una cámara en tiempo real. Así, se puede comprobar como actúan las redes que se evalúen detectando objetos en movimiento.
+\item En relación con los datos obtenidos tras la evaluación de los modelos, se podría realizar un análisis de todo lo necesario para entrenar una red, es decir, base de datos para el entrenamiento y validación, estructura de la red neuronal y parámetros del solucionador, para intentar crear un modelo más robusto y mejorar las métricas obtenidas en el apartado \ref{ResultadoFinalSection}.
 \end{itemize}
 
 \begin{thebibliography}{X}
