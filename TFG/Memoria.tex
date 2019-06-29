@@ -174,7 +174,9 @@ $\ $
 
 Este Trabajo Fin de Grado se encuadra en la detección de objetos dentro de imágenes usando redes neuronales. En este capítulo se presentará el contexto de las redes neuronales, que son una rama de la inteligencia artificial que está ofreciendo muy buenos resultados en los últimos años.\\
 
+\begin{comment}
 En este capítulo se situará el trabajo en el marco existente en la actualidad, explicando los conceptos que se utilizarán durante el desarrollo del mismo, poniendo especial énfasis en las redes neuronales artificiales y en el aprendizaje profundo. Tras esto, se expondrán los objetivos que se abordan durante el trabajo, la metodología utilizada para desarrollarlo y un pequeño resumen de como se ha estructurado.
+\end{comment}
 
 \begin{comment}
 \section{Contexto y motivación}
@@ -209,7 +211,7 @@ Este punto de unión es el encargado de transferir los impulsos eléctricos genera
 El conjunto de un gran número de neuronas conectadas entre sí forman la llamada red neuronal. Conforman el sistema nervioso y el cerebro: el cerebro humano puede contener 10\textsuperscript{11} neuronas y 10\textsuperscript{15} interconexiones. Las redes neuronales biológicas pueden establecerse como grupos de neuronas activas especializadas en tareas como cálculos matemáticos, posicionamiento y memoria.\\
 \end{comment}
 
-\section{Contexto y motivación}
+\section{Inteligencia artificial y aprendizaje automático}
 
 El deseo de crear y desarrollar aplicaciones que simulen el comportamiento humano es algo que lleva existiendo desde hace mucho tiempo. Durante las última décadas, ha ido aumentando gradualmente el progreso en la construcción de máquinas inteligentes que puedan ejecutar ciertas tareas tal y como la realizaría un ser humano. Este área se denomina Inteligencia Artificial \acrshort{IA} \cite{IA_Introduccion}.\\
 
@@ -217,15 +219,13 @@ Para llevar a cabo este propósito, dentro del ámbito de la \acrshort{IA}, han su
 
 Este trabajo se encuadra en el contexto del \acrshort{AP}, con el objetivo de detectar objetos en imágenes. Durante el desarrollo del mismo, y debido a la utilización del \textit{Deep Learning}, se utilizarán las redes neuronales artificiales (\acrshort{RNA}), más concretamente el tipo llamado redes neuronales convolucionales (\acrshort{CNN}, del inglés \textit{Convolutional Neural Network}), y la técnica \textit{Single Shot MultiBox Detection} (\acrshort{SSD}), conceptos que serán explicados y desarrollados más adelante.
 
-\section{Inteligencia artificial y aprendizaje automático}
-
 El concepto de \acrshort{IA} no tiene una definición específica. No existe un consenso entre los científicos e ingenieros que tratan el problema de la \acrshort{IA}. Tal vez, una de las definiciones que se puede considerar más ajustada es la reflejada en la \textit{Encyclopedia of Artificial Inteligence} \cite{IA_Encyclopedia}:\\
 
-\textbf{La \acrshort{IA} es un campo de la ciencia y la ingeniería que se ocupa de la compresión, desde el punto de vista informático, de lo que se denomina comúnmente comportamiento inteligente. También se ocupa de la creación de artefactos que exhiben ese comportamiento.}\\
+La \acrshort{IA} es un campo de la ciencia y la ingeniería que se ocupa de la compresión, desde el punto de vista informático, de lo que se denomina comúnmente comportamiento inteligente. También se ocupa de la creación de artefactos que exhiben ese comportamiento.\\
 
-Tras esta definición, se puede deducir que en el seno de la \acrshort{IA} como ciencia y tecnología se han ido acumulando conocimientos sobre cómo emular las diversas capacidades del ser humano para exhibir comportamientos inteligentes y se han desarrollado sistemas cada vez más perfeccionados que reproducen parcialmente dichas capacidades \cite{IA}.\\
+En el seno de la \acrshort{IA} como ciencia y tecnología se han ido acumulando conocimientos sobre cómo emular las diversas capacidades del ser humano para exhibir comportamientos inteligentes y se han desarrollado sistemas cada vez más perfeccionados que reproducen parcialmente dichas capacidades \cite{IA}.\\
 
-Para cubrir este objetivo, la \acrshort{IA} abarca varios campos de aplicación. A continuación se explican brevemente algunas de las áreas más importante donde se aplica \cite{IA_2}:
+La \acrshort{IA} abarca varios campos de aplicación, por ejemplo \cite{IA_2}:
 \begin{itemize}
 \item \textbf{Tratamiento de lenguajes naturales:} Este campo abarca aplicaciones que realicen traducciones entre idiomas, interfaces hombre-máquina que permitan consultar una base de datos o dar órdenes a un sistema operativo que permita una comunicación más amigable y fluida con el usuario.
 \item \textbf{Sistemas expertos:} Aquí se engloban aquellos sistemas dónde la experiencia de personal cualificado se incorpora a dichos sistemas para conseguir deducciones más cercanas a la realidad.
@@ -234,7 +234,7 @@ Para cubrir este objetivo, la \acrshort{IA} abarca varios campos de aplicación. 
 \item \textbf{Aprendizaje:} Modelización de conductas para su posterior implantación en computadoras.  
 \end{itemize}
 
-Dentro de la \acrshort{IA}, surge un nuevo concepto denominado \textit{Machine Learning} o aprendizaje automático \acrshort{AA}. El \acrshort{AA} es una disciplina científica del ámbito de la \acrshort{IA} cuyo objetivo es desarrollar técnicas que permitan a las computadoras aprender automáticamente. Más concretamente, se trata de crear aplicaciones capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos. Se puedes definir, por lo tanto, como un proceso de inducción del conocimiento. Se dice que un sistema tiene la \textit{capacidad de aprender} si adquiere y procesa información acerca de su desempeño y del ambiente que lo rodea, para mejorar dicho desempeño.\\
+Dentro de la \acrshort{IA}, un área activa es el \textit{Machine Learning} o aprendizaje automático \acrshort{AA} cuyo objetivo es desarrollar técnicas que permitan a las computadoras aprender automáticamente. Más concretamente, se trata de crear aplicaciones capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos. Se puedes definir, por lo tanto, como un proceso de inducción del conocimiento. Se dice que un sistema tiene la \textit{capacidad de aprender} si adquiere y procesa información acerca de su desempeño y del ambiente que lo rodea, para mejorar dicho desempeño.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -246,11 +246,9 @@ Dentro de la \acrshort{IA}, surge un nuevo concepto denominado \textit{Machine L
 
 \textit{Machine Learning}, se refiere comúnmente a la metodología de aprendizaje automático tradicional, basada en sistemas de decisión lineales y cuyas miles de variantes se llevan utilizando durante años en entornos de computación automatizada.\\
 
-La experiencia ha demostrado que un sistema que utiliza la técnica de \textit{Machine Learning} tradicional donde el número de variables y el volumen de muestras a analizar es demasiado elevado, perderá de manera exponencial precisión y efectividad, necesitando de una gran cantidad de recursos para poder mantener unos tiempos de de decisión aceptables.
+La experiencia ha demostrado que un sistema que utiliza la técnica de \textit{Machine Learning} tradicional donde el número de variables y el volumen de muestras a analizar es demasiado elevado, perderá de manera exponencial precisión y efectividad, necesitando de una gran cantidad de recursos para mantener unos tiempos de decisión aceptables.\\
 
-\subsection{Aplicaciones}
-
-Actualmente, los grandes avances tecnológicos y las mejoras en los algoritmos de \acrshort{AA} ha hecho que estas técnicas se utilicen en un gran número de aplicaciones, tanto a nivel de negocio como a nivel de investigación. A continuación, se enumeran algunas de las aplicaciones más importantes desarrolladas o pendientes de desarrollar en el futuro basadas en el \acrshort{AA}.
+Actualmente, los avances tecnológicos y las mejoras en los algoritmos de \acrshort{AA} ha hecho que estas técnicas se utilicen en un gran número de aplicaciones, tanto a nivel de negocio como a nivel de investigación. Algunas de las aplicaciones más importantes desarrolladas o pendientes de desarrollar en el futuro basadas en el \acrshort{AA} son:
 
 \begin{itemize}
 \item \textbf{Conducción autónoma:} El hecho de que un coche pueda ser dirigido sin la acción directa del ser humano es una de las investigaciones más llamativas en el ámbito de la \acrshort{IA}. Los investigadores del ámbito de la automoción emplean el \acrshort{AA} para detectar automáticamente objetos tales como señales de stop y semáforos. Además, el \acrshort{AA} se utiliza para detectar peatones, lo que contribuye a reducir los accidentes.
@@ -260,8 +258,8 @@ Actualmente, los grandes avances tecnológicos y las mejoras en los algoritmos de
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=9cm]{./CancerDL}
-\caption{Ejemplo de \acrshort{AA} aplicado a la detección de cáncer de mama. Imagen obtenida de \cite{CancerMamaDeepLearning}.}
-\label{MArcoIA}
+\caption{Ejemplo de \acrshort{AA} aplicado a la detección de cáncer de mama \cite{CancerMamaDeepLearning}.}
+\label{CancerMama}
 \end{center}
 \end{figure}
 \end{itemize}
@@ -270,9 +268,7 @@ Actualmente, los grandes avances tecnológicos y las mejoras en los algoritmos de
 
 Muchas variedades de redes adaptativas han demostrado ser prácticas enfrentándose a problemas de gran dificultad, convirtiendo el estudio de sus propiedades matemáticas y computacionales en un campo muy interesante de estudio.\\
 
-Por ello, a partir de las redes neuronales biológicas, se crean las redes neuronales artificiales (\acrshort{RNA}) las cuales son modelos simplificados de las redes neuronales biológicas. Tratan de imitar las capacidades del cerebro para resolver ciertos problemas complejos como reconocimiento de patrones o control moto-sensorial.\\
-
-Consisten en un gran número de elementos simples de procesamiento llamados nodos o neuronas que están organizados en capas. En el modelo de una neurona artificial, representado en la figura \ref{ModeloRedNeuronal}, se pueden identificar varios elementos\cite{RNN}.
+Por ello, a partir de las redes neuronales biológicas, se crean las redes neuronales artificiales (\acrshort{RNA}) las cuales son modelos simplificados de las redes neuronales biológicas. Tratan de imitar las capacidades del cerebro para resolver ciertos problemas complejos como reconocimiento de patrones o control moto-sensorial. Consisten en un gran número de elementos simples de procesamiento llamados nodos o neuronas que están organizados en capas. En el modelo de una neurona artificial, representado en la figura \ref{ModeloRedNeuronal}, se pueden identificar varios elementos\cite{RNN}.
 
 \begin{itemize}
 \item \textbf{Enlaces de conexión:} Parametrizados por los pesos sinápticos \textit{w\textsubscript{n}}. Si \textit{w\textsubscript{n}} \textgreater 0 la conexión es excitadora mientras que si \textit{w\textsubscript{n}} \textless 0, la conexión será inhibidora.
@@ -312,7 +308,7 @@ Así, las \acrshort{RNA} son sistemas adaptativos que aprenden de la experiencia,
 
 \subsection{Aprendizaje en redes neuronales artificiales}
 
-Tras definir la arquitectura, el siguiente paso es el entrenamiento o aprendizaje. El conocimiento de una red neuronal se encuentra distribuido en los pesos de las conexiones existentes entre todas las conexiones de la red. La red neuronal aprende variando el valor de sus parámetros, en particular los pesos sinápticos y el umbral de polarización. El aprendizaje es un proceso por el cual los parámetros se adaptan por la iteración continua con el medio ambiente. El tipo de aprendizaje está determinado por la forma en que se realiza dicha adaptación. Este proceso implica la siguiente secuencia de eventos:
+El conocimiento de una red neuronal se encuentra distribuido en los pesos de las conexiones existentes entre todas las conexiones de la red. La red neuronal aprende variando el valor de sus parámetros, en particular los pesos sinápticos y el umbral de polarización. El aprendizaje es un proceso por el cual los parámetros se adaptan por la iteración continua con el medio ambiente. El tipo de aprendizaje está determinado por la forma en que se realiza dicha adaptación. Este proceso implica la siguiente secuencia de eventos:
 
 \begin{itemize}
 \item La red neuronal es estimulada por el medio ambiente.
@@ -320,7 +316,7 @@ Tras definir la arquitectura, el siguiente paso es el entrenamiento o aprendizaj
 \item La red neuronal genera una nueva respuesta.
 \end{itemize}
 
-Actualmente, existen varios criterios, llamados de forma genérica reglas de aprendizaje, para modificar los pesos de la red y así conseguir que aprenda a solucionar un determinado problema. Las reglas de aprendizaje consisten generalmente en algoritmos matemáticos que pueden llegar a ser sumamente complejos. Se suelen considerar dos tipos de reglas de aprendizaje: aprendizaje supervisado y aprendizaje no supervisado.
+Actualmente, existen varios criterios, llamados de forma genérica reglas de aprendizaje, para modificar los pesos de la red y así conseguir que aprenda a solucionar un determinado problema. Las reglas de aprendizaje consisten generalmente en algoritmos matemáticos que pueden llegar a ser sumamente complejos. Se suelen considerar dos tipos de reglas de aprendizaje: supervisado y no supervisado.
 
 \begin{itemize}
 \item En el aprendizaje supervisado existe un supervisor que controla el proceso de aprendizaje de la red. El supervisor comprueba la salida de la red en respuesta a una determinada entrada y en el caso de que la salida no coincida con la deseada, se procede a modificar los pesos de las conexiones, con el fin de conseguir que la salida obtenida se aproxime a la deseada.
@@ -329,17 +325,17 @@ Actualmente, existen varios criterios, llamados de forma genérica reglas de apre
 
 Una vez obtenidos y guardados los pesos óptimos en la fase de entrenamiento, es necesario medir la eficacia de la red de forma objetiva mediante la presentación de casos nuevos, es decir, entradas diferentes a los casos de entrenamiento, de forma que a la fase de entrenamiento le debe seguir una fase de test. En esta fase no se modifican los pesos, simplemente se presentan casos nuevos, llamados casos de test, a la entrada de la red y ésta proporciona una salida para cada uno de ellos. Si se comprueba que se siguen obteniendo resultados dentro del margen de error deseado, se puede proceder a emplear la red neuronal dentro de su entorno de trabajo real.
 
-\subsection{Redes neuronales convolucionales}\label{CNN_section}
+\subsection{Redes neuronales convolucionales (CNN)}\label{CNN_section}
 
 \begin{comment}
 Uno de los tipos más populares de redes neuronales profundas son las conocidas como redes neuronales convolucionales (\acrshort{CNN}). Las \acrshort{CNN} eliminan la necesidad de una extracción de características manual, por lo que no es necesario identificar las características utilizadas para clasificar las imágenes. La \acrshort{CNN} funciona mediante la extracción de características directamente de las imágenes. Las características relevantes no se entrenan previamente; se aprenden mientras la red se entrena con una colección de imágenes.\\
 \end{comment}
 
-Una \acrshort{CNN}, es uno de los tipos de \acrshort{RNA} más utilizadas en el ámbito de la \acrshort{IA}, más específicamente del reconocimiento de patrones, como por ejemplo visión artificial o reconocimiento de voz.\\
+Las \acrshort{CNN} son uno de los tipos de \acrshort{RNA} más utilizadas en el ámbito de la \acrshort{IA}, más específicamente del reconocimiento de patrones, como por ejemplo visión artificial o reconocimiento de voz.\\
 
 La idea básica de las \acrshort{CNN} es construir propiedades de invarianza en redes neuronales mediante la creación de modelos invariables para ciertas transformaciones en la entrada.\\
 
-Para ello, las \acrshort{CNN} utilizan una arquitectura especial, mostrada en la figura \ref{ModeloCNN} y compuesta de una capa de convolución y otra de submuestreo. La capa de convolución implementa la función de convolución, mientras que en la capa de submuestreo se realiza el \textit{pooling}, que se encarga de generar características invariantes calculando estadísticas de las activaciones de convolución a partir de un pequeño campo receptivo. 
+Para ello, las \acrshort{CNN} utilizan una arquitectura especial, mostrada en la figura \ref{ModeloCNN} y compuesta de una capa de convolución y otra de submuestreo. La capa de convolución implementa la función de convolución, mientras que en la capa de submuestreo se realiza el \textit{pooling}, que se encarga de generar características invariantes calculando estadísticas de las activaciones de convolución a partir de un pequeño campo receptivo.
 
 \begin{figure}[H]
 \begin{center}
@@ -349,7 +345,7 @@ Para ello, las \acrshort{CNN} utilizan una arquitectura especial, mostrada en la
 \end{center}
 \end{figure}
 
-En las \acrshort{CNN}, cada neurona de la capa oculta está conectada a un pequeño campo de la capa anterior, el cual será llamado campo receptivo. En la capa de convolución, las neuronas están organizadas en múltiples capas ocultas paralelas, llamadas mapas de características,  de tal manera que cada neurona en un mapa de características está conectada a un campo receptivo local. Para cada mapa de características, todas las neuronas comparten el mismo parámetro de peso que se conoce como filtro o kernel \cite{CNN}.
+En las \acrshort{CNN}, cada neurona de la capa oculta está conectada a un pequeño campo de la capa anterior, el cual será llamado campo receptivo. En la capa de convolución, las neuronas están organizadas en múltiples capas ocultas paralelas, llamadas mapas de características,  de tal manera que cada neurona en un mapa de características está conectada a un campo receptivo local. Para cada mapa de características, todas las neuronas comparten el mismo parámetro de peso que se conoce como filtro o kernel \cite{CNN}.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -365,13 +361,13 @@ Actualmente, el incipiente interés que hay en crear aplicaciones basadas en la i
 
 A continuación se definen brevemente algunos de los softwares más utilizados para aplicaciones de aprendizaje máquina en la actualidad.
 
-\begin{itemize}
-\item Uno de los softwares más populares y extendidos actualmente es la plataforma llamada Caffe\cite{Caffe}. Este trabajo ha sido desarrollado utilizando este software, por lo que se detallarán sus características principales más adelante.
+\begin{enumerate}
+\item Caffe\cite{Caffe} es uno de los softwares más populares y extendidos actualmente. Este trabajo ha sido desarrollado utilizando este software, por lo que se detallarán sus características principales más adelante.
 \item \textbf{TensorFlow}\cite{TensorFlow} es una biblioteca software de código abierto diseñada para el cálculo numérico de alto rendimiento. Su arquitectura flexible permite una fácil implementación de computación en una gran variedad de plataformas, tales como CPUs ó GPs, y desde escritorios hasta clústeres de servidores y dispositivos móviles y periféricos. Fue diseñado originalmente por investigadores e ingenieros de Google. Este software cuenta con un sólido soporte para el aprendizaje automático y el aprendizaje profundo y el flexible núcleo de computación numérica del que dispone hace que puede ser utilizado en muchos otros dominios científicos.
 
 \item \textbf{Keras}\cite{Keras} es una \acrshort{API} de redes neuronales de alto nivel escrita en Python y capaz de ejecutarse sobre TensorFlow, CNTK o Theano. Fue desarrolla con el objetivo principal de permitir una experimentación rápida. El enfoque de este software es que el poder pasar de la idea al resultado en el menor tiempo posible es la clave para hacer una buena experimentación.\\
 
-Las características y ventajas principales que pueden definir a esta librería se definen a continuación.
+Las características y ventajas principales que pueden definir a esta librería son:
 
 \begin{itemize}
 \item \textbf{Facilidad de uso:} Keras es una \acrshort{API} diseñada para seres humanos, no para máquinas. Sigue las mejores prácticas para reducir la carga cognitiva: ofrece APIs consistentes y simples, las cuales minimizan el número de acciones de usuario requeridas para casos de uso común y proporciona comentarios claros y procesables ante el error del usuario.
@@ -380,26 +376,24 @@ Las características y ventajas principales que pueden definir a esta librería se
 \item \textbf{Trabaja con Python:} No hay archivos de configuración de modelos definidos en un formato declarativo. Los modelos se escriben en código de Python, el cual permite fácilmente la extensión y es compacto y fácil de depurar.
 \end{itemize}
 \item \textbf{Darknet\cite{Darknet}:} Se trata de un framework de código abierto de redes neuronales escrito en C y CUDA. En su página web oficial se pueden observar varios de los trabajos desarrollados por sus creadores. Algunos de los más destacados son su componente detector en tiempo real, utilizando para el entrenamiento de la red la base de datos \acrshort{COCO}, la cual se utilizará en este trabajo, y su clasificador de imágenes para el reto 1000-class ImageNet.
-\end{itemize}
+\end{enumerate}
 
 
-\section{Deep Learning}
+\subsection{Deep Learning}
 
-Como solución a los problemas que presenta el aprendizaje automático, surge el término de \textit{Deep Learning} o aprendizaje profundo (\acrshort{AP}) y es entonces cuando tanto este término como el de \textit{Machine Learning} toman mayor relevancia. Por lo tanto, el \acrshort{AP} es un conjunto de algoritmos que pertenecen a la clase \acrshort{AA} que intentan modelar abstracciones de alto nivel usando arquitecturas compuestas de transformaciones no lineales múltiples.\\
+El \textit{Deep Learning} o aprendizaje profundo (\acrshort{AP}) es un conjunto de algoritmos que pertenecen a la clase \acrshort{AA} que intentan modelar abstracciones de alto nivel usando arquitecturas compuestas de transformaciones no lineales múltiples.\\
 
-Se pueden relacionar fácilmente los ámbitos del aprendizaje profundo y las redes neuronales. Las redes neuronales artificiales son un paradigma de aprendizaje automático inspirado en las neuronas de los sistemas nerviosos biológicos.\\
-
-La mayor parte de los métodos de aprendizaje emplean arquitecturas de redes neuronales, por lo que, a menudo, los modelos de aprendizaje profundo se denominan redes neuronales profundas. Unas de las \acrshort{RNA} más utilizadas en el \acrshort{AP} son las \acrshort{CNN}, explicadas en el apartado \ref{CNN_section}.En el contexto de la detección de imágenes, que es donde se encuadra este TFG, las \acrshort{CNN} resultan idóneas ya que con ésta técnica se procesa cada imagen por secciones en lugar de tener un parámetro por cada píxel de ésta.\\
+Las redes neuronales artificiales son un paradigma de aprendizaje automático inspirado en las neuronas de los sistemas nerviosos biológicos. La mayor parte de los métodos de aprendizaje emplean arquitecturas de redes neuronales, por lo que, a menudo, los modelos de aprendizaje profundo se denominan redes neuronales profundas. Unas de las \acrshort{RNA} más utilizadas en el \acrshort{AP} son las \acrshort{CNN}, explicadas en el apartado \ref{CNN_section}.En el contexto de la detección de imágenes, que es donde se encuadra este TFG, las \acrshort{CNN} resultan idóneas ya que con ésta técnica se procesa cada imagen por secciones en lugar de tener un parámetro por cada píxel de ésta.\\
 
 El término profundo suele hacer referencia al número de capas ocultas en la red neuronal. Las redes neuronales tradicionales solo contienen dos o tres capas ocultas, mientras que las redes profundas pueden tener hasta 150.\\
 
-La gran precisión que se consigue utilizando técnicas de \textit{Deep Learning} contribuye a que se satisfagan las expectativas de los usuarios, y resulta crucial en aplicaciones críticas para la seguridad, tales como los vehículos sin conductor. Los últimos avances en el ámbito del aprendizaje profundo han llegado a un punto en el que este supera a las personas en algunas tareas, como por ejemplo, en la clasificación de objetos presentes en imágenes, lo cual tiene una gran importancia en el ámbito de la medicina, ya que con estas técnicas se pueden detectar, por ejemplo en radiografías, elementos que habían sido obviados por el ser humano.\\
+La gran precisión que se consigue utilizando técnicas de \textit{Deep Learning} contribuye a que se satisfagan las expectativas de los usuarios, y resulta crucial en aplicaciones críticas para la seguridad, tales como los vehículos sin conductor. Los últimos avances han llegado a un punto en el que este supera a las personas en algunas tareas, como por ejemplo, en la clasificación de objetos presentes en imágenes, lo cual tiene una gran importancia en el ámbito de la medicina, ya que con estas técnicas se pueden detectar, por ejemplo en radiografías, elementos que habían sido obviados por el ser humano.\\
 
 El \acrshort{AP} es una forma especializada de \acrshort{AA}. Un flujo de trabajo de \acrshort{AA} comienza por la extracción manual de las características relevantes de la imagen. Estas características se utilizan entonces para crear un modelo que categoriza los objetos de la imagen. Con un flujo de trabajo de \acrshort{AP}, las características relevantes se extraen directamente de la imagen.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=8cm]{./MarcoIA}
+\includegraphics[width=10cm]{./MarcoIA}
 \caption{Marco de la Inteligencia Artificial. Imagen obtenida de \cite{MachineLearning&DeepLearning}}.
 \label{MArcoIA}
 \end{center}
@@ -413,15 +407,14 @@ Una ventaja fundamental de las redes de aprendizaje profundo es que suelen segui
 \begin{center}
 \includegraphics[width=14cm]{./MLvsDL}
 \caption{Comparación de un enfoque de aprendizaje automático para la categorización de vehículos (izquierda) con el aprendizaje profundo (derecha). Imagen obtenida de \cite{SSD_3}.}
-\label{MArcoIA}
+\label{MLvsDL}
 \end{center}
 \end{figure}
 
-
-\section{Antecedentes en el proyecto JdeRobot}
+\section{Antecedentes en Robotics de la URJC}
 \label{AntecedentesJdeRobot}
 
-Actualmente, en JdeRobot ya se han desarrollado varios trabajos basados en la inteligencia artificial y más concretamente en \textit{Deep Learning}. En ellos se han utilizado algunos de los softwares mencionados anteriormente para entrenar una o varias redes neuronales. Tras ello, se han abordado tareas de clasificación y detección de objetos analizando tras ellos la capacidad que tenían las redes neuronales ya entrenadas para realizar ese cometido.\\
+Actualmente, en en Robotics de la URJC ya se han desarrollado varios trabajos basados en la inteligencia artificial y más concretamente en \textit{Deep Learning}. En ellos se han utilizado algunos de los entornos mencionados anteriormente para entrenar una o varias redes neuronales. Tras ello, se han abordado tareas de clasificación y detección de objetos analizando tras ellos la capacidad que tenían las redes neuronales ya entrenadas para realizar ese cometido.\\
 
 Nuria Oyaga\footnote{\url{https://jderobot.org/Noyaga-tfg}} realizó un trabajo basado en la clasificación de dígitos manuscritos. Para el estudio y utilización de las redes neuronales usó la plataforma \textit{Caffe}, la cual provee de una red básica ideal para  comenzar en el campo de la clasificación.\\
 
@@ -440,11 +433,11 @@ Como banco de imágenes de entrada, cuyo objetivo es entrenar la red neuronal, ut
 
 Para evaluar el rendimiento del clasificador, modificó la base de datos MNIST realizando transformaciones sobre sus imágenes y utilizándolas posteriormente para entrenar la red neuronal. Algunas de estas transformaciones fueron la inclusión de filtros a los ejemplos, tales como el Laplaciano, Sobel o Canny y modificaciones basadas en el escalado, translación y rotación de las imágenes de entrada.\\
 
-Además de la evaluación de prestaciones de la red, Nuria realizó un componente para la clasificación de dígitos manuscritos en tiempo real. En el presente trabajo se ha realizado una aproximación de este componente pero con la diferencia de que el objetivo de éste será la detección de objetos.
+Además de la evaluación de prestaciones de la red, Nuria realizó un componente para la clasificación de dígitos manuscritos en tiempo real. En el presente trabajo se ha realizado una aproximación de este componente pero con la diferencia de que el objetivo de éste será la detección de objetos.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=13cm]{./ComponenteClasificador}
+\includegraphics[width=15cm]{./ComponenteClasificador}
 \caption{Ejemplo del componente clasificador.}
 \label{ComponenteClasificador}
 \end{center}
@@ -458,13 +451,13 @@ Por otra parte, David Pascual\footnote{\url{https://jderobot.org/Dpascual-tfg}},
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=13cm]{./ComponentKeras}
+\includegraphics[width=15cm]{./ComponentKeras}
 \caption{Ejemplo del componente clasificador.}
 \label{ComponentKeras}
 \end{center}
 \end{figure}
 
-En lo referente a la detección de objetos, en JdeRobot también se han desarrollado varios proyectos. En primer lugar, se puede destacar \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} que se trata de un conjunto de herramientas que simplifican la evaluación de los conjuntos de datos de detección de objetos más comunes con varias redes neuronales de detección de objetos.\\
+En lo referente a la detección de objetos, en Robotics de la URJC también se ha desarrollado la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} que se trata de un conjunto de utilidades que simplifican la evaluación de los conjuntos de datos de detección de objetos más comunes con varias redes neuronales de detección de objetos.\\
 
 La idea principal es ofrecer una infraestructura genérica para evaluar los algoritmos de detección de objetos contra un conjunto de datos y calcular las estadísticas más comunes, tales como \textit{Intersecion Over Union}, \textit{precision} y \textit{recall}. Esta herramienta acepta un gran número de bases de datos internacionales como \acrshort{PascalVOC} y permite la comparación de varias arquitecturas de \textit{Deep Learning} utilizando exactamente la misma prueba.
 
@@ -478,10 +471,19 @@ La idea principal es ofrecer una infraestructura genérica para evaluar los algor
 
 Además, Nacho Condés\footnote{\url{https://jderobot.org/Naxvm-tfg}} ha desarrollado un componente de detección de objetos en tiempo real llamado \textit{dl-objectdetector}\footnote{\url{https://github.com/JdeRobot/dl-objectdetector}}. Este componente soporta tanto \textit{Keras} como \textit{TensorFlow} y está escrito en \textit{Python}.
 
+\chapter{Objetivos y metodología}
+
 \section{Objetivos}\label{Objetivos}
 
-El objetivo principal de este proyecto es el entendimiento de las redes neuronales y el Aprendizaje Profundo o \textit{Deep Learning} aplicado al problema de la detección de objetos. A partir de lo desarrollado y estudiado durante este trabajo, se pueden identificar varios subobjetivos necesarios para conseguir el objetivo principal. 
+El objetivo principal de este proyecto es el entendimiento de las redes neuronales y el Aprendizaje Profundo o \textit{Deep Learning} aplicado al problema de la detección visual de objetos. Se han articulado varios subobjetivos necesarios para conseguir ese objetivo principal. 
 
+\begin{itemize}
+\item \textbf{Diseño y desarrollo de un componente que detecte objetos en imágenes en tiempo real sobre flujos de video:} Este componente estará integrado con el framework Caffe y a partir de los pesos y la estructura de redes entrenadas o preentrenadas procesará las imágenes de entrada captadas por una cámara de vídeo y realizará la detección de objetos sobre ellas.
+\item \textbf{Entrenamiento de una red neuronal propia para la detección de objetos:} Utilizando Caffe, se definirán todos los componente que provee este framework para entrenar una red neuronal. Además, se creará una base de datos personalizadas para utilizarla como conjunto de datos de entrenamiento para el entrenamiento del modelo.
+\item \textbf{Comparativa de la red propia con otras preentrenadas:} Se realizarán diferentes experimentos para evaluar y comparar las prestaciones de la red entrenada y las preentrenadas a partir de diferentes métricas calculadas.
+\end{itemize}
+
+\begin{comment}
 \begin{itemize}
 \item \textbf{Estudio de la plataforma Caffe:} Se definen en un primer lugar sus principales características y posteriormente se utiliza para el entrenamiento de una red neuronal.
 \item \textbf{Estudio de varias bases de datos aplicadas a la detección,} la distribución de los diferentes objetos dentro de sus imágenes y el formato de sus ficheros de anotaciones.
@@ -489,23 +491,32 @@ El objetivo principal de este proyecto es el entendimiento de las redes neuronal
 \item \textbf{Desarrollo de un componente detector} que sea capaz de localizar los objetos existentes en las imágenes captadas por una cámara en tiempo real.
 \item \textbf{Creación de una base de datos personalizada:} A partir de bases de datos predefinidas, se creará una adicional que contendrá la información de todas ellas.
 \item \textbf{Entrenamiento de una red neuronal:} Utilizando Caffe y la base de datos creada se entrenará un red para posteriormente evaluar sus resultados y compararlos con los de otras red preentrenadas.
-\begin{comment}
-\item \textbf{Desarrollo de \textit{scripts} para el cáculo \textit{índice Jaccard} o \textit{Intersection Over Union}} utilizando un mismo conjunto de imágenes de prueba sobre una misma red neuronal entrenada con diferentes bases de datos. De esta manera se podrán comparar las prestaciones de cada uno de las redes entrenadas.
-\end{comment}
 \item \textbf{Estudio del \textit{índice Jaccard} o \textit{Intersection Over Union}:} Se realiza una introducción a esté parámetro, a su cálculo y a su función a la hora de evaluar los resultados redes neuronales entrenadas. Se desarrollan \textit{scripts} orientados al entendimiento y cálculo de este índice.
 \item \textbf{Realización de experimentos con la herramienta \textit{Detection Suite}} con el objetivo de comparar las prestaciones de varias redes entrenadas con diferentes bases de datos.
 \end{itemize}
+\end{comment}
 
-\section{Metodología}
+\section{Metodología y plan de trabajo}
 
-Durante el desarrollo de este trabajo se han utilizado varias herramientas que han contribuido a qué la dinámica fuera organizada y cooperativa entre todos los miembros del grupo y a que en todo momento, éstos estuvieran al tanto de todo el material que se iba desarrollando y redactando.\\
+Durante el desarrollo de este trabajo se han utilizado varias herramientas que han contribuido a que la dinámica fuera organizada y cooperativa entre todas las personas involucradas en este trabajo y a que en todo momento, éstas estuvieran al tanto de todo el material que se iba desarrollando y redactando.\\
 
-La principal herramienta, han sido las reuniones concertadas periódicamente con los tutores, Inmaculada Mora y Jose María Cañas. En éstas, se exponían los avances realizados durante la semana, las dudas surgidas y se exponían y proponían nuevas líneas para el desarrollo del trabajo.\\
+La principal herramienta, han sido las reuniones concertadas periódicamente con los tutores. En éstas, se exponían los avances realizados durante la semana, las dudas surgidas y se exponían y proponían nuevas líneas para el desarrollo del trabajo.\\
 
 Para la organización del código generado se ha utilizado el repositorio \textit{GitHub}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno}}. En él, se encuentra todo el código desarrollado durante el trabajo, con el objetivo de que pueda ser reutilizado, corregido o modificado en función de las necesidades.\\
 
-Con el objetivo de documentar, semana a semana, todo lo desarrollado, se ha utilizado la \textit{Wiki}\footnote{\url{https://jderobot.org/Davidbutra-tfg}} que proporciona \textit{JdeRobot}. Gracias esto, se podía tener acceso al trabajo realizado semanas atrás y los tutores podían revisar antes de la reunión lo realizado durante la semana, haciendo que ésta fuera más práctica y fluida.
+Con el objetivo de documentar, semana a semana, todo lo desarrollado, se ha utilizado la \textit{Wiki}\footnote{\url{https://jderobot.org/Davidbutra-tfg}} que proporciona \textit{JdeRobot}. Gracias esto, se podía tener acceso al trabajo realizado semanas atrás y los tutores podían revisar antes de la reunión lo realizado durante la semana, haciendo que ésta fuera más práctica y fluida.\\
 
+Como punto de partida para conseguir los objetivos comentados en el apartado \ref{Objetivos}, se han realizado varias fases de estudio de las diferentes herramientas y conceptos que se utilizarán durante el trabajo:
+
+\begin{itemize}
+\item \textbf{Estudio de redes neuronales artificiales,} de sus características, de su estructura y del funcionamiento y tipos de entrenamiento. Tras esto se hace un estudio particular de las redes neuronales convolucionales o \acrshort{CNN} y del \textit{Deep Learning}, 2 de los conceptos que se utilizarán durante el trabajo.
+\item \textbf{Estudio de la plataforma Caffe,} de sus características principales y de sus funcionalidades. Se realizan algunos de los tutoriales que proveen sus creadores como primer paso para conocer su utilización y capacidad. 
+\item \textbf{Estudio de varias bases de datos aplicadas a la detección,} la distribución de los diferentes objetos dentro de sus imágenes y el formato de sus ficheros de anotaciones.
+\item \textbf{Estudio de la técnica \acrshort{SSD}:} Se realiza una lectura exhaustiva de la documentación realizada por los creadores de esta técnica \cite{SSD} para conocer sus principales características, los resultados de sus experimentos realizados y las conclusiones obtenidas a partir de ellos.
+\item \textbf{Estudio de métricas para evaluación de detectores,} que se utilizarán en este trabajo para facilitar el análisis de los datos obtenidos tras evaluar la red entrenada y las preentrenadas y así poder realizar una mejor comparación de sus prestaciones.
+\end{itemize}
+
+\begin{comment}
 \section{Estructura de la memoria}
 
 Para organizar todo lo desarrollado y los objetivos conseguidos durante el trabajo, se elabora la memoria, cuya estructura se especifica a continuación:\\
@@ -519,6 +530,7 @@ En el \textbf{Capítulo 3. Detección con Single Shot MultiBox y Caffe}, en un pri
 En el \textbf{Capítulo 4. Medidor de calidad} se medirán las prestaciones de la red neuronal entrena y 2 preentrenadas con diferentes bases de datos y comentadas durante el trabajo. Se explicarán las métricas utilizadas para la evaluación de los modelos para su posterior análisis. Finalmente, se realizará una breve introducción a la herramienta \textit{Detection Suite} y se utilizará para evaluar los resultados obtenidos y compararlos, proporcionando posteriormente una explicación detallada a éstos.\\
 
 En el \textbf{Capítulo 5. Conclusiones} se resumen las conclusiones obtenidas a lo largo del trabajo y se establecen algunas posibles líneas futuras de investigación en la línea de lo abordado en este trabajo.
+\end{comment}
 
 \chapter{Infraestructura}
 
@@ -2342,6 +2354,10 @@ Deep Learning.
 \newblock{Deep Learning (Aprendizaje profundo). Tres cosas que es necesario saber}.
 \newblock {\url{hhttps://es.mathworks.com/discovery/deep-learning.html}}
 
+\bibitem{SSD}
+Wei Liu ,Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed , Cheng-Yang Fu, Alexander C. Berg.
+\newblock {Single Shot MultiBox Detector}
+
 \bibitem{CaffeInterface}
 Caffe, Deep Learning Framework.
 \newblock {Interfaces.}
@@ -2374,9 +2390,6 @@ COCO, Common Objects in Context.
 \newblock {Data format.}
 \newblock {\url{http://cocodataset.org/#format-data}}
 
-\bibitem{SSD}
-Wei Liu ,Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed , Cheng-Yang Fu, Alexander C. Berg.
-\newblock {Single Shot MultiBox Detector}
 
 \bibitem{SSD_2}
 Single Shot MultiBox Detection.
