@@ -1,5 +1,7 @@
 \documentclass[a4paper, 12pt, twoside]{book}
 
+% !TEX encoding = IsoLatin9
+
 \usepackage[latin1]{inputenc}
 \usepackage{tocloft}
 \usepackage[spanish, es-lcroman, es-tabla]{babel} 
@@ -239,7 +241,7 @@ Dentro de la \acrshort{IA}, un área activa es el \textit{Machine Learning} o apr
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=9cm]{./ModeloMachineLearning}
-\caption{Modelo Machine Learning. Imagen obtenida de \cite{ML}.}
+\caption{Modelo Machine Learning \cite{ML}.}
 \label{ModeloMachineLearning}
 \end{center}
 \end{figure}
@@ -279,7 +281,7 @@ Por ello, a partir de las redes neuronales biológicas, se crean las redes neuron
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./ModeloRedNeuronal}
-\caption{Modelo de una neurona artificial. Imagen obtenida de \cite{NeuronaModelo}.}
+\caption{Modelo de una neurona artificial \cite{NeuronaModelo}.}
 \label{ModeloRedNeuronal}
 \end{center}
 \end{figure}
@@ -297,7 +299,7 @@ Cada capa está conectada total o parcialmente a la que se encuentra inmediatamen
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=14cm]{./ModeloRNA}
-\caption{Modelo de una red neurona artificial. Imagen obtenida de \cite{CapasRNA}.}
+\caption{Modelo de una red neurona artificial \cite{CapasRNA}.}
 \label{ModeloRNA}
 \end{center}
 \end{figure}
@@ -340,7 +342,7 @@ Para ello, las \acrshort{CNN} utilizan una arquitectura especial, mostrada en la
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=8cm]{./CNN}
-\caption{Modelo de una red neurona convolucional. Imagen obtenida de \cite{CNN}.}
+\caption{Modelo de una red neurona convolucional \cite{CNN}.}
 \label{ModeloCNN}
 \end{center}
 \end{figure}
@@ -350,7 +352,7 @@ En las \acrshort{CNN}, cada neurona de la capa oculta está conectada a un pequeñ
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=9cm]{./CNN_ConvolutionLayer}
-\caption{Ejemplo de campo receptivo local en la capa convolucional. Imagen obtenida de \cite{CNN}.}
+\caption{Ejemplo de campo receptivo local en la capa convolucional \cite{CNN}.}
 \label{CNN_ConvolutionLayer}
 \end{center}
 \end{figure}
@@ -394,7 +396,7 @@ El \acrshort{AP} es una forma especializada de \acrshort{AA}. Un flujo de trabaj
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=10cm]{./MarcoIA}
-\caption{Marco de la Inteligencia Artificial. Imagen obtenida de \cite{MachineLearning&DeepLearning}}.
+\caption{Marco de la Inteligencia Artificial \cite{MachineLearning&DeepLearning}.}
 \label{MArcoIA}
 \end{center}
 \end{figure}
@@ -406,7 +408,7 @@ Una ventaja fundamental de las redes de aprendizaje profundo es que suelen segui
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=14cm]{./MLvsDL}
-\caption{Comparación de un enfoque de aprendizaje automático para la categorización de vehículos (izquierda) con el aprendizaje profundo (derecha). Imagen obtenida de \cite{SSD_3}.}
+\caption{Comparación de un enfoque de aprendizaje automático para la categorización de vehículos (izquierda) con el aprendizaje profundo (derecha) \cite{SSD_3}.}
 \label{MLvsDL}
 \end{center}
 \end{figure}
@@ -416,7 +418,7 @@ Una ventaja fundamental de las redes de aprendizaje profundo es que suelen segui
 
 Actualmente, en en Robotics de la URJC ya se han desarrollado varios trabajos basados en la inteligencia artificial y más concretamente en \textit{Deep Learning}. En ellos se han utilizado algunos de los entornos mencionados anteriormente para entrenar una o varias redes neuronales. Tras ello, se han abordado tareas de clasificación y detección de objetos analizando tras ellos la capacidad que tenían las redes neuronales ya entrenadas para realizar ese cometido.\\
 
-Nuria Oyaga\footnote{\url{https://jderobot.org/Noyaga-tfg}} realizó un trabajo basado en la clasificación de dígitos manuscritos. Para el estudio y utilización de las redes neuronales usó la plataforma \textit{Caffe}, la cual provee de una red básica ideal para  comenzar en el campo de la clasificación.\\
+Nuria Oyaga\footnote{\url{https://jderobot.org/Noyaga-tfg}} \cite{TFGNuria} realizó un trabajo basado en la clasificación de dígitos manuscritos. Para el estudio y utilización de las redes neuronales usó la plataforma \textit{Caffe}, la cual provee de una red básica ideal para  comenzar en el campo de la clasificación.\\
 
 Como banco de imágenes de entrada, cuyo objetivo es entrenar la red neuronal, utilizó  Modified National Institute of Standards and Technology (MNIST). Esta base de datos está constituida por números escritos a mano y consta de un conjunto de entrenamiento de 60.000 ejemplos y otro de prueba de 10.000. Estas imágenes están dispuestas en escala de grises.\\
 
@@ -447,7 +449,7 @@ Además de la evaluación de prestaciones de la red, Nuria realizó un componente p
 Finalmente, Nuria proporciona la información necesaria para abordar el problema de la detección con Caffe. Muestra algunas pruebas realizadas para la mejor compresión de este proceso. El actual trabajo se centrará en la tarea de detección apoyándose en este primer paso dado por Nuria.\\
 \end{comment}
 
-Por otra parte, David Pascual\footnote{\url{https://jderobot.org/Dpascual-tfg}}, realizó un trabajo basado en la clasificación de dígitos manuscritos utilizando la plataforma Keras. Para ello, emplea un modelo proporcionado por éste software y lo entrena utilizando la base de datos MNIST. Además, evalúa las prestaciones de la red realizando una serie de transformaciones sobre los ejemplos de los dígitos y crea un componente para la clasificación de números en tiempo real.\\
+Por otra parte, David Pascual\footnote{\url{https://jderobot.org/Dpascual-tfg}} \cite{TFGDavid}, realizó un trabajo basado en la clasificación de dígitos manuscritos utilizando la plataforma Keras. Para ello, emplea un modelo proporcionado por éste software y lo entrena utilizando la base de datos MNIST. Además, evalúa las prestaciones de la red realizando una serie de transformaciones sobre los ejemplos de los dígitos y crea un componente para la clasificación de números en tiempo real.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -469,7 +471,7 @@ La idea principal es ofrecer una infraestructura genérica para evaluar los algor
 \end{center}
 \end{figure}
 
-Además, Nacho Condés\footnote{\url{https://jderobot.org/Naxvm-tfg}} ha desarrollado un componente de detección de objetos en tiempo real llamado \textit{dl-objectdetector}\footnote{\url{https://github.com/JdeRobot/dl-objectdetector}}. Este componente soporta tanto \textit{Keras} como \textit{TensorFlow} y está escrito en \textit{Python}.
+Además, Nacho Condés\footnote{\url{https://jderobot.org/Naxvm-tfg}} \cite{TFGNacho} ha desarrollado un componente de detección de objetos en tiempo real llamado \textit{dl-objectdetector}\footnote{\url{https://github.com/JdeRobot/dl-objectdetector}}. Este componente soporta tanto \textit{Keras} como \textit{TensorFlow} y está escrito en \textit{Python}.
 
 \chapter{Objetivos y metodología}
 
@@ -532,41 +534,41 @@ En el \textbf{Capítulo 4. Medidor de calidad} se medirán las prestaciones de la 
 En el \textbf{Capítulo 5. Conclusiones} se resumen las conclusiones obtenidas a lo largo del trabajo y se establecen algunas posibles líneas futuras de investigación en la línea de lo abordado en este trabajo.
 \end{comment}
 
-\chapter{Infraestructura}
+\chapter{Infraestructura utilizada}
 
-\section{Caffe}
+\section{Plataforma Caffe}
 
-Caffe\cite{Caffe} es un framework de aprendizaje profundo desarrollado por Berkeley AI Research (BAIR) y por contribuyentes de la comunidad. Fue creado por Yangqing Jia durante su doctorado en UC Berkeley. Caffe está publicado bajo la licencia BSD 2-Clause.\\
+Caffe\cite{Caffe} es un entorno de aprendizaje profundo desarrollado por Berkeley AI Research (BAIR) y por contribuyentes de la comunidad. Fue creado por Yangqing Jia durante su doctorado en UC Berkeley. Caffe está publicado bajo la licencia BSD 2-Clause.\\
 
-Los puntos que definen a este framework y que lo posicionan frente a otros softwares orientados al mismo objetivo son los siguientes:
+Los puntos que definen a este entorno y que lo posicionan frente a otros orientados al mismo objetivo son los siguientes:
 
 \begin{itemize}
-\item \textbf{La arquitectura expresiva} de Caffe fomenta la aplicación y la innovación. Los modelos y la optimización se definen por configuración y es posible cambiar del uso entre CPU y GPU modificando un único indicador.
-\item \textbf{El código extensible} fomenta el desarrollo activo. En el primer año de Caffe, más de 1000 desarrolladores han participado en el proyecto y ha tenido muchos cambios significativos. Gracias a estos colaboradores, el framework sigue el estado del arte tanto en código como en modelos.
-\item \textbf{La velocidad} hace que Caffe sea perfecto para experimentos de investigación e implementación en la industria. Caffe puede procesar más de 60 millones de imágenes al día con una sola GPU \textit{NVIDIA K40*}. Esto significa 4 ms/imagen para el aprendizaje, siendo las versiones más recientes de la biblioteca y el hardware aún más rápidos. Por todo esto, Caffe es una de las implementaciones más rápidas disponibles.
-\item \textbf{Comunidad:} Caffe ya impulsa proyectos de investigación académica e incluso aplicaciones industriales a gran escala en visión, voz y multimedia. Todo el código desarrollado por la comunidad se encuentra disponible en su repositorio de \textit{GitHub}\footnote{\url{https://github.com/BVLC/caffe/}}.
+\item La arquitectura expresiva de Caffe fomenta la aplicación y la innovación. Los modelos y la optimización se definen por configuración y es posible cambiar del uso entre CPU y GPU modificando un único indicador.
+\item El código extensible fomenta el desarrollo activo. En el primer año de Caffe, más de 1000 desarrolladores han participado en el proyecto y ha tenido muchos cambios significativos. Gracias a estos colaboradores, el entorno sigue estando a la última en el estado del arte tanto en código como en modelos.
+\item La velocidad de ejecución hace que Caffe sea perfecto para experimentos de investigación e implementación en la industria. Caffe puede procesar más de 60 millones de imágenes al día con una sola GPU \textit{NVIDIA K40*}. Esto significa 4 ms/imagen para el aprendizaje, siendo las versiones más recientes de la biblioteca y el hardware aún más rápidos. Por todo esto, Caffe es una de las plataformas más rápidas disponibles.
+\item Comunidad: Caffe impulsa proyectos de investigación académica e incluso aplicaciones industriales a gran escala en visión, voz y multimedia. Todo el código desarrollado por la comunidad se encuentra disponible en su repositorio de \textit{GitHub}\footnote{\url{https://github.com/BVLC/caffe/}}.
 \end{itemize}
 
-\subsection{Línea de comandos}
+\subsection{Interfaz vía comandos}
 
-Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe}\cite{CaffeInterface} la cuál es la herramienta utilizada por este software para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
+Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe}\cite{CaffeInterface} la cuál es la herramienta utilizada para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
 
 \begin{itemize}
 \item \textbf{Entrenamiento:}  Con el comando \textit{caffe train} es posible aprender modelos desde cero, reanudar el aprendizaje a partir de \textit{snapshots} guardadas y ajustar los modelos a los nuevos datos y tareas.
-\item \textbf{Test:} El comando \textit{caffe test} califica los modelos ejecutándolos en la fase de test e informa de la salida de la red como su puntuación. En primer lugar se informa la puntuación por lotes de datos de entrada y finalmente el promedio general. 
+\item \textbf{Test:} El comando \textit{caffe test} califica los modelos ejecutándolos en la fase de test e informa de la salida de la red como su puntuación. En primer lugar se informa de la puntuación por lotes de datos de entrada y finalmente el promedio general. 
 \item \textbf{Análisis comparativo:} El comando \textit{caffe time} compara el modelo capa a capa. Esto es util para comprobar el rendimiento del sistema y medir los tiempos de ejecución relativos a los modelos.
 \item \textbf{Diagnósticos:} El comando \textit{caffe device\_query} informa de los detalles de la GPU para referencia y comprobación del identificador de los dispositivos disponibles para ser ejecutados en máquinas \textit{multi-GPU}.
 \item \textbf{Paralelismo:} El indicador \textit{-gpu} de la herramienta Caffe provee una lista separada por comas de IDs para ejecutar procesos en múltiples GPUs.
 \end{itemize}
 
-\subsection{Python}
+\subsection{Interfaz con lenguaje Python}
 
-La interfaz de Python \textit{pycaffe}\cite{CaffeInterface} contiene el módulo de Caffe y sus propios scripts en la ruta caffe/python. Con el comando \textit{import caffe} se importará esta interfaz, pudiendo así cargar diferentes modelos de Caffe, manejar instrucciones de entrada/salida, visualizar redes y numerosas funcionalidades más. Todos los datos y parámetros se encuentran disponibles tanto para lectura como para escritura. Algunas de las tareas que se pueden realizar con está interfaz son:
+La interfaz de Python \textit{pycaffe}\cite{CaffeInterface} contiene el módulo de Caffe y sus propios scripts en la ruta caffe/python. Con el comando \textit{import caffe} se importará esta interfaz, pudiendo así cargar diferentes modelos, manejar instrucciones de entrada/salida, visualizar redes y numerosas funcionalidades más. Todos los datos y parámetros se encuentran disponibles tanto para lectura como para escritura. Algunas de las tareas que se pueden realizar con esta interfaz son:
 
 \begin{itemize}
 \item \textbf{caffe.Net} es la interfaz central para cargar, configurar y ejecutar modelos.
 \item \textbf{caffe.Classifier y caffe.Detector} proporcionan interfaces para tareas de clasificación y detección.
-\item \textbf{caffe.SGDSolver} se trata de la interfaz de resolución.
+\item \textbf{caffe.SGDSolver} es la interfaz de resolución.
 \item \textbf{caffe.io} maneja funciones de entrada/salida.
 \item \textbf{caffe.draw} visualiza las arquitecturas de red.
 \end{itemize}
@@ -579,18 +581,18 @@ Las capas de Caffe y sus parámetros están especificados en la definición del buf
 
 \subsubsection{Capas de datos}
 
-Los datos entran en Caffe a través de las capas de datos, las cuáles se encuentran en la parte inferior de las redes. Estos datos pueden proceder de bases de datos (LevelDB o \acrshort{LMDB}), directamente de la memoria, o, cuando la eficiencia no es crítica, desde archivos en disco en formato HDF5 o formatos de imagen comunes.\\
+Los datos entran en Caffe a través de las capas de datos, las cuales se encuentran en la parte inferior de las redes. Estos datos pueden proceder de bases de datos (LevelDB o \acrshort{LMDB}), directamente de la memoria, o, cuando la eficiencia no es crítica, desde archivos en disco en formato HDF5 o formatos de imagen comunes.\\
 
 Este tipo de capas son las encargadas de realizar tareas comunes de preprocesamiento de los datos de entrada, tales como sustracción media o escalado, especificando para ello los parámetros de transformación de la propia capa.\\
 
-Todos los sub-tipos de este tipo de capa, se especifican a continuación:
+Todos los sub-tipos de este tipo de capa se especifican a continuación:
 
 \begin{itemize}
 \item \textbf{Image Data:} Lee imágenes sin procesar.
 \item \textbf{Database:} Lee los datos de ficheros LevelLDB o \acrshort{LMDB}.
 \item \textbf{HDF5 Input:} Lee los datos en formato HDF5 permitiendo que estos tengan dimensiones arbitrarias.
 \item \textbf{HDF5 Output:} Escribe datos en formato HDF5
-\item \textbf{Input:} Normalmente utilizada para redes que se están siendo desplegadas.
+\item \textbf{Input:} Normalmente utilizada para redes que están siendo desplegadas.
 \begin{comment}
 \item \textbf{Window Data:}
 \end{comment}
@@ -602,10 +604,10 @@ Todos los sub-tipos de este tipo de capa, se especifican a continuación:
 
 Las capas de visión, generalmente toman imágenes como datos de entradas y generan otras imágenes como salida aunque también pueden tomar datos de otros tipos y dimensiones. Una imagen puede tener un canal de color si se trata de una imagen en escala de grises o 3 canales de color si se trata de una imagen RGB. Pero en este contexto, las características distintivas para el tratamiento de las imágenes de entrada serán la altura y la anchura de las mismas. La mayoría de las capas de visión trabajan aplicando una operación particular sobre alguna región de la entrada para producir una región correspondiente a la salida.\\
 
-Existen varios tipos capas de visión, dónde se pueden destacar los más comunes, listados a continuación:
+Existen varios tipos de capas de visión, los más comunes son:
 
 \begin{itemize}
-\item \textbf{Convolution Layer:} Convoluciona la imagen de entrada con un conjunto de filtros. Este proceso transforma la matriz de píxeles de la imagen original en otra matriz de características. Esta nueva imagen es esencialmente la original pero cada píxel tiene mucha más información ya que contiene información de la región en la que se encuentra el píxel, no sólo del píxel aislado.\\
+\item \textbf{Convolution Layer:} Convoluciona la imagen de entrada con un conjunto de filtros. Este proceso transforma la matriz de píxeles de la imagen original en otra matriz de diferentes características. Esta nueva imagen es esencialmente la original pero cada píxel tiene mucha más información ya que contiene información de la región en la que se encuentra el píxel, no sólo del píxel aislado.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -614,12 +616,12 @@ Existen varios tipos capas de visión, dónde se pueden destacar los más comunes, 
 \end{center}
 \end{figure}
 
-\item \textbf{Pooling Layer:} Realiza \textit{pooling} de los datos de entrada utilizando para ello funciones de máximo, media o estocásticas. La capa de pooling se coloca generalmente después de la capa de convolución. Su utilidad principal radica en la reducción espacial de la imagen de entrada. Para ello, se divide el mapa de características obtenido anteriormente en un conjunto de bloques de m x n. A continuación, se aplica una función de agrupación para cada uno de los bloques. Tras este proceso, se obtendrá una matriz de características más pequeño. Dentro de las funciones de agrupación, destacan max pooling, el cual elige el valor más alto dentro del bloque y pooling promedio (average) el cual toma como respuesta de bloque el valor promedio de las respuestas del bloque.\\
+\item \textbf{Pooling Layer:} Realiza \textit{pooling} de los datos de entrada utilizando para ello funciones de máximo, media o estocásticas. La capa de \textit{pooling} se coloca generalmente después de la capa de convolución. Su utilidad principal radica en la reducción espacial de la imagen de entrada. Para ello, se divide el mapa de características obtenido anteriormente en un conjunto de bloques de m x n. A continuación, se aplica una función de agrupación para cada uno de los bloques. Tras este proceso, se obtendrá una matriz de características más pequeña. Dentro de las funciones de agrupación, destacan \textit{max pooling}, el cual elige el valor más alto dentro del bloque y \textit{pooling promedio (average)} el cual toma como respuesta de bloque el valor promedio de las respuestas del bloque.\\
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=7cm]{./Pooling}
-\caption{Pooling con función de agrupación del máximo.}
+\caption{\textit{Pooling} con función de agrupación del máximo.}
 \end{center}
 \end{figure}
 \begin{comment}
@@ -644,7 +646,7 @@ Existen varios tipos capas de visión, dónde se pueden destacar los más comunes, 
 
 \begin{itemize}
 \item \textbf{Inner Product:} Este tipo de capa trata la entrada como un vector simple y produce una salida en forma de otro vector, estableciendo la altura y la anchura de cada \textit{blob} a 1.
-\item \textbf{Dropout:} Las capas Dropout son las encargadas de abordar el problema del sobreentrenamiento en las redes neuronales. El concepto central es que cada capa oculta de la red neuronal entreanada con Dropout debe aprender a trabajar con muestras de otras capas elegidas aleatoriamente. Esto hace que, cada capa oculta de la red sea más robusta y sea capaz de crear características útiles por si misma sin depender de otras capas ocultas para corregir sus errores, además de evitar que exista una gran co-adaptación entre cada una de ellas.
+\item \textbf{Dropout:} Las capas Dropout son las encargadas de abordar el problema del sobreentrenamiento en las redes neuronales. El concepto central es que cada capa oculta de la red neuronal entrenada con Dropout debe aprender a trabajar con muestras de otras capas elegidas aleatoriamente. Esto hace que cada capa oculta de la red sea más robusta y sea capaz de crear características útiles por sí misma sin depender de otras capas ocultas para corregir sus errores, además de evitar que exista una gran co-adaptación entre cada una de ellas.
 \begin{comment}
 \item \textbf{Embed}
 \end{comment}
@@ -653,7 +655,7 @@ Existen varios tipos capas de visión, dónde se pueden destacar los más comunes, 
 \subsubsection{Capas de pérdida}
 \label{CapasPerdidaSection}
 
-Estas capas son las encargadas de propagar la función de pérdida durante el entrenamiento de la red neuronal. Esta función de pérdida toma las predicciones que realiza el modelo y los valores objetivos, es decir, los que realmente se espera que la red produzca, y calcula cuán lejos se está de ese valor, comprobando de esta manera como funciona la red para un ejemplo específico. Esta función ajusta los pesos de la red reduciendo la pérdida del modelo para cada ejemplo.\\
+Estas capas son las encargadas de propagar la función de pérdida durante el entrenamiento de la red neuronal. Esta función de pérdida toma las predicciones que realiza el modelo y los valores objetivos, es decir, los que realmente se espera que la red produzca, y calcula cuán lejos se está de ese valor, comprobando de esta manera cómo funciona la red para un ejemplo específico. Esta función ajusta los pesos de la red reduciendo la pérdida del modelo para cada ejemplo.\\
 
 En Caffe, la pérdida se calcula con la propagación hacia adelante de la red. Cada capa toma un conjunto de datos de entrada y produce unos datos de salida. Algunas de las salidas de estas capas pueden utilizarse para calcular la pérdida del modelo. Algunas de las capas de pérdida definidas en Caffe son las siguientes:
 
@@ -662,7 +664,7 @@ En Caffe, la pérdida se calcula con la propagación hacia adelante de la red. Cad
 \item \textbf{Multinomial Logistic Loss}
 \item \textbf{Infogain Loss}
 \end{comment}
-\item \textbf{Softmax with Loss:} Esta capa toma un vector \textit{N-dimensaional} de números reales y lo transforma en otro vector de números reales dentro del rango (0,1).
+\item \textbf{Softmax with Loss:} Esta capa toma un vector \textit{N-dimensional} de números reales y lo transforma en otro vector de números reales dentro del rango (0,1).
 \begin{equation}
 p_{i}=\frac{e^{a_{i}}}{\sum_{k=1}^{N}e^{a}_{k}}
 \end{equation}
@@ -670,7 +672,7 @@ p_{i}=\frac{e^{a_{i}}}{\sum_{k=1}^{N}e^{a}_{k}}
 \begin{comment}
 \item \textbf{Hinge / Margin}
 \end{comment}
-\item \textbf{Sigmoid Cross-Entropy Loss:} Calcula las pérdidas logísticas cruzadas, a menudo utilizadas para predecir objetivos interpretados como probabilidades.
+\item \textbf{Sigmoid Cross-Entropy Loss:} Calcula las pérdidas sigmoidales cruzadas, a menudo utilizadas para predecir objetivos interpretados como probabilidades.
 \item \textbf{Accuracy / Top-k layer:} Dado un ejemplo específico de entrada en la red neuronal, califica la salida de la red con respecto a lo que se esperaba que fuera la salida de ésta. 
 \begin{comment}
 \item \textbf{Contrastive Loss}
@@ -702,7 +704,7 @@ f(x) = \left\lbrace
 \right.
 \end{equation}
 
-Esta función es no linear y tiene la ventaja de no tener errores en la propagación hacia atrás durante el entrenamiento de la red. Gráficamente, se puede representar como muestra la imagen \ref{ReLu}.
+Esta función es no lineal y tiene la ventaja de no tener errores en la propagación hacia atrás durante el entrenamiento de la red. Gráficamente, se puede representar como muestra la Figura \ref{ReLu}.
 
 \begin{figure}[H]
 \begin{center}
@@ -723,7 +725,7 @@ Esta función es no linear y tiene la ventaja de no tener errores en la propagaci
 f(x)=\frac{1}{1 + e ^ {-x}}
 \end{equation}
 
-A menudo la función sigmoide se refiere al caso particular de la función logística, que tiene una típica forma de "S". Gráficamente, se puede representar como se muestra en la imagen \ref{Sigmoid}.
+A menudo la función sigmoide se refiere al caso particular de la función sigmoidal, que tiene una típica forma de "S". Gráficamente, se puede representar como se muestra en la Figura \ref{Sigmoid}.
 
 \begin{figure}[H]
 \begin{center}
@@ -764,18 +766,18 @@ f(x) = log(1 + exp(x))
 \end{comment}
 \end{itemize}
 
-\section{JdeRobot}
+\section{Organización JdeRobot}
 
-JdeRobot\cite{JdeRobot} es un \textit{software} creado para desarrollar aplicaciones en robótica y visión artificial. Este campo de acción incluye la utilización de sensores, como por ejemplo cámaras, actuadores y software inteligente. Está escrito principalmente utilizando los lenguaje C++ y Python proporcionando un entorno de programación distribuido basado en componentes donde el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos elementos pueden ejecutarse en diferentes equipos y están conectados mediante el \textit{middleware} de comunicaciones ICE (Internet Comunication Engine) o mediante mensajes ROS (Robot Operating System). Los componentes interactúan a través de interfaces explícitas. Cada uno de ellos puede tener su propia interfaz gráfica de usuario independiente o ninguna.\\
+JdeRobot\cite{JdeRobot} es una organización creada para desarrollar aplicaciones en robótica y visión artificial. Este campo de acción incluye la utilización de sensores, como por ejemplo cámaras, actuadores y software inteligente. El \textit{software} de JdeRobot está escrito principalmente utilizando los lenguaje C++ y Python proporcionando un entorno de programación distribuido basado en componentes donde el programa de aplicación está compuesto por una colección de varios componentes asíncronos concurrentes. Estos elementos pueden ejecutarse en diferentes equipos y están conectados mediante el \textit{middleware} de comunicaciones ICE (Internet Comunication Engine) o mediante mensajes ROS (Robot Operating System). Los componentes interactúan a través de interfaces explícitas. Cada uno de ellos puede tener su propia interfaz gráfica de usuario independiente o ninguna.\\
 
-JdeRobot simplifica el acceso a dispositivos hardware desde el programa de aplicación. Obtener mediciones de sensores se realiza con llamadas a funciones locales. La plataforma conecta las llamadas al \textit{driver} de los componentes los cuales están conectados a los sensores o activadores, que pueden ser reales o simulados y remotos o locales. Estas funciones construyen la \acrshort{API} para la capa de abstracción de hardware. Los robots y sensores actualmente soportados son:
+JdeRobot simplifica el acceso a dispositivos hardware desde el programa de aplicación. Obtener mediciones de sensores se logra con llamadas a funciones locales. La plataforma conecta las llamadas al \textit{driver} de los componentes los cuales están conectados a los sensores o actuadores, que pueden ser reales o simulados y remotos o locales. Estas funciones construyen la \acrshort{API} para la capa de abstracción de hardware. Los robots y sensores actualmente soportados son:
 
 \begin{itemize}
-\item \textbf{Sensores RGBD:} Kinect and Kinect2 de Microsoft, Asus Xtion.
-\item \textbf{Robots con ruedas:} TurtleBot de Yujin Robot y Pioneer de MobileRobotics Inc.
+\item Sensores RGBD: Kinect and Kinect2 de Microsoft, Asus Xtion.
+\item Robots con ruedas: TurtleBot de Yujin Robot y Pioneer de MobileRobotics Inc.
 \item ArDrone quadrotor de Parrot.
-\item \textbf{Escáneres laser:} LMS de SICK, URG de Hokuyo y RPLidar.
-\item \textbf{Simulador Gazebo}.
+\item Escáneres laser: LMS de SICK, URG de Hokuyo y RPLidar.
+\item Simulador Gazebo.
 \item Cámaras Firewire, cámaras USB, archivos de vídeo, como mpeg o avi, y cámaras IP, como Axis.
 \end{itemize}
 
@@ -787,19 +789,17 @@ JdeRobot incluye varias herramientas y librerías de programación de robots, las 
 
 \begin{itemize}
 \item Teleoperadores para varios robots, viendo sus sensores y dirigiendo sus motores. Algunos de ellos están basados en la web y funcionan en \textit{smartphones}. 
-\item La herramienta \textit{VisualStates} para programar el comportamiento de robots.
+\item La herramienta \textit{VisualStates} para programar el comportamiento de robots con autómatas de estado finito.
 \item La herramienta \textit{Scratch2JdeRobot} para la programación de robots, incluyendo drones, con lenguaje gráfico estándar.
-\item Un calibrador de cámara.
 \item Una herramienta para ajustar los filtros de color.
-\item Una librería para desarrollar controladores y otra para el procesamiento de visión por computadora.
 \end{itemize}
 
-JdeRobot es un software de código abierto con licencia GPL y LGPL. También utiliza software de terceros como el simulador Gazebo, ROS, OpenGL, GTK, Qt, Player, Stage, GSL, OpenCV, PCL, Eigen u Ogre.
+JdeRobot genera un software de código abierto con licencia GPL y LGPL. También utiliza software de terceros como el simulador Gazebo, ROS, OpenGL, GTK, Qt, Player, Stage, GSL, OpenCV, PCL, Eigen u Ogre.
 
 
-\subsection{CameraServer}\label{Camera}
+\subsection{Servidor de imágenes CameraServer}\label{Camera}
 
-Se trata de un componente facilitado por JdeRobot que actúa como servidor de imágenes proporcionando a las aplicaciones de estas imágenes procedentes de un número determinado de cámaras, ya sean reales o simuladas, o de un archivo de vídeo.\\
+Se trata de un componente facilitado por JdeRobot que actúa como servidor de imágenes, proporcionando a las aplicaciones de estas imágenes procedentes de un número determinado de cámaras, ya sean reales o simuladas, o de un archivo de vídeo.\\
 
 Para el uso correcto de este componente, es necesario editar un fichero de configuración en función de las necesidades concretas de la máquina. En este archivo, con extensión \textit{cfg}, se pueden definir varios parámetros:
 
@@ -815,6 +815,9 @@ Para el uso correcto de este componente, es necesario editar un fichero de confi
 \item Altura y anchura de las imágenes.
 \end{itemize}
 \end{itemize}
+
+
+\subsection{DetectionSuite}\label{DetectionSuiteSection}
 
 \begin{comment}
 \section{Formato de ficheros}
@@ -861,27 +864,27 @@ En la sección \ref{COCO} se puede observar un ejemplo de la estructura de un arc
 La biblioteca es totalmente compatible con subprocesos y admite el acceso simultáneo de lectura y escritura desde múltiples procesos o hilos. Las páginas de datos utilizan una estrategia que permite que no se sobreescriban las páginas con datos activos, lo cual brinda además resistencia a la corrupción de la base de datos. Las escrituras están totalmente serializadas, es decir, solo se permite una escritura de forma simultánea. La estructura de la base de datos tiene múltiples versiones para que las lecturas se ejecuten sin bloqueos; las escrituras sobre ésta no bloquean a las lecturas, y las lecturas no bloquean las escrituras.
 \end{comment}
 
-\section{Bases de datos}\label{BBDD}
+\section{Bases de datos de detección visual}\label{BBDD}
 
-Para conseguir un sistema entrenado que sea capaz de reconocer ciertos objetos dada una imagen de entrada es necesario contar con un gran conjunto de datos. Dentro de estos conjuntos, es necesario que haya ejemplos destinados al entrenamiento de la red, otros a la validación de ésta y otros a las pruebas o \textit{test} de las prestaciones de ésta. Además de estos ejemplos, deben existir unos ficheros denominados anotaciones dónde se especifican las coordenadas y etiqueta de los objetos de cada una de las imágenes pertenecientes a los conjuntos de entrenamiento y validación.\\
+Para entrenar un sistema que sea capaz de reconocer ciertos objetos dada una imagen de entrada es necesario contar con un gran conjunto de datos. Dentro de estos conjuntos, es necesario que haya ejemplos destinados al entrenamiento de la red, otros a la validación de ésta y otros a las pruebas o \textit{test} de las prestaciones de ésta. Además de estos ejemplos, deben existir unos ficheros denominados anotaciones dónde se especifican las coordenadas y etiqueta verdadera de los objetos de cada una de las imágenes pertenecientes a los conjuntos de entrenamiento y validación.\\
 
-Durante este trabajo, se han utilizado 2 bases de datos diferentes. A continuación se presentan sus principales características, la cantidad de imágenes que hay en cada uno de los conjuntos y la estructura y tipo de fichero en la que se definen las anotaciones.
+Durante este trabajo, se han utilizado dos bases de datos diferentes. A continuación se presentan sus principales características, la cantidad de imágenes que hay en cada uno de los conjuntos y la estructura y tipo de fichero en la que se definen las anotaciones.
 
 \subsection{PASCAL Visual Object Classes}\label{VOC}
 
-PASCAL Visual Object Classes\cite{PascalVocHome} o \acrshort{PascalVOC}, es una base de datos que contiene 11.530 imágenes de entrenamiento y validación que representan 27.450 objetos diferentes distribuidos en 20 clases. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. Por lo tanto, la tarea de detección consiste en predecir el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
+PASCAL Visual Object Classes\cite{PascalVocHome}, o \acrshort{PascalVOC}, es una base de datos que contiene 11.530 imágenes de entrenamiento y validación que representan 27.450 objetos diferentes distribuidos en 20 clases. Los datos de entrenamiento proporcionados consisten en un conjunto de imágenes; cada imagen tiene un archivo de anotación que proporciona un cuadro delimitador o \textit{bounding box} y una etiqueta de las 20 clases para cada objeto presente en la imagen. La tarea de detección consiste en estimar el cuadro delimitador y la etiqueta de cada objeto en la imagen de prueba.\\
 
-Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, algunos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento yvalidación. Específicamente, la distribución de objetos para la tarea de detección se muestra en la imagen \ref{VOC2012_Statics}.
+Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para saber si la base de datos está bien escalada, o si, por el contrario, algunos objetos aparecen con más frecuencia que otros. En la base de datos VOC2012, las distribuciones de imágenes y objetos por clase son aproximadamente iguales en todos los conjuntos de entrenamiento y validación. Específicamente, la distribución de objetos para la tarea de detección se muestra en la Figura \ref{VOC2012_Statics}.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./VOC2012_Statics}
-\caption{Distribución de objetos en \acrshort{PascalVOC}. Imagen obtenida de \cite{PascalVocData}}.
+\caption{Distribución de objetos en \acrshort{PascalVOC} \cite{PascalVocData}.}
 \label{VOC2012_Statics}
 \end{center}
 \end{figure}
 
-En cuanto a los archivos de anotaciones, estos tienen un formato \acrshort{XML}. En primer lugar, aparecen algunas etiquetas informativas acerca de la imagen, como la etiqueta \textit{filename} que indica el nombre de la imagen, o la etiqueta \textit{database} que indica el nombre de la base de datos.\\
+En cuanto a los archivos de anotaciones, éstos tienen un formato \acrshort{XML}. En primer lugar, aparecen algunas etiquetas informativas acerca de la imagen, como la etiqueta \textit{filename} que indica el nombre de la imagen, o la etiqueta \textit{database} que indica el nombre de la base de datos.\\
 
 \begin{lstlisting}[frame=single]
 	<folder>VOC2012</folder>
@@ -923,7 +926,7 @@ Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existent
 
 \subsection{Common Objects in Context}\label{COCO}
 
-Common Objects in Context\cite{CocoHome}, conocido como \acrshort{COCO} por sus siglas, es un conjunto de datos creado para la detección y segmentación de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
+Common Objects in Context\cite{CocoHome}, conocido como \acrshort{COCO} por sus siglas, es un conjunto de datos creado para la detección y segmentación visual de objetos y para generación de subtítulos a gran escala. Algunas de las características de esta base de datos son:
 
 \begin{itemize}
 \item Más de 300.000 imágenes
@@ -931,27 +934,27 @@ Common Objects in Context\cite{CocoHome}, conocido como \acrshort{COCO} por sus 
 \item 80 categorias de objetos
 \end{itemize}
 
-Actualmente, \acrshort{COCO} utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo \acrshort{JSON}. Todas las anotaciones comparten la estructura de datos básica definida en la imagen \ref{CocoAnnotations}:
+Actualmente \acrshort{COCO} utiliza 3 tipos de anotaciones: instancias de objetos, puntos claves de objetos y leyendas de imágenes. Las anotaciones se almacenan usando el formato de archivo \acrshort{JSON}. Todas las anotaciones comparten la estructura de datos básica definida en la Figura \ref{CocoAnnotations}:
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_1}
-\caption{Estructura básica de anotaciones en \acrshort{COCO}. Imagen obtenida de \cite{CocoAnnotations}}.
+\caption{Estructura básica de anotaciones en \acrshort{COCO} \cite{CocoAnnotations}.}
 \label{CocoAnnotations}
 \end{center}
 \end{figure}
 
-Para la tarea de detección, es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto, en cuyo caso se usan polígonos, o una colección de objetos, en cuyo caso se usa Run-Length Encoding, RLE, que es una forma de compresión de datos. Hay que tener en cuenta que un solo objeto puede requerir múltiples polígonos. Las anotaciones de multitudes se utilizan para etiquetar grandes grupos de objetos, como por ejemplo, una multitud de personas. Además, se proporciona un cuadro delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría y supercategoría.
+Para la tarea de detección es de especial interés la anotación usando instancias de objetos. Cada anotación de instancia contiene una serie de campos, incluida la identificación de categoría y la máscara de segmentación del objeto. El formato de segmentación depende de si la instancia representa un solo objeto, en cuyo caso se usan polígonos, o una colección de objetos, en cuyo caso se usa Run-Length Encoding (RLE) que es una forma de compresión de datos. Hay que tener en cuenta que un solo objeto puede requerir múltiples polígonos. Las anotaciones de multitudes se utilizan para etiquetar grandes grupos de objetos, como por ejemplo, una multitud de personas. Además, se proporciona un cuadro delimitador para cada objeto (las coordenadas del cuadro se miden desde la esquina superior izquierda de la imagen y están indexadas en 0). Finalmente, el campo de categorías de la estructura de anotación almacena la asignación de los nombres de categoría y supercategoría.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Coco_Annotation_2}
-\caption{Estructura básica de anotaciones en \acrshort{COCO}. Imagen obtenida de \cite{CocoAnnotations}}.
+\caption{Estructura básica de anotaciones en \acrshort{COCO} \cite{CocoAnnotations}.}
 \label{AnnotacionesCoco2}
 \end{center}
 \end{figure}
 
-En referencia a los datos, el conjunto de datos \acrshort{COCO} se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, mientras que la segunda mitad se lanzó en 2015. La versión 2014 contiene 82.783 imágenes para el entrenamiento, 40.504 para validaciones y 40.775 imágenes de prueba (aproximadamente 1/2 de imágenes de entrenamiento, 1/4 de validación y 1/4 de prueba). Hay casi 270 mil personas segmentadas y un total de 886 mil instancias de objetos segmentados en los datos de entrenamiento y validación. La versión acumulada de 2015 contendrá un total de 165.482 imágenes de entrenamiento, 81.208 de validación y 81.434 de prueba.\\
+En referencia a los datos, el conjunto de datos \acrshort{COCO} se divide en dos partes aproximadamente iguales. La primera mitad del conjunto de datos se lanzó en 2014, mientras que la segunda mitad se lanzó en 2015. La versión 2014 contiene 82.783 imágenes para el entrenamiento, 40.504 para validaciones y 40.775 imágenes de prueba (aproximadamente 1/2 de imágenes de entrenamiento, 1/4 de validación y 1/4 de prueba). Hay casi 270.000 personas segmentadas y un total de 886.000 instancias de objetos segmentados en los datos de entrenamiento y validación. La versión acumulada de 2015 contiene un total de 165.482 imágenes de entrenamiento, 81.208 de validación y 81.434 de prueba.\\
 
 La distribución de los objetos en esta base de datos se puede obtener desde su sitio web. En la sección \textit{Explorar}, es posible elegir y combinar cada uno de los objetos y observar cuántas imágenes aparecen. La distribución de cada uno de los objetos en el conjunto de entrenamiento / validación se muestra en la siguiente imagen:
 
@@ -962,15 +965,17 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 \end{center}
 \end{figure}
 
-\chapter{Detección con Single Shot MultiBox y Caffe}
+\chapter{Detección visual de objetos con Single Shot MultiBox y Caffe}
 
 \section{Técnica Single Shot MultiBox Detection}
 
-Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un framework diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \acrshort{mAP} (mean Average Precision) a 59 \textit{frames} por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}. Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre\cite{SSD_2}:
+Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un modelo diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \acrshort{mAP} (mean Average Precision) a 59 fotogramas por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}.\\
+
+Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre \cite{SSD_2}:
 
 \begin{itemize}
-\item \textbf{Single Shot:}  Hace referencia a que la tareas de localización y clasificación de objetos se realizan en un único paso hacia adelante de la red.
-\item \textbf{MultiBox:} Es el nombre de una técnica para regresión de \textit{bounding box} que es utilizada como referencia.\cite{MultiBox}.
+\item \textbf{Single Shot:}  Hace referencia a que las tareas de localización y clasificación de objetos se realizan en un único paso hacia adelante de la red.
+\item \textbf{MultiBox:} Es el nombre de una técnica para regresión de \textit{bounding box} que es utilizada como referencia \cite{MultiBox}.
 \item \textbf{Detector:} La red neuronal se trata de un detector de objetos que también se encarga de clasificarlos.
 \end{itemize}
 
@@ -979,12 +984,12 @@ En el momento de la predicción, la red neuronal genera las puntuaciones para cad
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./FrameworkSSD}
-\caption{Framework \acrshort{SSD}. Imagen obtenida de \cite{SSD}.}
+\caption{Framework \acrshort{SSD} \cite{SSD}.}
 \label{FrameworkSSD}
 \end{center}
 \end{figure}
 
-(a) \acrshort{SSD} solo necesita una imagen de entrada y los cuadros delimitadores reales para cada objeto durante el entrenamiento. De una manera convolucional, se evalúa un pequeño conjunto de cuadros predeterminados (p.ej. 4) de diferentes relaciones de aspecto para cada ubicación de éstos en varios mapas de características a diferentes escalas (p. ej 8 x 8 y 4 x 4 en (b) y (c). Para cada cuadro predeterminado se predicen tanto los desplazamiento de forma como la confianza para todas las categorías de objetos (\textit{(c1, c2, ..., cp)}). En el momento del entrenamiento, se comparan estos cuadros predeterminados con los cuadros reales.
+\acrshort{SSD} solo necesita una imagen de entrada y los cuadros delimitadores reales para cada objeto durante el entrenamiento (Figura \ref{FrameworkSSD} (a)). De una manera convolucional, se evalúa un pequeño conjunto de cuadros predeterminados (p.ej. 4) de diferentes relaciones de aspecto para cada ubicación de éstos en varios mapas de características a diferentes escalas (p. ej 8 x 8 y 4 x 4 en (b) y (c). Para cada cuadro predeterminado se predicen tanto los desplazamientos de forma como la confianza para todas las categorías de objetos (\textit{(c1, c2, ..., cp)}). En el momento del entrenamiento, se comparan estos cuadros predeterminados con los cuadros reales.
 
 \subsection{Arquitectura}\label{ArquitecturaSSDSection}
 
@@ -998,18 +1003,18 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=15cm]{./SSD_Architecture}
-\caption{Arquitectura \acrshort{SSD}. Imagen obtenida de \cite{SSD}.}
+\caption{Arquitectura \acrshort{SSD} \cite{SSD}.}
 \label{ArquitecturaSSD}
 \end{center}
 \end{figure}
 
-\item \textbf{Cajas predeterminadas y relaciones de aspecto:} Se asocian un conjunto de cuadros delimitadores por defecto con cada celda del mapa de características. Los cuadros predeterminados marcan el mapa de características de un manera convolucional, por lo que la posición de cada cuadro con respecto a su celda es fija. En cada celda del mapa de características, se predicen los desplazamientos relativos a las formas de los cuadros predeterminados en cada una de las celdas, así como la puntuación por clase que indica la presencia de una instancia de clase en cada uno de los cuadros delimitadores. Específicamente, para cada cuadro \textit{k} en una posición determinada se calcula la puntuación de clase \textit{c} y los 4 desplazamientos relativos a la forma del cuadro por defecto original. Como resultado se obtienen \textit{(c + 4)k} filtros que se aplican alrededor de cada ubicación en el mapa de características, produciendo \textit{(c + 4)kmn} salidas para un mapa de \textit{m} x \textit{n}. Se permiten diferentes formas para los cuadros predeterminados en los mapas de características con el objetivo de discretizar el espacio para las posibles formas que tengan las cuadros delimitadores de salida.
+\item \textbf{Cajas predeterminadas y relaciones de aspecto:} Se asocian un conjunto de cuadros delimitadores por defecto con cada celda del mapa de características. Los cuadros predeterminados marcan el mapa de características de un manera convolucional, por lo que la posición de cada cuadro con respecto a su celda es fija. En cada celda del mapa de características se predicen los desplazamientos relativos a las formas de los cuadros predeterminados en cada una de las celdas, así como la puntuación por clase que indica la presencia de una instancia de clase en cada uno de los cuadros delimitadores. Específicamente, para cada cuadro \textit{k} en una posición determinada se calcula la puntuación de clase \textit{c} y los 4 desplazamientos relativos a la forma del cuadro por defecto original. Como resultado se obtienen \textit{(c + 4)k} filtros que se aplican alrededor de cada ubicación en el mapa de características, produciendo \textit{(c + 4)kmn} salidas para un mapa de \textit{m} x \textit{n}. Se permiten diferentes formas para los cuadros predeterminados en los mapas de características con el objetivo de discretizar el espacio para las posibles formas que tengan las cuadros delimitadores de salida.
 \end{itemize}
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./VGG-16}
-\caption{Arquitectura VGG-16. Imagen obtenida de \cite{SSD_2}.}
+\caption{Arquitectura VGG-16 \cite{SSD_2}.}
 \label{VGG-16}
 \end{center}
 \end{figure}
@@ -1019,26 +1024,154 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 La principal diferencia entre el entrenamiento usando la técnica \acrshort{SSD} y el entrenamiento de un detector típico, es que la información a cerca de los cuadros delimitadores reales debe asignarse a salidas específicas dentro del conjunto fijo de salidas del detector. Tras realizar esta asignación, la función de pérdida y la propagación hacia atrás son aplicadas de extremo a extremo. El proceso de entrenamiento también implica elegir el conjunto de cuadros y escalas predeterminados para la detección.
 
 \begin{itemize}
-\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar que cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de Índice Jaccard o \textit{Intersection over Union}, \acrshort{IoU}, explicado en el apartado \ref{IoUSection}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera, se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
+\item \textbf{Estrategia de emparejamiento:}  Durante el entrenamiento es necesario determinar qué cuadros predeterminados corresponden a la \textit{bounding box} real de un objeto determinado y entrenar la red en función de esto. En primer lugar, se emparejan cada cuadro real con el predeterminado cuya superposición genere un valor mayor de \textit{Intersection over Union}, \acrshort{IoU}, tal y como se realiza en \textit{Multibox}\cite{MultiBox}. Posteriormente, y a diferencia de la técnica \textit{MultiBox}, se empareja cada cuadro real con cada caja predeterminada con la que produzca un índice Jaccard superior a 0,5. De esta manera se simplifica el problema del aprendizaje, permitiendo a la red predecir coeficientes de predicción altos para múltiples cajas predeterminadas que se superponen, en lugar de requerir que se escoja únicamente la que tiene un parámetro \acrshort{IoU} máximo.
 
-\item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de \acrshort{SSD} es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre la las confianzas de múltiples clases.
+\item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de \acrshort{SSD} es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre las confianzas de múltiples clases.
 
-\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto. Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La imagen \ref{FrameworkSSD} muestra 2 ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el framework. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional. Dentro del marco de \acrshort{SSD}, se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica, se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico. Combinando predicciones para todas las cajas por defecto con diferentes escalas y relaciones de aspecto de todas las ubicaciones de los mapas de características, se consigue un conjunto diverso de predicciones, abarcando varios tamaños y formas de objetos de entrada. Por ejemplo, en la imagen \ref{FrameworkSSD}, el perro está emparejado con una caja por defecto en el mapa de características 4x4, pero con ninguna en el mapa de características 8x8. Esto se debe a que esas cajas tienen escalas diferentes y no coinciden con la caja del perro, y por lo tanto se consideran como negativos durante el entrenamiento.
+\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto.\\
 
-\item \textbf{Ejemplos negativos:} Durante el entrenamiento, muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \acrshort{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significante desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.
+Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La Figura \ref{FrameworkSSD} muestra dos ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el modelo. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional.\\
+
+Dentro del marco de \acrshort{SSD} se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico.\\
+
+Combinando predicciones para todas las cajas por defecto con diferentes escalas y relaciones de aspecto de todas las ubicaciones de los mapas de características se consigue un conjunto diverso de predicciones, abarcando varios tamaños y formas de objetos de entrada. Por ejemplo en la Figura \ref{FrameworkSSD}, el perro está emparejado con una caja por defecto en el mapa de características 4x4, pero con ninguna en el mapa de características 8x8. Esto se debe a que esas cajas tienen escalas diferentes y no coinciden con la caja del perro, y por lo tanto se consideran como negativos durante el entrenamiento.
+
+\item \textbf{Ejemplos negativos:} Durante el entrenamiento muchas de las \textit{bounding boxes} tienen un nivel muy bajo de \acrshort{IoU} y por lo tanto son interpretados como ejemplos de entrenamiento negativos. Esto provoca un significativo desequilibrio entre ejemplos de entrenamiento positivos y negativos. En lugar de utilizar todos los ejemplos negativos, se ordenan usando la mayor pérdida de confianza para cada cuadro predeterminado y se seleccionan los más altos para asegurar que la relación de aspecto entre los negativos y los positivos sea como máximo 3:1. Esto provoca una optimización más rápida y un entrenamiento más estable.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=13cm]{./HardNegativeMining}
-\caption{Ejemplo de uso de negativos en el entrenamiento \acrshort{SSD}. Imagen obtenida de \cite{SSD_2}.}
+\caption{Ejemplo de uso de negativos en el entrenamiento \acrshort{SSD} \cite{SSD_2}.}
 \label{VGG-16}
 \end{center}
 \end{figure}
 
-\item \textbf{Aumento de datos:} El aumento de datos, tanto en la técnica \acrshort{SSD} como en muchas otras aplicaciones de aprendizaje profundo, ha sido crucial para que la red neuronal sea mucho más robusta frente a diferentes tamaños y formas de objetos a la entrada de ésta. Con este fin, se generaron ejemplos de entrenamiento con parches de la imagen original con diferentes relaciones de \acrshort{IoU} (p.ej. 0.1, 0.3, 0.5, etc). Además, cada imagen se gira horizontalmente de forma aleatoria con una probabilidad de 0.5, asegurando así que los objetos aparezcan con la misma probabilidad a la izquierda que a la derecha. 
+\item \textbf{Aumento de datos:} El aumento de datos, tanto en la técnica \acrshort{SSD} como en muchas otras aplicaciones de aprendizaje profundo, ha sido crucial para que la red neuronal sea mucho más robusta frente a diferentes tamaños y formas de objetos a la entrada de ésta. Con este fin se generaron ejemplos de entrenamiento con parches de la imagen original con diferentes relaciones de \acrshort{IoU} (p.ej. 0.1, 0.3, 0.5, etc). Además, cada imagen se gira horizontalmente de forma aleatoria con una probabilidad de 0.5, asegurando así que los objetos aparezcan con la misma probabilidad a la izquierda que a la derecha. 
 \end{itemize}
 
-\section{Single Shot MultiBox Detection en Caffe}\label{SSDCaffe}
+\section{Aplicación para detección de objetos en flujos de vídeo con SSD}
+\label{ComponenteDetectorSection}
+
+Con el objetivo de realizar la detección neuronal en vivo se ha programado un componente en Python que, a partir del \textit{Camera Server} de JdeRobot explicado en el apartado \ref{Camera}, será capaz de realizar la detección en tiempo real de las imágenes captadas por la cámara. De esta manera se abre el camino para incorporar esta capacidad a la parte perceptiva de un robot móvil o a un sistema de videovigilancia, por ejemplo.\\
+
+\subsection{Diseño}
+
+El cómputo dentro de la aplicación se ha descompuesto en 3 hilos de ejecución concurrentes. La Figura \ref{ComponenteDetector} muestra un diagrama de bloques con el diseño de este componente.
+
+\begin{itemize}
+\item \textit{Hilo Camera:} Será el encargado de capturar las imágenes captadas por la cámara utilizando para ello el servidor de imágenes \textit{Camera Server}. Esta imagen será enviada al \textit{hilo \acrshort{GUI}} para su visualización y al \textit{hilo Detector} para su procesamiento. 
+\item  \textit{Hilo Detector:} Este hilo será el encargado de la detección neuronal usando redes \acrshort{SSD}. Para ello hace las transformaciones que sean necesarias de la imagen que recibe desde el \textit{hilo Camera} y realiza la detección de ésta. Tras generar como salida la misma imagen con las \textit{bounding boxes} de los objetos detectados superpuestas, la envía al \textit{hilo \acrshort{GUI}} para su visualización.
+\item \textit{Hilo \acrshort{GUI}:} Es la interfaz gráfica de usuario, o Graphical User Interface, \acrshort{GUI}, es decir, el módulo encargado del aspecto gráfico de la aplicación, mostrando tanto la imagen real captada por la cámara como la imagen tras su procesamiento y la detección de objetos.
+\end{itemize}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=13cm]{./ComponenteDetector}
+\caption{Arquitectura de la aplicación de detección visual con SSD.}
+\label{ComponenteDetector}
+\end{center}
+\end{figure}
+
+\subsection{Hilo Camera}
+
+Este hilo es el encargado de obtener la imagen capturada por la cámara, la cual es visualizada en el hilo encargado de la parte gráfica. Este hilo puede ser referenciado con el nombre de la clase, \textit{Camera()}.\\
+
+Al inicializar esta clase, en el constructor, se especifica que se va a realizar una referencia externa, en forma de fichero de configuración. De esta manera, el \textit{hilo Camera} se puede conectar con el componente JdeRobot \textit{Camera Server}, y así adquirir la imágenes que éste provee. El fichero de configuración, que se especifica en línea de comandos cuando se ejecuta el componente, se muestra a continuación.\\
+
+\begin{lstlisting}[frame=single]
+DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999
+\end{lstlisting}
+
+Tras el constructor de la clase y una vez que la aplicación está conectada con el componente JdeRobot, se definen dos funciones de gran importancia para la ejecución de ésta. En primer lugar, el método \textit{getImage(self)} cuya función será obtener las imágenes de la cámara. También realiza una sería de transformaciones de éstas antes de que el \textit{hilo Detector} las introduzca en la red neuronal. Segundo, la función \textit{update(self)} cuyo objetivo es actualizar la ejecución de este hilo. Este método es llamado desde la clase \textit{ThreadCamera} en la que se define que el ciclo de ejecución de este hilo es de 1500 milisegundos.
+
+\subsection{Hilo Detector}
+
+Este hilo es el encargado de todo el proceso de detección neuronal, desde el procesamiento de la imagen que recibe desde el \textit{hilo Camera} para adaptarla a lo que requiere la red neuronal, hasta la obtención de la salida de la red y la posterior generación de la imagen con las detecciones producidas.\\
+
+Para realizar la detección, este hilo utiliza el mismo proceso explicado en el apartado \ref{SSDCaffe}, en el cual, a partir de una única imagen de entrada se genera como salida la misma imagen con las \textit{bounding boxes} de los objetos detectados superpuestos sobre ella. Así, en el constructor de este hilo se definen las variables que hacen referencia al mapa de etiquetas que pueden ser asignadas en la detección, a la estructura de la red y a los pesos de la red entrenada. Tras esto, se define la función \textit{detectiontest(self,img)}, explicada en el apartado \ref{SSDCaffe} y que se encarga de introducir la imagen de entrada en la red neuronal y obtener las detecciones.\\
+
+Finalmente, como en el \textit{hilo Camera}, se define la función \textit{update(self)} que actualizará la ejecución de este hilo. El ciclo de ejecución está especificado en la clase \textit{ThreadDetector} y es de 1500 milisegundos.
+
+\subsection{Hilo GUI}
+
+Este hilo será el encargado de todo el aspecto gráfico de la aplicación. Renderizará las 2 imágenes generadas en el resto de hilos, es decir, la capturada en tiempo real por el \textit{hilo Camera} y la imagen procesada en la que se muestra los objetos detectados recibida desde el \textit{hilo Detector}.\\
+
+En el constructor de esta clase, en primer lugar se inicializará la ventana principal, en la que aparecerán todos los elementos comentados anteriormente.\\
+
+\begin{lstlisting}[frame=single]
+QtGui.QWidget.__init__(self, parent)
+self.setWindowTitle("Detection Component")
+self.resize(1200,500)
+self.move(150,50)
+self.updGUI.connect(self.update)
+\end{lstlisting}
+
+En el código anterior, se define el título que aparecerá en la parte superior de la ventana, \textit{setWindowTitle}, la anchura y altura de ésta, \textit{resize} y su posición, \textit{move}. Con la función \textit{connect} se le asocia la función \textit{update}, que se encargará de actualizar este hilo de ejecución.\\
+
+Posteriormente, se definen las ventanas donde se visualizarán las 2 imágenes comentadas anteriormente. Éstas vienen parametrizadas igualmente por los parámetros \textit{resize} y \textit{move}.\\
+
+Finalmente, se crean 2 botones, los cuales serán los encargados de controlar el proceso de detección. Estos botones, además de venir definidos por del parámetro \textit{move} para determinar su posición, se les añadirá la función \textit{setStyleSheet} con el objetivo de asociarles un color. Adicionalmente, utilizando \textit{clicked.connect} se les asignará la función que se ejecutará cuando se haga \textit{click} sobre cada uno de los 2 botones.\\
+
+Tras el constructor de la clase \acrshort{GUI}, se definirá la función \textit{update(self)} que actualizará la ejecución de este hilo. Aquí, se asignarán a cada una de las ventanas creadas la imagen captada de la cámara y la imagen con las detecciones obtenidas según corresponda.\\
+
+Finalmente, se definirán las 2 funciones asociadas a los 2 botones creados anteriormente. La función \textit{toggle(self)} estará asociada al botón \textit{Continuos} y hará que tras pulsarlo, comience la detección continua de las imágenes captadas en tiempo real. Por otro lado, la función \textit{detectOnce(self)} estará asociada al botón \textit{Detect Once} y hará que al hacer \textit{click} sobre él, se realice la detección únicamente sobre el frame que se estaba mostrando por la cámara en ese momento exacto.
+
+\subsection{Ejecución}
+\label{Ejecucion}
+
+El proceso de ejecución de este componente estará divido en 2 pasos. Uno será el encargado de lanzar el servidor de imágenes, utilizando para ello el componente \textit{Camera Server} de JdeRobot. El otro será el encargado de lanzar el propio componente detector explicado en las secciones anteriores.\\
+
+Para lanzar el componente \textit{Camera Server}, será necesario abrir un terminal y ejecutar el siguiente comando proporcionado por la plataforma JdeRobot.\\
+
+\begin{lstlisting}[frame=single]
+cameraserver cameraserver.cfg
+\end{lstlisting}
+
+Una vez que está lanzado el servidor de imágenes, se ejecutará el siguiente comando, el cual lanzará el propio componente detector.\\
+
+\begin{lstlisting}[frame=single]
+python detectorSSD.py --Ice.Config=detectorSSD.cfg
+\end{lstlisting}
+
+En primer lugar se hará referencia al script principal del componente, \textit{detectorSSD.py}, cuyo objetivo es lanzar los 3 hilos que lo forman. Posteriormente se especifica el fichero de configuración \textit{detectorSSD.cfg} gracias al cual se tendrá comunicación con el servidor de imágenes. Este fichero tiene una propiedad en la que se define el nombre de la cámara, el cual tiene que ser el mismo que el definido anteriormente en el fichero \textit{cameraserver.cfg} para que dicha conexión sea efectiva.\\
+
+Finalmente, tras lanzar ambos comandos, se obtiene el componente detector explicado. A continuación se muestran 2 imágenes donde se aprecia el funcionamiento del componente. La imagen \ref{ComponenteDetectorPython} se puede observar como se comporta la aplicación, en este caso, pulsando el botón encargado de realizar la detección única.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{./DetectionComponentPython}
+\caption{Ejecución del componente detector usando el botón de detección única.}
+\label{ComponenteDetectorPython}
+\end{center}
+\end{figure}
+
+\subsection{Detección condicional}
+
+En ocasiones, se quiere realizar tareas de detección sobre uno o varios objetos en concreto, obviando los demás que se han definido durante el entrenamiento de la red neuronal.\\
+
+Para ello, en el fichero de configuración, se añadirá una línea en la cual se especificará las etiquetas de los objetos que se quieren detectar. Para la prueba de este componente condicional, se modificará este fichero en función de la demostración realizada anteriormente, en la que se detecto una pantalla y una botella.\\
+
+\begin{lstlisting}[frame=single]
+DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999 
+#Write all objects that yo want to detect separated by one space. 
+DetectorSSD.Labels=bottle
+\end{lstlisting}
+
+Tras esto, a partir de la variable DetectorSSD.Labels creada, se recorrerá el fichero \textit{labelmap.prototxt}, el cual contiene todos los objetos para los que se ha preparada a la red. Si alguna de las etiquetas existentes coinciden con las especificadas en el fichero de configuración, se creará el archivo \textit{labelmap\_conditional.prototxt}, que contendrá los objetos definidos. De esta manera, se tendrá un mapa de etiquetas con únicamente los objetos sobre los que se quiere realizar la detección.\\
+
+La arquitectura de este componente será exactamente igual que la mostrada en la imagen \ref{ComponenteDetector}, utilizando los 3 hilos de ejecución explicados en el apartado \ref{ComponenteDetectorSection}. Por último, la ejecución del componente se realizará de la forma explicada en el apartado \ref{Ejecucion}.\\
+
+En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de este componente de detección condicional, utilizando el fichero de configuración mostrado anteriormente:
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{./DetectionComponentPythonConditional}
+\caption{Ejecución del componente detector condicional usando el botón de detección única.}
+\label{ComponenteDetectorPythonConditional}
+\end{center}
+\end{figure}
+
+\section{Uso de redes SSD preentrenadas en Caffe}\label{SSDCaffe}
 
 Tras entender el funcionamiento de la técnica \acrshort{SSD}, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán algunos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}. Particularmente, se utilizarán 2 modelos, uno que utiliza la base de datos \acrshort{PascalVOC} y otro que utiliza \acrshort{COCO}, con el objetivo de realizar una primera y pequeña comparación entre la capacidad para detectar determinados objetos que tienen las redes entrenadas con ambas bases de datos.
 
@@ -1145,7 +1278,7 @@ A continuación, se muestran 2 ejemplos de la salida de este \textit{script} util
 
 Como se puede observar en las 2 imágenes superiores, el modelo entrenado con \acrshort{COCO} ha detectado una persona, un coche y una moto mientras que el modelo entrenado con \acrshort{PascalVOC} únicamente ha detectado el coche y la moto. Estas 2 imágenes representan el punto de inicio que se abordará en la sección \ref{ResultadoFinalSection} y que tratará de la comparación de prestaciones de varias redes neuronales.
 
-\section{Detector de objetos}\label{DetectorObjetosSection}
+\section{Creación y uso de modelo de red SSD propio}\label{DetectorObjetosSection}
 
 Para conseguir el sistema detector de objetos que se pretende, antes hay que definir en varios aspectos que afectarán a las prestaciones que tendrá el modelo una vez finalizado. En esta sección, se explicará la arquitectura que tendrá la red neuronal que se utilizará, los parámetros que se usarán para el entrenamiento de ésta y los conjuntos de datos de entrenamiento con los que se alimentará a la red. Finalmente, se describirá un componente detector de objetos desarrollado, que se puede utilizar para la comprobar las capacidades del modelo entrenado.
 
@@ -1412,126 +1545,6 @@ Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en 
 \end{figure}
 
 Por último, cuando finalizan las iteraciones definidas en el solucionador, en este caso 120000, se crear el fichero final con los pesos de la red una vez finalizado el entrenamiento, con el mismo formato que el de las \textit{snapshots} comentado anteriormente.
-
-\section{Componente detector}
-\label{ComponenteDetectorSection}
-
-Con el objetivo de entender mejor todo lo comentado anteriormente, se desarrolla un componente en Python que, a partir del \textit{Camera Server} de JdeRobot explicado en el apartado \ref{Camera}, será capaz de realizar la detección en tiempo real de las imágenes captadas por la cámara. La imagen \ref{ComponenteDetector} muestra un diagrama de bloques con el diseño de este componente.\\
-
-Para mejorar el rendimiento de este componente, se ha desacoplado en 3 hilos de ejecución que serán explicados a continuación:
-
-\begin{itemize}
-\item \textit{Hilo Camera:} Será el encargado de capturar las imágenes captadas por la cámara utilizando para ello el servidor de imágenes, \textit{Camera Server}. Esta imagen será enviada al \textit{hilo \acrshort{GUI}} para su visualización y al \textit{hilo Detector} para su procesamiento. 
-\item  \textit{Hilo Detector:} Este hilo será el encargado de la detección. Para ello, realiza las transformaciones que sean necesarias de la imagen que recibe desde el \textit{hilo Camera}, y, como se ha explicado en el apartado \ref{SSDCaffe}, realiza la detección de ésta. Tras generar como salida la misma imagen con las \textit{bounding boxes} de los objetos detectados superpuestas, la envía al \textit{hilo \acrshort{GUI}} para su visualización.
-\item \textit{Hilo \acrshort{GUI}:} Será la interfaz gráfica de usuario, o Graphical User Interface, \acrshort{GUI}, es decir, el componente encargado del aspecto gráfico de la aplicación, mostrando tanto la imagen real captada por la cámara como la imagen tras su procesamiento y la detección de objetos.
-\end{itemize}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=13cm]{./ComponenteDetector}
-\caption{Esquema del Componente Detector.}
-\label{ComponenteDetector}
-\end{center}
-\end{figure}
-
-\subsection{Hilo Camera}
-
-Este hilo será el encargado de obtener la imagen capturada por la cámara, la cual será visualizada en el hilo encargado de la parte gráfica. Este hilo podrá ser referencia con el nombre de la clase, \textit{Camera()}.\\
-
-Al inicializar esta clase, en el constructor, se especifica que se va a realizar una referencia externa, en forma de fichero de configuración. De esta manera, el \textit{hilo Camera} se podrá conectar con el componente JdeRobot \textit{Camera Server}, y de así adquirir la imágenes que éste provee. El fichero de configuración, que se especifica en línea de comandos cuando se ejecuta el componente, se muestra a continuación.\\
-
-\begin{lstlisting}[frame=single]
-DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999
-\end{lstlisting}
-
-Tras el constructor de la clase y una vez que la aplicación está conectada con el componente JdeRobot, se definen 2 funciones de gran importancia para la ejecución de ésta. En primer lugar, se especifica el método \textit{getImage(self)} cuya función será obtener las imágenes de la cámara. También realiza una sería de transformaciones de éstas antes de que el \textit{hilo Detector} las introduzca en la red neuronal. Por último, se define la función \textit{update(self)} cuyo objetivo será actualizar la ejecución de este hilo. Este método será llamado desde la clase \textit{ThreadCamera} en la que se define que el ciclo de ejecución de este hilo será de 1500 milisegundos.
-
-\subsection{Hilo Detector}
-
-Este hilo será el encargado de todo el proceso de detección, desde el procesamiento de la imagen que recibe desde el \textit{hilo Camera} para adaptarla a lo que requiere la red neuronal, hasta la obtención de la salida de la red y la posterior generación de la imagen con las detecciones producidas.\\
-
-Para realizar la detección, este hilo utilizará el mismo proceso explicado en el apartado \ref{SSDCaffe}, en el cual, a partir de una única imagen de entrada se genera como salida la misma imagen con las \textit{bounding boxes} de los objetos detectados superpuestos sobre ella. Así, en el constructor de este hilo se definirán las variables que hacen referencia al mapa de etiquetas que pueden ser asignadas en la detección, a la estructura de la red y a los pesos de la red entrenada. Tras esto, se define la función \textit{detectiontest(self,img)}, explicada en el apartado \ref{SSDCaffe} y que se encarga de introducir la imagen de entrada en la red neuronal y obtener las detecciones.\\
-
-Finalmente, como en el \textit{hilo Camera}, se define la función \textit{update(self)} que actualizará la ejecución de este hilo. El ciclo de ejecución está especificado en la clase \textit{ThreadDetector} y será de 1500 milisegundos.
-
-\subsection{Hilo GUI}
-
-Este hilo será el encargado de todo el aspecto gráfico de la aplicación. Renderizará las 2 imágenes generadas en el resto de hilos, es decir, la capturada en tiempo real por el \textit{hilo Camera} y la imagen procesada en la que se muestra los objetos detectados recibida desde el \textit{hilo Detector}.\\
-
-En el constructor de esta clase, en primer lugar se inicializará la ventana principal, en la que aparecerán todos los elementos comentados anteriormente.\\
-
-\begin{lstlisting}[frame=single]
-QtGui.QWidget.__init__(self, parent)
-self.setWindowTitle("Detection Component")
-self.resize(1200,500)
-self.move(150,50)
-self.updGUI.connect(self.update)
-\end{lstlisting}
-
-En el código anterior, se define el título que aparecerá en la parte superior de la ventana, \textit{setWindowTitle}, la anchura y altura de ésta, \textit{resize} y su posición, \textit{move}. Con la función \textit{connect} se le asocia la función \textit{update}, que se encargará de actualizar este hilo de ejecución.\\
-
-Posteriormente, se definen las ventanas donde se visualizarán las 2 imágenes comentadas anteriormente. Éstas vienen parametrizadas igualmente por los parámetros \textit{resize} y \textit{move}.\\
-
-Finalmente, se crean 2 botones, los cuales serán los encargados de controlar el proceso de detección. Estos botones, además de venir definidos por del parámetro \textit{move} para determinar su posición, se les añadirá la función \textit{setStyleSheet} con el objetivo de asociarles un color. Adicionalmente, utilizando \textit{clicked.connect} se les asignará la función que se ejecutará cuando se haga \textit{click} sobre cada uno de los 2 botones.\\
-
-Tras el constructor de la clase \acrshort{GUI}, se definirá la función \textit{update(self)} que actualizará la ejecución de este hilo. Aquí, se asignarán a cada una de las ventanas creadas la imagen captada de la cámara y la imagen con las detecciones obtenidas según corresponda.\\
-
-Finalmente, se definirán las 2 funciones asociadas a los 2 botones creados anteriormente. La función \textit{toggle(self)} estará asociada al botón \textit{Continuos} y hará que tras pulsarlo, comience la detección continua de las imágenes captadas en tiempo real. Por otro lado, la función \textit{detectOnce(self)} estará asociada al botón \textit{Detect Once} y hará que al hacer \textit{click} sobre él, se realice la detección únicamente sobre el frame que se estaba mostrando por la cámara en ese momento exacto.
-
-\subsection{Ejecución}
-\label{Ejecucion}
-
-El proceso de ejecución de este componente estará divido en 2 pasos. Uno será el encargado de lanzar el servidor de imágenes, utilizando para ello el componente \textit{Camera Server} de JdeRobot. El otro será el encargado de lanzar el propio componente detector explicado en las secciones anteriores.\\
-
-Para lanzar el componente \textit{Camera Server}, será necesario abrir un terminal y ejecutar el siguiente comando proporcionado por la plataforma JdeRobot.\\
-
-\begin{lstlisting}[frame=single]
-cameraserver cameraserver.cfg
-\end{lstlisting}
-
-Una vez que está lanzado el servidor de imágenes, se ejecutará el siguiente comando, el cual lanzará el propio componente detector.\\
-
-\begin{lstlisting}[frame=single]
-python detectorSSD.py --Ice.Config=detectorSSD.cfg
-\end{lstlisting}
-
-En primer lugar se hará referencia al script principal del componente, \textit{detectorSSD.py}, cuyo objetivo es lanzar los 3 hilos que lo forman. Posteriormente se especifica el fichero de configuración \textit{detectorSSD.cfg} gracias al cual se tendrá comunicación con el servidor de imágenes. Este fichero tiene una propiedad en la que se define el nombre de la cámara, el cual tiene que ser el mismo que el definido anteriormente en el fichero \textit{cameraserver.cfg} para que dicha conexión sea efectiva.\\
-
-Finalmente, tras lanzar ambos comandos, se obtiene el componente detector explicado. A continuación se muestran 2 imágenes donde se aprecia el funcionamiento del componente. La imagen \ref{ComponenteDetectorPython} se puede observar como se comporta la aplicación, en este caso, pulsando el botón encargado de realizar la detección única.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=16cm]{./DetectionComponentPython}
-\caption{Ejecución del componente detector usando el botón de detección única.}
-\label{ComponenteDetectorPython}
-\end{center}
-\end{figure}
-
-\subsection{Detección condicional}
-
-En ocasiones, se quiere realizar tareas de detección sobre uno o varios objetos en concreto, obviando los demás que se han definido durante el entrenamiento de la red neuronal.\\
-
-Para ello, en el fichero de configuración, se añadirá una línea en la cual se especificará las etiquetas de los objetos que se quieren detectar. Para la prueba de este componente condicional, se modificará este fichero en función de la demostración realizada anteriormente, en la que se detecto una pantalla y una botella.\\
-
-\begin{lstlisting}[frame=single]
-DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999 
-#Write all objects that yo want to detect separated by one space. 
-DetectorSSD.Labels=bottle
-\end{lstlisting}
-
-Tras esto, a partir de la variable DetectorSSD.Labels creada, se recorrerá el fichero \textit{labelmap.prototxt}, el cual contiene todos los objetos para los que se ha preparada a la red. Si alguna de las etiquetas existentes coinciden con las especificadas en el fichero de configuración, se creará el archivo \textit{labelmap\_conditional.prototxt}, que contendrá los objetos definidos. De esta manera, se tendrá un mapa de etiquetas con únicamente los objetos sobre los que se quiere realizar la detección.\\
-
-La arquitectura de este componente será exactamente igual que la mostrada en la imagen \ref{ComponenteDetector}, utilizando los 3 hilos de ejecución explicados en el apartado \ref{ComponenteDetectorSection}. Por último, la ejecución del componente se realizará de la forma explicada en el apartado \ref{Ejecucion}.\\
-
-En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de este componente de detección condicional, utilizando el fichero de configuración mostrado anteriormente:
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=16cm]{./DetectionComponentPythonConditional}
-\caption{Ejecución del componente detector condicional usando el botón de detección única.}
-\label{ComponenteDetectorPythonConditional}
-\end{center}
-\end{figure}
 
 \chapter{Medidor de calidad}
 \markboth{MEDIDOR DE CALIDAD}{MEDIDOR DE CALIDAD}
@@ -1865,7 +1878,7 @@ Por lo tanto, el índice Jaccard o \acrshort{IoU} puede definir gráficamente tal 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=8cm]{./loU}
-\caption{Intersection over Union. Imagen obtenida de \cite{IndiceJaccard}}
+\caption{Intersection over Union \cite{IndiceJaccard}.}
 \label{IntersectionOverUnion}
 \end{center}
 \end{figure}
@@ -1881,7 +1894,7 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./loU_score}
-\caption{Evaluación loU. Imagen obtenida de \cite{IndiceJaccard}}
+\caption{Evaluación loU \cite{IndiceJaccard}.}
 \end{center}
 \end{figure}
 
@@ -2354,6 +2367,30 @@ Deep Learning.
 \newblock{Deep Learning (Aprendizaje profundo). Tres cosas que es necesario saber}.
 \newblock {\url{hhttps://es.mathworks.com/discovery/deep-learning.html}}
 
+\bibitem{TFGNuria}
+Nuria Oyaga de Frutos.
+\newblock{Análisis de Aprendizaje Profundo con la plataforma Caffe.}
+\newblock{Trabajo Fin de Grado.}
+\newblock{Escuela Técnica Superior de Ingeniería de Telecomunicación.}
+\newblock{Universidad Rey Juan Carlos.}
+\newblock{Curso Académico 2016/2017.}
+
+\bibitem{TFGDavid}
+David Pascual.
+\newblock{Deep Learning on RGBD sensors.}
+\newblock{Trabajo Fin de Grado.}
+\newblock{Escuela Técnica Superior de Ingeniería de Telecomunicación.}
+\newblock{Universidad Rey Juan Carlos.}
+\newblock{Curso Académico 2016/2017.}
+
+\bibitem{TFGNacho}
+Nacho Condés.
+\newblock{Deep Learning Applications for Robotics using TensorFlow and JdeRobot.}
+\newblock{Trabajo Fin de Grado.}
+\newblock{Escuela Técnica Superior de Ingeniería de Telecomunicación.}
+\newblock{Universidad Rey Juan Carlos.}
+\newblock{Curso Académico 2016/2017.}
+
 \bibitem{SSD}
 Wei Liu ,Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed , Cheng-Yang Fu, Alexander C. Berg.
 \newblock {Single Shot MultiBox Detector}
@@ -2389,7 +2426,6 @@ COCO, Common Objects in Context.
 COCO, Common Objects in Context.
 \newblock {Data format.}
 \newblock {\url{http://cocodataset.org/#format-data}}
-
 
 \bibitem{SSD_2}
 Single Shot MultiBox Detection.
