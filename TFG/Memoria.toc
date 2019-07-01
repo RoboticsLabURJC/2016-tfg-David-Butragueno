@@ -26,9 +26,9 @@
 \contentsline {section}{\numberline {3.2}Organizaci\'on JdeRobot}{28}{section.3.2}% 
 \contentsline {subsection}{\numberline {3.2.1}Servidor de im\'agenes CameraServer}{29}{subsection.3.2.1}% 
 \contentsline {subsection}{\numberline {3.2.2}DetectionSuite}{30}{subsection.3.2.2}% 
-\contentsline {section}{\numberline {3.3}Bases de datos de detecci\'on visual}{30}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}PASCAL Visual Object Classes}{30}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}Common Objects in Context}{32}{subsection.3.3.2}% 
+\contentsline {section}{\numberline {3.3}Bases de datos de detecci\'on visual}{31}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}PASCAL Visual Object Classes}{31}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}Common Objects in Context}{34}{subsection.3.3.2}% 
 \contentsline {chapter}{\numberline {4}Detecci\'on visual de objetos con Single Shot MultiBox y Caffe}{37}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}T\'ecnica Single Shot MultiBox Detection}{37}{section.4.1}% 
 \contentsline {subsection}{\numberline {4.1.1}Arquitectura}{38}{subsection.4.1.1}% 

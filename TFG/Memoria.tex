@@ -816,8 +816,29 @@ Para el uso correcto de este componente, es necesario editar un fichero de confi
 \end{itemize}
 \end{itemize}
 
-
 \subsection{DetectionSuite}\label{DetectionSuiteSection}
+
+\textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/DetectionSuite}} es un conjunto de herramientas que simplifica la evaluación de los conjuntos de datos de detección de objetos más comunes utilizando redes neuronales entrenadas para ese fin.\\
+
+La idea principal es ofrecer una infraestructura genérica para evaluar los algoritmos de detección de objetos contra un conjunto de datos y calcular las estadísticas más comunes, como por ejemplo, \textit{Intersecion Over Union}, Precisión y Recall.\\
+
+Los sistemas y plataformas con las que está integrado \textit{Detection Suite} son:
+\begin{itemize}
+\item Sistemas operativos: Linux y MacOs.
+\item Formatos de bases de datos: YOLO, \acrshort{COCO}, ImageNet, \acrshort{PascalVOC}, Jderobot Recorder Logs, Princeton RGB, Spinello.
+\item Plataformas de detección de objetos: YOLO (Darknet), TensorFlow, Keras, Caffe, Background substraction.
+\item Entradas compatibles para la implementación de redes: Cámara Web/Cámara USB, Videos, Vídeos de ICE (Internet Comunication Engine), Vídeos de ROS (Robot Operating System), JdeRobot Recorder Logs.
+\end{itemize}
+
+\textit{Detection Suite} provee varios módulos\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki}} con los cuáles se pueden realizar diferentes funcionalidades:
+\begin{itemize}
+\item \textbf{Auto Evaluator:} Herramienta ejecutada por línea de coman dos que evalúa múltiples redes en uno o varios conjunto de datos en una sola ejecución.
+\item \textbf{Viewer:} Herramienta gráfica que lee las imágenes y anotaciones de un conjunto de datos para etiquetarlas con sus respectivos nombres de clases, mostrándolos por pantalla.
+\item \textbf{Converter:} Transforma conjuntos de datos de entrada a varios formatos de bases de datos.
+\item \textbf{Detector:} Herramienta gráfica que crea una base de datos con las detecciones obtenidas.
+\item \textbf{Evaluator:} Misma funcionalidad que la herramienta \textit{Auto Evaluator} pero desde la interfaz gráfica.
+\item \textbf{Deployer:} Realiza la detección de objetos, utilizando TensorFlow, Keras, Darknet o Caffe, sobre vídeos grabados o imágenes captadas por una cámara en tiempo real.
+\end{itemize}
 
 \begin{comment}
 \section{Formato de ficheros}
@@ -884,7 +905,7 @@ Es importante saber cuántas imágenes aparecen en cada uno de los 20 objetos para
 \end{center}
 \end{figure}
 
-En cuanto a los archivos de anotaciones, éstos tienen un formato \acrshort{XML}. En primer lugar, aparecen algunas etiquetas informativas acerca de la imagen, como la etiqueta \textit{filename} que indica el nombre de la imagen, o la etiqueta \textit{database} que indica el nombre de la base de datos.\\
+En cuanto a los archivos de anotaciones, éstos tienen un formato \acrshort{XML}. En primer lugar, aparecen algunas etiquetas informativas acerca de la imagen, como la etiqueta \textit{filename} que indica el nombre de la imagen, o la etiqueta \textit{database} que indica el nombre de la base de datos.
 
 \begin{lstlisting}[frame=single]
 	<folder>VOC2012</folder>
@@ -896,8 +917,7 @@ En cuanto a los archivos de anotaciones, éstos tienen un formato \acrshort{XML}.
 	</source>
 \end{lstlisting}
 
-
-Después, aparece el grupo de etiquetas \textit{size}, donde se indican el ancho de la imagen, \textit{width}, el alto, \textit{height} y la profundidad, \textit{depth}.\\
+Después, aparece el grupo de etiquetas \textit{size}, donde se indican el ancho de la imagen, \textit{width}, el alto, \textit{height} y la profundidad, \textit{depth}.
 
 \begin{lstlisting}[frame=single]
 	<size>
@@ -907,7 +927,7 @@ Después, aparece el grupo de etiquetas \textit{size}, donde se indican el ancho 
 	</size>
 \end{lstlisting}
 
-Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existentes en la imagen. Destacan la etiqueta \textit{name}, la cual indica el nombre de la etiqueta del objeto, y el grupo \textit{bndbox}, que representa la \textit{bounding box} a partir de las coordenadas \textit{x\_{min}}, \textit{y\_{min}}, \textit{x\_{max}} e \textit{y\_{max}}.\\
+Finalmente, aparecen las etiquetas referentes a cada uno de los objetos existentes en la imagen. Destacan la etiqueta \textit{name}, la cual indica el nombre de la etiqueta del objeto, y el grupo \textit{bndbox}, que representa la \textit{bounding box} a partir de las coordenadas \textit{x\_{min}}, \textit{y\_{min}}, \textit{x\_{max}} e \textit{y\_{max}}.
 
 \begin{lstlisting}[frame=single]
 	<object>
