@@ -69,7 +69,7 @@
 	captionpos=b
 }
 
-\setcounter{tocdepth}{4}
+\setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{4}
 
 \makeatletter
@@ -477,12 +477,12 @@ Además, Nacho Condés\footnote{\url{https://jderobot.org/Naxvm-tfg}} \cite{TFGNac
 
 \section{Objetivos}\label{Objetivos}
 
-El objetivo principal de este proyecto es el entendimiento de las redes neuronales y el Aprendizaje Profundo o \textit{Deep Learning} aplicado al problema de la detección visual de objetos. Se han articulado varios subobjetivos necesarios para conseguir ese objetivo principal. 
+El objetivo principal de este proyecto es el entendimiento de las redes neuronales y el Aprendizaje Profundo o \textit{Deep Learning} aplicado a la detección visual de objetos. Este objetivo principal se ha articulado en varios subobjetivos. 
 
 \begin{itemize}
-\item \textbf{Diseño y desarrollo de un componente que detecte objetos en imágenes en tiempo real sobre flujos de video:} Este componente estará integrado con el framework Caffe y a partir de los pesos y la estructura de redes entrenadas o preentrenadas procesará las imágenes de entrada captadas por una cámara de vídeo y realizará la detección de objetos sobre ellas.
-\item \textbf{Entrenamiento de una red neuronal propia para la detección de objetos:} Utilizando Caffe, se definirán todos los componente que provee este framework para entrenar una red neuronal. Además, se creará una base de datos personalizadas para utilizarla como conjunto de datos de entrenamiento para el entrenamiento del modelo.
-\item \textbf{Comparativa de la red propia con otras preentrenadas:} Se realizarán diferentes experimentos para evaluar y comparar las prestaciones de la red entrenada y las preentrenadas a partir de diferentes métricas calculadas.
+\item \textbf{Diseño y desarrollo de una aplicación que detecte objetos en imágenes en tiempo real sobre flujos de video:} Estará integrada con el entorno Caffe y a partir de los pesos y la estructura de redes neuronales entrenadas o preentrenadas procesará las imágenes de entrada captadas por una cámara de vídeo y realizará la detección de objetos sobre ellas.
+\item \textbf{Entrenamiento de una red neuronal propia para la detección de objetos:} Utilizando Caffe, se definirán todos los componente que provee este entorno para entrenar una red neuronal. Además, se creará una base de datos personalizada para utilizarla como conjunto de datos para el entrenamiento del modelo y para su evaluación (test).
+\item \textbf{Evaluación y comparación cuantitativa de la red propia con otras preentrenadas:} Se realizarán diferentes experimentos para evaluar y comparar las prestaciones de la red entrenada y las preentrenadas a partir de diferentes métricas.
 \end{itemize}
 
 \begin{comment}
@@ -500,22 +500,22 @@ El objetivo principal de este proyecto es el entendimiento de las redes neuronal
 
 \section{Metodología y plan de trabajo}
 
-Durante el desarrollo de este trabajo se han utilizado varias herramientas que han contribuido a que la dinámica fuera organizada y cooperativa entre todas las personas involucradas en este trabajo y a que en todo momento, éstas estuvieran al tanto de todo el material que se iba desarrollando y redactando.\\
+Durante este trabajo fin de grado se han utilizado varias herramientas que han contribuido a que la dinámica de desarrollo fuera organizada y cooperativa entre todas las personas involucradas y a que en todo momento estuvieran al tanto de todo el material que se iba creando y redactando.\\
 
-La principal herramienta, han sido las reuniones concertadas periódicamente con los tutores. En éstas, se exponían los avances realizados durante la semana, las dudas surgidas y se exponían y proponían nuevas líneas para el desarrollo del trabajo.\\
+La principal herramienta metodológica han sido las reuniones concertadas periódicamente con los tutores. En éstas, se exponían los avances realizados durante la semana, las dudas surgidas y se exponían y proponían nuevas líneas para el desarrollo del trabajo.\\
 
-Para la organización del código generado se ha utilizado el repositorio \textit{GitHub}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno}}. En él, se encuentra todo el código desarrollado durante el trabajo, con el objetivo de que pueda ser reutilizado, corregido o modificado en función de las necesidades.\\
+Para la organización del código generado se ha utilizado el repositorio \textit{GitHub}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno}}. En él se encuentra todo el \textit{software} desarrollado durante el trabajo, con el objetivo de que pueda ser reutilizado, corregido o modificado en función de las necesidades.\\
 
-Con el objetivo de documentar, semana a semana, todo lo desarrollado, se ha utilizado la \textit{Wiki}\footnote{\url{https://jderobot.org/Davidbutra-tfg}} que proporciona \textit{JdeRobot}. Gracias esto, se podía tener acceso al trabajo realizado semanas atrás y los tutores podían revisar antes de la reunión lo realizado durante la semana, haciendo que ésta fuera más práctica y fluida.\\
+Con el propósito de documentar, semana a semana, todo lo desarrollado, se ha utilizado la \textit{Wiki}\footnote{\url{https://jderobot.org/Davidbutra-tfg}} que proporciona JdeRobot. Gracias a esto se podía tener acceso al trabajo realizado semanas atrás y los tutores podían revisar antes de la reunión lo realizado durante la semana, haciendo que ésta fuera más práctica y fluida.\\
 
-Como punto de partida para conseguir los objetivos comentados en el apartado \ref{Objetivos}, se han realizado varias fases de estudio de las diferentes herramientas y conceptos que se utilizarán durante el trabajo:
+Como punto de partida para conseguir los objetivos comentados en el apartado \ref{Objetivos}, se planificaron varias fases de estudio de las diferentes herramientas y conceptos y fases de desarrollo:
 
 \begin{itemize}
-\item \textbf{Estudio de redes neuronales artificiales,} de sus características, de su estructura y del funcionamiento y tipos de entrenamiento. Tras esto se hace un estudio particular de las redes neuronales convolucionales o \acrshort{CNN} y del \textit{Deep Learning}, 2 de los conceptos que se utilizarán durante el trabajo.
-\item \textbf{Estudio de la plataforma Caffe,} de sus características principales y de sus funcionalidades. Se realizan algunos de los tutoriales que proveen sus creadores como primer paso para conocer su utilización y capacidad. 
-\item \textbf{Estudio de varias bases de datos aplicadas a la detección,} la distribución de los diferentes objetos dentro de sus imágenes y el formato de sus ficheros de anotaciones.
-\item \textbf{Estudio de la técnica \acrshort{SSD}:} Se realiza una lectura exhaustiva de la documentación realizada por los creadores de esta técnica \cite{SSD} para conocer sus principales características, los resultados de sus experimentos realizados y las conclusiones obtenidas a partir de ellos.
-\item \textbf{Estudio de métricas para evaluación de detectores,} que se utilizarán en este trabajo para facilitar el análisis de los datos obtenidos tras evaluar la red entrenada y las preentrenadas y así poder realizar una mejor comparación de sus prestaciones.
+\item \textbf{Estudio de redes neuronales artificiales,} de sus características, de su estructura y del funcionamiento y tipos de entrenamiento. Tras esto se hace un estudio particular de las redes neuronales convolucionales o \acrshort{CNN} y del \textit{Deep Learning}, dos de los conceptos utilizados durante el trabajo. Además, se realiza un estudio de la plataforma usada para aplicarlos, es decir, de Caffe, de sus características principales y de sus funcionalidades. Se completan algunos de los tutoriales que proveen sus creadores como primer paso para conocer su utilización y capacidad.
+\item \textbf{Programación de una aplicación} que usa redes de Caffe para detectar objetos en flujos de video en tiempo real.
+\item \textbf{Estudio de varias bases de datos aplicadas a la detección,} la distribución de los diferentes objetos dentro de sus imágenes y el formato de sus ficheros de anotaciones. Además se estudian varias métricas para la evaluación de detectores visuales que se utilizan en este trabajo. De esta manera se facilita el análisis de los datos obtenidos tras evaluar la red entrenada y las preentrenadas y así poder realizar una mejor comparación de sus prestaciones
+\item \textbf{Estudio de la técnica \acrshort{SSD}:} Se realiza una lectura exhaustiva de la documentación realizada por los creadores de esta técnica \cite{SSD} para conocer sus principales características, los resultados de sus experimentos realizados y las conclusiones obtenidas a partir de ellos. Tras esto se entrena un modelo \acrshort{SSD} utilizando la plataforma Caffe y una combinación de las bases de datos estudiadas anteriormente como conjunto de datos de entrenamiento.
+\item \textbf{Evaluación cuantitativa y comparativa} entre redes preentrenadas y la red propia para la detección visual de objetos a partir de las métricas que calcula la herramienta \textit{Detection Suite}.
 \end{itemize}
 
 \begin{comment}
@@ -958,7 +958,7 @@ Actualmente \acrshort{COCO} utiliza 3 tipos de anotaciones: instancias de objeto
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=11cm]{./Coco_Annotation_1}
+\includegraphics[width=13cm]{./Coco_Annotation_1}
 \caption{Estructura básica de anotaciones en \acrshort{COCO} \cite{CocoAnnotations}.}
 \label{CocoAnnotations}
 \end{center}
@@ -968,7 +968,7 @@ Para la tarea de detección es de especial interés la anotación usando instancias
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=11cm]{./Coco_Annotation_2}
+\includegraphics[width=13cm]{./Coco_Annotation_2}
 \caption{Estructura básica de anotaciones en \acrshort{COCO} \cite{CocoAnnotations}.}
 \label{AnnotacionesCoco2}
 \end{center}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.11)  1 JUL 2019 20:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.11)  1 JUL 2019 21:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -783,9 +783,6 @@ Package tocstyle Info: prepare \l@chapter for redefinition on input line 84.
 Package tocstyle Info: prepare \l@section for redefinition on input line 84.
 Package tocstyle Info: prepare \l@subsection for redefinition on input line 84.
 
-Package tocstyle Info: prepare \l@subsubsection for redefinition on input line 
-84.
-Package tocstyle Info: prepare \l@paragraph for redefinition on input line 84.
 Package tocstyle Info: prepare \l@table for redefinition on input line 84.
 Package tocstyle Info: prepare \l@figure for redefinition on input line 84.
 
@@ -807,7 +804,7 @@ pdima #3\relax \advance \leftskip \@tempdima \null \nobreak \hskip -\leftskip {
 #4}\nobreak \leaders \hbox {$\m@th \mkern \@dotsep mu\hbox {.}\mkern \@dotsep m
 u$}\hfill \nobreak \hb@xt@ \@pnumwidth {\hfil \normalfont \normalcolor #5\kern 
 -\p@ \kern \p@ }\par }\fi  on input line 84.
-<logoURJC.png, id=235, 316.18124pt x 158.5925pt>
+<logoURJC.png, id=215, 316.18124pt x 158.5925pt>
 File: logoURJC.png Graphic file (type png)
 <use logoURJC.png>
 Package pdftex.def Info: logoURJC.png  used on input line 90.
@@ -867,144 +864,117 @@ text indent by \l@... (toc, 0):  17.62482pt
 number indent by parent (toc, 0):  0.0pt
 text indent calculated (toc, 0): 13.5pt
 number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  17.62482pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 13.5pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  17.62482pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 13.5pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  17.62482pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 13.5pt
+number indent calculated (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
+number indent by \l@... (toc, 1):  17.62482pt
+text indent by \l@... (toc, 1):  27.02475pt
+number indent by parent (toc, 1):  13.5pt
+text indent calculated (toc, 1): 20.88867pt
+number indent calculated (toc, 1): 13.5pt
+number indent by \l@... (toc, 2):  44.64957pt
+text indent by \l@... (toc, 2):  37.59956pt
+number indent by parent (toc, 2):  34.38867pt
+text indent calculated (toc, 2): 30.02747pt
+number indent calculated (toc, 2): 34.38867pt
 
-Overfull \hbox (5.10277pt too wide) detected at line 4
- \OT1/cmr/bx/n/12 XIII
- []
+Underfull \vbox (badness 3792) has occurred while \output is active []
 
-number indent by \l@... (toc, 0):  0.0pt
-text indent by \l@... (toc, 0):  17.62482pt
-number indent by parent (toc, 0):  0.0pt
-text indent calculated (toc, 0): 13.5pt
-number indent calculated (toc, 0): 0.0pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 0):  0.0pt
-text indent by \l@... (toc, 0):  17.62482pt
-number indent by parent (toc, 0):  0.0pt
-text indent calculated (toc, 0): 13.5pt
-number indent calculated (toc, 0): 0.0pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 0):  0.0pt
-text indent by \l@... (toc, 0):  17.62482pt
-number indent by parent (toc, 0):  0.0pt
-text indent calculated (toc, 0): 13.5pt
-number indent calculated (toc, 0): 0.0pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 3):  82.24915pt
-text indent by \l@... (toc, 3):  48.17456pt
-number indent by parent (toc, 3):  64.41614pt
-text indent calculated (toc, 3): 39.16626pt
-number indent calculated (toc, 3): 64.41614pt
-number indent by \l@... (toc, 3):  82.24915pt
-text indent by \l@... (toc, 3):  48.17456pt
-number indent by parent (toc, 3):  64.41614pt
-text indent calculated (toc, 3): 39.16626pt
-number indent calculated (toc, 3): 64.41614pt
-number indent by \l@... (toc, 3):  82.24915pt
-text indent by \l@... (toc, 3):  48.17456pt
-number indent by parent (toc, 3):  64.41614pt
-text indent calculated (toc, 3): 39.16626pt
-number indent calculated (toc, 3): 64.41614pt
-number indent by \l@... (toc, 3):  82.24915pt
-text indent by \l@... (toc, 3):  48.17456pt
-number indent by parent (toc, 3):  64.41614pt
-text indent calculated (toc, 3): 39.16626pt
-number indent calculated (toc, 3): 64.41614pt
-number indent by \l@... (toc, 3):  82.24915pt
-text indent by \l@... (toc, 3):  48.17456pt
-number indent by parent (toc, 3):  64.41614pt
-text indent calculated (toc, 3): 39.16626pt
-number indent calculated (toc, 3): 64.41614pt
-[5
+ [5
 
 ]
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
-number indent by \l@... (toc, 1):  17.62482pt
-text indent by \l@... (toc, 1):  27.02475pt
-number indent by parent (toc, 1):  13.5pt
-text indent calculated (toc, 1): 20.88867pt
-number indent calculated (toc, 1): 13.5pt
-number indent by \l@... (toc, 2):  44.64957pt
-text indent by \l@... (toc, 2):  37.59956pt
-number indent by parent (toc, 2):  34.38867pt
-text indent calculated (toc, 2): 30.02747pt
-number indent calculated (toc, 2): 34.38867pt
 number indent by \l@... (toc, 2):  44.64957pt
 text indent by \l@... (toc, 2):  37.59956pt
 number indent by parent (toc, 2):  34.38867pt
@@ -1140,12 +1110,6 @@ text indent by \l@... (toc, 1):  27.02475pt
 number indent by parent (toc, 1):  13.5pt
 text indent calculated (toc, 1): 20.88867pt
 number indent calculated (toc, 1): 13.5pt
-
-Underfull \vbox (badness 6032) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
- [6]
 number indent by \l@... (toc, 1):  17.62482pt
 text indent by \l@... (toc, 1):  27.02475pt
 number indent by parent (toc, 1):  13.5pt
@@ -1160,9 +1124,7 @@ number indent calculated (toc, 0): 0.0pt
 \tf@toc=\write7
 \openout7 = `Memoria.toc'.
 
- [7] [8
-
-] (./Memoria.lof
+ [6] (./Memoria.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
@@ -1291,7 +1253,8 @@ text indent by \l@... (lof, 1):  27.02475pt
 number indent by parent (lof, 1):  17.62482pt
 text indent calculated (lof, 1): 26.76361pt
 number indent calculated (lof, 1): 17.62482pt
-[9
+[7
+
 
 ]
 number indent by \l@... (lof, 1):  17.62482pt
@@ -1365,7 +1328,7 @@ number indent calculated (lof, 1): 17.62482pt
 
 LaTeX Info: Redefining \. on input line 164.
 LaTeX Info: Redefining \% on input line 164.
- [10] (./Memoria.lot
+ [8] (./Memoria.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
@@ -1403,14 +1366,14 @@ number indent calculated (lot, 1): 17.62482pt
 \tf@lot=\write9
 \openout9 = `Memoria.lot'.
 
- [11
+ [9
+
+] [10
+
+] (./Memoria.acr) [11
+
 
 ] [12
-
-] (./Memoria.acr) [13
-
-
-] [14
 
 ]
 Cap\'{\i }tulo 1.
@@ -1462,7 +1425,7 @@ been already used, duplicate ignored
                    \relax 
 l.240 
        [2]
-<./ModeloMachineLearning.jpg, id=571, 923.45pt x 684.5575pt>
+<./ModeloMachineLearning.jpg, id=538, 923.45pt x 684.5575pt>
 File: ./ModeloMachineLearning.jpg Graphic file (type jpg)
 <use ./ModeloMachineLearning.jpg>
 Package pdftex.def Info: ./ModeloMachineLearning.jpg  used on input line 243.
@@ -1480,7 +1443,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 251--252
 LaTeX Info: Redefining \. on input line 257.
 LaTeX Info: Redefining \% on input line 257.
 [3 <./ModeloMachineLearning.jpg>]
-<./CancerDL.png, id=587, 589.0005pt x 331.83975pt>
+<./CancerDL.png, id=553, 589.0005pt x 331.83975pt>
 File: ./CancerDL.png Graphic file (type png)
 <use ./CancerDL.png>
 Package pdftex.def Info: ./CancerDL.png  used on input line 262.
@@ -1501,7 +1464,7 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 276.
-<./ModeloRedNeuronal.png, id=599, 1604.99625pt x 1049.9225pt>
+<./ModeloRedNeuronal.png, id=565, 1604.99625pt x 1049.9225pt>
 File: ./ModeloRedNeuronal.png Graphic file (type png)
 <use ./ModeloRedNeuronal.png>
 Package pdftex.def Info: ./ModeloRedNeuronal.png  used on input line 283.
@@ -1514,7 +1477,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 289--290
 LaTeX Info: Redefining \. on input line 292.
 LaTeX Info: Redefining \% on input line 292.
 [5 <./ModeloRedNeuronal.png>]
-<./ModeloRNA.png, id=611, 473.77pt x 196.735pt>
+<./ModeloRNA.png, id=578, 473.77pt x 196.735pt>
 File: ./ModeloRNA.png Graphic file (type png)
 <use ./ModeloRNA.png>
 Package pdftex.def Info: ./ModeloRNA.png  used on input line 301.
@@ -1539,7 +1502,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 338--339
 
  []
 
-<./CNN.png, id=633, 286.06876pt x 197.73875pt>
+<./CNN.png, id=599, 286.06876pt x 197.73875pt>
 File: ./CNN.png Graphic file (type png)
 <use ./CNN.png>
 Package pdftex.def Info: ./CNN.png  used on input line 344.
@@ -1552,7 +1515,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 350--351
 LaTeX Info: Redefining \. on input line 351.
 LaTeX Info: Redefining \% on input line 351.
 [8 <./CNN.png>]
-<./CNN_ConvolutionLayer.png, id=643, 344.28625pt x 196.735pt>
+<./CNN_ConvolutionLayer.png, id=609, 344.28625pt x 196.735pt>
 File: ./CNN_ConvolutionLayer.png Graphic file (type png)
 <use ./CNN_ConvolutionLayer.png>
 Package pdftex.def Info: ./CNN_ConvolutionLayer.png  used on input line 354.
@@ -1599,7 +1562,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 394--395
 LaTeX Info: Redefining \. on input line 395.
 LaTeX Info: Redefining \% on input line 395.
 [11]
-<./MarcoIA.png, id=686, 820.06375pt x 792.9625pt>
+<./MarcoIA.png, id=653, 820.06375pt x 792.9625pt>
 File: ./MarcoIA.png Graphic file (type png)
 <use ./MarcoIA.png>
 Package pdftex.def Info: ./MarcoIA.png  used on input line 398.
@@ -1614,7 +1577,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 406--407
 
  []
 
-<./MLvsDL.png, id=690, 628.3475pt x 134.5025pt>
+<./MLvsDL.png, id=657, 628.3475pt x 134.5025pt>
 File: ./MLvsDL.png Graphic file (type png)
 <use ./MLvsDL.png>
 Package pdftex.def Info: ./MLvsDL.png  used on input line 410.
@@ -1639,12 +1602,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
-<./MNIST.png, id=701, 98.3675pt x 38.1425pt>
+<./MNIST.png, id=668, 98.3675pt x 38.1425pt>
 File: ./MNIST.png Graphic file (type png)
 <use ./MNIST.png>
 Package pdftex.def Info: ./MNIST.png  used on input line 428.
 (pdftex.def)             Requested size: 142.26378pt x 55.16783pt.
-<./SobelMNIST.png, id=702, 130.4875pt x 53.19875pt>
+<./SobelMNIST.png, id=669, 130.4875pt x 53.19875pt>
 File: ./SobelMNIST.png Graphic file (type png)
 <use ./SobelMNIST.png>
 Package pdftex.def Info: ./SobelMNIST.png  used on input line 430.
@@ -1664,7 +1627,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 438--439
 
  []
 
-<./ComponenteClasificador.png, id=713, 276.03125pt x 88.33pt>
+<./ComponenteClasificador.png, id=680, 276.03125pt x 88.33pt>
 File: ./ComponenteClasificador.png Graphic file (type png)
 <use ./ComponenteClasificador.png>
 Package pdftex.def Info: ./ComponenteClasificador.png  used on input line 442.
@@ -1677,7 +1640,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 452--453
 LaTeX Info: Redefining \. on input line 453.
 LaTeX Info: Redefining \% on input line 453.
 [14 <./MNIST.png> <./SobelMNIST.png> <./ComponenteClasificador.png>]
-<./ComponentKeras.png, id=729, 331.2375pt x 189.70876pt>
+<./ComponentKeras.png, id=696, 331.2375pt x 189.70876pt>
 File: ./ComponentKeras.png Graphic file (type png)
 <use ./ComponentKeras.png>
 Package pdftex.def Info: ./ComponentKeras.png  used on input line 456.
@@ -1687,7 +1650,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 462--463
 
  []
 
-<./DetectionSuite.png, id=733, 472.76625pt x 318.18875pt>
+<./DetectionSuite.png, id=700, 472.76625pt x 318.18875pt>
 File: ./DetectionSuite.png Graphic file (type png)
 <use ./DetectionSuite.png>
 Package pdftex.def Info: ./DetectionSuite.png  used on input line 468.
@@ -1708,7 +1671,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 503--504
  []
 
 
-Underfull \vbox (badness 3849) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17
 
@@ -1727,8 +1690,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 509--510
 
  []
 
-LaTeX Info: Redefining \. on input line 517.
-LaTeX Info: Redefining \% on input line 517.
+LaTeX Info: Redefining \. on input line 516.
+LaTeX Info: Redefining \% on input line 516.
 [18]
 LaTeX Info: Redefining \. on input line 537.
 LaTeX Info: Redefining \% on input line 537.
@@ -1771,7 +1734,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 610--611
 
  []
 
-<./Convolution.png, id=808, 471.7625pt x 211.79124pt>
+<./Convolution.png, id=777, 471.7625pt x 211.79124pt>
 File: ./Convolution.png Graphic file (type png)
 <use ./Convolution.png>
 Package pdftex.def Info: ./Convolution.png  used on input line 614.
@@ -1784,7 +1747,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 619--620
 LaTeX Info: Redefining \. on input line 620.
 LaTeX Info: Redefining \% on input line 620.
 [24 <./Convolution.png>]
-<./Pooling.png, id=814, 236.38312pt x 143.03438pt>
+<./Pooling.png, id=784, 236.38312pt x 143.03438pt>
 File: ./Pooling.png Graphic file (type png)
 <use ./Pooling.png>
 Package pdftex.def Info: ./Pooling.png  used on input line 623.
@@ -1800,12 +1763,12 @@ LaTeX Info: Redefining \% on input line 659.
 LaTeX Info: Redefining \. on input line 705.
 LaTeX Info: Redefining \% on input line 705.
  [26]
-<./ReLu.png, id=830, 496.85625pt x 399.4925pt>
+<./ReLu.png, id=803, 496.85625pt x 399.4925pt>
 File: ./ReLu.png Graphic file (type png)
 <use ./ReLu.png>
 Package pdftex.def Info: ./ReLu.png  used on input line 711.
 (pdftex.def)             Requested size: 199.16928pt x 160.14162pt.
-<./Sigmoid.png, id=834, 300.12125pt x 193.72375pt>
+<./Sigmoid.png, id=807, 300.12125pt x 193.72375pt>
 File: ./Sigmoid.png Graphic file (type png)
 <use ./Sigmoid.png>
 Package pdftex.def Info: ./Sigmoid.png  used on input line 732.
@@ -1861,7 +1824,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 896--897
 LaTeX Info: Redefining \. on input line 897.
 LaTeX Info: Redefining \% on input line 897.
 [31]
-<./VOC2012_Statics.png, id=878, 473.51906pt x 441.90094pt>
+<./VOC2012_Statics.png, id=850, 473.51906pt x 441.90094pt>
 File: ./VOC2012_Statics.png Graphic file (type png)
 <use ./VOC2012_Statics.png>
 Package pdftex.def Info: ./VOC2012_Statics.png  used on input line 902.
@@ -1874,36 +1837,33 @@ Underfull \vbox (badness 1082) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 950.
 LaTeX Info: Redefining \% on input line 950.
  [33]
-<./Coco_Annotation_1.png, id=926, 533.74406pt x 417.05812pt>
+<./Coco_Annotation_1.png, id=898, 533.74406pt x 417.05812pt>
 File: ./Coco_Annotation_1.png Graphic file (type png)
 <use ./Coco_Annotation_1.png>
 Package pdftex.def Info: ./Coco_Annotation_1.png  used on input line 961.
-(pdftex.def)             Requested size: 312.9803pt x 244.56667pt.
+(pdftex.def)             Requested size: 369.88582pt x 289.03044pt.
 LaTeX Info: Redefining \. on input line 968.
 LaTeX Info: Redefining \% on input line 968.
 
 [34 <./Coco_Annotation_1.png>]
-<./Coco_Annotation_2.png, id=937, 534.49687pt x 207.77625pt>
+<./Coco_Annotation_2.png, id=909, 534.49687pt x 207.77625pt>
 File: ./Coco_Annotation_2.png Graphic file (type png)
 <use ./Coco_Annotation_2.png>
 Package pdftex.def Info: ./Coco_Annotation_2.png  used on input line 971.
-(pdftex.def)             Requested size: 312.9803pt x 121.67067pt.
+(pdftex.def)             Requested size: 369.88582pt x 143.79376pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 977--978
 
  []
 
-<./COCO_Statics.png, id=943, 615.80063pt x 322.20375pt>
+<./COCO_Statics.png, id=915, 615.80063pt x 322.20375pt>
 File: ./COCO_Statics.png Graphic file (type png)
 <use ./COCO_Statics.png>
 Package pdftex.def Info: ./COCO_Statics.png  used on input line 983.
 (pdftex.def)             Requested size: 369.88582pt x 193.53514pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 LaTeX Info: Redefining \. on input line 987.
 LaTeX Info: Redefining \% on input line 987.
- [35 <./Coco_Annotation_2.png>]
+[35 <./Coco_Annotation_2.png>]
 LaTeX Info: Redefining \. on input line 988.
 LaTeX Info: Redefining \% on input line 988.
  [36 <./COCO_Statics.png>]
@@ -1916,7 +1876,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 992--993
 [37
 
 ]
-<./FrameworkSSD.png, id=968, 454.69875pt x 168.63pt>
+<./FrameworkSSD.png, id=941, 454.69875pt x 168.63pt>
 File: ./FrameworkSSD.png Graphic file (type png)
 <use ./FrameworkSSD.png>
 Package pdftex.def Info: ./FrameworkSSD.png  used on input line 1006.
@@ -1924,7 +1884,7 @@ Package pdftex.def Info: ./FrameworkSSD.png  used on input line 1006.
 LaTeX Info: Redefining \. on input line 1019.
 LaTeX Info: Redefining \% on input line 1019.
  [38 <./FrameworkSSD.png>]
-<./SSD_Architecture.png, id=985, 765.86125pt x 233.87375pt>
+<./SSD_Architecture.png, id=958, 765.86125pt x 233.87375pt>
 File: ./SSD_Architecture.png Graphic file (type png)
 <use ./SSD_Architecture.png>
 Package pdftex.def Info: ./SSD_Architecture.png  used on input line 1025.
@@ -1939,7 +1899,7 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 [39 <./SSD_Architecture.png>]
-<./VGG-16.png, id=997, 385.44pt x 219.82124pt>
+<./VGG-16.png, id=968, 385.44pt x 219.82124pt>
 File: ./VGG-16.png Graphic file (type png)
 <use ./VGG-16.png>
 Package pdftex.def Info: ./VGG-16.png  used on input line 1036.
@@ -1964,7 +1924,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1055--1056
 LaTeX Info: Redefining \. on input line 1058.
 LaTeX Info: Redefining \% on input line 1058.
 [41]
-<./HardNegativeMining.png, id=1019, 578.16pt x 290.08376pt>
+<./HardNegativeMining.png, id=991, 578.16pt x 290.08376pt>
 File: ./HardNegativeMining.png Graphic file (type png)
 <use ./HardNegativeMining.png>
 Package pdftex.def Info: ./HardNegativeMining.png  used on input line 1063.
@@ -1976,7 +1936,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1075--1076
 
  []
 
-<./ComponenteDetector.png, id=1038, 557.08125pt x 447.6725pt>
+<./ComponenteDetector.png, id=1011, 557.08125pt x 447.6725pt>
 File: ./ComponenteDetector.png Graphic file (type png)
 <use ./ComponenteDetector.png>
 Package pdftex.def Info: ./ComponenteDetector.png  used on input line 1089.
@@ -2065,7 +2025,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1156--1157
 
  []
 
-<./DetectionComponentPython.png, id=1069, 927.465pt x 335.2525pt>
+<./DetectionComponentPython.png, id=1041, 927.465pt x 335.2525pt>
 File: ./DetectionComponentPython.png Graphic file (type png)
 <use ./DetectionComponentPython.png>
 Package pdftex.def Info: ./DetectionComponentPython.png  used on input line 116
@@ -2099,7 +2059,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
 LaTeX Info: Redefining \. on input line 1183.
 LaTeX Info: Redefining \% on input line 1183.
 [48 <./DetectionComponentPython.png>]
-<./DetectionComponentPythonConditional.png, id=1091, 924.45375pt x 319.1925pt>
+<./DetectionComponentPythonConditional.png, id=1064, 924.45375pt x 319.1925pt>
 File: ./DetectionComponentPythonConditional.png Graphic file (type png)
 <use ./DetectionComponentPythonConditional.png>
 Package pdftex.def Info: ./DetectionComponentPythonConditional.png  used on inp
@@ -2158,12 +2118,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1268--1269
 LaTeX Info: Redefining \. on input line 1269.
 LaTeX Info: Redefining \% on input line 1269.
 [51]
-<./DetectionCompareVOC.png, id=1157, 376.40625pt x 180.675pt>
+<./DetectionCompareVOC.png, id=1129, 376.40625pt x 180.675pt>
 File: ./DetectionCompareVOC.png Graphic file (type png)
 <use ./DetectionCompareVOC.png>
 Package pdftex.def Info: ./DetectionCompareVOC.png  used on input line 1291.
 (pdftex.def)             Requested size: 221.93158pt x 106.53114pt.
-<./DetectionCompareCOCO.png, id=1158, 376.40625pt x 180.675pt>
+<./DetectionCompareCOCO.png, id=1130, 376.40625pt x 180.675pt>
 File: ./DetectionCompareCOCO.png Graphic file (type png)
 <use ./DetectionCompareCOCO.png>
 Package pdftex.def Info: ./DetectionCompareCOCO.png  used on input line 1293.
@@ -2295,7 +2255,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1557--1558
 
  []
 
-<./TrainNet.png, id=1407, 573.14125pt x 341.275pt>
+<./TrainNet.png, id=1380, 573.14125pt x 341.275pt>
 File: ./TrainNet.png Graphic file (type png)
 <use ./TrainNet.png>
 Package pdftex.def Info: ./TrainNet.png  used on input line 1561.
@@ -2392,7 +2352,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1690--1691
 
  []
 
-<./image_detection_compare.png, id=1490, 376.40625pt x 282.30469pt>
+<./image_detection_compare.png, id=1463, 376.40625pt x 282.30469pt>
 File: ./image_detection_compare.png Graphic file (type png)
 <use ./image_detection_compare.png>
 Package pdftex.def Info: ./image_detection_compare.png  used on input line 1694
@@ -2501,7 +2461,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
 
  []
 
-<./imageDetectionCompareCOCO.png, id=1588, 481.8pt x 368.1253pt>
+<./imageDetectionCompareCOCO.png, id=1561, 481.8pt x 368.1253pt>
 File: ./imageDetectionCompareCOCO.png Graphic file (type png)
 <use ./imageDetectionCompareCOCO.png>
 Package pdftex.def Info: ./imageDetectionCompareCOCO.png  used on input line 18
@@ -2517,12 +2477,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1876--1877
 LaTeX Info: Redefining \. on input line 1878.
 LaTeX Info: Redefining \% on input line 1878.
 [73]
-<./Intersection&Union.png, id=1611, 360.34625pt x 138.5175pt>
+<./Intersection&Union.png, id=1584, 360.34625pt x 138.5175pt>
 File: ./Intersection&Union.png Graphic file (type png)
 <use ./Intersection&Union.png>
 Package pdftex.def Info: ./Intersection&Union.png  used on input line 1884.
 (pdftex.def)             Requested size: 312.9803pt x 120.30844pt.
-<./loU.png, id=1616, 602.25pt x 469.755pt>
+<./loU.png, id=1589, 602.25pt x 469.755pt>
 File: ./loU.png Graphic file (type png)
 <use ./loU.png>
 Package pdftex.def Info: ./loU.png  used on input line 1900.
@@ -2530,7 +2490,7 @@ Package pdftex.def Info: ./loU.png  used on input line 1900.
 LaTeX Info: Redefining \. on input line 1907.
 LaTeX Info: Redefining \% on input line 1907.
  [74 <./Intersection&Union.png> <./loU.png>]
-<./loU_score.png, id=1627, 602.25pt x 248.93pt>
+<./loU_score.png, id=1600, 602.25pt x 248.93pt>
 File: ./loU_score.png Graphic file (type png)
 <use ./loU_score.png>
 Package pdftex.def Info: ./loU_score.png  used on input line 1916.
@@ -2548,7 +2508,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2080--2081
 LaTeX Info: Redefining \. on input line 2081.
 LaTeX Info: Redefining \% on input line 2081.
 [75 <./loU_score.png>]
-<./TestImages.png, id=1652, 1162.3425pt x 482.80376pt>
+<./TestImages.png, id=1623, 1162.3425pt x 482.80376pt>
 File: ./TestImages.png Graphic file (type png)
 <use ./TestImages.png>
 Package pdftex.def Info: ./TestImages.png  used on input line 2086.
@@ -2561,7 +2521,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2121--2122
 LaTeX Info: Redefining \. on input line 2122.
 LaTeX Info: Redefining \% on input line 2122.
 [76 <./TestImages.png>]
-<./Detector.png, id=1663, 1227.58624pt x 792.9625pt>
+<./Detector.png, id=1634, 1227.58624pt x 792.9625pt>
 File: ./Detector.png Graphic file (type png)
 <use ./Detector.png>
 Package pdftex.def Info: ./Detector.png  used on input line 2125.
@@ -2578,7 +2538,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2133--2134
 
  []
 
-<./DetectionExecution.png, id=1676, 1686.3pt x 1053.9375pt>
+<./DetectionExecution.png, id=1649, 1686.3pt x 1053.9375pt>
 File: ./DetectionExecution.png Graphic file (type png)
 <use ./DetectionExecution.png>
 Package pdftex.def Info: ./DetectionExecution.png  used on input line 2137.
@@ -2596,7 +2556,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2145--2146
 LaTeX Info: Redefining \. on input line 2146.
 LaTeX Info: Redefining \% on input line 2146.
 [78 <./DetectionExecution.png>]
-<./Evaluator.png, id=1701, 1226.5825pt x 791.95876pt>
+<./Evaluator.png, id=1674, 1226.5825pt x 791.95876pt>
 File: ./Evaluator.png Graphic file (type png)
 <use ./Evaluator.png>
 Package pdftex.def Info: ./Evaluator.png  used on input line 2149.
@@ -2719,7 +2679,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2479.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2479.
 
 Package rerunfilecheck Info: File `Memoria.out' has not changed.
-(rerunfilecheck)             Checksum: A65029E549FA7DA9CCD6EBC558859E30;4280.
+(rerunfilecheck)             Checksum: F6A03253DBBD322EC5657F7EBA66A9BE;3874.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2731,10 +2691,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2479.
  ) 
 Here is how much of TeX's memory you used:
- 18718 strings out of 492616
- 302638 string characters out of 6129481
- 473361 words of memory out of 5000000
- 21664 multiletter control sequences out of 15000+600000
+ 18703 strings out of 492616
+ 302306 string characters out of 6129481
+ 473337 words of memory out of 5000000
+ 21651 multiletter control sequences out of 15000+600000
  26340 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,12n,87p,1987b,2074s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2758,10 +2718,10 @@ t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist
 fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
 1/public/lm/lmss17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
 m/lmssbx10.pfb>
-Output written on Memoria.pdf (105 pages, 12166344 bytes).
+Output written on Memoria.pdf (103 pages, 12165314 bytes).
 PDF statistics:
- 2079 PDF objects out of 2487 (max. 8388607)
- 1818 compressed objects within 19 object streams
- 655 named destinations out of 1000 (max. 500000)
- 670 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2050 PDF objects out of 2073 (max. 8388607)
+ 1792 compressed objects within 18 object streams
+ 653 named destinations out of 1000 (max. 500000)
+ 630 words of extra memory for PDF output out of 10000 (max. 10000000)
 
