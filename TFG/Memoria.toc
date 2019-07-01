@@ -31,7 +31,7 @@
 \contentsline {subsection}{\numberline {3.3.2}Common Objects in Context}{34}{subsection.3.3.2}% 
 \contentsline {chapter}{\numberline {4}Detecci\'on visual de objetos con Single Shot MultiBox y Caffe}{37}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}T\'ecnica Single Shot MultiBox Detection}{37}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Arquitectura}{38}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Arquitectura}{39}{subsection.4.1.1}% 
 \contentsline {subsection}{\numberline {4.1.2}Entrenamiento}{40}{subsection.4.1.2}% 
 \contentsline {section}{\numberline {4.2}Aplicaci\'on para detecci\'on de objetos en flujos de v\IeC {\'\i }deo con SSD}{43}{section.4.2}% 
 \contentsline {subsection}{\numberline {4.2.1}Dise\~no}{43}{subsection.4.2.1}% 

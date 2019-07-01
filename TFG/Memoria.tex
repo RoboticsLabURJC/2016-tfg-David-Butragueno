@@ -986,6 +986,11 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 \end{figure}
 
 \chapter{Detección visual de objetos con Single Shot MultiBox y Caffe}
+\fancyhead[RO]{CAPÍTULO \thechapter. DETECCIÓN VISUAL DE OBJETOS CON SSD Y CAFFE}
+
+Uno de los objetivos de este trabajo fin de grado es el desarrollo de una aplicación que permita el uso de redes \acrshort{SSD} para detección visual de objetos en flujos de vídeo.\\
+
+En este capítulo se explica todo lo necesario para desarrollar y utilizar esta aplicación. Se comienza con una introducción a la técnica \acrshort{SSD}, tanto a la estructura del modelo como a las características principales del entrenamiento de éste. Tras esto se continua con la explicación de todos los módulos que forman parte de la aplicación y como se ejecuta. Después se muestra como se integra Caffe con \acrshort{SSD} y finalmente se explica como entrenar una red propia usando la plataforma Caffe, la cuál podrá ser usada en la aplicación desarrollada.
 
 \section{Técnica Single Shot MultiBox Detection}
 
@@ -1022,7 +1027,7 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=15cm]{./SSD_Architecture}
+\includegraphics[width=14cm]{./SSD_Architecture}
 \caption{Arquitectura \acrshort{SSD} \cite{SSD}.}
 \label{ArquitecturaSSD}
 \end{center}
@@ -1065,12 +1070,14 @@ Combinando predicciones para todas las cajas por defecto con diferentes escalas 
 \label{VGG-16}
 \end{center}
 \end{figure}
-
+\begin{comment}
 \item \textbf{Aumento de datos:} El aumento de datos, tanto en la técnica \acrshort{SSD} como en muchas otras aplicaciones de aprendizaje profundo, ha sido crucial para que la red neuronal sea mucho más robusta frente a diferentes tamaños y formas de objetos a la entrada de ésta. Con este fin se generaron ejemplos de entrenamiento con parches de la imagen original con diferentes relaciones de \acrshort{IoU} (p.ej. 0.1, 0.3, 0.5, etc). Además, cada imagen se gira horizontalmente de forma aleatoria con una probabilidad de 0.5, asegurando así que los objetos aparezcan con la misma probabilidad a la izquierda que a la derecha. 
+\end{comment}
 \end{itemize}
 
 \section{Aplicación para detección de objetos en flujos de vídeo con SSD}
 \label{ComponenteDetectorSection}
+\fancyhead[LE]{\thesection. APLICACIÓN PARA DETECCIÓN DE OBJETOS CON SSD}
 
 Con el objetivo de realizar la detección neuronal en vivo se ha programado un componente en Python que, a partir del \textit{Camera Server} de JdeRobot explicado en el apartado \ref{Camera}, será capaz de realizar la detección en tiempo real de las imágenes captadas por la cámara. De esta manera se abre el camino para incorporar esta capacidad a la parte perceptiva de un robot móvil o a un sistema de videovigilancia, por ejemplo.\\
 
