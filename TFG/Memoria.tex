@@ -990,11 +990,11 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 
 Uno de los objetivos de este trabajo fin de grado es el desarrollo de una aplicación que permita el uso de redes \acrshort{SSD} para detección visual de objetos en flujos de vídeo.\\
 
-En este capítulo se explica todo lo necesario para desarrollar y utilizar esta aplicación. Se comienza con una introducción a la técnica \acrshort{SSD}, tanto a la estructura del modelo como a las características principales del entrenamiento de éste. Tras esto se continua con la explicación de todos los módulos que forman parte de la aplicación y como se ejecuta. Después se muestra como se integra Caffe con \acrshort{SSD} y finalmente se explica como entrenar una red propia usando la plataforma Caffe, la cuál podrá ser usada en la aplicación desarrollada.
+En este capítulo se explica todo lo necesario para desarrollar y utilizar esta aplicación. Se comienza con una introducción a la técnica \acrshort{SSD}, tanto a la estructura del modelo como a las características principales del entrenamiento de éste. Tras esto se continua con la explicación de todos los módulos que forman parte de la aplicación y cómo se ejecuta ésta. Después se muestra como se integra Caffe con \acrshort{SSD} y finalmente se explica como entrenar una red propia usando la plataforma Caffe, la cuál podrá ser usada en la aplicación desarrollada.
 
 \section{Técnica Single Shot MultiBox Detection}
 
-Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un modelo diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \acrshort{mAP} (mean Average Precision) a 59 fotogramas por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}.\\
+Single Shot MultiBox Detection\cite{SSD}, o \acrshort{SSD} por sus siglas, es un modelo diseñado para detectar objetos en imágenes utilizando para ello únicamente una red neuronal profunda. Fue lanzado a principios de diciembre de 2015 y obtuvo resultados muy positivos en términos de rendimiento y precisión en tareas de detección de objetos, obteniendo más del 74\% en \acrshort{mAP} (\textit{mean Average Precision}) a 59 fotogramas por segundo en conjuntos de datos estándar como \acrshort{PascalVOC} y \acrshort{COCO}.\\
 
 Para una mejor comprensión de esta técnica, se puede comenzar con definir el significado de su nombre \cite{SSD_2}:
 
@@ -1008,7 +1008,7 @@ En el momento de la predicción, la red neuronal genera las puntuaciones para cad
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=13cm]{./FrameworkSSD}
+\includegraphics[width=14cm]{./FrameworkSSD}
 \caption{Framework \acrshort{SSD} \cite{SSD}.}
 \label{FrameworkSSD}
 \end{center}
@@ -1021,7 +1021,7 @@ En el momento de la predicción, la red neuronal genera las puntuaciones para cad
 El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunto de recuadros delimitadores o \textit{bounding boxes} de tamaño fijo y puntuaciones para la presencia de instancias de clases de objetos dentro de esos cuadros, seguido por un paso de supresión no máxima para producir las detecciones finales. Las primeras capas de la red se basan en una arquitectura VGG-16\cite{VGG} pero descartando las capas totalmente conectadas de ésta. La razón por la que se usa VGG-16 es su gran desempeño en la clasificación de imágenes de alta calidad. En lugar de las capas totalmente conectadas de VGG, se agregaron un conjunto de capas convolucionales auxiliares, lo que permite extraer características en múltiples escalas y disminuir progresivamente el tamaño de la imagen de entrada. Posteriormente, se agrega una estructura auxiliar a la red para producir detecciones. Esta estructura tiene las siguientes características claves:
 
 \begin{itemize}
-\item \textbf{Mapas de características con múltiples escalas para la detección:}  Se agregan varias capas de convolucionales al final de la estructura estándar comentada anteriormente. Estas capas disminuyen de forma progresiva el tamaño de la imagen de entrada y permiten predecir detecciones a múltiples escalas. 
+\item \textbf{Mapas de características con múltiples escalas para la detección:}  Se agregan varias capas de convolucionales al final de la estructura estándar comentada anteriormente. Estas capas disminuyen de forma progresiva el tamaño de la imagen de entrada y permiten predecir detecciones a múltiples escalas.
 
 \item \textbf{Predictores convolucionales para la detección:}  Cada capa de características añadida puede producir un conjunto fijo de predicciones de detección utilizando para ello un conjunto de filtros convolucionales. Estos filtros están indicados en la parte superior de la arquitectura de la red \acrshort{SSD} en la figura \ref{ArquitecturaSSD}. Para una capa de características de tamaño \textit{m} x \textit{n} con \textit{p} canales, el elemento básico para predecir los parámetros de una posible detección es un núcleo pequeño de 3 x 3 x \textit{p} el cuál produce una puntuación para una categoría determinada. En cada una de las posiciones por donde se aplica el filtro, éste produce un valor de salida.
 
@@ -1034,7 +1034,6 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 \end{figure}
 
 \item \textbf{Cajas predeterminadas y relaciones de aspecto:} Se asocian un conjunto de cuadros delimitadores por defecto con cada celda del mapa de características. Los cuadros predeterminados marcan el mapa de características de un manera convolucional, por lo que la posición de cada cuadro con respecto a su celda es fija. En cada celda del mapa de características se predicen los desplazamientos relativos a las formas de los cuadros predeterminados en cada una de las celdas, así como la puntuación por clase que indica la presencia de una instancia de clase en cada uno de los cuadros delimitadores. Específicamente, para cada cuadro \textit{k} en una posición determinada se calcula la puntuación de clase \textit{c} y los 4 desplazamientos relativos a la forma del cuadro por defecto original. Como resultado se obtienen \textit{(c + 4)k} filtros que se aplican alrededor de cada ubicación en el mapa de características, produciendo \textit{(c + 4)kmn} salidas para un mapa de \textit{m} x \textit{n}. Se permiten diferentes formas para los cuadros predeterminados en los mapas de características con el objetivo de discretizar el espacio para las posibles formas que tengan las cuadros delimitadores de salida.
-\end{itemize}
 
 \begin{figure}[H]
 \begin{center}
@@ -1043,6 +1042,7 @@ El modelo \acrshort{SSD} se basa en una red convolucional que produce un conjunt
 \label{VGG-16}
 \end{center}
 \end{figure}
+\end{itemize}
 
 \subsection{Entrenamiento}
 
@@ -1053,11 +1053,11 @@ La principal diferencia entre el entrenamiento usando la técnica \acrshort{SSD} 
 
 \item \textbf{Objetivo del entrenamiento:} El objetivo del entrenamiento de \acrshort{SSD} es derivado del de MultiBox pero se extiende para manejar múltiples categorías de objetos. La función de pérdida objetivo es una suma ponderada de la pérdida por localización y la pérdida por confianza. Por otra parte, se calcula utilizando la función \textit{Softmax}, explicada en el apartado \ref{CapasPerdidaSection}, sobre las confianzas de múltiples clases.
 
-\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto.\\
+\item \textbf{Escoger escalas y relaciones de aspecto de los cuadros predeterminados:} Para manejar diferentes escalas de objetos, algunos métodos sugieren procesar la imagen utilizando varios tamaños de ésta y combinar los resultados después. Sin embargo, en esta técnica, al utilizar capas de características de varias capas diferentes en una sola red neuronal para la predicción, se puede imitar el mismo efecto.
 
-Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La Figura \ref{FrameworkSSD} muestra dos ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el modelo. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional.\\
+Basándose en otros estudios, los creadores de esta técnica decidieron utilizar capas de características tanto en las capas inferiores como las superiores de la red. La Figura \ref{FrameworkSSD} muestra dos ejemplos de mapa de características, 4x4 y 8x8, que se utilizan en el modelo. En la práctica se pueden utilizar mucho más con una pequeña sobrecarga computacional.
 
-Dentro del marco de \acrshort{SSD} se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico.\\
+Dentro del marco de \acrshort{SSD} se diseña el mosaico de las cajas por defecto para que los mapas de características específicas aprendan a responder a diferentes escalas de objetos. En la práctica se puede diseñar una distribución de cuadros predeterminados para que se ajuste mejor a un conjunto de datos específico.
 
 Combinando predicciones para todas las cajas por defecto con diferentes escalas y relaciones de aspecto de todas las ubicaciones de los mapas de características se consigue un conjunto diverso de predicciones, abarcando varios tamaños y formas de objetos de entrada. Por ejemplo en la Figura \ref{FrameworkSSD}, el perro está emparejado con una caja por defecto en el mapa de características 4x4, pero con ninguna en el mapa de características 8x8. Esto se debe a que esas cajas tienen escalas diferentes y no coinciden con la caja del perro, y por lo tanto se consideran como negativos durante el entrenamiento.
 
@@ -1070,9 +1070,8 @@ Combinando predicciones para todas las cajas por defecto con diferentes escalas 
 \label{VGG-16}
 \end{center}
 \end{figure}
-\begin{comment}
+
 \item \textbf{Aumento de datos:} El aumento de datos, tanto en la técnica \acrshort{SSD} como en muchas otras aplicaciones de aprendizaje profundo, ha sido crucial para que la red neuronal sea mucho más robusta frente a diferentes tamaños y formas de objetos a la entrada de ésta. Con este fin se generaron ejemplos de entrenamiento con parches de la imagen original con diferentes relaciones de \acrshort{IoU} (p.ej. 0.1, 0.3, 0.5, etc). Además, cada imagen se gira horizontalmente de forma aleatoria con una probabilidad de 0.5, asegurando así que los objetos aparezcan con la misma probabilidad a la izquierda que a la derecha. 
-\end{comment}
 \end{itemize}
 
 \section{Aplicación para detección de objetos en flujos de vídeo con SSD}
@@ -1093,8 +1092,8 @@ El cómputo dentro de la aplicación se ha descompuesto en 3 hilos de ejecución co
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=13cm]{./ComponenteDetector}
-\caption{Arquitectura de la aplicación de detección visual con SSD.}
+\includegraphics[width=15cm]{./ComponenteDetector}
+\caption{Arquitectura de la aplicación de detección visual con \acrshort{SSD}.}
 \label{ComponenteDetector}
 \end{center}
 \end{figure}
@@ -1121,9 +1120,9 @@ Finalmente, como en el \textit{hilo Camera}, se define la función \textit{update
 
 \subsection{Hilo GUI}
 
-Este hilo será el encargado de todo el aspecto gráfico de la aplicación. Renderizará las 2 imágenes generadas en el resto de hilos, es decir, la capturada en tiempo real por el \textit{hilo Camera} y la imagen procesada en la que se muestra los objetos detectados recibida desde el \textit{hilo Detector}.\\
+Este hilo será el encargado de todo el aspecto gráfico de la aplicación. Renderiza las dos imágenes generadas en el resto de hilos, es decir, la capturada en tiempo real por el \textit{hilo Camera} y la imagen procesada en la que se muestra los objetos detectados recibida desde el \textit{hilo Detector}.
 
-En el constructor de esta clase, en primer lugar se inicializará la ventana principal, en la que aparecerán todos los elementos comentados anteriormente.\\
+En el constructor de esta clase, en primer lugar se inicializa la ventana principal, en la que aparece todos los elementos comentados anteriormente.\\
 
 \begin{lstlisting}[frame=single]
 QtGui.QWidget.__init__(self, parent)
@@ -1133,20 +1132,20 @@ self.move(150,50)
 self.updGUI.connect(self.update)
 \end{lstlisting}
 
-En el código anterior, se define el título que aparecerá en la parte superior de la ventana, \textit{setWindowTitle}, la anchura y altura de ésta, \textit{resize} y su posición, \textit{move}. Con la función \textit{connect} se le asocia la función \textit{update}, que se encargará de actualizar este hilo de ejecución.\\
+En el código anterior se define el título que aparecerá en la parte superior de la ventana, \textit{setWindowTitle}, la anchura y altura de ésta, \textit{resize} y su posición, \textit{move}. Con la función \textit{connect} se le asocia la función \textit{update}, que se encargará de actualizar este hilo de ejecución.\\
 
-Posteriormente, se definen las ventanas donde se visualizarán las 2 imágenes comentadas anteriormente. Éstas vienen parametrizadas igualmente por los parámetros \textit{resize} y \textit{move}.\\
+Posteriormente, se definen las ventanas donde se visualizarán las dos imágenes. Éstas vienen parametrizadas igualmente por los parámetros \textit{resize} y \textit{move}.\\
 
-Finalmente, se crean 2 botones, los cuales serán los encargados de controlar el proceso de detección. Estos botones, además de venir definidos por del parámetro \textit{move} para determinar su posición, se les añadirá la función \textit{setStyleSheet} con el objetivo de asociarles un color. Adicionalmente, utilizando \textit{clicked.connect} se les asignará la función que se ejecutará cuando se haga \textit{click} sobre cada uno de los 2 botones.\\
+Finalmente, se crean dos botones encargados de controlar el proceso de detección. Estos botones, además de venir definidos por del parámetro \textit{move} para determinar su posición, se les añadirá la función \textit{setStyleSheet} con el objetivo de asociarles un color. Adicionalmente, utilizando \textit{clicked.connect} se les asignará la función que se ejecutará cuando se haga \textit{click} sobre cada uno de ellos.\\
 
-Tras el constructor de la clase \acrshort{GUI}, se definirá la función \textit{update(self)} que actualizará la ejecución de este hilo. Aquí, se asignarán a cada una de las ventanas creadas la imagen captada de la cámara y la imagen con las detecciones obtenidas según corresponda.\\
+Tras el constructor de la clase \acrshort{GUI}, se define la función \textit{update(self)} que actualiza la ejecución de este hilo. Aquí, se asigna a cada una de las ventanas creadas la imagen captada de la cámara y la imagen con las detecciones obtenidas según corresponda.\\
 
-Finalmente, se definirán las 2 funciones asociadas a los 2 botones creados anteriormente. La función \textit{toggle(self)} estará asociada al botón \textit{Continuos} y hará que tras pulsarlo, comience la detección continua de las imágenes captadas en tiempo real. Por otro lado, la función \textit{detectOnce(self)} estará asociada al botón \textit{Detect Once} y hará que al hacer \textit{click} sobre él, se realice la detección únicamente sobre el frame que se estaba mostrando por la cámara en ese momento exacto.
+Finalmente, se definen las dos funciones asociadas a los dos botones creados anteriormente. La función \textit{toggle(self)} estará asociada al botón \textit{Continuous} y hará que tras pulsarlo, comience la detección continua de las imágenes captadas en tiempo real. Por otro lado, la función \textit{detectOnce(self)} estará asociada al botón \textit{Detect Once} y hará que al hacer \textit{click} sobre él, se realice la detección únicamente sobre el frame que se estaba mostrando por la cámara en ese momento exacto.
 
 \subsection{Ejecución}
 \label{Ejecucion}
 
-El proceso de ejecución de este componente estará divido en 2 pasos. Uno será el encargado de lanzar el servidor de imágenes, utilizando para ello el componente \textit{Camera Server} de JdeRobot. El otro será el encargado de lanzar el propio componente detector explicado en las secciones anteriores.\\
+El proceso de ejecución de este esta aplicación está dividida en dos pasos. Uno es el encargado de lanzar el servidor de imágenes, utilizando para ello el componente \textit{Camera Server} de JdeRobot. El otro es el encargado de lanzar el propio aplicación de detección.\\
 
 Para lanzar el componente \textit{Camera Server}, será necesario abrir un terminal y ejecutar el siguiente comando proporcionado por la plataforma JdeRobot.\\
 
@@ -1154,29 +1153,29 @@ Para lanzar el componente \textit{Camera Server}, será necesario abrir un termin
 cameraserver cameraserver.cfg
 \end{lstlisting}
 
-Una vez que está lanzado el servidor de imágenes, se ejecutará el siguiente comando, el cual lanzará el propio componente detector.\\
+Una vez que está lanzado el servidor de imágenes, se ejecutará el siguiente comando, el cual lanzará la propia aplicación detectora.\\
 
 \begin{lstlisting}[frame=single]
 python detectorSSD.py --Ice.Config=detectorSSD.cfg
 \end{lstlisting}
 
-En primer lugar se hará referencia al script principal del componente, \textit{detectorSSD.py}, cuyo objetivo es lanzar los 3 hilos que lo forman. Posteriormente se especifica el fichero de configuración \textit{detectorSSD.cfg} gracias al cual se tendrá comunicación con el servidor de imágenes. Este fichero tiene una propiedad en la que se define el nombre de la cámara, el cual tiene que ser el mismo que el definido anteriormente en el fichero \textit{cameraserver.cfg} para que dicha conexión sea efectiva.\\
+Se especifica el fichero de configuración \textit{detectorSSD.cfg} gracias al cual se tendrá comunicación con el servidor de imágenes. Este fichero tiene una propiedad en la que se define el nombre de la cámara, el cual tiene que ser el mismo que el definido anteriormente en el fichero \textit{cameraserver.cfg} para que dicha conexión sea efectiva.\\
 
-Finalmente, tras lanzar ambos comandos, se obtiene el componente detector explicado. A continuación se muestran 2 imágenes donde se aprecia el funcionamiento del componente. La imagen \ref{ComponenteDetectorPython} se puede observar como se comporta la aplicación, en este caso, pulsando el botón encargado de realizar la detección única.
+En la Figura \ref{ComponenteDetectorPython} se puede observar cómo se comporta la aplicación, en este caso, pulsando el botón encargado de realizar la detección única.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=16cm]{./DetectionComponentPython}
-\caption{Ejecución del componente detector usando el botón de detección única.}
+\caption{Ejecución de la aplicación usando el botón de detección única.}
 \label{ComponenteDetectorPython}
 \end{center}
 \end{figure}
 
-\subsection{Detección condicional}
+\subsection{Detección específica de un tipo de objetos}
 
-En ocasiones, se quiere realizar tareas de detección sobre uno o varios objetos en concreto, obviando los demás que se han definido durante el entrenamiento de la red neuronal.\\
+En ocasiones, se quiere realizar tareas de detección sobre uno o varios objetos en concreto, obviando los demás que se han definido durante el entrenamiento de la red neuronal. Para ello, en el fichero de configuración, se añadirá una línea en la cual se especifican las etiquetas de los objetos que se quieren detectar.\\
 
-Para ello, en el fichero de configuración, se añadirá una línea en la cual se especificará las etiquetas de los objetos que se quieren detectar. Para la prueba de este componente condicional, se modificará este fichero en función de la demostración realizada anteriormente, en la que se detecto una pantalla y una botella.\\
+Por ejemplo se modifica este fichero en función de la demostración realizada anteriormente, en la que se detectaron una pantalla y una botella.\\
 
 \begin{lstlisting}[frame=single]
 DetectorSSD.Camera.Proxy=cameraA:default -h localhost -p 9999 
@@ -1186,9 +1185,7 @@ DetectorSSD.Labels=bottle
 
 Tras esto, a partir de la variable DetectorSSD.Labels creada, se recorrerá el fichero \textit{labelmap.prototxt}, el cual contiene todos los objetos para los que se ha preparada a la red. Si alguna de las etiquetas existentes coinciden con las especificadas en el fichero de configuración, se creará el archivo \textit{labelmap\_conditional.prototxt}, que contendrá los objetos definidos. De esta manera, se tendrá un mapa de etiquetas con únicamente los objetos sobre los que se quiere realizar la detección.\\
 
-La arquitectura de este componente será exactamente igual que la mostrada en la imagen \ref{ComponenteDetector}, utilizando los 3 hilos de ejecución explicados en el apartado \ref{ComponenteDetectorSection}. Por último, la ejecución del componente se realizará de la forma explicada en el apartado \ref{Ejecucion}.\\
-
-En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de este componente de detección condicional, utilizando el fichero de configuración mostrado anteriormente:
+En la Figura \ref{ComponenteDetectorPythonConditional} se muestra la salida de este componente de detección específica, utilizando el fichero de configuración mostrado anteriormente:
 
 \begin{figure}[H]
 \begin{center}
@@ -1200,7 +1197,7 @@ En la imagen \ref{ComponenteDetectorPythonConditional} se muestra la salida de e
 
 \section{Uso de redes SSD preentrenadas en Caffe}\label{SSDCaffe}
 
-Tras entender el funcionamiento de la técnica \acrshort{SSD}, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán algunos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}. Particularmente, se utilizarán 2 modelos, uno que utiliza la base de datos \acrshort{PascalVOC} y otro que utiliza \acrshort{COCO}, con el objetivo de realizar una primera y pequeña comparación entre la capacidad para detectar determinados objetos que tienen las redes entrenadas con ambas bases de datos.
+Tras entender el funcionamiento de la técnica \acrshort{SSD}, se realizará un ejemplo práctico que proporciona la herramienta Caffe. En este primer caso, se utilizarán dos de los modelos preentrenados proporcionados en el repositorio oficial de los desarrolladores de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}. Particularmente uno que utiliza la base de datos \acrshort{PascalVOC} y otro que utiliza \acrshort{COCO}.
 
 \begin{itemize}
 \item \textbf{PascalVOC07+12-SSD300x300:} Se trata de un modelo entrenado por el conjunto de las imágenes de entrenamiento de la base de datos \acrshort{PascalVOC} de 2007 y 2012, con unas dimensiones de 300x300 píxeles.
@@ -1261,7 +1258,7 @@ Después de esto, comienza la parte de la detección. Para ello, se utiliza la sig
 detections = self.net.forward()['detection_out']
 \end{lstlisting}
 
-Esta salida es parseada en varios vectores que contienen las etiquetas de los objetos detectados, su confianza y las coordenadas de su \textit{bounding box}.\\
+Esta salida es descompuesta en varios vectores que contienen las etiquetas de los objetos detectados, su confianza y las coordenadas de su \textit{bounding box}.\\
 
 \begin{lstlisting}[frame=single]
 det_label = detections[0,0,:,1] 
@@ -1290,7 +1287,7 @@ top_xmax = det_xmax[top_indices]
 top_ymax = det_ymax[top_indices] 
 \end{lstlisting}
 
-A continuación, se muestran 2 ejemplos de la salida de este \textit{script} utilizando los modelos comentados anteriormente y una imagen del conjunto de test de la base de datos \acrshort{PascalVOC}, la cuál será utilizada para realizar las pruebas explicadas en el apartado \ref{ResultadoFinalSection}
+A continuación se muestran dos ejemplos de la salida de este \textit{script} utilizando los modelos comentados anteriormente y una imagen del conjunto de test de la base de datos \acrshort{PascalVOC}, la cuál será utilizada para realizar las pruebas explicadas en el apartado \ref{ResultadoFinalSection}
 
 \begin{figure}[H]
 \begin{center}
@@ -1303,23 +1300,23 @@ A continuación, se muestran 2 ejemplos de la salida de este \textit{script} util
 \end{center}
 \end{figure}
 
-Como se puede observar en las 2 imágenes superiores, el modelo entrenado con \acrshort{COCO} ha detectado una persona, un coche y una moto mientras que el modelo entrenado con \acrshort{PascalVOC} únicamente ha detectado el coche y la moto. Estas 2 imágenes representan el punto de inicio que se abordará en la sección \ref{ResultadoFinalSection} y que tratará de la comparación de prestaciones de varias redes neuronales.
+Como se puede observar en la Figura \ref{DetectionCompare}, el modelo entrenado con \acrshort{COCO} ha detectado una persona, un coche y una moto mientras que el modelo entrenado con \acrshort{PascalVOC} únicamente ha detectado el coche y la moto.
 
-\section{Creación y uso de modelo de red SSD propio}\label{DetectorObjetosSection}
+\section{Creación y uso de un modelo de red SSD propio}\label{DetectorObjetosSection}
 
-Para conseguir el sistema detector de objetos que se pretende, antes hay que definir en varios aspectos que afectarán a las prestaciones que tendrá el modelo una vez finalizado. En esta sección, se explicará la arquitectura que tendrá la red neuronal que se utilizará, los parámetros que se usarán para el entrenamiento de ésta y los conjuntos de datos de entrenamiento con los que se alimentará a la red. Finalmente, se describirá un componente detector de objetos desarrollado, que se puede utilizar para la comprobar las capacidades del modelo entrenado.
+Para conseguir el sistema detector de objetos que se pretende, antes hay que definir en varios aspectos que afectarán a las prestaciones que tendrá el modelo una vez construido. En esta sección se explicará la arquitectura que tendrá la red neuronal que se utilizará, los parámetros que se usarán para el entrenamiento de ésta y los conjuntos de datos de entrenamiento con los que se alimentará a la red.
 
 \subsection{Estructura de la red}\label{Estructura}
 
-En esta sección se explicará la estructura de la red neuronal, la cual entrenaremos con las bases de datos definidas en los apartados \ref{VOC} y \ref{COCO} para realizar posteriormente la detección de objetos sobre una imagen de entrada.\\
+La plataforma Caffe define la estructura de las redes neuronales en ficheros con extensión \textit{prototxt} \cite{ProtocolBufferGuide}. Aquí se definen todas las capas existentes en el modelo además de las características propias de cada una de ellas. En este caso en particular, la estructura de la red neuronal propia tiene un arquitectura similar a la definida en la técnica \acrshort{SSD}, explicada en el apartado  \ref{ArquitecturaSSDSection}. En primer lugar aparecen varias redes de convolución y \textit{pooling}, copiando la estructura de las redes convolucionales, con el objetivo de disminuir el tamaño de los ejemplos utilizados para el entrenamiento y poder capturar las características de éstos. Finalmente, se añaden varias capas encargadas de transformar las imágenes de entrada para detectar los objetos existentes en ellas. A continuación se describe la funcionalidad de cada una de las capas existentes en el modelo.\\
 
-En primer lugar, se especificará el nombre de la red, en este caso \\'VGG\_VOC0712\_COCO\_SSD\_300x300'.\\
+En primer lugar, se especifica el nombre de la red, en este caso \\'VGG\_VOC0712\_COCO\_SSD\_300x300'.\\
 
 \begin{lstlisting}[frame=single]
 name: "VGG_VOC0712_COCO_SSD_300x300"
 \end{lstlisting}
 
-Al inicio, también es necesario definir la dimensiones que tendrán las imágenes usadas para el entrenamiento. Tanto en \acrshort{PascalVOC} como \acrshort{COCO}, las imágenes tienen una dimensión de 300x300 y un formato RGB, definiéndose en la red de la siguiente manera:\\
+Al inicio, también es necesario definir la dimensiones que tendrán las imágenes usadas para el entrenamiento. Tanto en \acrshort{PascalVOC} como \acrshort{COCO}, las imágenes tienen una dimensión de 300x300 y un formato RGB, definiéndose en la red propia de la siguiente manera:\\
 
 \begin{lstlisting}[frame=single]
 input_shape {
@@ -1330,9 +1327,7 @@ input_shape {
 }
 \end{lstlisting}
 
-Como se ha explicado en la sección \ref{ArquitecturaSSDSection}, la arquitectura de la red neuronal en la técnica \acrshort{SSD} se basa en las redes convolucionales, por lo que a continuación se pueden observar varias capas de convolución combinadas con capas de pooling.\\
-
-En primer lugar, se define la capa de convolución, cuyo funcionamiento se ha explicado en la sección \ref{CapasVision}.\\
+A continuación se pueden observar varias capas de convolución combinadas con capas de pooling. En primer lugar, se define la capa de convolución, cuyo funcionamiento se ha explicado en la sección \ref{CapasVision}.\\
 
 \begin{lstlisting}[frame=single]
 layer {
@@ -1428,10 +1423,10 @@ layer {
 }
 \end{lstlisting}
 
-Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además, se aceptan 2 valores especiales para definir cualquier que se desee.
+Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además, se aceptan dos valores especiales para definir cualquier que se desee.
 
 \begin{itemize}
-\item Si se utiliza el valor \textbf{0} se copiará la dimensión de la capa inferior, es decir, si la capa inferior tiene 2 como su primera dimensión, la capa superior tendrá 2 como su primera dimensión.
+\item Si se utiliza el valor \textbf{0} se copiará la dimensión de la capa inferior, es decir, si la capa inferior tiene dos como su primera dimensión, la capa superior tendrá 2 como su primera dimensión.
 \item Si se utiliza \textbf{-1} se reducirá este valor de las otras dimensiones.
 \end{itemize}
 \item Las capas de datos de tipo \textit{Concat} concatena varias capas de entrada en una única capa de salida.\\
@@ -1542,13 +1537,13 @@ eval_type: "detection"
 ap_version: "11point"
 \end{lstlisting}
 
-Uno de los primeros parámetros que hay que especificar es \textit{type}, el cual determina el tipo de solucionador que se va a utilizar. En Caffe existen 6 tipos diferentes de solucionadores, cuyas características y funcionalidades se pueden consultar en la documentación oficial de Caffe\footnote{\url{http://caffe.berkeleyvision.org/tutorial/solver.html}}. Para este caso en particular, se ha utilizado el tipo SGD, Stochastic Gradient Descent.\\
+Uno de los primeros parámetros que hay que especificar es \textit{type}, el cual determina el tipo de solucionador que se va a utilizar. En Caffe existen 6 tipos diferentes de solucionadores, cuyas características y funcionalidades se pueden consultar en la documentación oficial de Caffe\footnote{\url{http://caffe.berkeleyvision.org/tutorial/solver.html}}. Para este caso en particular, se ha utilizado el tipo SGD, \textit{Stochastic Gradient Descent}.\\
 
 Otros de los parámetros que se pueden destacar dentro este fichero son, \textit{train\_net} y \textit{test\_net} que muestran la localización de los ficheros que especifican la estructura de la red; \textit{solver\_mode}, que específica si se va a utilizar la unidad central o la unidad gráfica de procesamiento, en este caso será CPU; \textit{base\_lr}, que fija el ritmo de aprendizaje, \textit{learning rate}, durante el entrenamiento; \textit{lr\_policy} que determina la política que seguirá la ritmo de aprendizaje, en este caso será \textit{step}, que indica que cada cierto tiempo se reducirá la tasa de aprendizaje; \textit{gamma} que especifica cuanto se va a reducir el \textit{learning rate} cada \textit{step}; \textit{stepsize} que determina cada cuantas iteraciones o \textit{steps} se reducirá el ritmo de aprendizaje; \textit{max\_iter}, que define el número máximo de iteraciones que se van a realizar en el entrenamiento;
 
 \subsection{Entrenamiento de la red}
 
-Antes de comenzar el entrenamiento de la red neuronal, es necesario definir las imágenes con las que vamos a alimentar a ésta durante el el proceso. Pare este caso, se decidió crear una base de datos personalizada la cuál contendrá tanto las imágenes de entrenamiento de \acrshort{PascalVOC} de los años 2007 y 2012 como las de \acrshort{COCO}. Para componerla, es necesario obtener los ficheros \textit{.lmdb} que incluyen toda la información de ambas bases de datos. Para ello, se dispone de los siguientes recursos y documentación:
+Antes de comenzar el entrenamiento de la red neuronal, es necesario definir las imágenes con las que vamos a alimentar a ésta durante el proceso. Pare este caso, se decidió crear una base de datos combinada la cuál contiene tanto las imágenes de entrenamiento de \acrshort{PascalVOC} de los años 2007 y 2012 como las de \acrshort{COCO}. Para componerla fue necesario obtener los ficheros \textit{.lmdb} que incluyen toda la información de ambas bases de datos. Para ello, se dispone de los siguientes recursos y documentación:
 
 \begin{itemize}
 \item En el repositorio Git de los desarrolladores de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, se explica paso a paso todo el proceso para crear los ficheros \acrshort{LMDB} que contendrán las imágenes y anotaciones de la base de datos \acrshort{PascalVOC}.
@@ -1559,7 +1554,7 @@ Tras esto, se creó el \textit{script create\_lmdb.py}\footnote{\url{https://gith
 
 Para el entrenamiento de la red neuronal, los desarrolladores de \acrshort{SSD} generaron varios \textit{scripts} que cumplen este objetivo. Particularmente, se destacan los \textit{scripts} \textit{ssd\_pascal.py} y \textit{ssd\_coco.py}, facilitados en el repositorio oficial de los creadores de esta técnica, y cuya finalidad es el entrenamiento de la red utilizando las imágenes de entrenamiento y validación de las bases de datos \acrshort{PascalVOC} y \acrshort{COCO} respectivamente. En estos \textit{scripts} se encuentran tanto las rutas de todos los ficheros necesarios para el entrenamiento, ya sea el modelo, el mapa de etiquetas, el solucionador o los archivos que alimentaran a la red de imágenes durante el proceso, como las rutas dónde se almacenaran los resultados del entrenamiento. Finalmente, a partir de los datos provistos, se crean la red neuronal y el solucionador, necesarios para lanzar el entrenamiento.\\
 
-Por lo tanto, para este caso, se creo un \textit{script} adicional, a partir de los mencionados anteriormente, modificando todos los datos necesarios.Tras la ejecución de este \textit{script}, comienza el entrenamiento, mostrando por la pantalla del terminal información del propio proceso cada 10 iteraciones.\\
+Para este caso se creó un \textit{script} adicional, a partir de los mencionados anteriormente, modificando todos los datos necesarios.Tras la ejecución de este \textit{script}, comienza el entrenamiento, mostrando por la pantalla del terminal información del propio proceso cada 10 iteraciones.\\
 
 Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en forma de fichero binario con extensión \textit{.caffemodel} que contiene los pesos existentes en cada una de las capas de la red neuronal en ese momento del entrenamiento.\\
 
@@ -1571,14 +1566,14 @@ Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en 
 \end{center}
 \end{figure}
 
-Por último, cuando finalizan las iteraciones definidas en el solucionador, en este caso 120000, se crear el fichero final con los pesos de la red una vez finalizado el entrenamiento, con el mismo formato que el de las \textit{snapshots} comentado anteriormente.
+Por último, cuando finalizan las iteraciones definidas en el solucionador, en este caso 120000, se crea el fichero final con los pesos de la red una vez terminado el entrenamiento, con el mismo formato que el de las \textit{snapshots} comentadas.
 
 \chapter{Medidor de calidad}
 \markboth{MEDIDOR DE CALIDAD}{MEDIDOR DE CALIDAD}
 
 \section{Comparación \textit{bounding boxes} real y detectada}
 
-En el apartado \ref{SSDCaffe} se ha explicado como se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para \acrshort{PascalVOC} y \acrshort{COCO} tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros \acrshort{XML} y para la segunda ficheros \acrshort{JSON}, por lo que se utilizarán 2 scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
+En el apartado \ref{SSDCaffe} se ha explicado como se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para \acrshort{PascalVOC} y \acrshort{COCO} tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros \acrshort{XML} y para la segunda ficheros \acrshort{JSON}, por lo que se utilizarán dos scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
 
 \subsection{PascalVOC}\label{ComparePascalVOC}
 
@@ -1596,7 +1591,7 @@ file_annotations = "/" + annotation[1] + "/" +  annotation[2]
 +"/" + 'Annotations' + "/" + annotation[7] + ".xml"
 \end{lstlisting}
 
-Realizando los 2 \textit{split} tendremos todas las partes de la ruta separadas dentro de la variable \textit{annotation}. Posteriormente, concatenando cada parte de la ruta con "/", sustituyendo \textit{JPEGImages} por \textit{Annotations}, e incluyendo el formato de los ficheros de anotaciones, es decir, \acrshort{XML}, tendremos la ruta del fichero de anotaciones correspondiente a la imagen de entrada.\\
+Realizando los dos \textit{split} tendremos todas las partes de la ruta separadas dentro de la variable \textit{annotation}. Posteriormente, concatenando cada parte de la ruta con "/", sustituyendo \textit{JPEGImages} por \textit{Annotations}, e incluyendo el formato de los ficheros de anotaciones, es decir, \acrshort{XML}, tendremos la ruta del fichero de anotaciones correspondiente a la imagen de entrada.\\
 
 Posteriormente, se utilizarán comandos \textit{Python} creados para la lectura de ficheros \acrshort{XML}, específicamente \textit{parse} y \textit{getroot}.\\
 
@@ -1638,7 +1633,7 @@ Tras finalizar este bucle, comenzará el código en el que se comparan las \textit
 for x in range(len(label_detection)):
 \end{lstlisting}
 
-Después, se definirán 2 bucles más. El primero recorrerá el array con las  coordenadas de los objetos detectados pasada a la función como parámetros. El segundo recorrerá el array \textit{names\_xml\_final} definido anteriormente.\\
+Después, se definirán dos bucles más. El primero recorrerá el array con las  coordenadas de los objetos detectados pasada a la función como parámetros. El segundo recorrerá el array \textit{names\_xml\_final} definido anteriormente.\\
 
 \begin{lstlisting}[frame=single]
 for t in range(len(ground_detection)):
@@ -1788,7 +1783,7 @@ def get_ground_truth(self, id_array,
 				image_annotations):
 \end{lstlisting}
 
-Esta función recorrerá 2 arrays. Primero se definirá el bucle que recorre el array \textit{id\_array} que contiene los \textit{ids} y etiquetas de los objetos detectados. Después se definirá el bucle que recorre el array \textit{image\_annotations} que contiene las anotaciones referentes a la imagen de entrada. Dentro de estos 2 bucles su realizarán las comprobaciones necesarias para asignar a cada \textit{bounding box} detectada su \textit{bounding box} real.\\
+Esta función recorrerá 2 arrays. Primero se definirá el bucle que recorre el array \textit{id\_array} que contiene los \textit{ids} y etiquetas de los objetos detectados. Después se definirá el bucle que recorre el array \textit{image\_annotations} que contiene las anotaciones referentes a la imagen de entrada. Dentro de estos dos bucles su realizarán las comprobaciones necesarias para asignar a cada \textit{bounding box} detectada su \textit{bounding box} real.\\
 
 \begin{lstlisting}[frame=single]
 for i in range(len(id_array)):
@@ -1804,7 +1799,7 @@ xmax = xmin + int(image_annotations[c][3])
 ymax = ymin + int(image_annotations[c][4])
 \end{lstlisting}
 
-En la base de datos \acrshort{COCO}, a diferencia de \acrshort{PascalVOC}, los 2 últimos valores referentes a las coordenadas, definen la anchura y altura de las \textit{bounding boxes} por lo que para conseguir los valores correctos de \textit{xmax} e \textit{ymax} habrá que sumar a \textit{xmin} e \textit{ymin} la anchura y altura respectivamente.\\
+En la base de datos \acrshort{COCO}, a diferencia de \acrshort{PascalVOC}, los dos últimos valores referentes a las coordenadas, definen la anchura y altura de las \textit{bounding boxes} por lo que para conseguir los valores correctos de \textit{xmax} e \textit{ymax} habrá que sumar a \textit{xmin} e \textit{ymin} la anchura y altura respectivamente.\\
 
 La asociación de \textit{ids} realizada anteriormente no garantiza que ese objeto definido en las anotaciones haga referencia al objeto detectado. En la imagen de entrada y en las anotaciones pueden existir varias instancias de objetos con el mismo identificador, por lo que es necesario realizar otra comprobación adicional.\\
 
@@ -1858,7 +1853,7 @@ Existentes varios parámetros cuya calculo e interpretación hacen posible la eval
 \subsection{Precisión y Recall}
 \label{mAPmARSection}
 
-Varias de las métricas utilizadas a la hora de evaluar el rendimiento de modelos creados para la detección de objetos se enfocan en la capacidad que tiene el detector para realizar buenas detecciones. Para este objetivo, se pueden destacar 2 medidas:
+Varias de las métricas utilizadas a la hora de evaluar el rendimiento de modelos creados para la detección de objetos se enfocan en la capacidad que tiene el detector para realizar buenas detecciones. Para este objetivo, se pueden destacar dos medidas:
 
 \begin{itemize}
 \item \textbf{Precisión,} mide cómo de precisas son las detecciones, es decir, qué porcentaje de las predicciones son correctas.
@@ -1889,11 +1884,11 @@ J(A,B) = \frac{|A\cap B|}{|A\cup B|} = \frac{|A\cap B|}{|A| + |B| - |A\cap B|}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=11cm]{./Intersection&Union}
-\caption{Intersección y unión sobre 2 conjuntos A y B.}
+\caption{Intersección y unión sobre dos conjuntos A y B.}
 \end{center}
 \end{figure}
 
-Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 1. Para cualquier coincidencia de los 2 conjuntos, el \acrshort{IoU} estará comprendido entre 0 y 1, tal y como se define en la ecuación \ref{IoUEquation}.
+Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 1. Para cualquier coincidencia de los dos conjuntos, el \acrshort{IoU} estará comprendido entre 0 y 1, tal y como se define en la ecuación \ref{IoUEquation}.
 \begin{equation}
 0\leq J(A,B) \leq  1
 \label{IoUEquation}
@@ -1928,10 +1923,10 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \begin{comment}
 \section{Cálculo del índice Jaccard}
 
-Se partirá de los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} pero ahora los scripts crearán un fichero mostrando el índice Jaccard calculado para cada uno de los objetos de las 2 bases de datos. Estos 2 nuevos \textit{scripts}, a diferencia de los anteriores, recibirán un conjunto de imágenes, por lo que el primer paso para realizarlos será preparar los datos de entrada.\\
+Se partirá de los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} pero ahora los scripts crearán un fichero mostrando el índice Jaccard calculado para cada uno de los objetos de las dos bases de datos. Estos dos nuevos \textit{scripts}, a diferencia de los anteriores, recibirán un conjunto de imágenes, por lo que el primer paso para realizarlos será preparar los datos de entrada.\\
 
 \begin{itemize}
-\item Para el script que evaluará las imágenes de la base de datos \acrshort{PascalVOC}, utilizaremos la ruta a las imágenes y a los ficheros de anotaciones. A partir de esto, se crearán 2 variables las cuales contendrán un listado con todos los archivos.\\
+\item Para el script que evaluará las imágenes de la base de datos \acrshort{PascalVOC}, utilizaremos la ruta a las imágenes y a los ficheros de anotaciones. A partir de esto, se crearán dos variables las cuales contendrán un listado con todos los archivos.\\
 
 \begin{lstlisting}[frame=single]
 dirsImages = sorted(os.listdir(pathImages))
@@ -1957,7 +1952,7 @@ A esta función se le pasará como parámetro la imagen de entrada y su ruta y devo
 \item Para el script que evaluará las imágenes de la base de datos \acrshort{COCO}, la única diferencia será que solo habrá que listar la carpeta donde se encuentran las imágenes. En esta base de datos existe un único fichero de anotaciones que contiene todos los datos reales de cada una de las imágenes de ella por lo que no será necesario asociar cada imagen a un fichero de anotaciones. Posteriormente, se llamará al bucle de la misma manera que se ha comentado en el punto anterior.
 \end{itemize}
 
-Con los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} tenemos disponibles las \textit{bounding boxes} reales y detectadas necesarias para calcular el índice Jaccard. Ahora, los 2 nuevos \textit{scripts} creados no pintarán estas cajas delimitadoras dentro de la imagen si no que las utilizarán para calcular el índice. Para ello, se crearán 4 nuevas funciones, las cuales se explican a continuación.\\ 
+Con los \textit{scripts} explicados en los apartados \ref{ComparePascalVOC} y \ref{CompareCOCO} tenemos disponibles las \textit{bounding boxes} reales y detectadas necesarias para calcular el índice Jaccard. Ahora, los dos nuevos \textit{scripts} creados no pintarán estas cajas delimitadoras dentro de la imagen si no que las utilizarán para calcular el índice. Para ello, se crearán 4 nuevas funciones, las cuales se explican a continuación.\\ 
 
 La primera de ellas se llamará \textit{area}, la cual recibirá un array con las coordenadas de los rectángulos sobre los cuales se quiere conocer su área y devolverá un array con los valores obtenidos.\\
 
@@ -1976,33 +1971,33 @@ La primera de ellas se llamará \textit{area}, la cual recibirá un array con las 
         return area_array
 \end{lstlisting}
 
-A esta función se la llamará 2 veces, guardando los valores obtenidos en las variables \textit{truth\_area} y \textit{detection\_area} las cuales se referirán al area de las \textit{bounding boxes} reales y detectadas respectivamente.\\
+A esta función se la llamará dos veces, guardando los valores obtenidos en las variables \textit{truth\_area} y \textit{detection\_area} las cuales se referirán al area de las \textit{bounding boxes} reales y detectadas respectivamente.\\
 
 El segundo método se llamará \textit{rectangle\_intersection} y se encargará de calcular las coordenadas del rectángulo que forman las \textit{bounding boxes} real y detectada cuando intersectan. Para ello, se le pasará como parámetro las coordenadas reales y detectadas para cada uno de los objetos localizados en la imagen. En esta función se realizarán varias comprobaciones con el objetivo calcular las coordenadas del rectángulo intersección.\\
 
 \begin{itemize}
-\item La coordenada \textit{xmin} del rectángulo intersección será la coordenada \textit{xmin} \textbf{mayor} de los 2 rectángulos que intersectan.\\
+\item La coordenada \textit{xmin} del rectángulo intersección será la coordenada \textit{xmin} \textbf{mayor} de los dos rectángulos que intersectan.\\
 \begin{lstlisting}[frame=single]
 if rectangles_array1[0][x][0]) >= rectangles_array2[x][0]:
 	xmin_intersection = rectangles_array1[0][x][0]
 else:
 	xmin_intersection = rectangles_array2[x][0]
 \end{lstlisting}
-\item La coordenada \textit{ymin} del rectángulo intersección será la coordenada \textit{ymin} \textbf{mayor} de los 2 rectángulos que intersectan.\\
+\item La coordenada \textit{ymin} del rectángulo intersección será la coordenada \textit{ymin} \textbf{mayor} de los dos rectángulos que intersectan.\\
 \begin{lstlisting}[frame=single]
 if rectangles_array1[0][x][1] >= rectangles_array2[x][1]:
 	ymin_intersection = rectangles_array1[0][x][1]
 else:
 	ymin_intersection = intrectangles_array2[x][1]
 \end{lstlisting}
-\item La coordenada \textit{xmax} del rectángulo intersección será la coordenada \textit{xmax} \textbf{menor} de los 2 rectángulos que intersectan.\\
+\item La coordenada \textit{xmax} del rectángulo intersección será la coordenada \textit{xmax} \textbf{menor} de los dos rectángulos que intersectan.\\
 \begin{lstlisting}[frame=single]
 if rectangles_array1[0][x][2] <= rectangles_array2[x][2]:
 	xmax_intersection = rectangles_array1[0][x][2]
 else:
 	xmax_intersection = rectangles_array2[x][2]
 \end{lstlisting}
-\item La coordenada \textit{ymax} del rectángulo intersección será la coordenada \textit{ymax} \textbf{menor} de los 2 rectángulos que intersectan.\\
+\item La coordenada \textit{ymax} del rectángulo intersección será la coordenada \textit{ymax} \textbf{menor} de los dos rectángulos que intersectan.\\
 \begin{lstlisting}[frame=single]
 if rectangles_array1[0][x][3] <= rectangles_array2[x][3]:
 	ymax_intersection = rectangles_array1[0][x][3]
@@ -2453,6 +2448,11 @@ COCO, Common Objects in Context.
 COCO, Common Objects in Context.
 \newblock {Data format.}
 \newblock {\url{http://cocodataset.org/#format-data}}
+
+\bibitem{ProtocolBufferGuide}
+Protocol Buffers.
+\newblock {Developer Guide.}
+\newblock {\url{https://developers.google.com/protocol-buffers/docs/overview}}
 
 \bibitem{SSD_2}
 Single Shot MultiBox Detection.

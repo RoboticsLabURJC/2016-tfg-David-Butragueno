@@ -33,9 +33,9 @@
 \BOOKMARK [2][-]{subsection.4.2.3}{Hilo Detector}{section.4.2}% 33
 \BOOKMARK [2][-]{subsection.4.2.4}{Hilo GUI}{section.4.2}% 34
 \BOOKMARK [2][-]{subsection.4.2.5}{Ejecuci\363n}{section.4.2}% 35
-\BOOKMARK [2][-]{subsection.4.2.6}{Detecci\363n condicional}{section.4.2}% 36
+\BOOKMARK [2][-]{subsection.4.2.6}{Detecci\363n espec\355fica de un tipo de objetos}{section.4.2}% 36
 \BOOKMARK [1][-]{section.4.3}{Uso de redes SSD preentrenadas en Caffe}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.4}{Creaci\363n y uso de modelo de red SSD propio}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.4}{Creaci\363n y uso de un modelo de red SSD propio}{chapter.4}% 38
 \BOOKMARK [2][-]{subsection.4.4.1}{Estructura de la red}{section.4.4}% 39
 \BOOKMARK [2][-]{subsection.4.4.2}{Definici\363n del solucionador}{section.4.4}% 40
 \BOOKMARK [2][-]{subsection.4.4.3}{Entrenamiento de la red}{section.4.4}% 41

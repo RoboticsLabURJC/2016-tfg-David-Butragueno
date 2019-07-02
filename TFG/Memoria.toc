@@ -37,11 +37,11 @@
 \contentsline {subsection}{\numberline {4.2.1}Dise\~no}{43}{subsection.4.2.1}% 
 \contentsline {subsection}{\numberline {4.2.2}Hilo Camera}{44}{subsection.4.2.2}% 
 \contentsline {subsection}{\numberline {4.2.3}Hilo Detector}{45}{subsection.4.2.3}% 
-\contentsline {subsection}{\numberline {4.2.4}Hilo GUI}{45}{subsection.4.2.4}% 
+\contentsline {subsection}{\numberline {4.2.4}Hilo GUI}{46}{subsection.4.2.4}% 
 \contentsline {subsection}{\numberline {4.2.5}Ejecuci\'on}{47}{subsection.4.2.5}% 
-\contentsline {subsection}{\numberline {4.2.6}Detecci\'on condicional}{48}{subsection.4.2.6}% 
+\contentsline {subsection}{\numberline {4.2.6}Detecci\'on espec\IeC {\'\i }fica de un tipo de objetos}{48}{subsection.4.2.6}% 
 \contentsline {section}{\numberline {4.3}Uso de redes SSD preentrenadas en Caffe}{49}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Creaci\'on y uso de modelo de red SSD propio}{53}{section.4.4}% 
+\contentsline {section}{\numberline {4.4}Creaci\'on y uso de un modelo de red SSD propio}{53}{section.4.4}% 
 \contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{53}{subsection.4.4.1}% 
 \contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{59}{subsection.4.4.2}% 
 \contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{61}{subsection.4.4.3}% 
