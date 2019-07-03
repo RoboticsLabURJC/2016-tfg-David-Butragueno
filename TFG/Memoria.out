@@ -39,15 +39,17 @@
 \BOOKMARK [2][-]{subsection.4.4.1}{Estructura de la red}{section.4.4}% 39
 \BOOKMARK [2][-]{subsection.4.4.2}{Definici\363n del solucionador}{section.4.4}% 40
 \BOOKMARK [2][-]{subsection.4.4.3}{Entrenamiento de la red}{section.4.4}% 41
-\BOOKMARK [0][-]{chapter.5}{Medidor de calidad}{}% 42
-\BOOKMARK [1][-]{section.5.1}{Comparaci\363n bounding boxes real y detectada}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.1.1}{PascalVOC}{section.5.1}% 44
-\BOOKMARK [2][-]{subsection.5.1.2}{COCO}{section.5.1}% 45
-\BOOKMARK [1][-]{section.5.2}{M\351tricas de evaluaci\363n}{chapter.5}% 46
-\BOOKMARK [2][-]{subsection.5.2.1}{Precisi\363n y Recall}{section.5.2}% 47
-\BOOKMARK [2][-]{subsection.5.2.2}{\315ndice Jaccard}{section.5.2}% 48
-\BOOKMARK [1][-]{section.5.3}{Resultado final}{chapter.5}% 49
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 50
-\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.2}{L\355neas futuras}{chapter.6}% 52
-\BOOKMARK [0][-]{chapter*.49}{Bibliograf\355a}{}% 53
+\BOOKMARK [0][-]{chapter.5}{Comparaci\363n experimental de redes de detecci\363n}{}% 42
+\BOOKMARK [1][-]{section.5.1}{M\351tricas de calidad de las detecciones visuales}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.1.1}{Precisi\363n y Recall}{section.5.1}% 44
+\BOOKMARK [2][-]{subsection.5.1.2}{\315ndice Jaccard}{section.5.1}% 45
+\BOOKMARK [1][-]{section.5.2}{Comparaci\363n entre detecciones conseguidas y las verdaderas}{chapter.5}% 46
+\BOOKMARK [2][-]{subsection.5.2.1}{PascalVOC}{section.5.2}% 47
+\BOOKMARK [2][-]{subsection.5.2.2}{COCO}{section.5.2}% 48
+\BOOKMARK [1][-]{section.5.3}{Evaluaci\363n experimental cuantitativa}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.3.1}{Comparaci\363n en tiempos de ejecuci\363n}{section.5.3}% 50
+\BOOKMARK [2][-]{subsection.5.3.2}{Evaluaci\363n de Precision y Recall}{section.5.3}% 51
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 52
+\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.2}{L\355neas futuras}{chapter.6}% 54
+\BOOKMARK [0][-]{chapter*.49}{Bibliograf\355a}{}% 55

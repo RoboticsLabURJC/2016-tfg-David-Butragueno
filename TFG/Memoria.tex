@@ -154,7 +154,7 @@ $\ $
 
 \cleardoublepage
 \tableofcontents
-\thispagestyle{empty}
+\thispagestyle{fancy}
 \cleardoublepage
 
 \cleardoublepage % Í­ndice de figuras
@@ -535,6 +535,7 @@ En el \textbf{Capítulo 5. Conclusiones} se resumen las conclusiones obtenidas a 
 \end{comment}
 
 \chapter{Infraestructura utilizada}
+\label{InfraestructuraSection}
 
 \section{Plataforma Caffe}
 
@@ -1358,7 +1359,7 @@ layer {
 }
 \end{lstlisting}
 
-Al inicio de esta capa se definen varios parámetros tales como el nombre de esta, \textit{name}, el tipo, \textit{type}, la capa de la cual recibe los datos, \textit{bottom} y la capa a la cual enviará los datos procesados, \textit{top}. Este ejemplo particular de capa de convolución generará 64 salidas, \textit{num\_output} y utilizará un núcleo de convolución de 3x3, \textit{kernel\_size}. Para inicializar los pesos se utilizará el algoritmo Xavier, el cual determina automáticamente la escala de inicialización basándose en el número de entradas y salidas de cada neurona. Adicionalmente, el sesgo se inicializará como una constante, siendo esta 0.0.\\
+Al inicio de esta capa se definen varios parámetros tales como el nombre de esta, \textit{name}, el tipo, \textit{type}, la capa de la cual recibe los datos, \textit{bottom} y la capa a la cual envía los datos procesados, \textit{top}. Este ejemplo particular de capa de convolución genera 64 salidas, \textit{num\_output} y utiliza un núcleo de convolución de 3x3, \textit{kernel\_size}. Los pesos se inicializan con el algoritmo Xavier, el cuál determina automáticamente la escala de inicialización basándose en el número de entradas y salidas de cada neurona. Adicionalmente, al sesgo se le asigna una constante, siendo esta 0.0.\\
 
 Posteriormente se define una capa de pooling, cuyo funcionamiento se ha explicado en el apartado \ref{CapasVision}.\\
 
@@ -1376,7 +1377,7 @@ layer {
 }
 \end{lstlisting}
 
-Esta capa tomará los datos de la capa de convolución anterior y utilizará bloques de 2x2 para dividir la imagen entrante. Para que no haya solapamiento entre bloques contiguos utilizará el parámetro \textit{stride = 2}. Finalmente, como función de agrupación utilizará el máximo, escogiendo el píxel con mayor nivel de intensidad de cada bloque.\\
+Esta capa tomará los datos de la capa de convolución anterior y utiliza bloques de 2x2 para dividir la imagen entrante. Para que no haya solapamiento entre bloques contiguos se utiliza el parámetro \textit{stride = 2}. Finalmente, como función de agrupación se usa el máximo, escogiendo el píxel con mayor nivel de intensidad de cada bloque.\\
 
 Entre las capas da convolución y pooling, se intercalan varias capas de activación, utilizando la función \acrshort{ReLU}, explicada en el apartado \ref{CapasActivacion}.\\
 
@@ -1389,9 +1390,9 @@ layer {
 }
 \end{lstlisting}
 
-En esta capa simplemente se definirán los parámetros comunes que se definen en todas las capas de la red, es decir, nombre de ésta, tipo, capa de la que recibe los datos y capa a la cual se los enviará.\\
+En esta capa simplemente se definen los parámetros comunes a todas las capas de la red, es decir, nombre de ésta, tipo, capa de la que recibe los datos y capa a la cuál se los envía.\\
 
-Además de las capas de activación, existirán varias capas de diferentes tipos que procesarán los datos obtenidos de diferentes maneras.
+Además de las capas de activación, existen varias capas de diferentes tipos que procesan los datos obtenidos de diferentes maneras.
 
 \begin{itemize}
 \item Las capas de datos de tipo \textit{Flatten} transforma una entrada de dimensiones \textit{n * c * h * w} en un vector simple de dimensiones \textit{n * (c*h*w)}\\
@@ -1423,11 +1424,11 @@ layer {
 }
 \end{lstlisting}
 
-Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además, se aceptan dos valores especiales para definir cualquier que se desee.
+Los números positivos se utilizan directamente, configurando la dimensión correspondiente en la capa de salida. Además se aceptan dos valores especiales para definir cualquiera que se desee.
 
 \begin{itemize}
-\item Si se utiliza el valor \textbf{0} se copiará la dimensión de la capa inferior, es decir, si la capa inferior tiene dos como su primera dimensión, la capa superior tendrá 2 como su primera dimensión.
-\item Si se utiliza \textbf{-1} se reducirá este valor de las otras dimensiones.
+\item Si se utiliza el valor \textbf{0} se copia la dimensión de la capa inferior, es decir, si la capa inferior tiene dos como su primera dimensión, la capa superior tendrá 2 como su primera dimensión.
+\item Si se utiliza \textbf{-1} se reduce este valor de las otras dimensiones.
 \end{itemize}
 \item Las capas de datos de tipo \textit{Concat} concatena varias capas de entrada en una única capa de salida.\\
 \begin{lstlisting}[frame=single]
@@ -1453,7 +1454,7 @@ Suponiendo que se recibe una entrada \textit{n\_i * c\_i * h * w} para cada capa
 \end{itemize}
 \end{itemize}
 
-Finalmente, se define la capa que determina la salida, que determinará los parámetros necesarios para clasificar los objetos detectados durante el entrenamiento.\\
+Finalmente se define la capa de salida, que determina los parámetros necesarios para clasificar los objetos detectados durante el entrenamiento.\\
 
 \begin{lstlisting}[frame=single]
 layer {
@@ -1484,7 +1485,7 @@ layer {
 }
 \end{lstlisting}
 
-Además de especificar las capas alimentarán la entrada de ésta, se pueden destacar los parámetros \textit{num\_classes}, que determina el número de clases de objetos existentes o \textit{label\_map\_file} que indica la ruta del fichero dónde se definen estas clases.
+Además de especificar las capas de dónde recibe los datos esta capa final, se pueden destacar los parámetros \textit{num\_classes}, que determina el número de clases de objetos existentes o \textit{label\_map\_file} que indica la ruta del fichero dónde se definen estas clases.
 
 \subsection{Definición del solucionador}
 
@@ -1506,7 +1507,7 @@ En cada iteración, el solucionador realiza las siguientes operaciones:
 \item Actualiza el estado del solucionador de acuerdo con la velocidad de aprendizaje, el historial y el método.
 \end{itemize}
 
-A continuación, se muestra el aspecto del solucionador usado para el entrenamiento de la red, llamado \textit{solver.prototxt}:\\
+A continuación se muestra el aspecto del solucionador usado para el entrenamiento de la red, llamado \textit{solver.prototxt}:\\
 
 \begin{lstlisting}[frame=single]
 train_net: "models/VGGNet/VOC0712/SSD_300x300/train.prototxt"
@@ -1537,9 +1538,9 @@ eval_type: "detection"
 ap_version: "11point"
 \end{lstlisting}
 
-Uno de los primeros parámetros que hay que especificar es \textit{type}, el cual determina el tipo de solucionador que se va a utilizar. En Caffe existen 6 tipos diferentes de solucionadores, cuyas características y funcionalidades se pueden consultar en la documentación oficial de Caffe\footnote{\url{http://caffe.berkeleyvision.org/tutorial/solver.html}}. Para este caso en particular, se ha utilizado el tipo SGD, \textit{Stochastic Gradient Descent}.\\
+Uno de los primeros parámetros que hay que especificar es \textit{type}, el cuál determina el tipo de solucionador que se va a utilizar. En Caffe existen 6 tipos diferentes de solucionadores, cuyas características y funcionalidades se pueden consultar en la documentación oficial de Caffe\footnote{\url{http://caffe.berkeleyvision.org/tutorial/solver.html}}. Para este caso en particular, se ha utilizado el tipo SGD, \textit{Stochastic Gradient Descent}.\\
 
-Otros de los parámetros que se pueden destacar dentro este fichero son, \textit{train\_net} y \textit{test\_net} que muestran la localización de los ficheros que especifican la estructura de la red; \textit{solver\_mode}, que específica si se va a utilizar la unidad central o la unidad gráfica de procesamiento, en este caso será CPU; \textit{base\_lr}, que fija el ritmo de aprendizaje, \textit{learning rate}, durante el entrenamiento; \textit{lr\_policy} que determina la política que seguirá la ritmo de aprendizaje, en este caso será \textit{step}, que indica que cada cierto tiempo se reducirá la tasa de aprendizaje; \textit{gamma} que especifica cuanto se va a reducir el \textit{learning rate} cada \textit{step}; \textit{stepsize} que determina cada cuantas iteraciones o \textit{steps} se reducirá el ritmo de aprendizaje; \textit{max\_iter}, que define el número máximo de iteraciones que se van a realizar en el entrenamiento.
+Otros de los parámetros que se pueden destacar dentro este fichero son, \textit{train\_net} y \textit{test\_net} que muestran la localización de los ficheros que especifican la estructura de la red; \textit{solver\_mode}, que específica si se va a utilizar la unidad central o la unidad gráfica de procesamiento, en este caso será CPU; \textit{base\_lr}, que fija el ritmo de aprendizaje o \textit{learning rate} durante el entrenamiento; \textit{lr\_policy} que determina la política que sigue el ritmo de aprendizaje, en este caso será \textit{step}, que indica que cada cierto tiempo se reduce la tasa de aprendizaje; \textit{gamma} que especifica cuanto se va a reducir el \textit{learning rate} cada \textit{step}; \textit{stepsize} que determina cada cuantas iteraciones o \textit{steps} se reduce el ritmo de aprendizaje; \textit{max\_iter}, que define el número máximo de iteraciones que se van a realizar en el entrenamiento.
 
 \subsection{Entrenamiento de la red}
 
@@ -1552,7 +1553,7 @@ Antes de comenzar el entrenamiento de la red neuronal, es necesario definir las 
 
 Tras esto, se creó el \textit{script create\_lmdb.py}\footnote{\url{https://github.com/RoboticsURJC-students/2016-tfg-David-Butragueno/blob/master/create_lmdb.py}} que será el encargado de fusionar en un único fichero \acrshort{LMDB} toda la información de ambas bases de datos existente en los archivos creados anteriormente.\\
 
-Para el entrenamiento de la red neuronal, los desarrolladores de \acrshort{SSD} generaron varios \textit{scripts} que cumplen este objetivo. Particularmente, se destacan los \textit{scripts} \textit{ssd\_pascal.py} y \textit{ssd\_coco.py}, facilitados en el repositorio oficial de los creadores de esta técnica, y cuya finalidad es el entrenamiento de la red utilizando las imágenes de entrenamiento y validación de las bases de datos \acrshort{PascalVOC} y \acrshort{COCO} respectivamente. En estos \textit{scripts} se encuentran tanto las rutas de todos los ficheros necesarios para el entrenamiento, ya sea el modelo, el mapa de etiquetas, el solucionador o los archivos que alimentaran a la red de imágenes durante el proceso, como las rutas dónde se almacenaran los resultados del entrenamiento. Finalmente, a partir de los datos provistos, se crean la red neuronal y el solucionador, necesarios para lanzar el entrenamiento.\\
+Para el entrenamiento de la red neuronal, los desarrolladores de \acrshort{SSD} generaron varios \textit{scripts} que cumplen este objetivo. Particularmente, se destacan los \textit{scripts} \textit{ssd\_pascal.py} y \textit{ssd\_coco.py}, facilitados en el repositorio oficial de los creadores de esta técnica, y cuya finalidad es el entrenamiento de la red utilizando las imágenes de entrenamiento y validación de las bases de datos \acrshort{PascalVOC} y \acrshort{COCO} respectivamente. En estos \textit{scripts} se encuentran tanto las rutas de todos los ficheros necesarios para el entrenamiento, ya sea el modelo, el mapa de etiquetas, el solucionador o los archivos que alimentarán a la red de imágenes durante el proceso, como las rutas dónde se almacenarán los resultados del entrenamiento. Finalmente, a partir de los datos provistos, se crean la red neuronal y el solucionador, necesarios para lanzar el entrenamiento.\\
 
 Para este caso se creó un \textit{script} adicional, a partir de los mencionados anteriormente, modificando todos los datos necesarios.Tras la ejecución de este \textit{script}, comienza el entrenamiento, mostrando por la pantalla del terminal información del propio proceso cada 10 iteraciones.\\
 
@@ -1568,292 +1569,19 @@ Durante la ejecución, cada 1000 iteraciones, se genera una \textit{snapshot} en 
 
 Por último, cuando finalizan las iteraciones definidas en el solucionador, en este caso 120000, se crea el fichero final con los pesos de la red una vez terminado el entrenamiento, con el mismo formato que el de las \textit{snapshots} comentadas.
 
-\chapter{Medidor de calidad}
-\markboth{MEDIDOR DE CALIDAD}{MEDIDOR DE CALIDAD}
+\chapter{Comparación experimental de redes de detección}
 
-\section{Comparación \textit{bounding boxes} real y detectada}
+En este capítulo se abordará el último \textit{subobjetivo} definido en este trabajo fin de grado, es decir, la evaluación y comparación cuantitativa de las tres redes de detección incorporadas a la aplicación de detección visual de objetos: red preentrenada \acrshort{COCO}, red preentrenada \acrshort{PascalVOC} y red entrenada sobre la base de datos combinada. Para esto se utilizará la herramienta de evaluación automática \textit{Detection Suite} de JdeRobot, la cuál devuelve varias métricas para medir sistemas detectores, que serán explicadas y posteriormente interpretadas.
 
-En el apartado \ref{SSDCaffe} se ha explicado como se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para \acrshort{PascalVOC} y \acrshort{COCO} tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros \acrshort{XML} y para la segunda ficheros \acrshort{JSON}, por lo que se utilizarán dos scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
-
-\subsection{PascalVOC}\label{ComparePascalVOC}
-
-Se define la función \textit{get\_ground\_truth}, la cual devolverá un array por cada objeto detectado en el que vendrán informados las coordenadas de la \textit{bounding box} real, y la etiqueta del objeto determinado. Esta función recibirá como datos de entrada la ruta de la imagen de entrada, un array con las etiquetas de los objetos detectados y las coordenadas de las \textit{bounding boxes} de éstos.\\
-
-En primer lugar, se utilizará la ruta de la imagen de entrada recibida (p.ej '/home/db/data/VOCdevkit/VOC2012/JPEGImages/2007\_009938.jpg') para obtener la ruta del fichero con las anotaciones correspondientes a esa imagen. Para ello, se utilizará el siguiente código:\\
-
-\begin{lstlisting}[frame=single]
-annotation = input_image.split(".")
-
-annotation = annotation[0].split("/")
-
-file_annotations = "/" + annotation[1] + "/" +  annotation[2] 
-+ "/" + annotation[3] + "/" + annotation[4] + "/" + annotation[5] 
-+"/" + 'Annotations' + "/" + annotation[7] + ".xml"
-\end{lstlisting}
-
-Realizando los dos \textit{split} tendremos todas las partes de la ruta separadas dentro de la variable \textit{annotation}. Posteriormente, concatenando cada parte de la ruta con "/", sustituyendo \textit{JPEGImages} por \textit{Annotations}, e incluyendo el formato de los ficheros de anotaciones, es decir, \acrshort{XML}, tendremos la ruta del fichero de anotaciones correspondiente a la imagen de entrada.\\
-
-Posteriormente, se utilizarán comandos \textit{Python} creados para la lectura de ficheros \acrshort{XML}, específicamente \textit{parse} y \textit{getroot}.\\
-
-\begin{lstlisting}[frame=single]
-tree = ET.parse(file)
-root = tree.getroot()
-\end{lstlisting}
-
-A partir de este código, tendremos acceso a los elementos del fichero de anotaciones utilizando para ello la variable \textit{root}.\\
-
-Después de esto, comenzará el primer bucle de esta función. Éste será el encargado de guardar en una variable varios datos de cada uno de los objetos existentes en el fichero de anotaciones. En primer lugar, el bucle buscará y recorrerá todas las etiquetas \textit{object} del \acrshort{XML}. Para ello se utilizará el comando de Python \textit{findall} sobre la variable \textit{root} definida anteriormente.\\
-
-\begin{lstlisting}[frame=single]
-for element in root.findall('object'):
-\end{lstlisting}
-
-Luego, con el comando \textit{find}, accederemos a las etiquetas \textit{name} y \textit{bbox} del fichero de anotaciones, guardando su valor en el array \textit{names\_xml} definido previamente.\\
-
-\begin{lstlisting}[frame=single]
-name = element.find('name').text
-names_xml.append(name)
-bndbox = element.find('bndbox')
-names_xml.append(bndbox[0].text) #xmin
-names_xml.append(bndbox[1].text) #ymin
-names_xml.append(bndbox[2].text) #xmax
-names_xml.append(bndbox[3].text) #ymax
-\end{lstlisting}
-
-Para mejorar el acceso posterior a estos datos, éstos se guardarán en un array de arrays, en el que cada array interno tendrá los datos mencionados anteriormente. Para ello, se definirá el array \textit{names\_xml\_final} y se guardará el array \textit{names\_xml} dentro de éste. Posteriormente, se eliminarán los datos guardados en el array \textit{names\_xml}.
-
-\begin{lstlisting}[frame=single]
-names_xml_final.append(names_xml)
-names_xml = []
-\end{lstlisting}
-
-Tras finalizar este bucle, comenzará el código en el que se comparan las \textit{bounding boxes} reales con las detectadas para averiguar cuál es el cuadro delimitador real correspondiente para cada uno de los objetos detectados. En primer lugar se definirá un bucle, que recorrerá el array con todas las etiquetas de los objetos detectados el cual se pasó como parámetro a la función.\\
-
-\begin{lstlisting}[frame=single]
-for x in range(len(label_detection)):
-\end{lstlisting}
-
-Después, se definirán dos bucles más. El primero recorrerá el array con las  coordenadas de los objetos detectados pasada a la función como parámetros. El segundo recorrerá el array \textit{names\_xml\_final} definido anteriormente.\\
-
-\begin{lstlisting}[frame=single]
-for t in range(len(ground_detection)):
-	for i in range(len(names_xml_final)):
-\end{lstlisting}
-
-Ahora, el código comparará las coordenadas reales con las detectadas. Específicamente, se verificará que cada coordenada \textit{xmin}, \textit{ymin}, \textit{ymax}, \textit{ymax} de cada \textit{bounding box} de los objetos detectados no exceda en 40 píxeles con las coordenadas originales.\\
-
-\begin{lstlisting}[frame=single]
-if abs(int(ground_detection[t][0])-int(names_xml_final[i][1]))<=40
-and abs(int(ground_detection[t][1])-int(names_xml_final[i][2]))<=40
-and abs(int(ground_detection[t][2])-int(names_xml_final[i][3]))<=40
-and abs(int(ground_detection[t][3])-int(names_xml_final[i][4]))<=40:
-\end{lstlisting}
-
-Con esto se conseguirá que cada \textit{bounding box} detectada se asigne correctamente a la \textit{bounding box} real, ya que si en el fichero de anotaciones existen varios objetos con la misma etiquetas, se podrían realizar asignaciones incorrectas si solo se compara la etiqueta y se obvian las coordenadas.\\
-
-Posteriormente, tras verificar que las coordenadas son las correctas, se realizará la última comprobación. Ésta estará relacionada con la etiquetas de los objetos reales, almacenadas en la variable \textit{names\_xml\_final}, y las etiquetas de los objetos detectados, almacenadas en la variable \textit{label\_detection}, la cual fue pasada como parámetro a la función.\\
-
-\begin{lstlisting}[frame=single]
-if names_xml_final[i][0] == label_detection[x]
-\end{lstlisting}
-
-Tras esto, si se cumplen las condiciones, se asignarán a diferentes variables las coordenadas existentes en el fichero de anotaciones, es decir, las reales.\\
-
-\begin{lstlisting}[frame=single]
-xmin = names_xml_final[i][1]
-ymin = names_xml_final[i][2]
-xmax = names_xml_final[i][3]
-ymax = names_xml_final[i][4]
-\end{lstlisting}
-
-Finalmente, la función devolverá el array \textit{positions\_array}, el cuán contendrá todas las variables comentadas anteriormente.\\
-
-\begin{lstlisting}[frame=single]
-positions = []
-positions.append(xmin)
-positions.append(ymin)
-positions.append(xmax)
-positions.append(ymax)
-positions_array.append(positions)
-\end{lstlisting}
-
-Finalmente, las \textit{bounding boxes} reales se pintarán sobre la imagen de entrada a partir del array devuelto en la función anterior utilizando el siguiente código:\\
-
-\begin{lstlisting}[frame=single]
-for i in range(len(ground_truth)):
-	xmin = int(round(float(ground_truth[i][0])))
-	ymin = int(round(float(ground_truth[i][1])))
-	xmax = int(round(float(ground_truth[i][2])))
-	ymax = int(round(float(ground_truth[i][3])))
-
-	cv2.rectangle(img,(xmin,ymin),(xmax,ymax),(0,255,0),2)#Color BGR
-\end{lstlisting}
-
-La imagen \ref{DetectionCompare} muestra un ejemplo de una salida que generaría este \textit{script}. La \textit{bounding box} de color verde hace referencia a las coordenadas reales del objeto, mientras que la \textit{bounding box} de color rojo encuadra el objeto detectado.\\
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=11cm]{./image_detection_compare}
-\caption{Comparacion bounding boxes real y detectada con imagen de la BBDD \acrshort{PascalVOC}.}
-\label{DetectionCompare}
-\end{center}
-\end{figure}
-
-\subsection{COCO}\label{CompareCOCO}
-
-Como se ha explicado en la sección \ref{COCO}, las anotaciones de esta base de datos están almacenadas en archivos de formato \acrshort{JSON}, por lo que para conseguir las coordenadas reales de los objetos habrá que utilizar comandos que permitan recorrer este tipo de ficheros. Antes de realizar la función principal que devuelva la imagen con las \textit{bounding boxes} real y detectada superpuestas, se crearán varios métodos que recorrerán el fichero de anotaciones, preparando así los datos para ser tratados posteriormente.\\
-
-En primer lugar, se definirá la función \textit{get\_image\_id}, la cual se encargará de obtener el \textit{id} de la imagen de entrada, que será necesario para encontrar las anotaciones correspondientes a ésta. Este \textit{id} se puede conseguir a partir del \textit{path} de la imagen \textit{jpg}, el cual se pasa como parámetro de la función.\\
-
-\begin{lstlisting}[frame=single]
-def get_image_id(self, image_file):
-
-        image_file = re.split('.jpg', image_file)
-        image_file = re.split('_', image_file[0])
-        image_id = int(image_file[2])
-
-        return image_id
-\end{lstlisting}
-
-La segunda función para la preparación de los datos se llamará \textit{annotations} y se encargará se recuperar todas las anotaciones de la imagen de entrada. Para ello se le pasará como parámetro el \textit{id} de la imagen calculado en la función explicada anteriormente.\\
-
-Primero, se guardará en la variable \textit{jsonFileAnnotations} los objetos con nombre \textit{annotations} de todo el fichero de anotaciones \textit{jsonFile}, definido como variable global del script.\\
-
-\begin{lstlisting}[frame=single]
-jsonFileAnnotations = jsonFile["annotations"]
-\end{lstlisting}
-
-En la imagen \ref{AnnotacionesCoco2}, se puede observar todos los pares de nombre/valor que tiene el objeto \textit{annotations}. En este script, se utilizará el parámetro con nombre \textit{image\_id}, comparando uno a uno el existente en cada uno de los objetos \textit{annotations} de la variable \textit{jsonFile} con el \textit{id} de la imagen de entrada, el cual se pasa a esta función como parámetro.\\
-
-\begin{lstlisting}[frame=single]
-if c["image_id"] == image_id:
-	if len(c['bbox']) == 1:
-\end{lstlisting}
-
-Para realizar posteriormente la comparación con los objetos detectados necesitaremos las coordenadas y etiquetas reales de todos los objetos existentes en la imagen. Estos datos se encuentran en los parámetros \textit{bbox} y \textit{category\_id} del fichero de anotaciones los cuales se guardarán en el array \textit{annotations} definido anteriormente. Para que la función devuelva un array de arrays con todas las coordenadas y etiquetas, añadiremos el array \textit{annotations} en otro array definido llamado \textit{annotations\_final}.\\
-
-\begin{lstlisting}[frame=single]
-annotations.append(c['category_id'])
-annotations.append(c['bbox'][0][0])
-annotations.append(c['bbox'][0][1])
-annotations.append(c['bbox'][0][2])
-annotations.append(c['bbox'][0][3])
-annotations_final.append(annotations)
-annotations = []
-\end{lstlisting}
-
-El objetivo de la tercera función será recuperar todas las etiquetas e \textit{ids} de la base de datos. Para ello, como anteriormente, se buscará un objeto en todo el fichero \acrshort{JSON} de anotaciones, en este caso, el llamado \textit{categories}.\\
-
-\begin{lstlisting}[frame=single]
-jsonFileCategories = jsonFile["categories"]
-\end{lstlisting}
-
-Posteriormente, la función recorrerá la variable \textit{jsonFileCategories} recuperando los parámetros del fichero llamados \textit{name} y \textit{id}, los cuales hacen referencia a las etiquetas y a su \textit{id}.\\
-
-\begin{lstlisting}[frame=single]
-for c in jsonFileCategories:
-	labels_ids_array.extend([c["name"], c["id"]])
-         labels_ids_array_total.append(labels_ids_array)
-         labels_ids_array = []
-\end{lstlisting}
-
-La cuarta y última función, se trata de \textit{recover\_id} y se encargará de recuperar el \textit{id} de los objetos detectados. Este \textit{id} es un número entero que hace referencia a cada uno de los objetos existentes en la base de datos \acrshort{COCO}. A esta función se le pasarán como parámetros 2 arrays. El primero de ellos hará referencia a todas las etiquetas de cada objeto detectado anteriormente. El segundo se referirá a todos los \textit{ids} y nombre de etiquetas de la base de datos recuperados anteriormente.\\
-
-\begin{lstlisting}[frame=single]
-    def recover_id(self, labels_detected_array, labels_ids_array):
-        id_array = []
-        for c in range(len(labels_detected_array)):
-            for i in range(len(labels_ids_array)):
-                print labels_ids_array[i]
-                if labels_detected_array[c] == labels_ids_array[i][0] :
-                    id_array.append(labels_ids_array[i][1])
-                    break
-
-        return id_array
-\end{lstlisting}
-
-Esta función recorrerá ambos arrays comparando sus registros. En el momento en que coincidan los nombres de etiquetas, se le asignará a ese objeto detectado el \textit{id} determinado.\\
-
-Tras estas 4 funciones, finalmente se llamará al método \textit{get\_ground\_truth} la cual devolverá un array con las coordenadas reales de los objetos detectados. Este función recibirá como entrada las variables \textit{id\_array}, \textit{ground\_detection}, \textit{image\_id} y \textit{image\_annotations} las cuales son los resultados de las 4 funciones explicadas anteriormente.\\
-
-\begin{lstlisting}[frame=single]
-def get_ground_truth(self, id_array,
-				ground_detection,
-				image_id,
-				image_annotations):
-\end{lstlisting}
-
-Esta función recorrerá 2 arrays. Primero se definirá el bucle que recorre el array \textit{id\_array} que contiene los \textit{ids} y etiquetas de los objetos detectados. Después se definirá el bucle que recorre el array \textit{image\_annotations} que contiene las anotaciones referentes a la imagen de entrada. Dentro de estos dos bucles su realizarán las comprobaciones necesarias para asignar a cada \textit{bounding box} detectada su \textit{bounding box} real.\\
-
-\begin{lstlisting}[frame=single]
-for i in range(len(id_array)):
-	for c in range(len(image_annotations)):
-\end{lstlisting}
-
-Se compararán los \textit{ids} detectados con los \textit{ids} existentes en las anotaciones. En el momento en el qué coincidan los \textit{ids}, se asignaran a las variables \textit{xmin}, \textit{ymin}, \textit{xmax} y \textit{ymax} las coordenadas de la \textit{bounding box real}.\\
-
-\begin{lstlisting}[frame=single]
-xmin = int(image_annotations[c][1])
-ymin = int(image_annotations[c][2])
-xmax = xmin + int(image_annotations[c][3])
-ymax = ymin + int(image_annotations[c][4])
-\end{lstlisting}
-
-En la base de datos \acrshort{COCO}, a diferencia de \acrshort{PascalVOC}, los dos últimos valores referentes a las coordenadas, definen la anchura y altura de las \textit{bounding boxes} por lo que para conseguir los valores correctos de \textit{xmax} e \textit{ymax} habrá que sumar a \textit{xmin} e \textit{ymin} la anchura y altura respectivamente.\\
-
-La asociación de \textit{ids} realizada anteriormente no garantiza que ese objeto definido en las anotaciones haga referencia al objeto detectado. En la imagen de entrada y en las anotaciones pueden existir varias instancias de objetos con el mismo identificador, por lo que es necesario realizar otra comprobación adicional.\\
-
-\begin{lstlisting}[frame=single]
-if abs(xmin - ground_detection[i][0]) <= 90 and
-abs(ymin - ground_detection[i][1]) <= 90 and
-abs(xmax - ground_detection[i][2]) <= 90 and
-abs(ymax - ground_detection[i][3]) <= 90:
-\end{lstlisting}
-
-De esta manera, se comprueba que la diferencia entre las coordenadas reales y detectadas del objeto no es mayor de 90 píxeles, asegurando de esta manera que la \textit{bounding box} real y la \textit{bounding box} detectada se refieren al mismo objeto de la imagen.\\
-
-Tras realizar esta comprobación, se añade en el array \textit{ground\_truth\_final}, el cual será lo que devuelva la función explicada, el array \textit{ground\_truth} formado por las coordenada reales.\\
-
-\begin{lstlisting}[frame=single]
-ground_truth.append(xmin)
-ground_truth.append(ymin)
-ground_truth.append(xmax)
-ground_truth.append(ymax)
-ground_truth_final.append(ground_truth)
-ground_truth = []
-\end{lstlisting}
-
-Finalmente, las \textit{bounding boxes} reales se pintarán sobre la imagen de entrada a partir del array devuelto en la función anterior. La imagen \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que generaría este \textit{script}. La \textit{bounding box} de color verde hace referencia a las coordenadas reales del objeto, mientras que la \textit{bounding box} de color rojo encuadra el objeto detectado.\\
-
-\begin{comment}
-\begin{lstlisting}[frame=single]
-for i in range(len(ground_truth)):
-	xmin = ground_truth[i][0]
-	ymin = ground_truth[i][1]
-	xmax = ground_truth[i][2]
-	ymax = ground_truth[i][3]
-
-	cv2.rectangle(img,(xmin,ymin),(xmax,ymax),(0,255,0),2)#Color BGR
-\end{lstlisting}
-\end{comment}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=11cm]{./imageDetectionCompareCOCO}
-\caption{Comparación bounding boxes real y detectada con imagen de la BBDD \acrshort{COCO}.}
-\label{DetectionCompareCOCO}
-\end{center}
-\end{figure}
-
-\section{Métricas de evaluación}
+\section{Métricas de calidad de las detecciones visuales}
 \label{MetricasEvaluacionSection}
 
-Existentes varios parámetros cuya calculo e interpretación hacen posible la evaluación de la capacidad que tienen determinados sistemas a la hora de detectar objetos. En esta sección se explicarán los que se calcularán posteriormente en el apartado \ref{ResultadoFinalSection} tras evaluar con \textit{Detection Suite} las redes utilizadas durante este trabajo.
+Existentes varios parámetros cuyo cálculo e interpretación hacen posible la evaluación de la capacidad que tienen determinados sistemas a la hora de detectar objetos. En esta sección se explicarán los más comunes que se calcularán con \textit{Detection Suite} las redes utilizadas durante este trabajo.
 
 \subsection{Precisión y Recall}
 \label{mAPmARSection}
 
-Varias de las métricas utilizadas a la hora de evaluar el rendimiento de modelos creados para la detección de objetos se enfocan en la capacidad que tiene el detector para realizar buenas detecciones. Para este objetivo, se pueden destacar dos medidas:
+Varias de las métricas utilizadas a la hora de evaluar el rendimiento de modelos creados para la detección de objetos se enfocan en la capacidad que tiene el detector para realizar buenas detecciones. Se pueden destacar dos medidas:
 
 \begin{itemize}
 \item \textbf{Precisión,} mide cómo de precisas son las detecciones, es decir, qué porcentaje de las predicciones son correctas.
@@ -1868,7 +1596,8 @@ Precision = \frac{TP}{TP + FN}
 donde FP es el número de falsos negativos.
 \end{itemize}
 
-Utilizando estas métricas, un determinado modelo de detección, además de devolver las detecciones realizadas, devolverá las probabilidades de que dichas detecciones sean acertadas. Fijando diferentes umbrales, se pueden obtener los valores \textit{Average Precision} y \textit{Average Recall} que hacen referencia a la precisión y \textit{recall} media para un determinado umbral y para las diferentes clases existentes en un modelo. Normalmente, los detectores de objetos suelen tener múltiples clases y es posible que se necesita medir el promedio de precisión o \textit{recall} medio para todas las clases. Así, los parámetros \textit{mean Average Precision} y \textit{mean Average Recall} dan una visión más general de cómo el detector es capaz de actuar para todas las clases. Por ejemplo, el \acrshort{mAP} para N clases:
+Utilizando estas métricas, un determinado modelo de detección, además de devolver las detecciones realizadas, devolverá las probabilidades de que dichas detecciones sean acertadas. Fijando diferentes umbrales, se pueden obtener los valores \textit{Average Precision} y \textit{Average Recall} que hacen referencia a la precisión y \textit{recall} medias para un determinado umbral y para las diferentes clases existentes en un modelo.\\
+ Normalmente, los detectores de objetos suelen tener múltiples clases y es posible que se necesita medir el promedio de precisión o \textit{recall} medio para todas las clases. Así, los parámetros \textit{mean Average Precision} y \textit{mean Average Recall} dan una visión más general de cómo el detector es capaz de actuar para todas las clases de objetos. Por ejemplo, el \acrshort{mAP} para N clases:
 \begin{equation}
 mAP = \frac{1}{N} {\sum_{class=1}^{N}{AP}_{class}}
 \end{equation}
@@ -1888,14 +1617,14 @@ J(A,B) = \frac{|A\cap B|}{|A\cup B|} = \frac{|A\cap B|}{|A| + |B| - |A\cap B|}
 \end{center}
 \end{figure}
 
-Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 1. Para cualquier coincidencia de los dos conjuntos, el \acrshort{IoU} estará comprendido entre 0 y 1, tal y como se define en la ecuación \ref{IoUEquation}.
+Si no hay coincidencias en ambos conjuntos, el índice Jaccard se definirá de la forma J(A,B) = 0. Para cualquier coincidencia de los dos conjuntos, el \acrshort{IoU} estará comprendido entre 0 y 1, tal y como se define en la ecuación \ref{IoUEquation}.
 \begin{equation}
 0\leq J(A,B) \leq  1
 \label{IoUEquation}
 \end{equation}
 
 
-Por lo tanto, el índice Jaccard o \acrshort{IoU} puede definir gráficamente tal y como representa la imagen \ref{IntersectionOverUnion}:
+Por lo tanto, el índice Jaccard o \acrshort{IoU} puede definir gráficamente tal y como representa la Figura \ref{IntersectionOverUnion}:
 
 \begin{figure}[H]
 \begin{center}
@@ -1917,6 +1646,267 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \begin{center}
 \includegraphics[width=11cm]{./loU_score}
 \caption{Evaluación loU \cite{IndiceJaccard}.}
+\end{center}
+\end{figure}
+
+\section{Comparación entre detecciones conseguidas y las verdaderas}
+
+En el apartado \ref{SSDCaffe} se ha explicado cómo se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para \acrshort{PascalVOC} y \acrshort{COCO} tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros \acrshort{XML} y para la segunda ficheros \acrshort{JSON}, por lo que se utilizarán dos scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
+
+\subsection{PascalVOC}\label{ComparePascalVOC}
+
+Se define la función \textit{get\_ground\_truth}, la cual devuelve un array por cada objeto detectado en el que vienen informados las coordenadas de la \textit{bounding box} real, y la etiqueta del objeto determinado. Esta función recibe como parámetros la ruta de la imagen de entrada, un array con las etiquetas de los objetos detectados y las coordenadas de las \textit{bounding boxes} de éstos.\\
+
+En primer lugar, se utiliza la ruta de la imagen de entrada recibida (p.ej '/home/db/data/VOCdevkit/VOC2012/JPEGImages/2007\_009938.jpg') para obtener el directorio del fichero con las anotaciones correspondientes a esa imagen. Para ello, se utiliza el siguiente código:\\
+
+\begin{lstlisting}[frame=single]
+annotation = input_image.split(".")
+annotation = annotation[0].split("/")
+
+file_annotations = "/" + annotation[1] + "/" +  annotation[2] 
++ "/" + annotation[3] + "/" + annotation[4] + "/" + annotation[5] 
++"/" + 'Annotations' + "/" + annotation[7] + ".xml"
+\end{lstlisting}
+
+Realizando los dos \textit{split} se obtienen todas las partes de la ruta separadas dentro de la variable \textit{annotation}. Posteriormente, concatenando cada parte de la ruta con "/", sustituyendo \textit{JPEGImages} por \textit{Annotations}, e incluyendo el formato de los ficheros de anotaciones, es decir, \acrshort{XML}, se condigue la ruta de las anotaciones correspondientes a la imagen de entrada.\\
+
+Posteriormente, se utilizan comandos \textit{Python} creados para la lectura de ficheros \acrshort{XML}, específicamente \textit{parse} y \textit{getroot}.\\
+
+\begin{lstlisting}[frame=single]
+tree = ET.parse(file)
+root = tree.getroot()
+\end{lstlisting}
+
+A partir de este código se consigue tener acceso a los elementos del fichero de anotaciones utilizando para ello la variable \textit{root}.\\
+
+Después de esto comienza el primer bucle de esta función. Éste es el encargado de guardar en una variable varios datos de cada uno de los objetos existentes en el fichero de anotaciones. En primer lugar, el bucle recorre todas las etiquetas \textit{object} del \acrshort{XML}. Para ello se utiliza el comando de Python \textit{findall} sobre la variable \textit{root} definida anteriormente.\\
+
+\begin{lstlisting}[frame=single]
+for element in root.findall('object'):
+\end{lstlisting}
+
+Luego, con el comando \textit{find}, se eccede a las etiquetas \textit{name} y \textit{bbox} del fichero de anotaciones, guardando su valor en el array \textit{names\_xml} definido previamente.\\
+
+\begin{lstlisting}[frame=single]
+name = element.find('name').text
+names_xml.append(name)
+bndbox = element.find('bndbox')
+names_xml.append(bndbox[0].text) #xmin
+names_xml.append(bndbox[1].text) #ymin
+names_xml.append(bndbox[2].text) #xmax
+names_xml.append(bndbox[3].text) #ymax
+\end{lstlisting}
+
+Para mejorar el acceso posterior a estos datos, éstos se almacenan en un array de arrays, en el que cada array interno tendrá los datos mencionados anteriormente. Para ello, se define el array \textit{names\_xml\_final} y se guarda el array \textit{names\_xml} dentro de éste. Posteriormente, se eliminan los datos guardados en el array \textit{names\_xml}.
+
+\begin{lstlisting}[frame=single]
+names_xml_final.append(names_xml)
+names_xml = []
+\end{lstlisting}
+
+Tras finalizar este bucle, comienza el código en el que se comparan las \textit{bounding boxes} reales con las detectadas para averiguar cuál es el cuadro delimitador real correspondiente para cada uno de los objetos detectados. En primer lugar se define un bucle, que recorre el array con todas las etiquetas de los objetos detectados, el cual se pasó como parámetro a la función.\\
+
+\begin{lstlisting}[frame=single]
+for x in range(len(label_detection)):
+\end{lstlisting}
+
+Después se definen dos bucles más. El primero recorre el array con las  coordenadas de los objetos detectados pasada a la función como parámetros. El segundo recorre el array \textit{names\_xml\_final} definido anteriormente.\\
+
+\begin{lstlisting}[frame=single]
+for t in range(len(ground_detection)):
+	for i in range(len(names_xml_final)):
+\end{lstlisting}
+
+Ahora, el código compara las coordenadas reales con las detectadas. Específicamente, se verifica que cada coordenada \textit{xmin}, \textit{ymin}, \textit{ymax}, \textit{ymax} de cada \textit{bounding box} de los objetos detectados no exceda en 40 píxeles con las coordenadas originales.\\
+
+\begin{lstlisting}[frame=single]
+if abs(int(ground_detection[t][0])-int(names_xml_final[i][1]))<=40
+and abs(int(ground_detection[t][1])-int(names_xml_final[i][2]))<=40
+and abs(int(ground_detection[t][2])-int(names_xml_final[i][3]))<=40
+and abs(int(ground_detection[t][3])-int(names_xml_final[i][4]))<=40:
+\end{lstlisting}
+
+Con esto se consigue que cada \textit{bounding box} detectada se asigne correctamente a la \textit{bounding box} real, ya que si en el fichero de anotaciones existen varios objetos con la misma etiquetas, se podrán realizar asignaciones incorrectas si solo se compara la etiqueta y se obvian las coordenadas.\\
+
+Posteriormente, tras verificar que las coordenadas son las correctas, se realiza la última comprobación. Ésta está relacionada con la etiquetas de los objetos reales, almacenadas en la variable \textit{names\_xml\_final}, y las etiquetas de los objetos detectados, almacenadas en la variable \textit{label\_detection}, la cual fue pasada como parámetro a la función.\\
+
+\begin{lstlisting}[frame=single]
+if names_xml_final[i][0] == label_detection[x]
+\end{lstlisting}
+
+Tras esto, si se cumplen las condiciones, se asignan a diferentes variables las coordenadas existentes en el fichero de anotaciones, es decir, las reales.\\
+
+\begin{lstlisting}[frame=single]
+xmin = names_xml_final[i][1]
+ymin = names_xml_final[i][2]
+xmax = names_xml_final[i][3]
+ymax = names_xml_final[i][4]
+\end{lstlisting}
+
+La función devuelve el array \textit{positions\_array}, el cual contiene todas las variables comentadas anteriormente.\\
+
+\begin{lstlisting}[frame=single]
+positions = []
+positions.append(xmin)
+positions.append(ymin)
+positions.append(xmax)
+positions.append(ymax)
+positions_array.append(positions)
+\end{lstlisting}
+
+Finalmente, las \textit{bounding boxes} reales se pintarán sobre la imagen de entrada a partir del array devuelto en la función anterior. La Figura \ref{DetectionCompare} muestra un ejemplo de una salida que genera este \textit{script}. La \textit{bounding box} de color verde hace referencia a las coordenadas reales del objeto, mientras que la \textit{bounding box} de color rojo encuadra el objeto detectado.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=11cm]{./image_detection_compare}
+\caption{Comparación de \textit{bounding boxes} real y detectada con imagen de la BBDD \acrshort{PascalVOC}.}
+\label{DetectionCompare}
+\end{center}
+\end{figure}
+
+\subsection{COCO}\label{CompareCOCO}
+
+Como se ha explicado en la sección \ref{COCO}, las anotaciones de esta base de datos están almacenadas en archivos de formato \acrshort{JSON}, por lo que para conseguir las coordenadas reales de los objetos habrá que utilizar comandos que permitan recorrer este tipo de ficheros. Antes de realizar la función principal que devuelva la imagen con las \textit{bounding boxes} real y detectada superpuestas, se crean varios métodos que recorren el fichero de anotaciones, preparando así los datos para ser tratados posteriormente.\\
+
+En primer lugar, se define la función \textit{get\_image\_id}, la cual se encarga de obtener el \textit{id} de la imagen de entrada, que será necesario para encontrar las anotaciones correspondientes a ésta. Este \textit{id} se puede conseguir a partir del \textit{path} de la imagen \textit{jpg}, que se pasa como parámetro a la función.\\
+
+\begin{lstlisting}[frame=single]
+def get_image_id(self, image_file):
+
+        image_file = re.split('.jpg', image_file)
+        image_file = re.split('_', image_file[0])
+        image_id = int(image_file[2])
+
+        return image_id
+\end{lstlisting}
+
+La segunda función para la preparación de los datos se llama \textit{annotations} y se encarga de recuperar todas las anotaciones de la imagen de entrada. Para ello se le pasa como parámetro el \textit{id} de la imagen calculado en la función anterior.\\
+
+Se guarda en la variable \textit{jsonFileAnnotations} los objetos con nombre \textit{annotations} de todo el fichero de anotaciones \textit{jsonFile}, definido como variable global del script.\\
+
+\begin{lstlisting}[frame=single]
+jsonFileAnnotations = jsonFile["annotations"]
+\end{lstlisting}
+
+En la Figura \ref{AnnotacionesCoco2}, se pueden observar todos los pares de nombre/valor que tiene el objeto \textit{annotations}. En este script se utiliza el parámetro con nombre \textit{image\_id}, comparando uno a uno el existente en cada uno de los objetos \textit{annotations} de la variable \textit{jsonFile} con el \textit{id} de la imagen de entrada.\\
+
+\begin{lstlisting}[frame=single]
+if c["image_id"] == image_id:
+	if len(c['bbox']) == 1:
+\end{lstlisting}
+
+Para realizar posteriormente la comparación con los objetos detectados necesitaremos las coordenadas y etiquetas reales de todos los objetos existentes en la imagen. Estos datos se encuentran en los parámetros \textit{bbox} y \textit{category\_id} del fichero de anotaciones los cuales se almacenan en el array \textit{annotations} definido anteriormente. Para que la función devuelva un array de arrays con todas las coordenadas y etiquetas, se añade el array \textit{annotations} en otro array llamado \textit{annotations\_final}.\\
+
+\begin{lstlisting}[frame=single]
+annotations.append(c['category_id'])
+annotations.append(c['bbox'][0][0])
+annotations.append(c['bbox'][0][1])
+annotations.append(c['bbox'][0][2])
+annotations.append(c['bbox'][0][3])
+annotations_final.append(annotations)
+annotations = []
+\end{lstlisting}
+
+El objetivo de la tercera función será recuperar todas las etiquetas e \textit{ids} de la base de datos. Para ello, se busca un objeto en todo el fichero \acrshort{JSON} de anotaciones, en este caso, el llamado \textit{categories}.\\
+
+\begin{lstlisting}[frame=single]
+jsonFileCategories = jsonFile["categories"]
+\end{lstlisting}
+
+Posteriormente, la función recorre la variable \textit{jsonFileCategories} recuperando los parámetros del fichero llamados \textit{name} y \textit{id}, los cuales hacen referencia a las etiquetas y a su identificador.\\
+
+\begin{lstlisting}[frame=single]
+for c in jsonFileCategories:
+	labels_ids_array.extend([c["name"], c["id"]])
+         labels_ids_array_total.append(labels_ids_array)
+         labels_ids_array = []
+\end{lstlisting}
+
+La cuarta y última función, \textit{recover\_id}, se encarga de recuperar el identificador de los objetos detectados. Este \textit{id} es un número entero que hace referencia a cada uno de los objetos existentes en la base de datos \acrshort{COCO}. A esta función se le pasa como parámetros dos arrays. El primero de ellos contiene las etiquetas de cada objeto detectado anteriormente. El segundo los \textit{ids} y nombre de etiquetas de la base de datos recuperados.\\
+
+\begin{lstlisting}[frame=single]
+    def recover_id(self, labels_detected_array, labels_ids_array):
+        id_array = []
+        for c in range(len(labels_detected_array)):
+            for i in range(len(labels_ids_array)):
+                print labels_ids_array[i]
+                if labels_detected_array[c] == labels_ids_array[i][0] :
+                    id_array.append(labels_ids_array[i][1])
+                    break
+
+        return id_array
+\end{lstlisting}
+
+Esta función recorre ambos arrays comparando sus registros. En el momento en que coincidan los nombres de etiquetas, se le asigna a ese objeto detectado el identificador determinado.\\
+
+Tras estas cuatro funciones, finalmente se llama al método \textit{get\_ground\_truth} el cual retorna un array con las coordenadas reales de los objetos detectados. Esta función recibe como entrada las variables \textit{id\_array}, \textit{ground\_detection}, \textit{image\_id} y \textit{image\_annotations} las cuales son los resultados de las cuatro funciones explicadas anteriormente.\\
+
+\begin{lstlisting}[frame=single]
+def get_ground_truth(self, id_array,
+				ground_detection,
+				image_id,
+				image_annotations):
+\end{lstlisting}
+
+Esta función recorre dos arrays. Primero se define el bucle que recorre el array \textit{id\_array} que contiene los \textit{ids} y etiquetas de los objetos detectados. Después el bucle que recorre el array \textit{image\_annotations} que contiene las anotaciones referentes a la imagen de entrada. Dentro de estos dos bucles se realizan las comprobaciones necesarias para asignar a cada \textit{bounding box} detectada su \textit{bounding box} real.\\
+
+\begin{lstlisting}[frame=single]
+for i in range(len(id_array)):
+	for c in range(len(image_annotations)):
+\end{lstlisting}
+
+Se comparan los \textit{ids} detectados con los \textit{ids} existentes en las anotaciones. En el momento en el qué coincidan los \textit{ids}, se asignan a las variables \textit{xmin}, \textit{ymin}, \textit{xmax} y \textit{ymax} las coordenadas de la \textit{bounding box real}.\\
+
+\begin{lstlisting}[frame=single]
+xmin = int(image_annotations[c][1])
+ymin = int(image_annotations[c][2])
+xmax = xmin + int(image_annotations[c][3])
+ymax = ymin + int(image_annotations[c][4])
+\end{lstlisting}
+
+En la base de datos \acrshort{COCO}, a diferencia de \acrshort{PascalVOC}, los dos últimos valores referentes a las coordenadas definen la anchura y altura de las \textit{bounding boxes} por lo que para conseguir los valores correctos de \textit{xmax} e \textit{ymax} hay que sumar a \textit{xmin} e \textit{ymin} la anchura y altura respectivamente.\\
+
+La asociación de \textit{ids} realizada anteriormente no garantiza que ese objeto definido en las anotaciones haga referencia al objeto detectado. En la imagen de entrada y en las anotaciones pueden existir varias instancias de objetos con el mismo identificador, por lo que es necesario realizar otra comprobación adicional.\\
+
+\begin{lstlisting}[frame=single]
+if abs(xmin - ground_detection[i][0]) <= 90 and
+abs(ymin - ground_detection[i][1]) <= 90 and
+abs(xmax - ground_detection[i][2]) <= 90 and
+abs(ymax - ground_detection[i][3]) <= 90:
+\end{lstlisting}
+
+De esta manera, se comprueba que la diferencia entre las coordenadas reales y detectadas del objeto no es mayor de 90 píxeles, asegurando que la \textit{bounding box} real y la \textit{bounding box} detectada se refieren al mismo objeto de la imagen.\\
+
+Tras realizar esta comprobación se añade en el array \textit{ground\_truth\_final}, el array formado por las coordenada reales, que es el que devuelve la función explicada.\\
+
+\begin{lstlisting}[frame=single]
+ground_truth.append(xmin)
+ground_truth.append(ymin)
+ground_truth.append(xmax)
+ground_truth.append(ymax)
+ground_truth_final.append(ground_truth)
+ground_truth = []
+\end{lstlisting}
+
+Finalmente, las \textit{bounding boxes} reales se pintan sobre la imagen de entrada a partir del array devuelto en la función anterior. La Figura \ref{DetectionCompareCOCO} muestra un ejemplo de una salida que generaría este \textit{script}. La \textit{bounding box} de color verde hace referencia a las coordenadas reales del objeto, mientras que la \textit{bounding box} de color rojo encuadra el objeto detectado.\\
+
+\begin{comment}
+\begin{lstlisting}[frame=single]
+for i in range(len(ground_truth)):
+	xmin = ground_truth[i][0]
+	ymin = ground_truth[i][1]
+	xmax = ground_truth[i][2]
+	ymax = ground_truth[i][3]
+
+	cv2.rectangle(img,(xmin,ymin),(xmax,ymax),(0,255,0),2)#Color BGR
+\end{lstlisting}
+\end{comment}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=11cm]{./imageDetectionCompareCOCO}
+\caption{Comparación bounding boxes real y detectada con imagen de la BBDD \acrshort{COCO}.}
+\label{DetectionCompareCOCO}
 \end{center}
 \end{figure}
 
@@ -2071,17 +2061,19 @@ if detec_array[x][1][i] == "aeroplane":
 	naeroplane = naeroplane + 1
 \end{lstlisting}
 
-El código anterior comparará una variable creada con el nombre de una de las etiquetas de las base de datos con la etiqueta de cada objeto detectado, 
+El código anterior comparará una variable creada con el nombre de una de las etiquetas de las base de datos con la etiqueta de cada objeto detectado.
 
 \end{comment}
-\section{Resultado final}
+\section{Evaluación experimental cuantitativa}
 \label{ResultadoFinalSection}
 
-En este apartado se procederá a realizar las pruebas necesarias para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se medirán, serán las 2 preentrenadas con las bases de datos \acrshort{PascalVOC} y \acrshort{COCO}, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos personalizada explicada en el apartado \ref{DetectorObjetosSection}.\\
+En este apartado se procederá a realizar las pruebas necesarias para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se medirán, serán las dos preentrenadas con las bases de datos \acrshort{PascalVOC} y \acrshort{COCO}, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos combinada explicada en el apartado \ref{DetectorObjetosSection}.\\
 
-Para medir las prestaciones de cada uno de los modelos, se va a utilizar la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} de JdeRobot, comentada en el apartado \ref{AntecedentesJdeRobot}. Esta herramienta permite la utilización de varias bases de datos, entre las que se encuentran las utilizadas durante este trabajo, \acrshort{PascalVOC} y \acrshort{COCO}, además de varios frameworks para el aprendizaje profundo, incluyendo Caffe.\\
+Para medir las prestaciones de cada uno de los modelos, se va a utilizar la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} de JdeRobot, explicada en el capítulo \ref{InfraestructuraSection}. Esta herramienta permite la utilización de varias bases de datos, entre las que se encuentran las utilizadas durante este trabajo, \acrshort{PascalVOC} y \acrshort{COCO}, además de varios entornos para el aprendizaje profundo, incluyendo Caffe.\\
 
-Como datos de entrada para medir el rendimiento de los modelos, con \textit{Detection Suite} se pueden utilizar un banco de imágenes con sus respectivas anotaciones, vídeos grabados o las imágenes que capta una cámara en tiempo real. Para este caso, se decidió utilizar un \textit{testing set} formado por imágenes junto con sus anotaciones. Lo más importante, es que estás imágenes seleccionadas no hayan sido utilizadas para entrenar ninguno de los modelos que se compararán, ya que esto falsearía las medidas obtenidas. En el repositorio de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, hay un enlace para descargarse varias imágenes junto con sus anotaciones del conjunto de test de la base de datos \acrshort{PascalVOC}. Este banco de ejemplos está formado por 4952 imágenes en los que hay etiquetados 14976 objetos de 20 clases diferentes. En la figura \ref{testImages} se puede observar como están distribuidos los 14976 objetos mencionados anteriormente en cada una de las clases existentes:
+Como datos de entrada para medir el rendimiento de los modelos, con \textit{Detection Suite} se pueden utilizar un banco de imágenes con sus respectivas anotaciones, vídeos grabados o las imágenes que capta una cámara en tiempo real. Para este caso, se decidió utilizar un \textit{testing set} formado por imágenes junto con sus anotaciones. Lo más importante para que las evaluaciones sean justas y fiables es que estás imágenes seleccionadas no hayan sido utilizadas para entrenar ninguno de los modelos que se compararán, ya que esto falsearía las medidas obtenidas.\\
+
+En el repositorio de la técnica \acrshort{SSD}\footnote{\url{https://github.com/weiliu89/caffe/tree/ssd}}, en el apartado \textbf{Preparation}, hay un enlace para descargarse varias imágenes junto con sus anotaciones del conjunto de test de la base de datos \acrshort{PascalVOC}. Este banco de ejemplos está formado por 4952 imágenes en los que hay etiquetados 14976 objetos de 20 clases diferentes. En la Figura \ref{testImages} se puede observar cómo están distribuidos los 14976 objetos mencionados anteriormente en cada una de las clases existentes:
 
 \begin{figure}[H]
 \begin{center}
@@ -2120,7 +2112,7 @@ Tras esto, solo faltaría arrancar la aplicación. Para ello, habrá que navegar ha
 \end{lstlisting}
 \end{comment}
 
-Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usarán 2 de ellas existentes en su interfaz gráfica. En primer lugar, se utilizará la herramienta \textit{Detector}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Detector}} que ejecuta modelos entrenados sobre un conjunto de datos de prueba, generando así la detección de objetos sobre las imágenes que lo forman. La imagen \ref{DetectorDetectionSuite} muestra el aspecto de esta interfaz.\\
+Dentro de \textit{Detection Suite} existen varias herramientas para realizar mediciones de modelos entrenados. En este caso, se usarán dos de ellas existentes en su interfaz gráfica. En primer lugar, se utilizará la herramienta \textit{Detector}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Detector}} que ejecuta modelos entrenados sobre un conjunto de datos de prueba, generando así la detección de objetos sobre las imágenes que lo forman. La Figura \ref{DetectorDetectionSuite} muestra el aspecto de esta interfaz.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -2130,33 +2122,36 @@ Dentro de \textit{Detection Suite} existen varias herramientas para realizar med
 \end{center}
 \end{figure}
 
-Como se muestra en la imagen anterior, para utilizar esta herramienta hay que definir varios parámetros como \textit{Input Dataset}, dónde se establece la ruta de los ficheros de anotaciones del conjunto de datos, así como de las imágenes, las cuales deben estar en el mismo directorio, \textit{Net Weights}, dónde se definen los pesos de la red que se quiere evaluar, \textit{Dataset Names} que hace referencia a las etiquetas de los objetos existentes, \textit{Net Configuration} que especifica la estructura de la red neuronal. En el apartado \textit{Inferencer Implementation}, se define el framework utilizado dentro de los disponibles en la aplicación\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/FrameWorks}}. Para el caso exclusivo de Caffe, hay que especificar varios parámetros adicionales tales como el umbral de confianza en las detecciones realizadas, definido para estos casos en 0.5 y el factor de escala, dimensiones de las imágenes de entrada y sustracción media para los canales de color BGR, obtenidos del repositorio de \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Model-Zoo}} en función del modelo utilizado. Finalmente, es posible especificar la carpeta en la que se desea que se guarden los resultados obtenidos.\\
+Para utilizar esta herramienta hay que definir varios parámetros como \textit{Input Dataset}, dónde se establece la ruta de los ficheros de anotaciones del conjunto de datos, así como de las imágenes, las cuales deben estar en el mismo directorio, \textit{Net Weights}, dónde se definen los pesos de la red que se quiere evaluar, \textit{Dataset Names} que hace referencia a las etiquetas de los objetos existentes, \textit{Net Configuration} que especifica la estructura de la red neuronal. En el apartado \textit{Inferencer Implementation}, se define el entorno utilizado dentro de los soportados en la aplicación\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/FrameWorks}}. Para el caso exclusivo de Caffe, hay que especificar varios parámetros adicionales tales como el umbral de confianza en las detecciones realizadas, definido para estos casos en 0.5 y el factor de escala, dimensiones de las imágenes de entrada y sustracción media para los canales de color BGR, obtenidos del repositorio de \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Model-Zoo}} en función del modelo utilizado. Finalmente, es posible especificar la carpeta en la que se desea que se guarden los resultados obtenidos.\\
 
-Tras definir todos los parámetros, es posible comenzar con la detección pulsando el botón \textit{Detect}. Mientras se está ejecutando esta herramienta, se van mostrando todas las imágenes con las \textit{bounding boxes} de los objetos detectados y por terminal la confianza de cada detección, como se muestra en la imagen \ref{DetectorExecutionDetectionSuite}.\\
+Tras definir todos los parámetros es posible comenzar con la detección pulsando el botón \textit{Detect}. Mientras se está ejecutando esta herramienta, se van mostrando todas las imágenes con las \textit{bounding boxes} de los objetos detectados y por terminal la confianza de cada detección, como se muestra en la Figura \ref{DetectorExecutionDetectionSuite}.\\
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=15cm]{./DetectionExecution}
-\caption{Ejecución de la herramienta \textit{Detector}.}
+\caption{Ejecución de la herramienta \textit{Detector} de \textit{Detection Suite}.}
 \label{DetectorExecutionDetectionSuite}
 \end{center}
 \end{figure}
 
-Cuando termina la ejecución, se genera la salida en forma de fichero de anotaciones. Como se puede observar en la imagen \ref{DetectorDetectionSuite} se ha especificado como implementación de base de datos, \textit{Dataset Implementation}, \acrshort{PascalVOC}, por lo que las anotaciones generadas tendrán las características de las de esta base de datos, explicadas en el apartado \ref{VOC}. Por lo tanto, se crearán tantos ficheros \acrshort{XML} como imágenes, es decir, 4952, dónde se especificarán las coordenadas de cada uno de los objetos detectados.\\
+Cuando termina la ejecución, se genera la salida en forma de fichero de anotaciones. Como se puede observar en la Figura \ref{DetectorDetectionSuite} se ha especificado como implementación de base de datos, \textit{Dataset Implementation}, \acrshort{PascalVOC}, por lo que las anotaciones generadas tendrán las características de las de esta base de datos. Por lo tanto, se crearán tantos ficheros \acrshort{XML} como imágenes, es decir, 4952, dónde se especificarán las coordenadas de cada uno de los objetos detectados.\\
 
-Tras la utilización del detector, se usará la herramienta \textit{Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Evaluator}} de \textit{Detection Suite}. Esta herramienta evalúa los resultados obtenidos anteriormente con el detector generando un archivo CSV que contiene los resultados generales además de los específicos para cada una de las clases existentes en el conjunto de datos dado. Las métricas calculadas son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases y para cada una de las clases utilizando 10 umbrales de \acrshort{IoU} entre 0.5 y 9.5, además del cómputo de tiempo de evaluación. Los resultados obtenidos por \textit{Detection Suite} están basados en la \acrshort{API} de \acrshort{COCO}\footnote{\url{https://github.com/cocodataset/cocoapi}}, por lo que, como se dice en su página oficial\footnote{\url{http://cocodataset.org/detection-eval}}, no habrá distinción ente \textit{Average Precision} y \acrshort{mAP}, al igual que entre \textit{Average Recall} y \acrshort{mAR}, ya que se asume que la diferencia está clara en el contexto. La imagen \ref{EvaluatorDetectionSuite} muestra el aspecto de la interfaz del evaluador de \textit{Detection Suite}.\\
+Tras la utilización del detector se usará la herramienta \textit{Evaluator}\footnote{\url{https://github.com/JdeRobot/DetectionSuite/wiki/Evaluator}} de \textit{Detection Suite}. Esta herramienta evalúa los resultados obtenidos anteriormente con el detector generando un archivo CSV que contiene los resultados generales además de los específicos para cada una de las clases existentes en el conjunto de datos dado. Las métricas calculadas son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases y para cada una de las clases utilizando 10 umbrales de \acrshort{IoU} entre 0.5 y 0.95, además del cómputo de tiempo de evaluación.\\
+
+Los resultados obtenidos por \textit{Detection Suite} están basados en la \acrshort{API} de \acrshort{COCO}\footnote{\url{https://github.com/cocodataset/cocoapi}}, por lo que, como se dice en su página oficial\footnote{\url{http://cocodataset.org/detection-eval}}, no habrá distinción ente \textit{Average Precision} y \acrshort{mAP}, al igual que entre \textit{Average Recall} y \acrshort{mAR}, ya que se asume que la diferencia está clara en el contexto. La Figura \ref{EvaluatorDetectionSuite} muestra el aspecto de la interfaz del evaluador de \textit{Detection Suite}.\\
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=15cm]{./Evaluator}
-\caption{Interfaz gráfica de la herramienta \textit{Evaluator}.}
+\caption{Interfaz gráfica de la herramienta \textit{Evaluator} de \textit{Detection Suite}.}
 \label{EvaluatorDetectionSuite}
 \end{center}
 \end{figure}
 
 Para utilizar esta herramienta es necesario definir varios parámetros como \textit{Input Ground Thruth Dataset} e \textit{Input Ground Thruth Dataset}, que especifican el directorio dónde se encuentran las anotaciones reales del conjunto de datos de test y el directorio de las anotaciones generadas tras la detección respectivamente y \textit{Dataset Names} y \textit{Reader Dataset Implementation} que especifican el fichero con los nombre de los objetos existentes y la base de datos utilizada, tanto para las anotaciones reales como para las detectadas.\\
 
-Tras esto, se puede comenzar con la evaluación de los modelos. Cuando finaliza la ejecución, la primera métrica que podemos comparar es el tiempo que ha tomado \textit{Detection Suite} para evaluar cada una de las redes utilizadas. La tabla \ref{TiemposEvaluacionTable} muestra una comparativa del tiempo que ha requerido la evaluación de cada uno de los modelos.\\
+\subsection{Comparación en tiempos de ejecución}
+La primera métrica que podemos comparar es el tiempo que ha tomado \textit{Detection Suite} para evaluar cada una de las redes utilizadas. La tabla \ref{TiemposEvaluacionTable} muestra una comparativa del tiempo que ha requerido la evaluación de cada uno de los modelos.\\
 
 \begin{table}[H]
 	\centering
@@ -2169,8 +2164,9 @@ Tras esto, se puede comenzar con la evaluación de los modelos. Cuando finaliza l
 	\label{TiemposEvaluacionTable}
 \end{table}
 
-Se puede observar que el modelo preentrenado con \acrshort{PascalVOC} ha sido el que más rápido ha realizado la evaluación, siendo el modelo preentrenado con \acrshort{COCO} el más lento. El modelo entrenado con la base de datos personalizada se encuentra en medio aunque muy cercano en tiempos al modelo \acrshort{PascalVOC}. Teniendo en cuenta las 4952 imágenes del conjunto de test, se puede considerar que la evaluación se ha realizado en tiempos óptimos, sin existir, en este caso, gran diferencia entre los modelos, ya que entre el más lento y el más rápido la diferencia es de 1.7 segundos.\\
+Se puede observar que el modelo preentrenado con \acrshort{PascalVOC} ha sido el que más rápido ha realizado la evaluación, siendo el modelo preentrenado con \acrshort{COCO} el más lento. El modelo entrenado con la base de datos combinada se encuentra en medio aunque muy cercano en tiempos al modelo \acrshort{PascalVOC}. Teniendo en cuenta las 4952 imágenes del conjunto de test, se puede considerar que la evaluación se ha realizado en tiempos óptimos, sin existir, en este caso, gran diferencia entre los modelos, ya que entre el más lento y el más rápido la diferencia es de 1.7 segundos.\\
 
+\subsection{Evaluación de Precision y Recall}
 Otras métricas que se muestra por terminal cuando el proceso finaliza son el \acrshort{mAP} y \acrshort{mAR} conjunto para todas las clases utilizando los 10 umbrales comentados anteriormente del \acrshort{IoU}. Además, se muestra el \acrshort{mAP} y \acrshort{mAR} medio de estos umbrales. La tabla \ref{mAPTable} muestra el \acrshort{mAP} para cada uno de los umbrales mencionados.\\
 
 \begin{table}[H]
@@ -2187,9 +2183,9 @@ Otras métricas que se muestra por terminal cuando el proceso finaliza son el \ac
 	\label{mAPTable}
 \end{table}
 
-Una tendencia común de los 3 modelos es que a media que aumenta el umbral de \acrshort{IoU}, el valor de \acrshort{mAP} va disminuyendo. Comparando cada modelo, en primer lugar, se observa unas métricas bastante similares en los 2 modelos preentrenados, teniendo el modelo de \acrshort{COCO} mejores valores de \acrshort{mAP} en los umbrales de \acrshort{IoU} menores a 0.75, siendo superado por el modelo \acrshort{PascalVOC} en los umbrales superiores.  Para el modelo entrenado se observa gran mejora en los valores de \acrshort{mAP}, tanto en los valores bajos del umbral de \acrshort{IoU} como en los altos.\\
+Una tendencia común de los 3 modelos es que a media que aumenta el umbral de \acrshort{IoU}, el valor de \acrshort{mAP} va disminuyendo. Comparando cada modelo, en primer lugar, se observa unas métricas bastante similares en los dos modelos preentrenados, teniendo el modelo de \acrshort{COCO} mejores valores de \acrshort{mAP} en los umbrales de \acrshort{IoU} menores a 0.75, siendo superado por el modelo \acrshort{PascalVOC} en los umbrales superiores.  Para el modelo entrenado se observa gran mejora en los valores de \acrshort{mAP}, tanto en los valores bajos del umbral de \acrshort{IoU} como en los altos.\\
 
-Tras el análisis del \acrshort{mAP}, se mostrará un comparativa del \acrshort{mAR} para cada uno de los 10 umbrales de \acrshort{IoU}. La tabla \ref{mARTable} muestra estos datos:
+La tabla \ref{mARTable} muestra un comparativa del \acrshort{mAR} para cada uno de los 10 umbrales de \acrshort{IoU}.
 
 \begin{table}[H]
 	\centering
@@ -2257,7 +2253,7 @@ En el fichero CSV, comentado anteriormente, que devuelve la herramienta \textit{
 	\label{mARTableObjects}
 \end{table}
 
-Tanto los valores de \acrshort{mAP} como de \acrshort{mAR} de cada objeto se encuentran alrededor de la media general mostrada en la tabla \ref{mAP&mARTable} sin haber demasiadas diferencias entre los valores más altos y los más bajos. Una característica común, es que, tanto los objetos con valores altos como bajos de \acrshort{mAP} y \acrshort{mAR}, mantienen su posición en cada uno de los 3 modelos evaluados. Por ejemplo, la detección de gatos representa uno de los valores más altos para cada modelo, mientras que la detección de botellas representa valores bajos en relación con los demás objetos.
+Tanto los valores de \acrshort{mAP} como de \acrshort{mAR} de cada objeto se encuentran alrededor de la media general mostrada en la tabla \ref{mAP&mARTable} sin haber demasiadas diferencias entre los valores más altos y los más bajos. Una característica común es que tanto los objetos con valores altos como bajos de \acrshort{mAP} y \acrshort{mAR}, mantienen su posición en cada uno de los 3 modelos evaluados. Por ejemplo, la detección de gatos representa uno de los valores más altos para cada modelo, mientras que la detección de botellas representa valores bajos en relación con los demás objetos.
 
 \chapter{Conclusiones}
 
@@ -2305,7 +2301,7 @@ Tras la exposición de las conclusiones y contribuciones de este TFG se enumeran 
 
 \begin{itemize}
 \item Una primera mejora sería la de detección de objetos en la aplicación utilizando algunos de los softwares adicionales para redes neuronales como TensorFlow o Darknet. De esta manera es posible contrastar como funciona cada entorno y que el usuario elija cualquiera de ellos a voluntad por fichero de configuración
-\item Segundo, dado que \textit{Detection Suite} soporta otras bases de datos, como YOLO\cite{YOLO} o ImageNet\cite{ImageNet}, sería interesante utilizarlas para entrenar una red y así ver los resultados que genera la utilización de cada una de ellas. Además, se podría extender con ellas la base de datos combinada y entrenar una nueva red con ella para verificar si aumentan las prestaciones.
+\item Segundo, dado que \textit{Detection Suite} soporta otras bases de datos, como YOLO \cite{YOLO} o ImageNet \cite{ImageNet}, sería interesante utilizarlas para entrenar una red y así ver los resultados que genera la utilización de cada una de ellas. Además, se podría extender con ellas la base de datos combinada y entrenar una nueva red con ella para verificar si aumentan las prestaciones.
 \item Y tercero se podría integrar la aplicación realizada de detección neuronal en vivo en una aplicación finalista como una de videovigilancia o en el sistema de percepción visual de un robot autónomo. De esta manera se puede comprobar como actúan las redes neuronales detectando objetos en movimiento.
 \end{itemize}
 

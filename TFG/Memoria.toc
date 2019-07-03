@@ -1,7 +1,7 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\'{I}ndice de figuras}{VII}{chapter*.2}% 
-\contentsline {chapter}{\'Indice de tablas}{IX}{chapter*.2}% 
-\contentsline {chapter}{Acr\'onimos}{XI}{chapter*.2}% 
+\contentsline {chapter}{\'{I}ndice de figuras}{IX}{chapter*.2}% 
+\contentsline {chapter}{\'Indice de tablas}{XI}{chapter*.2}% 
+\contentsline {chapter}{Acr\'onimos}{XIII}{chapter*.2}% 
 \contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Inteligencia artificial y aprendizaje autom\'atico}{1}{section.1.1}% 
 \contentsline {section}{\numberline {1.2}Redes neuronales artificiales}{4}{section.1.2}% 
@@ -45,15 +45,17 @@
 \contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{53}{subsection.4.4.1}% 
 \contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{59}{subsection.4.4.2}% 
 \contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{61}{subsection.4.4.3}% 
-\contentsline {chapter}{\numberline {5}Medidor de calidad}{63}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Comparaci\'on \textit {bounding boxes} real y detectada}{63}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}PascalVOC}{63}{subsection.5.1.1}% 
-\contentsline {subsection}{\numberline {5.1.2}COCO}{68}{subsection.5.1.2}% 
-\contentsline {section}{\numberline {5.2}M\'etricas de evaluaci\'on}{72}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}Precisi\'on y Recall}{73}{subsection.5.2.1}% 
-\contentsline {subsection}{\numberline {5.2.2}\'Indice Jaccard}{73}{subsection.5.2.2}% 
-\contentsline {section}{\numberline {5.3}Resultado final}{75}{section.5.3}% 
-\contentsline {chapter}{\numberline {6}Conclusiones}{83}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Conclusiones}{83}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{85}{section.6.2}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{87}{chapter*.49}% 
+\contentsline {chapter}{\numberline {5}Comparaci\'on experimental de redes de detecci\'on}{63}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}M\'etricas de calidad de las detecciones visuales}{63}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Precisi\'on y Recall}{63}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}\'Indice Jaccard}{64}{subsection.5.1.2}% 
+\contentsline {section}{\numberline {5.2}Comparaci\'on entre detecciones conseguidas y las verdaderas}{66}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}PascalVOC}{66}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}COCO}{70}{subsection.5.2.2}% 
+\contentsline {section}{\numberline {5.3}Evaluaci\'on experimental cuantitativa}{75}{section.5.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Comparaci\'on en tiempos de ejecuci\'on}{80}{subsection.5.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}Evaluaci\'on de Precision y Recall}{80}{subsection.5.3.2}% 
+\contentsline {chapter}{\numberline {6}Conclusiones}{85}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Conclusiones}{85}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{87}{section.6.2}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{89}{chapter*.49}% 
