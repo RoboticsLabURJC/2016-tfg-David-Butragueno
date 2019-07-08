@@ -39,23 +39,23 @@
 \contentsline {subsection}{\numberline {4.2.3}Hilo Detector}{47}{subsection.4.2.3}% 
 \contentsline {subsection}{\numberline {4.2.4}Hilo GUI}{48}{subsection.4.2.4}% 
 \contentsline {subsection}{\numberline {4.2.5}Ejecuci\'on}{49}{subsection.4.2.5}% 
-\contentsline {subsection}{\numberline {4.2.6}Detecci\'on espec\IeC {\'\i }fica de un tipo de objetos}{50}{subsection.4.2.6}% 
-\contentsline {section}{\numberline {4.3}Uso de redes SSD preentrenadas en Caffe}{51}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Creaci\'on y uso de un modelo de red SSD propio}{55}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{55}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{61}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{63}{subsection.4.4.3}% 
-\contentsline {chapter}{\numberline {5}Comparaci\'on experimental de redes de detecci\'on}{65}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}M\'etricas de calidad de las detecciones visuales}{65}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}Precisi\'on y Recall}{65}{subsection.5.1.1}% 
-\contentsline {subsection}{\numberline {5.1.2}\'Indice Jaccard}{66}{subsection.5.1.2}% 
-\contentsline {section}{\numberline {5.2}Comparaci\'on entre detecciones conseguidas y las verdaderas}{68}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}PascalVOC}{68}{subsection.5.2.1}% 
-\contentsline {subsection}{\numberline {5.2.2}COCO}{72}{subsection.5.2.2}% 
-\contentsline {section}{\numberline {5.3}Evaluaci\'on experimental cuantitativa}{77}{section.5.3}% 
-\contentsline {subsection}{\numberline {5.3.1}Comparaci\'on en tiempos de ejecuci\'on}{82}{subsection.5.3.1}% 
-\contentsline {subsection}{\numberline {5.3.2}Evaluaci\'on de Precision y Recall}{82}{subsection.5.3.2}% 
-\contentsline {chapter}{\numberline {6}Conclusiones}{87}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Conclusiones}{87}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{89}{section.6.2}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{91}{chapter*.50}% 
+\contentsline {subsection}{\numberline {4.2.6}Detecci\'on espec\IeC {\'\i }fica de un tipo de objetos}{51}{subsection.4.2.6}% 
+\contentsline {section}{\numberline {4.3}Uso de redes SSD preentrenadas en Caffe}{53}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Creaci\'on y uso de un modelo de red SSD propio}{56}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{56}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{62}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{64}{subsection.4.4.3}% 
+\contentsline {chapter}{\numberline {5}Comparaci\'on experimental de redes de detecci\'on}{67}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}M\'etricas de calidad de las detecciones visuales}{67}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Precisi\'on y Recall}{67}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}\'Indice Jaccard}{68}{subsection.5.1.2}% 
+\contentsline {section}{\numberline {5.2}Comparaci\'on entre detecciones conseguidas y las verdaderas}{70}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}PascalVOC}{70}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}COCO}{74}{subsection.5.2.2}% 
+\contentsline {section}{\numberline {5.3}Evaluaci\'on experimental cuantitativa}{79}{section.5.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Comparaci\'on en tiempos de ejecuci\'on}{84}{subsection.5.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}Evaluaci\'on de Precision y Recall}{84}{subsection.5.3.2}% 
+\contentsline {chapter}{\numberline {6}Conclusiones}{89}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Conclusiones}{89}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{91}{section.6.2}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{93}{chapter*.51}% 

@@ -1194,6 +1194,39 @@ En la Figura \ref{ComponenteDetectorPython} se puede observar cómo se comporta l
 \end{center}
 \end{figure}
 
+En el ejemplo anterior se ha utilizado la cámara del portátil, es decir, se están detectando los objetos que capta la cámara en tiempo real. Sin embargo, está aplicación también permite definir como entrada un vídeo grabado previamente si se especifica su ruta en el fichero de configuración del servidor de imágenes, \textit{cameraserver.cfg}. Para ello, se modificará la clave \textit{CameraSrv.Camera.0.Uri} del archivo de la siguiente manera:\\
+
+\begin{lstlisting}[frame=single]
+CameraSrv.Camera.0.Uri= /home/davidbutra/Descargas/TheBigBangTheory.mp4
+\end{lstlisting}
+
+Para probar esta funcionalidad se ha descargado un vídeo en el ordenador local y se ha arrancado la aplicación. El vídeo que muestra el comportamiento de la aplicación se encuentra en Youtube\footnote{\url{https://www.youtube.com/watch?v=CZ_ppBCFZaQ&feature=youtu.be}}. Primero se muestra como funciona el botón de detección única, detectando objetos únicamente cuando es pulsado. Posteriormente, se prueba la detección continua sobre todas las imágenes de entrada.\\
+
+En el vídeo, además de la interfaz gráfica de la aplicación, se observa el terminal, en el que van apareciendo los objetos que se detectan y en cuanto tiempo se ha realizado todo el proceso siendo éste alrededor de unos 1.5 y 2 segundos. Esto es debido a que la aplicación ha sido ejecutada en una máquina virtual la cuál no tiene los mejores recursos para esta tarea. Si esta aplicación se utilizará en una máquina con mayores recursos se podría observar como los tiempos disminuyen y como se realiza la detección sobre un mayor número de imágenes por segundo.\\
+
+La Figura \ref{ComponenteDetectorTheBigBangTheory} muestra una secuencia de imágenes del vídeo cuando se ha pulsado el botón de detección continua.\\
+
+\begin{figure}[H]
+\begin{center}
+\subfloat[]{
+\includegraphics[width=8cm]{./DetectorComponent1}}
+\subfloat[]{
+\includegraphics[width=8cm]{./DetectorComponent2}}
+\\
+\subfloat[]{
+\includegraphics[width=8cm]{./DetectorComponent3}}
+\subfloat[]{
+\includegraphics[width=8cm]{./DetectorComponent4}}
+\\
+\subfloat[]{
+\includegraphics[width=8cm]{./DetectorComponent5}}
+\subfloat[]{
+\includegraphics[width=8cm]{./DetectorComponent6}}
+\caption{Secuencia de imágenes de la aplicación utilizando un vídeo grabado.}
+\label{ComponenteDetectorTheBigBangTheory}
+\end{center}
+\end{figure}
+
 \subsection{Detección específica de un tipo de objetos}
 
 En ocasiones, se quiere realizar tareas de detección sobre uno o varios objetos en concreto, obviando los demás que se han definido durante el entrenamiento de la red neuronal. Para ello, en el fichero de configuración, se añadirá una línea en la cual se especifican las etiquetas de los objetos que se quieren detectar.\\
