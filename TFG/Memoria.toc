@@ -1,7 +1,7 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\'{I}ndice de figuras}{IX}{chapter*.2}% 
-\contentsline {chapter}{\'Indice de tablas}{XI}{chapter*.2}% 
-\contentsline {chapter}{Acr\'onimos}{XIII}{chapter*.2}% 
+\contentsline {chapter}{\'{I}ndice de figuras}{VII}{chapter*.2}% 
+\contentsline {chapter}{\'Indice de tablas}{IX}{chapter*.2}% 
+\contentsline {chapter}{Acr\'onimos}{XI}{chapter*.2}% 
 \contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Inteligencia artificial y aprendizaje autom\'atico}{1}{section.1.1}% 
 \contentsline {section}{\numberline {1.2}Redes neuronales artificiales}{4}{section.1.2}% 
@@ -26,36 +26,36 @@
 \contentsline {section}{\numberline {3.2}Organizaci\'on JdeRobot}{28}{section.3.2}% 
 \contentsline {subsection}{\numberline {3.2.1}Servidor de im\'agenes CameraServer}{29}{subsection.3.2.1}% 
 \contentsline {subsection}{\numberline {3.2.2}DetectionSuite}{30}{subsection.3.2.2}% 
-\contentsline {section}{\numberline {3.3}Bases de datos de detecci\'on visual}{31}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}PASCAL Visual Object Classes}{31}{subsection.3.3.1}% 
+\contentsline {section}{\numberline {3.3}Bases de datos de detecci\'on visual}{32}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}PASCAL Visual Object Classes}{32}{subsection.3.3.1}% 
 \contentsline {subsection}{\numberline {3.3.2}Common Objects in Context}{34}{subsection.3.3.2}% 
-\contentsline {chapter}{\numberline {4}Detecci\'on visual de objetos con Single Shot MultiBox y Caffe}{37}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}T\'ecnica Single Shot MultiBox Detection}{37}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Arquitectura}{39}{subsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.1.2}Entrenamiento}{40}{subsection.4.1.2}% 
-\contentsline {section}{\numberline {4.2}Aplicaci\'on para detecci\'on de objetos en flujos de v\IeC {\'\i }deo con SSD}{43}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Dise\~no}{43}{subsection.4.2.1}% 
-\contentsline {subsection}{\numberline {4.2.2}Hilo Camera}{44}{subsection.4.2.2}% 
-\contentsline {subsection}{\numberline {4.2.3}Hilo Detector}{45}{subsection.4.2.3}% 
-\contentsline {subsection}{\numberline {4.2.4}Hilo GUI}{46}{subsection.4.2.4}% 
-\contentsline {subsection}{\numberline {4.2.5}Ejecuci\'on}{47}{subsection.4.2.5}% 
-\contentsline {subsection}{\numberline {4.2.6}Detecci\'on espec\IeC {\'\i }fica de un tipo de objetos}{48}{subsection.4.2.6}% 
-\contentsline {section}{\numberline {4.3}Uso de redes SSD preentrenadas en Caffe}{49}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Creaci\'on y uso de un modelo de red SSD propio}{53}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{53}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{59}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{61}{subsection.4.4.3}% 
-\contentsline {chapter}{\numberline {5}Comparaci\'on experimental de redes de detecci\'on}{63}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}M\'etricas de calidad de las detecciones visuales}{63}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}Precisi\'on y Recall}{63}{subsection.5.1.1}% 
-\contentsline {subsection}{\numberline {5.1.2}\'Indice Jaccard}{64}{subsection.5.1.2}% 
-\contentsline {section}{\numberline {5.2}Comparaci\'on entre detecciones conseguidas y las verdaderas}{66}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}PascalVOC}{66}{subsection.5.2.1}% 
-\contentsline {subsection}{\numberline {5.2.2}COCO}{70}{subsection.5.2.2}% 
-\contentsline {section}{\numberline {5.3}Evaluaci\'on experimental cuantitativa}{75}{section.5.3}% 
-\contentsline {subsection}{\numberline {5.3.1}Comparaci\'on en tiempos de ejecuci\'on}{80}{subsection.5.3.1}% 
-\contentsline {subsection}{\numberline {5.3.2}Evaluaci\'on de Precision y Recall}{80}{subsection.5.3.2}% 
-\contentsline {chapter}{\numberline {6}Conclusiones}{85}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Conclusiones}{85}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{87}{section.6.2}% 
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{89}{chapter*.49}% 
+\contentsline {chapter}{\numberline {4}Detecci\'on visual de objetos con Single Shot MultiBox y Caffe}{39}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}T\'ecnica Single Shot MultiBox Detection}{39}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Arquitectura}{41}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Entrenamiento}{42}{subsection.4.1.2}% 
+\contentsline {section}{\numberline {4.2}Aplicaci\'on para detecci\'on de objetos en flujos de v\IeC {\'\i }deo con SSD}{45}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Dise\~no}{45}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Hilo Camera}{46}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Hilo Detector}{47}{subsection.4.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Hilo GUI}{48}{subsection.4.2.4}% 
+\contentsline {subsection}{\numberline {4.2.5}Ejecuci\'on}{49}{subsection.4.2.5}% 
+\contentsline {subsection}{\numberline {4.2.6}Detecci\'on espec\IeC {\'\i }fica de un tipo de objetos}{50}{subsection.4.2.6}% 
+\contentsline {section}{\numberline {4.3}Uso de redes SSD preentrenadas en Caffe}{51}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Creaci\'on y uso de un modelo de red SSD propio}{55}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{55}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{61}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{63}{subsection.4.4.3}% 
+\contentsline {chapter}{\numberline {5}Comparaci\'on experimental de redes de detecci\'on}{65}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}M\'etricas de calidad de las detecciones visuales}{65}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Precisi\'on y Recall}{65}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}\'Indice Jaccard}{66}{subsection.5.1.2}% 
+\contentsline {section}{\numberline {5.2}Comparaci\'on entre detecciones conseguidas y las verdaderas}{68}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}PascalVOC}{68}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}COCO}{72}{subsection.5.2.2}% 
+\contentsline {section}{\numberline {5.3}Evaluaci\'on experimental cuantitativa}{77}{section.5.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Comparaci\'on en tiempos de ejecuci\'on}{82}{subsection.5.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}Evaluaci\'on de Precision y Recall}{82}{subsection.5.3.2}% 
+\contentsline {chapter}{\numberline {6}Conclusiones}{87}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Conclusiones}{87}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{89}{section.6.2}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{91}{chapter*.50}% 

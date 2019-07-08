@@ -4,10 +4,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Tiempo requerido para la evaluaci\'on de cada modelo.\relax }}{80}{table.caption.43}% 
-\contentsline {table}{\numberline {5.2}{\ignorespaces \acrshort {mAP} conjunto para 10 umbrales de \acrshort {IoU} de los 3 modelos evaluados.\relax }}{81}{table.caption.44}% 
-\contentsline {table}{\numberline {5.3}{\ignorespaces \acrshort {mAR} conjunto para 10 umbrales de \acrshort {IoU} de los 3 modelos evaluados.\relax }}{81}{table.caption.45}% 
-\contentsline {table}{\numberline {5.4}{\ignorespaces Comparativa conjunta de \acrshort {mAP} y \acrshort {mAR} de la media de los 10 umbrales de \acrshort {IoU} para cada uno de los 3 modelos evaluados.\relax }}{82}{table.caption.46}% 
-\contentsline {table}{\numberline {5.5}{\ignorespaces \acrshort {mAP} medio de los 10 umbrales de \acrshort {IoU} para cada uno de los objetos en las 3 redes evaluadas.\relax }}{82}{table.caption.47}% 
-\contentsline {table}{\numberline {5.6}{\ignorespaces \acrshort {mAR} medio de los 10 umbrales de \acrshort {IoU} para cada uno de los objetos en las 3 redes evaluadas.\relax }}{82}{table.caption.48}% 
+\contentsline {table}{\numberline {5.1}{\ignorespaces Tiempo requerido para la evaluaci\'on de cada modelo.\relax }}{82}{table.caption.44}% 
+\contentsline {table}{\numberline {5.2}{\ignorespaces \acrshort {mAP} conjunto para 10 umbrales de \acrshort {IoU} de los tres modelos evaluados.\relax }}{83}{table.caption.45}% 
+\contentsline {table}{\numberline {5.3}{\ignorespaces \acrshort {mAR} conjunto para 10 umbrales de \acrshort {IoU} de los tres modelos evaluados.\relax }}{83}{table.caption.46}% 
+\contentsline {table}{\numberline {5.4}{\ignorespaces Comparativa conjunta de \acrshort {mAP} y \acrshort {mAR} de la media de los 10 umbrales de \acrshort {IoU} para cada uno de los tres modelos evaluados.\relax }}{84}{table.caption.47}% 
+\contentsline {table}{\numberline {5.5}{\ignorespaces \acrshort {mAP} medio de los 10 umbrales de \acrshort {IoU} para cada uno de los objetos en las tres redes evaluadas.\relax }}{84}{table.caption.48}% 
+\contentsline {table}{\numberline {5.6}{\ignorespaces \acrshort {mAR} medio de los 10 umbrales de \acrshort {IoU} para cada uno de los objetos en las tres redes evaluadas.\relax }}{84}{table.caption.49}% 
 \addvspace {10\p@ }

@@ -20,30 +20,33 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces \textit {Pooling} con funci\'on de agrupaci\'on del m\'aximo.\relax }}{25}{figure.caption.18}% 
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Funci\'on de activaci\'on \acrshort {ReLU}.\relax }}{27}{figure.caption.19}% 
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Funci\'on de activaci\'on Sigmoide.\relax }}{28}{figure.caption.20}% 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Distribuci\'on de objetos en \acrshort {PascalVOC} \cite {PascalVocData}.\relax }}{32}{figure.caption.21}% 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Estructura b\'asica de anotaciones en \acrshort {COCO} \cite {CocoAnnotations}.\relax }}{34}{figure.caption.22}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces (a) Interfaz gr\'afica de \textit {Detection Suite}. (b) Ejemplo de ejecuci\'on de \textit {Detection Suite}.\relax }}{31}{figure.caption.21}% 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{31}{subfigure.5.1}% 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{31}{subfigure.5.2}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Distribuci\'on de objetos en \acrshort {PascalVOC} \cite {PascalVocData}.\relax }}{33}{figure.caption.22}% 
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Estructura b\'asica de anotaciones en \acrshort {COCO} \cite {CocoAnnotations}.\relax }}{35}{figure.caption.23}% 
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Distribuci\'on de objetos en \acrshort {COCO}.\relax }}{36}{figure.caption.24}% 
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Estructura b\'asica de anotaciones en \acrshort {COCO} \cite {CocoAnnotations}.\relax }}{36}{figure.caption.24}% 
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Distribuci\'on de objetos en \acrshort {COCO}.\relax }}{37}{figure.caption.25}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Framework \acrshort {SSD} \cite {SSD}.\relax }}{38}{figure.caption.25}% 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Arquitectura \acrshort {SSD} \cite {SSD}.\relax }}{39}{figure.caption.26}% 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Arquitectura VGG-16 \cite {SSD_2}.\relax }}{40}{figure.caption.27}% 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ejemplo de uso de negativos en el entrenamiento \acrshort {SSD} \cite {SSD_2}.\relax }}{42}{figure.caption.28}% 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Arquitectura de la aplicaci\'on de detecci\'on visual con \acrshort {SSD}.\relax }}{44}{figure.caption.29}% 
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejecuci\'on de la aplicaci\'on usando el bot\'on de detecci\'on \'unica.\relax }}{48}{figure.caption.30}% 
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Ejecuci\'on del componente detector condicional usando el bot\'on de detecci\'on \'unica.\relax }}{49}{figure.caption.31}% 
-\contentsline {figure}{\numberline {4.8}{\ignorespaces (a) Detecci\'on con modelo entrenado con \acrshort {PascalVOC}. (b) Detecci\'on con modelo entrenado con \acrshort {COCO}.\relax }}{52}{figure.caption.32}% 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{52}{subfigure.8.1}% 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{52}{subfigure.8.2}% 
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Ejecuci\'on del entrenamiento de la red neuronal.\relax }}{62}{figure.caption.33}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Framework \acrshort {SSD} \cite {SSD}.\relax }}{40}{figure.caption.26}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Arquitectura \acrshort {SSD} \cite {SSD}.\relax }}{41}{figure.caption.27}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Arquitectura VGG-16 \cite {SSD_2}.\relax }}{42}{figure.caption.28}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ejemplo de uso de negativos en el entrenamiento \acrshort {SSD} \cite {SSD_2}.\relax }}{44}{figure.caption.29}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Arquitectura de la aplicaci\'on de detecci\'on visual con \acrshort {SSD}.\relax }}{46}{figure.caption.30}% 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejecuci\'on de la aplicaci\'on usando el bot\'on de detecci\'on \'unica.\relax }}{50}{figure.caption.31}% 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Ejecuci\'on del componente detector condicional usando el bot\'on de detecci\'on \'unica.\relax }}{51}{figure.caption.32}% 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces (a) Detecci\'on con modelo entrenado con \acrshort {PascalVOC}. (b) Detecci\'on con modelo entrenado con \acrshort {COCO}.\relax }}{54}{figure.caption.33}% 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{54}{subfigure.8.1}% 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{54}{subfigure.8.2}% 
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Ejecuci\'on del entrenamiento de la red neuronal.\relax }}{64}{figure.caption.34}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Intersecci\'on y uni\'on sobre dos conjuntos A y B.\relax }}{65}{figure.caption.34}% 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Intersection over Union \cite {IndiceJaccard}.\relax }}{65}{figure.caption.35}% 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluaci\'on loU \cite {IndiceJaccard}.\relax }}{66}{figure.caption.36}% 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparaci\'on de \textit {bounding boxes} real y detectada con imagen de la BBDD \acrshort {PascalVOC}.\relax }}{70}{figure.caption.37}% 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD \acrshort {COCO}.\relax }}{75}{figure.caption.38}% 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Distribuci\'on de las im\'agenes de test.\relax }}{76}{figure.caption.39}% 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Detector}.\relax }}{77}{figure.caption.40}% 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Ejecuci\'on de la herramienta \textit {Detector} de \textit {Detection Suite}.\relax }}{78}{figure.caption.41}% 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Evaluator} de \textit {Detection Suite}.\relax }}{79}{figure.caption.42}% 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Intersecci\'on y uni\'on sobre dos conjuntos A y B.\relax }}{67}{figure.caption.35}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Intersection over Union \cite {IndiceJaccard}.\relax }}{67}{figure.caption.36}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluaci\'on loU \cite {IndiceJaccard}.\relax }}{68}{figure.caption.37}% 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparaci\'on de \textit {bounding boxes} real y detectada con imagen de la BBDD \acrshort {PascalVOC}.\relax }}{72}{figure.caption.38}% 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Comparaci\'on bounding boxes real y detectada con imagen de la BBDD \acrshort {COCO}.\relax }}{77}{figure.caption.39}% 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Distribuci\'on de las im\'agenes de test.\relax }}{78}{figure.caption.40}% 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Detector}.\relax }}{79}{figure.caption.41}% 
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Ejecuci\'on de la herramienta \textit {Detector} de \textit {Detection Suite}.\relax }}{80}{figure.caption.42}% 
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Interfaz gr\'afica de la herramienta \textit {Evaluator} de \textit {Detection Suite}.\relax }}{81}{figure.caption.43}% 
 \addvspace {10\p@ }
