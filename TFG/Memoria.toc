@@ -1,7 +1,7 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\'{I}ndice de figuras}{VII}{chapter*.2}% 
-\contentsline {chapter}{\'Indice de tablas}{IX}{chapter*.2}% 
-\contentsline {chapter}{Acr\'onimos}{XI}{chapter*.2}% 
+\contentsline {chapter}{\'{I}ndice de figuras}{IX}{chapter*.2}% 
+\contentsline {chapter}{\'Indice de tablas}{XI}{chapter*.2}% 
+\contentsline {chapter}{Acr\'onimos}{XIII}{chapter*.2}% 
 \contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Inteligencia artificial y aprendizaje autom\'atico}{1}{section.1.1}% 
 \contentsline {section}{\numberline {1.2}Redes neuronales artificiales}{4}{section.1.2}% 

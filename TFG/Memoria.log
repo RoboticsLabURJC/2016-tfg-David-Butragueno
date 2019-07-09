@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.11)  8 JUL 2019 22:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.11)  10 JUL 2019 01:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -838,21 +838,27 @@ RJC.png>]
 ] [4
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \vbox (badness 3679) has occurred while \output is active []
 
- []
+ [1]
+[2] [3] [4
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
-
- []
-
-[1] [2] (./Memoria.toc
+] (./Memoria.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
@@ -871,6 +877,11 @@ text indent by \l@... (toc, 0):  17.62482pt
 number indent by parent (toc, 0):  0.0pt
 text indent calculated (toc, 0): 13.5pt
 number indent calculated (toc, 0): 0.0pt
+
+Overfull \hbox (5.10277pt too wide) detected at line 4
+ \OT1/cmr/bx/n/12 XIII
+ []
+
 number indent by \l@... (toc, 0):  0.0pt
 text indent by \l@... (toc, 0):  17.62482pt
 number indent by parent (toc, 0):  0.0pt
@@ -979,9 +990,7 @@ number indent calculated (toc, 2): 34.38867pt
 
 Underfull \vbox (badness 3792) has occurred while \output is active []
 
- [3
-
-]
+ [5]
 number indent by \l@... (toc, 2):  44.64957pt
 text indent by \l@... (toc, 2):  37.59956pt
 number indent by parent (toc, 2):  34.38867pt
@@ -1134,7 +1143,7 @@ text indent calculated (toc, 1): 20.88867pt
 number indent calculated (toc, 1): 13.5pt
 LaTeX Info: Redefining \. on input line 61.
 LaTeX Info: Redefining \% on input line 61.
-[4]
+[6]
 number indent by \l@... (toc, 0):  0.0pt
 text indent by \l@... (toc, 0):  17.62482pt
 number indent by parent (toc, 0):  0.0pt
@@ -1144,9 +1153,9 @@ number indent calculated (toc, 0): 0.0pt
 \tf@toc=\write7
 \openout7 = `Memoria.toc'.
 
-LaTeX Info: Redefining \. on input line 166.
-LaTeX Info: Redefining \% on input line 166.
- [5] [6
+LaTeX Info: Redefining \. on input line 161.
+LaTeX Info: Redefining \% on input line 161.
+ [7] [8
 
 ] (./Memoria.lof
 LaTeX Info: Redefining \. on input line 1.
@@ -1272,7 +1281,7 @@ text indent by \l@... (lof, 1):  27.02475pt
 number indent by parent (lof, 1):  17.62482pt
 text indent calculated (lof, 1): 26.76361pt
 number indent calculated (lof, 1): 17.62482pt
-[7
+[9
 
 ]
 number indent by \l@... (lof, 1):  17.62482pt
@@ -1359,9 +1368,9 @@ number indent calculated (lof, 1): 17.62482pt
 \tf@lof=\write8
 \openout8 = `Memoria.lof'.
 
-LaTeX Info: Redefining \. on input line 172.
-LaTeX Info: Redefining \% on input line 172.
- [8] (./Memoria.lot
+LaTeX Info: Redefining \. on input line 167.
+LaTeX Info: Redefining \% on input line 167.
+ [10] (./Memoria.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
@@ -1399,29 +1408,29 @@ number indent calculated (lot, 1): 17.62482pt
 \tf@lot=\write9
 \openout9 = `Memoria.lot'.
 
- [9
-
-] [10
-
-] (./Memoria.acr) [11
-
+ [11
 
 ] [12
+
+] (./Memoria.acr) [13
+
+
+] [14
 
 ]
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
@@ -1429,289 +1438,289 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.231 
+l.226 
        [1]
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
 
-LaTeX Info: Redefining \. on input line 248.
-LaTeX Info: Redefining \% on input line 248.
+LaTeX Info: Redefining \. on input line 243.
+LaTeX Info: Redefining \% on input line 243.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.248 
+l.243 
        [2]
-<./ModeloMachineLearning.jpg, id=562, 923.45pt x 684.5575pt>
+<./ModeloMachineLearning.jpg, id=571, 923.45pt x 684.5575pt>
 File: ./ModeloMachineLearning.jpg Graphic file (type jpg)
 <use ./ModeloMachineLearning.jpg>
-Package pdftex.def Info: ./ModeloMachineLearning.jpg  used on input line 251.
+Package pdftex.def Info: ./ModeloMachineLearning.jpg  used on input line 246.
 (pdftex.def)             Requested size: 256.0748pt x 189.82593pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
-LaTeX Info: Redefining \. on input line 265.
-LaTeX Info: Redefining \% on input line 265.
+LaTeX Info: Redefining \. on input line 260.
+LaTeX Info: Redefining \% on input line 260.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.265 \item \textbf
+l.260 \item \textbf
                    {Automatización industrial:} El \acrshort{AA} está ayudan...
 [3 <./ModeloMachineLearning.jpg>]
-<./CancerDL.png, id=577, 589.0005pt x 331.83975pt>
+<./CancerDL.png, id=585, 589.0005pt x 331.83975pt>
 File: ./CancerDL.png Graphic file (type png)
 <use ./CancerDL.png>
-Package pdftex.def Info: ./CancerDL.png  used on input line 270.
+Package pdftex.def Info: ./CancerDL.png  used on input line 265.
 (pdftex.def)             Requested size: 256.0748pt x 144.27823pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
-LaTeX Info: Redefining \. on input line 281.
-LaTeX Info: Redefining \% on input line 281.
+LaTeX Info: Redefining \. on input line 276.
+LaTeX Info: Redefining \% on input line 276.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.281 P
+l.276 P
        or ello, a partir de las redes neuronales biológicas, se crean las re...
 [4 <./CancerDL.png>]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 284.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 279.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 284.
-<./ModeloRedNeuronal.png, id=588, 1604.99625pt x 1049.9225pt>
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 279.
+<./ModeloRedNeuronal.png, id=596, 1604.99625pt x 1049.9225pt>
 File: ./ModeloRedNeuronal.png Graphic file (type png)
 <use ./ModeloRedNeuronal.png>
-Package pdftex.def Info: ./ModeloRedNeuronal.png  used on input line 291.
+Package pdftex.def Info: ./ModeloRedNeuronal.png  used on input line 286.
 (pdftex.def)             Requested size: 312.9803pt x 204.72604pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
 
  []
 
-LaTeX Info: Redefining \. on input line 300.
-LaTeX Info: Redefining \% on input line 300.
+LaTeX Info: Redefining \. on input line 295.
+LaTeX Info: Redefining \% on input line 295.
 [5 <./ModeloRedNeuronal.png>]
-<./ModeloRNA.png, id=600, 473.77pt x 196.735pt>
+<./ModeloRNA.png, id=608, 473.77pt x 196.735pt>
 File: ./ModeloRNA.png Graphic file (type png)
 <use ./ModeloRNA.png>
-Package pdftex.def Info: ./ModeloRNA.png  used on input line 309.
+Package pdftex.def Info: ./ModeloRNA.png  used on input line 304.
 (pdftex.def)             Requested size: 398.33858pt x 165.41534pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
 
-LaTeX Info: Redefining \. on input line 319.
-LaTeX Info: Redefining \% on input line 319.
+LaTeX Info: Redefining \. on input line 314.
+LaTeX Info: Redefining \% on input line 314.
 [6 <./ModeloRNA.png>]
-LaTeX Info: Redefining \. on input line 337.
-LaTeX Info: Redefining \% on input line 337.
+LaTeX Info: Redefining \. on input line 332.
+LaTeX Info: Redefining \% on input line 332.
  [7]
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
+Underfull \hbox (badness 10000) in paragraph at lines 341--342
 
  []
 
-<./CNN.png, id=621, 286.06876pt x 197.73875pt>
+<./CNN.png, id=631, 286.06876pt x 197.73875pt>
 File: ./CNN.png Graphic file (type png)
 <use ./CNN.png>
-Package pdftex.def Info: ./CNN.png  used on input line 352.
+Package pdftex.def Info: ./CNN.png  used on input line 347.
 (pdftex.def)             Requested size: 227.62204pt x 157.34035pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
 
  []
 
-LaTeX Info: Redefining \. on input line 359.
-LaTeX Info: Redefining \% on input line 359.
+LaTeX Info: Redefining \. on input line 354.
+LaTeX Info: Redefining \% on input line 354.
 [8 <./CNN.png>]
-<./CNN_ConvolutionLayer.png, id=632, 344.28625pt x 196.735pt>
+<./CNN_ConvolutionLayer.png, id=641, 344.28625pt x 196.735pt>
 File: ./CNN_ConvolutionLayer.png Graphic file (type png)
 <use ./CNN_ConvolutionLayer.png>
-Package pdftex.def Info: ./CNN_ConvolutionLayer.png  used on input line 362.
+Package pdftex.def Info: ./CNN_ConvolutionLayer.png  used on input line 357.
 (pdftex.def)             Requested size: 256.0748pt x 146.32909pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
 
  []
 
-LaTeX Info: Redefining \. on input line 377.
-LaTeX Info: Redefining \% on input line 377.
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
 [9 <./CNN_ConvolutionLayer.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-LaTeX Info: Redefining \. on input line 389.
-LaTeX Info: Redefining \% on input line 389.
+LaTeX Info: Redefining \. on input line 384.
+LaTeX Info: Redefining \% on input line 384.
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 389--390
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--399
+Underfull \hbox (badness 10000) in paragraph at lines 393--394
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--403
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
  []
 
-LaTeX Info: Redefining \. on input line 403.
-LaTeX Info: Redefining \% on input line 403.
+LaTeX Info: Redefining \. on input line 398.
+LaTeX Info: Redefining \% on input line 398.
 [11]
-<./MarcoIA.png, id=675, 820.06375pt x 792.9625pt>
+<./MarcoIA.png, id=683, 820.06375pt x 792.9625pt>
 File: ./MarcoIA.png Graphic file (type png)
 <use ./MarcoIA.png>
-Package pdftex.def Info: ./MarcoIA.png  used on input line 406.
+Package pdftex.def Info: ./MarcoIA.png  used on input line 401.
 (pdftex.def)             Requested size: 284.52756pt x 275.13321pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--415
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 
  []
 
-<./MLvsDL.png, id=679, 628.3475pt x 134.5025pt>
+<./MLvsDL.png, id=687, 628.3475pt x 134.5025pt>
 File: ./MLvsDL.png Graphic file (type png)
 <use ./MLvsDL.png>
-Package pdftex.def Info: ./MLvsDL.png  used on input line 418.
+Package pdftex.def Info: ./MLvsDL.png  used on input line 413.
 (pdftex.def)             Requested size: 398.33858pt x 85.26651pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 423.
-LaTeX Info: Redefining \% on input line 423.
+LaTeX Info: Redefining \. on input line 418.
+LaTeX Info: Redefining \% on input line 418.
  [12 <./MarcoIA.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 427--428
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--432
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
-<./MNIST.png, id=690, 98.3675pt x 38.1425pt>
+<./MNIST.png, id=698, 98.3675pt x 38.1425pt>
 File: ./MNIST.png Graphic file (type png)
 <use ./MNIST.png>
-Package pdftex.def Info: ./MNIST.png  used on input line 436.
+Package pdftex.def Info: ./MNIST.png  used on input line 431.
 (pdftex.def)             Requested size: 142.26378pt x 55.16783pt.
-<./SobelMNIST.png, id=691, 130.4875pt x 53.19875pt>
+<./SobelMNIST.png, id=699, 130.4875pt x 53.19875pt>
 File: ./SobelMNIST.png Graphic file (type png)
 <use ./SobelMNIST.png>
-Package pdftex.def Info: ./SobelMNIST.png  used on input line 438.
+Package pdftex.def Info: ./SobelMNIST.png  used on input line 433.
 (pdftex.def)             Requested size: 142.26378pt x 58.00089pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 443.
-LaTeX Info: Redefining \% on input line 443.
+LaTeX Info: Redefining \. on input line 438.
+LaTeX Info: Redefining \% on input line 438.
  [13 <./MLvsDL.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 439--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
-<./ComponenteClasificador.png, id=702, 276.03125pt x 88.33pt>
+<./ComponenteClasificador.png, id=711, 276.03125pt x 88.33pt>
 File: ./ComponenteClasificador.png Graphic file (type png)
 <use ./ComponenteClasificador.png>
-Package pdftex.def Info: ./ComponenteClasificador.png  used on input line 450.
+Package pdftex.def Info: ./ComponenteClasificador.png  used on input line 445.
 (pdftex.def)             Requested size: 426.79134pt x 136.58794pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
+Underfull \hbox (badness 10000) in paragraph at lines 455--456
 
  []
 
-LaTeX Info: Redefining \. on input line 461.
-LaTeX Info: Redefining \% on input line 461.
+LaTeX Info: Redefining \. on input line 456.
+LaTeX Info: Redefining \% on input line 456.
 [14 <./MNIST.png> <./SobelMNIST.png> <./ComponenteClasificador.png>]
-<./ComponentKeras.png, id=718, 331.2375pt x 189.70876pt>
+<./ComponentKeras.png, id=727, 331.2375pt x 189.70876pt>
 File: ./ComponentKeras.png Graphic file (type png)
 <use ./ComponentKeras.png>
-Package pdftex.def Info: ./ComponentKeras.png  used on input line 464.
+Package pdftex.def Info: ./ComponentKeras.png  used on input line 459.
 (pdftex.def)             Requested size: 426.79134pt x 244.4474pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--471
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
 
  []
 
-<./DetectionSuite.png, id=722, 472.76625pt x 318.18875pt>
+<./DetectionSuite.png, id=731, 472.76625pt x 318.18875pt>
 File: ./DetectionSuite.png Graphic file (type png)
 <use ./DetectionSuite.png>
-Package pdftex.def Info: ./DetectionSuite.png  used on input line 476.
+Package pdftex.def Info: ./DetectionSuite.png  used on input line 471.
 (pdftex.def)             Requested size: 369.88582pt x 248.95332pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 481.
-LaTeX Info: Redefining \% on input line 481.
+LaTeX Info: Redefining \. on input line 476.
+LaTeX Info: Redefining \% on input line 476.
  [15 <./ComponentKeras.png>]
-LaTeX Info: Redefining \. on input line 484.
-LaTeX Info: Redefining \% on input line 484.
+LaTeX Info: Redefining \. on input line 479.
+LaTeX Info: Redefining \% on input line 479.
  [16 <./DetectionSuite.png>]
 Cap\'{\i }tulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 511--512
+Underfull \hbox (badness 10000) in paragraph at lines 506--507
 
  []
 
@@ -1721,286 +1730,286 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 510--511
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 512--513
 
  []
 
-LaTeX Info: Redefining \. on input line 524.
-LaTeX Info: Redefining \% on input line 524.
+LaTeX Info: Redefining \. on input line 519.
+LaTeX Info: Redefining \% on input line 519.
 [18]
-LaTeX Info: Redefining \. on input line 545.
-LaTeX Info: Redefining \% on input line 545.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
  [19] [20
 
 ]
 Cap\'{\i }tulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--551
+Underfull \hbox (badness 10000) in paragraph at lines 545--546
 
  []
 
 [21]
-LaTeX Info: Redefining \. on input line 579.
-LaTeX Info: Redefining \% on input line 579.
+LaTeX Info: Redefining \. on input line 574.
+LaTeX Info: Redefining \% on input line 574.
  [22]
-Underfull \hbox (badness 10000) in paragraph at lines 587--588
+Underfull \hbox (badness 10000) in paragraph at lines 582--583
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 593--594
+Underfull \hbox (badness 10000) in paragraph at lines 588--589
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 595--596
+Underfull \hbox (badness 10000) in paragraph at lines 590--591
 
  []
 
-LaTeX Info: Redefining \. on input line 603.
-LaTeX Info: Redefining \% on input line 603.
+LaTeX Info: Redefining \. on input line 598.
+LaTeX Info: Redefining \% on input line 598.
 [23]
+Underfull \hbox (badness 10000) in paragraph at lines 609--610
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 614--615
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 619--620
-
- []
-
-<./Convolution.png, id=799, 471.7625pt x 211.79124pt>
+<./Convolution.png, id=807, 471.7625pt x 211.79124pt>
 File: ./Convolution.png Graphic file (type png)
 <use ./Convolution.png>
-Package pdftex.def Info: ./Convolution.png  used on input line 623.
+Package pdftex.def Info: ./Convolution.png  used on input line 618.
 (pdftex.def)             Requested size: 256.0748pt x 114.96342pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 628--629
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
 
  []
 
-LaTeX Info: Redefining \. on input line 629.
-LaTeX Info: Redefining \% on input line 629.
+LaTeX Info: Redefining \. on input line 624.
+LaTeX Info: Redefining \% on input line 624.
 [24 <./Convolution.png>]
-<./Pooling.png, id=806, 236.38312pt x 143.03438pt>
+<./Pooling.png, id=814, 236.38312pt x 143.03438pt>
 File: ./Pooling.png Graphic file (type png)
 <use ./Pooling.png>
-Package pdftex.def Info: ./Pooling.png  used on input line 632.
+Package pdftex.def Info: ./Pooling.png  used on input line 627.
 (pdftex.def)             Requested size: 199.16928pt x 120.51907pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 667--668
+Underfull \hbox (badness 10000) in paragraph at lines 662--663
 
  []
 
-LaTeX Info: Redefining \. on input line 668.
-LaTeX Info: Redefining \% on input line 668.
+LaTeX Info: Redefining \. on input line 663.
+LaTeX Info: Redefining \% on input line 663.
 [25 <./Pooling.png>]
-LaTeX Info: Redefining \. on input line 714.
-LaTeX Info: Redefining \% on input line 714.
+LaTeX Info: Redefining \. on input line 709.
+LaTeX Info: Redefining \% on input line 709.
  [26]
-<./ReLu.png, id=825, 496.85625pt x 399.4925pt>
+<./ReLu.png, id=834, 496.85625pt x 399.4925pt>
 File: ./ReLu.png Graphic file (type png)
 <use ./ReLu.png>
-Package pdftex.def Info: ./ReLu.png  used on input line 720.
+Package pdftex.def Info: ./ReLu.png  used on input line 715.
 (pdftex.def)             Requested size: 199.16928pt x 160.14162pt.
-<./Sigmoid.png, id=829, 300.12125pt x 193.72375pt>
+<./Sigmoid.png, id=838, 300.12125pt x 193.72375pt>
 File: ./Sigmoid.png Graphic file (type png)
 <use ./Sigmoid.png>
-Package pdftex.def Info: ./Sigmoid.png  used on input line 741.
+Package pdftex.def Info: ./Sigmoid.png  used on input line 736.
 (pdftex.def)             Requested size: 256.0748pt x 165.30444pt.
 
 Underfull \vbox (badness 5147) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 746.
-LaTeX Info: Redefining \% on input line 746.
+LaTeX Info: Redefining \. on input line 741.
+LaTeX Info: Redefining \% on input line 741.
  [27 <./ReLu.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 780--781
+Underfull \hbox (badness 10000) in paragraph at lines 775--776
 
  []
 
-LaTeX Info: Redefining \. on input line 788.
-LaTeX Info: Redefining \% on input line 788.
+LaTeX Info: Redefining \. on input line 783.
+LaTeX Info: Redefining \% on input line 783.
 [28 <./Sigmoid.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 811--812
+Underfull \hbox (badness 10000) in paragraph at lines 806--807
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 820.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 815.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 820.
-LaTeX Info: Redefining \. on input line 821.
-LaTeX Info: Redefining \% on input line 821.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 815.
+LaTeX Info: Redefining \. on input line 816.
+LaTeX Info: Redefining \% on input line 816.
  [29]
-Underfull \hbox (badness 10000) in paragraph at lines 830--831
+Underfull \hbox (badness 10000) in paragraph at lines 825--826
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 832--833
+Underfull \hbox (badness 10000) in paragraph at lines 827--828
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 842--843
+Underfull \hbox (badness 10000) in paragraph at lines 837--838
 
  []
 
-<./EjemploDetectionSuite1.png, id=857, 1009.7725pt x 537.00626pt>
+<./EjemploDetectionSuite1.png, id=865, 1009.7725pt x 537.00626pt>
 File: ./EjemploDetectionSuite1.png Graphic file (type png)
 <use ./EjemploDetectionSuite1.png>
-Package pdftex.def Info: ./EjemploDetectionSuite1.png  used on input line 847.
+Package pdftex.def Info: ./EjemploDetectionSuite1.png  used on input line 842.
 (pdftex.def)             Requested size: 369.88582pt x 196.70624pt.
-<./EjemploDetectionSuite2.png, id=858, 1010.77625pt x 536.0025pt>
+<./EjemploDetectionSuite2.png, id=866, 1010.77625pt x 536.0025pt>
 File: ./EjemploDetectionSuite2.png Graphic file (type png)
 <use ./EjemploDetectionSuite2.png>
-Package pdftex.def Info: ./EjemploDetectionSuite2.png  used on input line 850.
+Package pdftex.def Info: ./EjemploDetectionSuite2.png  used on input line 845.
 (pdftex.def)             Requested size: 369.88582pt x 196.15045pt.
+LaTeX Info: Redefining \. on input line 850.
+LaTeX Info: Redefining \% on input line 850.
+[30]
 LaTeX Info: Redefining \. on input line 855.
 LaTeX Info: Redefining \% on input line 855.
-[30]
-LaTeX Info: Redefining \. on input line 860.
-LaTeX Info: Redefining \% on input line 860.
  [31 <./EjemploDetectionSuite1.png> <./EjemploDetectionSuite2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 913--914
+Underfull \hbox (badness 10000) in paragraph at lines 908--909
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--920
+Underfull \hbox (badness 10000) in paragraph at lines 914--915
 
  []
 
-LaTeX Info: Redefining \. on input line 920.
-LaTeX Info: Redefining \% on input line 920.
+LaTeX Info: Redefining \. on input line 915.
+LaTeX Info: Redefining \% on input line 915.
 [32]
-<./VOC2012_Statics.png, id=884, 473.51906pt x 441.90094pt>
+<./VOC2012_Statics.png, id=893, 473.51906pt x 441.90094pt>
 File: ./VOC2012_Statics.png Graphic file (type png)
 <use ./VOC2012_Statics.png>
-Package pdftex.def Info: ./VOC2012_Statics.png  used on input line 925.
+Package pdftex.def Info: ./VOC2012_Statics.png  used on input line 920.
 (pdftex.def)             Requested size: 312.9803pt x 292.08705pt.
-LaTeX Info: Redefining \. on input line 939.
-LaTeX Info: Redefining \% on input line 939.
+LaTeX Info: Redefining \. on input line 934.
+LaTeX Info: Redefining \% on input line 934.
  [33 <./VOC2012_Statics.png>]
-LaTeX Info: Redefining \. on input line 977.
-LaTeX Info: Redefining \% on input line 977.
+LaTeX Info: Redefining \. on input line 972.
+LaTeX Info: Redefining \% on input line 972.
  [34]
-<./Coco_Annotation_1.png, id=933, 533.74406pt x 417.05812pt>
+<./Coco_Annotation_1.png, id=941, 533.74406pt x 417.05812pt>
 File: ./Coco_Annotation_1.png Graphic file (type png)
 <use ./Coco_Annotation_1.png>
-Package pdftex.def Info: ./Coco_Annotation_1.png  used on input line 984.
+Package pdftex.def Info: ./Coco_Annotation_1.png  used on input line 979.
 (pdftex.def)             Requested size: 369.88582pt x 289.03044pt.
-LaTeX Info: Redefining \. on input line 991.
-LaTeX Info: Redefining \% on input line 991.
+LaTeX Info: Redefining \. on input line 986.
+LaTeX Info: Redefining \% on input line 986.
  [35 <./Coco_Annotation_1.png>]
-<./Coco_Annotation_2.png, id=943, 534.49687pt x 207.77625pt>
+<./Coco_Annotation_2.png, id=951, 534.49687pt x 207.77625pt>
 File: ./Coco_Annotation_2.png Graphic file (type png)
 <use ./Coco_Annotation_2.png>
-Package pdftex.def Info: ./Coco_Annotation_2.png  used on input line 994.
+Package pdftex.def Info: ./Coco_Annotation_2.png  used on input line 989.
 (pdftex.def)             Requested size: 369.88582pt x 143.79376pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1001
+Underfull \hbox (badness 10000) in paragraph at lines 995--996
 
  []
 
-<./COCO_Statics.png, id=949, 615.80063pt x 322.20375pt>
+<./COCO_Statics.png, id=957, 615.80063pt x 322.20375pt>
 File: ./COCO_Statics.png Graphic file (type png)
 <use ./COCO_Statics.png>
-Package pdftex.def Info: ./COCO_Statics.png  used on input line 1006.
+Package pdftex.def Info: ./COCO_Statics.png  used on input line 1001.
 (pdftex.def)             Requested size: 369.88582pt x 193.53514pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 1010.
-LaTeX Info: Redefining \% on input line 1010.
+LaTeX Info: Redefining \. on input line 1005.
+LaTeX Info: Redefining \% on input line 1005.
  [36 <./Coco_Annotation_2.png>]
-LaTeX Info: Redefining \. on input line 1011.
-LaTeX Info: Redefining \% on input line 1011.
+LaTeX Info: Redefining \. on input line 1006.
+LaTeX Info: Redefining \% on input line 1006.
  [37 <./COCO_Statics.png>] [38
 
 ]
 Cap\'{\i }tulo 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1010
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1020--1021
+Underfull \hbox (badness 10000) in paragraph at lines 1015--1016
 
  []
 
 [39]
-<./FrameworkSSD.png, id=981, 454.69875pt x 168.63pt>
+<./FrameworkSSD.png, id=989, 454.69875pt x 168.63pt>
 File: ./FrameworkSSD.png Graphic file (type png)
 <use ./FrameworkSSD.png>
-Package pdftex.def Info: ./FrameworkSSD.png  used on input line 1034.
+Package pdftex.def Info: ./FrameworkSSD.png  used on input line 1029.
 (pdftex.def)             Requested size: 398.33858pt x 147.73099pt.
-LaTeX Info: Redefining \. on input line 1045.
-LaTeX Info: Redefining \% on input line 1045.
+LaTeX Info: Redefining \. on input line 1040.
+LaTeX Info: Redefining \% on input line 1040.
  [40 <./FrameworkSSD.png>]
-<./SSD_Architecture.png, id=998, 765.86125pt x 233.87375pt>
+<./SSD_Architecture.png, id=1007, 765.86125pt x 233.87375pt>
 File: ./SSD_Architecture.png Graphic file (type png)
 <use ./SSD_Architecture.png>
-Package pdftex.def Info: ./SSD_Architecture.png  used on input line 1053.
+Package pdftex.def Info: ./SSD_Architecture.png  used on input line 1048.
 (pdftex.def)             Requested size: 398.33858pt x 121.64359pt.
  [41 <./SSD_Architecture.png>]
-<./VGG-16.png, id=1010, 385.44pt x 219.82124pt>
+<./VGG-16.png, id=1018, 385.44pt x 219.82124pt>
 File: ./VGG-16.png Graphic file (type png)
 <use ./VGG-16.png>
-Package pdftex.def Info: ./VGG-16.png  used on input line 1063.
+Package pdftex.def Info: ./VGG-16.png  used on input line 1058.
 (pdftex.def)             Requested size: 369.88582pt x 210.94884pt.
-LaTeX Info: Redefining \. on input line 1073.
-LaTeX Info: Redefining \% on input line 1073.
+LaTeX Info: Redefining \. on input line 1068.
+LaTeX Info: Redefining \% on input line 1068.
  [42 <./VGG-16.png>] [43]
-<./HardNegativeMining.png, id=1032, 578.16pt x 290.08376pt>
+<./HardNegativeMining.png, id=1041, 578.16pt x 290.08376pt>
 File: ./HardNegativeMining.png Graphic file (type png)
 <use ./HardNegativeMining.png>
-Package pdftex.def Info: ./HardNegativeMining.png  used on input line 1091.
+Package pdftex.def Info: ./HardNegativeMining.png  used on input line 1086.
 (pdftex.def)             Requested size: 369.88582pt x 185.58214pt.
-LaTeX Info: Redefining \. on input line 1098.
-LaTeX Info: Redefining \% on input line 1098.
+LaTeX Info: Redefining \. on input line 1093.
+LaTeX Info: Redefining \% on input line 1093.
  [44 <./HardNegativeMining.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1100
 
  []
 
 [45]
-<./ComponenteDetector.png, id=1056, 557.08125pt x 447.6725pt>
+<./ComponenteDetector.png, id=1064, 557.08125pt x 447.6725pt>
 File: ./ComponenteDetector.png Graphic file (type png)
 <use ./ComponenteDetector.png>
-Package pdftex.def Info: ./ComponenteDetector.png  used on input line 1118.
+Package pdftex.def Info: ./ComponenteDetector.png  used on input line 1113.
 (pdftex.def)             Requested size: 426.79134pt x 342.98067pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1126--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1121--1122
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1128--1129
+Underfull \hbox (badness 10000) in paragraph at lines 1123--1124
 
  []
 
 [46 <./ComponenteDetector.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1138--1139
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1141
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1136
 
  []
 
@@ -2008,244 +2017,249 @@ Underfull \hbox (badness 10000) in paragraph at lines 1140--1141
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1148--1149
+Underfull \hbox (badness 10000) in paragraph at lines 1143--1144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1158--1159
+Underfull \hbox (badness 10000) in paragraph at lines 1153--1154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1160--1161
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1162--1163
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1164--1165
+Underfull \hbox (badness 10000) in paragraph at lines 1159--1160
 
  []
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1171--1172
+Underfull \hbox (badness 10000) in paragraph at lines 1166--1167
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1168--1169
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1179--1180
+Underfull \hbox (badness 10000) in paragraph at lines 1174--1175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
+Underfull \hbox (badness 10000) in paragraph at lines 1180--1181
 
  []
 
-<./DetectionComponentPython.png, id=1084, 1201.48875pt x 530.98375pt>
+<./DetectionComponentPython.png, id=1092, 1201.48875pt x 530.98375pt>
 File: ./DetectionComponentPython.png Graphic file (type png)
 <use ./DetectionComponentPython.png>
-Package pdftex.def Info: ./DetectionComponentPython.png  used on input line 119
-1.
+Package pdftex.def Info: ./DetectionComponentPython.png  used on input line 118
+6.
 (pdftex.def)             Requested size: 455.24408pt x 201.19255pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [49]
-Underfull \hbox (badness 10000) in paragraph at lines 1197--1198
+Underfull \hbox (badness 10000) in paragraph at lines 1192--1193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1203--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1206
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
 
  []
 
 [50 <./DetectionComponentPython.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
+Underfull \hbox (badness 10000) in paragraph at lines 1202--1203
 
  []
 
-<./DetectorComponent1.png, id=1104, 1201.48875pt x 526.96875pt>
+<./DetectorComponent1.png, id=1113, 1201.48875pt x 526.96875pt>
 File: ./DetectorComponent1.png Graphic file (type png)
 <use ./DetectorComponent1.png>
-Package pdftex.def Info: ./DetectorComponent1.png  used on input line 1212.
+Package pdftex.def Info: ./DetectorComponent1.png  used on input line 1207.
 (pdftex.def)             Requested size: 227.62204pt x 99.82758pt.
-<./DetectorComponent2.png, id=1105, 1201.48875pt x 527.9725pt>
+<./DetectorComponent2.png, id=1114, 1201.48875pt x 527.9725pt>
 File: ./DetectorComponent2.png Graphic file (type png)
 <use ./DetectorComponent2.png>
-Package pdftex.def Info: ./DetectorComponent2.png  used on input line 1214.
+Package pdftex.def Info: ./DetectorComponent2.png  used on input line 1209.
 (pdftex.def)             Requested size: 227.62204pt x 100.01773pt.
 
-Overfull \hbox (7.83322pt too wide) in paragraph at lines 1212--1215
+Overfull \hbox (7.83322pt too wide) in paragraph at lines 1207--1210
  [][][] 
  []
 
-<./DetectorComponent3.png, id=1106, 1202.4925pt x 526.96875pt>
+<./DetectorComponent3.png, id=1115, 1202.4925pt x 526.96875pt>
 File: ./DetectorComponent3.png Graphic file (type png)
 <use ./DetectorComponent3.png>
-Package pdftex.def Info: ./DetectorComponent3.png  used on input line 1217.
+Package pdftex.def Info: ./DetectorComponent3.png  used on input line 1212.
 (pdftex.def)             Requested size: 227.62204pt x 99.74718pt.
-<./DetectorComponent4.png, id=1107, 1202.4925pt x 526.96875pt>
+<./DetectorComponent4.png, id=1116, 1202.4925pt x 526.96875pt>
 File: ./DetectorComponent4.png Graphic file (type png)
 <use ./DetectorComponent4.png>
-Package pdftex.def Info: ./DetectorComponent4.png  used on input line 1219.
+Package pdftex.def Info: ./DetectorComponent4.png  used on input line 1214.
 (pdftex.def)             Requested size: 227.62204pt x 99.74718pt.
+
+Overfull \hbox (7.83322pt too wide) in paragraph at lines 1212--1215
+ [][][][] 
+ []
+
+<./DetectorComponent5.png, id=1117, 1201.48875pt x 525.965pt>
+File: ./DetectorComponent5.png Graphic file (type png)
+<use ./DetectorComponent5.png>
+Package pdftex.def Info: ./DetectorComponent5.png  used on input line 1217.
+(pdftex.def)             Requested size: 227.62204pt x 99.63744pt.
+<./DetectorComponent6.png, id=1118, 1201.48875pt x 528.97626pt>
+File: ./DetectorComponent6.png Graphic file (type png)
+<use ./DetectorComponent6.png>
+Package pdftex.def Info: ./DetectorComponent6.png  used on input line 1219.
+(pdftex.def)             Requested size: 227.62204pt x 100.20789pt.
 
 Overfull \hbox (7.83322pt too wide) in paragraph at lines 1217--1220
  [][][][] 
  []
 
-<./DetectorComponent5.png, id=1108, 1201.48875pt x 525.965pt>
-File: ./DetectorComponent5.png Graphic file (type png)
-<use ./DetectorComponent5.png>
-Package pdftex.def Info: ./DetectorComponent5.png  used on input line 1222.
-(pdftex.def)             Requested size: 227.62204pt x 99.63744pt.
-<./DetectorComponent6.png, id=1109, 1201.48875pt x 528.97626pt>
-File: ./DetectorComponent6.png Graphic file (type png)
-<use ./DetectorComponent6.png>
-Package pdftex.def Info: ./DetectorComponent6.png  used on input line 1224.
-(pdftex.def)             Requested size: 227.62204pt x 100.20789pt.
 
-Overfull \hbox (7.83322pt too wide) in paragraph at lines 1222--1225
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1232--1233
+Underfull \hbox (badness 10000) in paragraph at lines 1227--1228
 
  []
 
 [51 <./DetectorComponent1.png> <./DetectorComponent2.png> <./DetectorComponent3
 .png> <./DetectorComponent4.png> <./DetectorComponent5.png> <./DetectorComponen
 t6.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1234--1235
+Underfull \hbox (badness 10000) in paragraph at lines 1229--1230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1242--1243
+Underfull \hbox (badness 10000) in paragraph at lines 1237--1238
 
  []
 
-<./DetectionComponentPythonConditional.png, id=1129, 1202.4925pt x 529.98pt>
+<./DetectionComponentPythonConditional.png, id=1137, 1202.4925pt x 529.98pt>
 File: ./DetectionComponentPythonConditional.png Graphic file (type png)
 <use ./DetectionComponentPythonConditional.png>
 Package pdftex.def Info: ./DetectionComponentPythonConditional.png  used on inp
-ut line 1248.
+ut line 1243.
 (pdftex.def)             Requested size: 455.24408pt x 200.64241pt.
 
 Underfull \vbox (badness 6110) has occurred while \output is active []
 
  [52 <./DetectionComponentPythonConditional.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1263--1263
+Underfull \hbox (badness 10000) in paragraph at lines 1258--1258
 [][][][]$\OT1/cmtt/m/n/10 https : / / github . com / RoboticsURJC -[] students 
 / 2016 -[] tfg -[] David -[] Butragueno / blob / master /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1263--1264
+Underfull \hbox (badness 10000) in paragraph at lines 1258--1259
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1273--1274
+Underfull \hbox (badness 10000) in paragraph at lines 1268--1269
 
  []
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 1281--1282
+Underfull \hbox (badness 10000) in paragraph at lines 1276--1277
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1303--1304
+Underfull \hbox (badness 10000) in paragraph at lines 1298--1299
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1305--1306
+Underfull \hbox (badness 10000) in paragraph at lines 1300--1301
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1311--1312
+Underfull \hbox (badness 10000) in paragraph at lines 1306--1307
 
  []
 
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 1317--1318
+Underfull \hbox (badness 10000) in paragraph at lines 1312--1313
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1329
+Underfull \hbox (badness 10000) in paragraph at lines 1323--1324
 
  []
 
-<./DetectionCompareVOC.png, id=1188, 376.40625pt x 180.675pt>
+<./DetectionCompareVOC.png, id=1196, 376.40625pt x 180.675pt>
 File: ./DetectionCompareVOC.png Graphic file (type png)
 <use ./DetectionCompareVOC.png>
-Package pdftex.def Info: ./DetectionCompareVOC.png  used on input line 1351.
+Package pdftex.def Info: ./DetectionCompareVOC.png  used on input line 1346.
 (pdftex.def)             Requested size: 221.93158pt x 106.53114pt.
-<./DetectionCompareCOCO.png, id=1189, 376.40625pt x 180.675pt>
+<./DetectionCompareCOCO.png, id=1197, 376.40625pt x 180.675pt>
 File: ./DetectionCompareCOCO.png Graphic file (type png)
 <use ./DetectionCompareCOCO.png>
-Package pdftex.def Info: ./DetectionCompareCOCO.png  used on input line 1353.
+Package pdftex.def Info: ./DetectionCompareCOCO.png  used on input line 1348.
 (pdftex.def)             Requested size: 221.93158pt x 106.53114pt.
 [55]
-Underfull \hbox (badness 10000) in paragraph at lines 1367--1368
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1363
 
  []
 
 [56 <./DetectionCompareVOC.png (PNG copy)> <./DetectionCompareCOCO.png (PNG cop
 y)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1369--1370
+Underfull \hbox (badness 10000) in paragraph at lines 1364--1365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1375--1376
+Underfull \hbox (badness 10000) in paragraph at lines 1370--1371
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1386--1387
+Underfull \hbox (badness 10000) in paragraph at lines 1381--1382
 
  []
 
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 1417--1418
+Underfull \hbox (badness 10000) in paragraph at lines 1412--1413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
 
  []
 
 [58]
-Underfull \hbox (badness 10000) in paragraph at lines 1435--1436
+Underfull \hbox (badness 10000) in paragraph at lines 1430--1431
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1437--1438
+Underfull \hbox (badness 10000) in paragraph at lines 1432--1433
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1443--1444
 
  []
 
@@ -2254,66 +2268,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 1448--1449
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1453--1454
-
- []
-
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 1465--1466
+Underfull \hbox (badness 10000) in paragraph at lines 1460--1461
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1488--1489
+Underfull \hbox (badness 10000) in paragraph at lines 1483--1484
 
  []
 
 [60]
-Underfull \hbox (badness 10000) in paragraph at lines 1512--1513
+Underfull \hbox (badness 10000) in paragraph at lines 1507--1508
 
  []
 
 [61] [62]
-Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
+Underfull \hbox (badness 10000) in paragraph at lines 1560--1561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1596--1597
+Underfull \hbox (badness 10000) in paragraph at lines 1591--1592
 
  []
 
 [63]
-Underfull \hbox (badness 10000) in paragraph at lines 1609--1609
+Underfull \hbox (badness 10000) in paragraph at lines 1604--1604
 [][][][]$\OT1/cmtt/m/n/10 https : / / github . com / RoboticsURJC -[] students 
 / 2016 -[] tfg -[] David -[] Butragueno / blob / master /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1609--1610
+Underfull \hbox (badness 10000) in paragraph at lines 1604--1605
 
  []
 
 [64]
-Underfull \hbox (badness 10000) in paragraph at lines 1611--1612
+Underfull \hbox (badness 10000) in paragraph at lines 1606--1607
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1613--1614
+Underfull \hbox (badness 10000) in paragraph at lines 1608--1609
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1615--1616
+Underfull \hbox (badness 10000) in paragraph at lines 1610--1611
 
  []
 
-<./TrainNet.png, id=1446, 573.14125pt x 341.275pt>
+<./TrainNet.png, id=1455, 573.14125pt x 341.275pt>
 File: ./TrainNet.png Graphic file (type png)
 <use ./TrainNet.png>
-Package pdftex.def Info: ./TrainNet.png  used on input line 1619.
+Package pdftex.def Info: ./TrainNet.png  used on input line 1614.
 (pdftex.def)             Requested size: 369.88582pt x 220.24826pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2324,297 +2333,297 @@ Cap\'{\i }tulo 5.
 [67
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1662--1663
+Underfull \hbox (badness 10000) in paragraph at lines 1657--1658
 
  []
 
-<./Intersection&Union.png, id=1466, 360.34625pt x 138.5175pt>
+<./Intersection&Union.png, id=1475, 360.34625pt x 138.5175pt>
 File: ./Intersection&Union.png Graphic file (type png)
 <use ./Intersection&Union.png>
-Package pdftex.def Info: ./Intersection&Union.png  used on input line 1670.
+Package pdftex.def Info: ./Intersection&Union.png  used on input line 1665.
 (pdftex.def)             Requested size: 312.9803pt x 120.30844pt.
 [68]
-<./loU.png, id=1479, 602.25pt x 469.755pt>
+<./loU.png, id=1488, 602.25pt x 469.755pt>
 File: ./loU.png Graphic file (type png)
 <use ./loU.png>
-Package pdftex.def Info: ./loU.png  used on input line 1686.
+Package pdftex.def Info: ./loU.png  used on input line 1681.
 (pdftex.def)             Requested size: 227.62204pt x 177.54826pt.
  [69 <./Intersection&Union.png> <./loU.png>]
-<./loU_score.png, id=1490, 602.25pt x 248.93pt>
+<./loU_score.png, id=1498, 602.25pt x 248.93pt>
 File: ./loU_score.png Graphic file (type png)
 <use ./loU_score.png>
-Package pdftex.def Info: ./loU_score.png  used on input line 1702.
+Package pdftex.def Info: ./loU_score.png  used on input line 1697.
 (pdftex.def)             Requested size: 312.9803pt x 129.36836pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1713--1714
+Underfull \hbox (badness 10000) in paragraph at lines 1708--1709
 
  []
 
 [70 <./loU_score.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1715--1716
+Underfull \hbox (badness 10000) in paragraph at lines 1710--1711
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1726--1727
+Underfull \hbox (badness 10000) in paragraph at lines 1721--1722
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1728--1729
+Underfull \hbox (badness 10000) in paragraph at lines 1723--1724
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1735--1736
+Underfull \hbox (badness 10000) in paragraph at lines 1730--1731
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1737--1738
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1733
 
  []
 
 [71]
-Underfull \hbox (badness 10000) in paragraph at lines 1743--1744
+Underfull \hbox (badness 10000) in paragraph at lines 1738--1739
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1762--1763
+Underfull \hbox (badness 10000) in paragraph at lines 1757--1758
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1768--1769
+Underfull \hbox (badness 10000) in paragraph at lines 1763--1764
 
  []
 
 [72]
-Underfull \hbox (badness 10000) in paragraph at lines 1775--1776
+Underfull \hbox (badness 10000) in paragraph at lines 1770--1771
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1784--1785
+Underfull \hbox (badness 10000) in paragraph at lines 1779--1780
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1786--1787
+Underfull \hbox (badness 10000) in paragraph at lines 1781--1782
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1792--1793
+Underfull \hbox (badness 10000) in paragraph at lines 1787--1788
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1801--1802
+Underfull \hbox (badness 10000) in paragraph at lines 1796--1797
 
  []
 
 [73]
-<./image_detection_compare.png, id=1563, 376.40625pt x 282.30469pt>
+<./image_detection_compare.png, id=1572, 376.40625pt x 282.30469pt>
 File: ./image_detection_compare.png Graphic file (type png)
 <use ./image_detection_compare.png>
-Package pdftex.def Info: ./image_detection_compare.png  used on input line 1816
+Package pdftex.def Info: ./image_detection_compare.png  used on input line 1811
 .
 (pdftex.def)             Requested size: 312.9803pt x 234.7522pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
+Underfull \hbox (badness 10000) in paragraph at lines 1819--1820
 
  []
 
 [74 <./image_detection_compare.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1826--1827
+Underfull \hbox (badness 10000) in paragraph at lines 1821--1822
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1838--1839
+Underfull \hbox (badness 10000) in paragraph at lines 1833--1834
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1840--1841
+Underfull \hbox (badness 10000) in paragraph at lines 1835--1836
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1846--1847
+Underfull \hbox (badness 10000) in paragraph at lines 1841--1842
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1853--1854
+Underfull \hbox (badness 10000) in paragraph at lines 1848--1849
 
  []
 
 [75]
-Underfull \hbox (badness 10000) in paragraph at lines 1865--1866
+Underfull \hbox (badness 10000) in paragraph at lines 1860--1861
 
  []
 
 
-Overfull \hbox (11.05289pt too wide) in paragraph at lines 1871--1872
+Overfull \hbox (11.05289pt too wide) in paragraph at lines 1866--1867
 []\OT1/cmr/m/n/12 Posteriormente, la fun-ci^^Son re-co-rre la va-ria-ble \OT1/c
 mr/m/it/12 json-Fi-le-Ca-te-go-ries \OT1/cmr/m/n/12 re-cu-pe-ran-do los par^^Sa
 me-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1871--1872
+Underfull \hbox (badness 10000) in paragraph at lines 1866--1867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1880--1881
+Underfull \hbox (badness 10000) in paragraph at lines 1875--1876
 
  []
 
 [76]
-Underfull \hbox (badness 10000) in paragraph at lines 1895--1896
+Underfull \hbox (badness 10000) in paragraph at lines 1890--1891
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1897--1898
+Underfull \hbox (badness 10000) in paragraph at lines 1892--1893
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1906--1907
+Underfull \hbox (badness 10000) in paragraph at lines 1901--1902
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1913--1914
+Underfull \hbox (badness 10000) in paragraph at lines 1908--1909
 
  []
 
 [77]
-Underfull \hbox (badness 10000) in paragraph at lines 1922--1923
+Underfull \hbox (badness 10000) in paragraph at lines 1917--1918
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1924--1925
+Underfull \hbox (badness 10000) in paragraph at lines 1919--1920
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1933--1934
+Underfull \hbox (badness 10000) in paragraph at lines 1928--1929
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1935--1936
+Underfull \hbox (badness 10000) in paragraph at lines 1930--1931
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1946--1947
+Underfull \hbox (badness 10000) in paragraph at lines 1941--1942
 
  []
 
 [78]
-<./imageDetectionCompareCOCO.png, id=1665, 481.8pt x 368.1253pt>
+<./imageDetectionCompareCOCO.png, id=1673, 481.8pt x 368.1253pt>
 File: ./imageDetectionCompareCOCO.png Graphic file (type png)
 <use ./imageDetectionCompareCOCO.png>
 Package pdftex.def Info: ./imageDetectionCompareCOCO.png  used on input line 19
-62.
+57.
 (pdftex.def)             Requested size: 312.9803pt x 239.1438pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2125--2126
+Underfull \hbox (badness 10000) in paragraph at lines 2120--2121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2127--2128
+Underfull \hbox (badness 10000) in paragraph at lines 2122--2123
 
  []
 
 [79 <./imageDetectionCompareCOCO.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 2129--2130
+Underfull \hbox (badness 10000) in paragraph at lines 2124--2125
 
  []
 
-<./TestImages.png, id=1687, 1162.3425pt x 482.80376pt>
+<./TestImages.png, id=1696, 1162.3425pt x 482.80376pt>
 File: ./TestImages.png Graphic file (type png)
 <use ./TestImages.png>
-Package pdftex.def Info: ./TestImages.png  used on input line 2135.
+Package pdftex.def Info: ./TestImages.png  used on input line 2130.
 (pdftex.def)             Requested size: 455.24408pt x 189.0957pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2170--2171
+Underfull \hbox (badness 10000) in paragraph at lines 2165--2166
 
  []
 
 [80 <./TestImages.png>]
-<./Detector.png, id=1698, 1227.58624pt x 792.9625pt>
+<./Detector.png, id=1707, 1227.58624pt x 792.9625pt>
 File: ./Detector.png Graphic file (type png)
 <use ./Detector.png>
-Package pdftex.def Info: ./Detector.png  used on input line 2174.
+Package pdftex.def Info: ./Detector.png  used on input line 2169.
 (pdftex.def)             Requested size: 426.79134pt x 275.68979pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2180--2181
+Underfull \hbox (badness 10000) in paragraph at lines 2175--2176
 
  []
 
 [81 <./Detector.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2182--2183
+Underfull \hbox (badness 10000) in paragraph at lines 2177--2178
 
  []
 
-<./DetectionExecution.png, id=1712, 1686.3pt x 1053.9375pt>
+<./DetectionExecution.png, id=1720, 1686.3pt x 1053.9375pt>
 File: ./DetectionExecution.png Graphic file (type png)
 <use ./DetectionExecution.png>
-Package pdftex.def Info: ./DetectionExecution.png  used on input line 2186.
+Package pdftex.def Info: ./DetectionExecution.png  used on input line 2181.
 (pdftex.def)             Requested size: 426.79134pt x 266.73224pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2192--2193
+Underfull \hbox (badness 10000) in paragraph at lines 2187--2188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2194--2195
+Underfull \hbox (badness 10000) in paragraph at lines 2189--2190
 
  []
 
 [82 <./DetectionExecution.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2196--2197
+Underfull \hbox (badness 10000) in paragraph at lines 2191--2192
 
  []
 
-<./Evaluator.png, id=1736, 1226.5825pt x 791.95876pt>
+<./Evaluator.png, id=1744, 1226.5825pt x 791.95876pt>
 File: ./Evaluator.png Graphic file (type png)
 <use ./Evaluator.png>
-Package pdftex.def Info: ./Evaluator.png  used on input line 2200.
+Package pdftex.def Info: ./Evaluator.png  used on input line 2195.
 (pdftex.def)             Requested size: 426.79134pt x 275.55833pt.
 
-Overfull \hbox (2.62196pt too wide) in paragraph at lines 2206--2207
+Overfull \hbox (2.62196pt too wide) in paragraph at lines 2201--2202
 []\OT1/cmr/m/n/12 Para uti-li-zar es-ta he-rra-mien-ta es ne-ce-sa-rio de-fi-ni
 r va-rios par^^Same-tros co-mo \OT1/cmr/m/it/12 In-put Ground
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2206--2207
+Underfull \hbox (badness 10000) in paragraph at lines 2201--2202
 
  []
 
 [83 <./Evaluator.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2210--2211
+Underfull \hbox (badness 10000) in paragraph at lines 2205--2206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2223--2224
+Underfull \hbox (badness 10000) in paragraph at lines 2218--2219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2227--2228
+Underfull \hbox (badness 10000) in paragraph at lines 2222--2223
 
  []
 
@@ -2622,22 +2631,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 2227--2228
 Underfull \vbox (badness 1102) has occurred while \output is active []
 
  [84]
-Underfull \hbox (badness 10000) in paragraph at lines 2243--2244
+Underfull \hbox (badness 10000) in paragraph at lines 2238--2239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2261--2262
+Underfull \hbox (badness 10000) in paragraph at lines 2256--2257
 
  []
 
 [85]
-Underfull \hbox (badness 10000) in paragraph at lines 2277--2278
+Underfull \hbox (badness 10000) in paragraph at lines 2272--2273
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2279--2280
+Underfull \hbox (badness 10000) in paragraph at lines 2274--2275
 
  []
 
@@ -2645,39 +2654,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 2279--2280
 
 ]
 Cap\'{\i }tulo 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2319--2323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2319--2323
+
+ []
+
 [89]
-Underfull \hbox (badness 10000) in paragraph at lines 2338--2339
+Underfull \hbox (badness 10000) in paragraph at lines 2327--2331
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2342--2343
-
- []
-
-[90]
-Underfull \hbox (badness 10000) in paragraph at lines 2344--2345
-
- []
-
-[91] [92] [93
+[90] [91] [92] [93
 
 ]
-Underfull \hbox (badness 5475) in paragraph at lines 2471--2474
+Underfull \hbox (badness 5475) in paragraph at lines 2468--2471
 []\OT1/cmr/m/n/12 Caffe, Deep Lear-ning Fra-me-work.  La-yer Ca-ta-lo-gue.  []$
 \OT1/cmtt/m/n/12 https : / / caffe .
  []
 
 [94]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2531.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2528.
  [95]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2531.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2528.
  (./Memoria.aux
 LaTeX Info: Redefining \. on input line 31.
 LaTeX Info: Redefining \% on input line 31.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2531.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2531.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2528.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2528.
 
 Package rerunfilecheck Info: File `Memoria.out' has not changed.
 (rerunfilecheck)             Checksum: 21D58056AF02B7364CA3E67B68594541;4180.
@@ -2689,11 +2698,11 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2531.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2528.
  ) 
 Here is how much of TeX's memory you used:
- 18805 strings out of 492616
- 304402 string characters out of 6129481
+ 18807 strings out of 492616
+ 304419 string characters out of 6129481
  476771 words of memory out of 5000000
  21728 multiletter control sequences out of 15000+600000
  25981 words of font info for 50 fonts, out of 8000000 for 9000
@@ -2719,10 +2728,10 @@ t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist
 fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
 1/public/lm/lmss17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/l
 m/lmssbx10.pfb>
-Output written on Memoria.pdf (111 pages, 27251038 bytes).
+Output written on Memoria.pdf (113 pages, 27251844 bytes).
 PDF statistics:
- 2125 PDF objects out of 2487 (max. 8388607)
- 1841 compressed objects within 19 object streams
- 666 named destinations out of 1000 (max. 500000)
+ 2134 PDF objects out of 2487 (max. 8388607)
+ 1848 compressed objects within 19 object streams
+ 668 named destinations out of 1000 (max. 500000)
  686 words of extra memory for PDF output out of 10000 (max. 10000000)
 

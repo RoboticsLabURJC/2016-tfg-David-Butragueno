@@ -142,18 +142,13 @@ $\ $
 \chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
 \pagenumbering{Roman}
 
-\begin{comment}
-Una de las fuentes de inspiración matemáticas ha sido el continuo intento de formalizar el pensamiento humano. La complejidad para simular acciones humanas frente a otras teorías matemáticas ha hecho que se separen los campos de estudio y aplicación.\\
-\end{comment}
+Durante este trabajo se ha abordado el tema de la Inteligencia Artificial, más en concreto del \textit{Deep Learning} o Aprendizaje Profundo que trata de un conjunto de algoritmos automáticos y estructurados que hacen posible crear modelos o sistemas que simulen el comportamiento humano.\\
 
-Durante este trabajo se ha abordado el tema de la Inteligencia Artificial, más en concreto del \textit{Deep Learning}, explicando sus características y funcionalidades que hacen posible crear modelos o sistemas que simulen el comportamiento humano. El objetivo principal del trabajo es entrenar una red neuronal y la posterior medición y comparación de prestaciones de ésta con otros modelos preentrenados a la hora de realizar la detección de objetos.\\
+Uno de los objetivos de este TFG es entrenar una red neuronal propia para la detección de objetos. En primer lugar se realiza un estudio de la infraestructura que se ha utilizado para ello. Se definen las principales características y funcionalidades de la herramienta Caffe, que es un entorno de Aprendizaje Profundo para redes neuronales. Posteriormente se realiza un estudio de las bases de datos que se usan para entrenar la red propia: PASCAL Visual Object Classes y Common Objects in Context. Para cada una de ellas se especifica el número total de imágenes, qué objetos se contemplan y cómo están distribuidos y el formato de sus ficheros de anotaciones, en los que se definen las coordenadas de los objetos de cada imagen. Tras esto se explica el proceso de entrenamiento de la red neuronal, especificando su arquitectura y parámetros. Esta red propia es entrenada para tener la capacidad de detectar 20 objetos diferentes, todos ellos existentes en las dos bases de datos utilizadas.\\
 
-En primer lugar, se realiza un estudio de la infraestructura que se ha utilizado durante la realización del proyecto. Se definen las principales características de las herramientas Caffe y JdeRobot, utilizadas para el entrenamiento del modelo y para la creación de un componente detector en tiempo real. Posteriormente, se realiza un estudio de las bases de datos que se usarán, PASCAL Visual Object Classes y Common Objects in Context, especificando el número total de imágenes, como están distribuidos los objetos y el formato de sus ficheros de anotaciones.\\
+Además se ha desarrollado una aplicación para la detección de objetos en flujos de vídeo integrada con Caffe y en el que se puede utilizar cualquier red neuronal entrenada con este entorno. Se explican todos los módulos de esta aplicación y se muestran ejemplos de su ejecución y funcionamiento, tanto en vídeos grabados como en imágenes captadas por una cámara en tiempo real.\\
 
-Tras la definición de la infraestructura, se realiza una introducción a la técnica \textit{Single Shot MultiBox Detection}, la cual será la usada en la red neuronal que se entrenará. Después, se muestra un ejemplo práctico en el que se integra Caffe en esta técnica. Tras esto, se explica todo el proceso de entrenamiento del modelo, explicando la estructura de la red y los parámetros con los que realizará dicho entrenamiento. Por último, se explica como se desarrollo el componente detector comentado anteriormente y se muestra un ejemplo de se ejecución.\\
-
-
-Finalmente, se introduce el concepto de índice Jaccard, se procede a realizar las pruebas necesarias para comparar las prestaciones tanto de la red entrenada como de los modelos ya existentes comentados anteriormente y se exponen las conclusiones tras la realización del proyecto además de posibles líneas futuras a seguir.
+Finalmente, para medir la calidad de las detecciones de la red propia, se comparan sus prestaciones con las de otras 2 redes preentrenados con PASCAL Visual Object Classes y Common Objects in Context respectivamente. Tras la evaluación cuantitativa de todas ellas se obtienen valores más altos de las métricas calculadas usando la red propia, lo cual indica que se conseguirán mejores resultados al detectar los objetos contemplados con ella.
 
 
 \newpage
@@ -237,14 +232,14 @@ En el seno de la \acrshort{IA} como ciencia y tecnología se han ido acumulando c
 
 La \acrshort{IA} abarca varios campos de aplicación, por ejemplo \cite{IA_2}:
 \begin{itemize}
-\item \textbf{Tratamiento de lenguajes naturales:} Este campo abarca aplicaciones que realicen traducciones entre idiomas, interfaces hombre-máquina que permitan consultar una base de datos o dar órdenes a un sistema operativo que permita una comunicación más amigable y fluida con el usuario.
+\item \textbf{Tratamiento de lenguajes naturales:} Este campo abarca aplicaciones que realizan traducciones entre idiomas, interfaces hombre-máquina que permitan consultar una base de datos o dar órdenes a un sistema operativo que permita una comunicación más amigable y fluida con el usuario.
 \item \textbf{Sistemas expertos:} Aquí se engloban aquellos sistemas dónde la experiencia de personal cualificado se incorpora a dichos sistemas para conseguir deducciones más cercanas a la realidad.
 \item \textbf{Robótica:} Navegación de robots móvil, conducción autónoma, ensamblaje de piezas...
 \item \textbf{Visión Artificial:} Abarca aplicaciones desarrolladas para reconocimiento de objetos, detección de defectos en piezas por medio de la visión o apoyo en diagnósticos médicos.
 \item \textbf{Aprendizaje:} Modelización de conductas para su posterior implantación en computadoras.  
 \end{itemize}
 
-Dentro de la \acrshort{IA}, un área activa es el \textit{Machine Learning} o aprendizaje automático \acrshort{AA} cuyo objetivo es desarrollar técnicas que permitan a las computadoras aprender automáticamente. Más concretamente, se trata de crear aplicaciones capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos. Se puedes definir, por lo tanto, como un proceso de inducción del conocimiento. Se dice que un sistema tiene la \textit{capacidad de aprender} si adquiere y procesa información acerca de su desempeño y del ambiente que lo rodea, para mejorar dicho desempeño.\\
+Dentro de la \acrshort{IA}, un área activa es el \textit{Machine Learning} o aprendizaje automático \acrshort{AA} cuyo objetivo es desarrollar técnicas que permitan a las computadoras aprender automáticamente. Más concretamente, se trata de crear aplicaciones capaces de generalizar comportamientos a partir de información suministrada en forma de ejemplos. Se puede definir, por lo tanto, como un proceso de inducción del conocimiento. Se dice que un sistema tiene la \textit{capacidad de aprender} si adquiere y procesa información acerca de su desempeño y del ambiente que lo rodea, para mejorar dicho desempeño.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -330,7 +325,7 @@ Actualmente, existen varios criterios, llamados de forma genérica reglas de apre
 
 \begin{itemize}
 \item En el aprendizaje supervisado existe un supervisor que controla el proceso de aprendizaje de la red. El supervisor comprueba la salida de la red en respuesta a una determinada entrada y en el caso de que la salida no coincida con la deseada, se procede a modificar los pesos de las conexiones, con el fin de conseguir que la salida obtenida se aproxime a la deseada.
-\item Con el aprendizaje no supervisado, también llamado autoorganizado, la red no requiere influencia de un supervisor para ajustar los pesos de las conexiones entre sus neuronas. La red no recibe ninguna información por parte del entorno que le indique si salida generada en respuesta a una determinada entrada es o no correcta. Su función consiste en encontrar las características, regularidades o categorías que se puedan establecer entre los datos que se presentan en su entrada.
+\item Con el aprendizaje no supervisado, también llamado autoorganizado, la red no requiere influencia de un supervisor para ajustar los pesos de las conexiones entre sus neuronas. La red no recibe ninguna información por parte del entorno que le indique si la salida generada en respuesta a una determinada entrada es o no correcta. Su función consiste en encontrar las características, regularidades o categorías que se puedan establecer entre los datos que se presentan en su entrada.
 \end{itemize}
 
 Una vez obtenidos y guardados los pesos óptimos en la fase de entrenamiento, es necesario medir la eficacia de la red de forma objetiva mediante la presentación de casos nuevos, es decir, entradas diferentes a los casos de entrenamiento, de forma que a la fase de entrenamiento le debe seguir una fase de test. En esta fase no se modifican los pesos, simplemente se presentan casos nuevos, llamados casos de test, a la entrada de la red y ésta proporciona una salida para cada uno de ellos. Si se comprueba que se siguen obteniendo resultados dentro del margen de error deseado, se puede proceder a emplear la red neuronal dentro de su entorno de trabajo real.
@@ -367,12 +362,12 @@ En las \acrshort{CNN}, cada neurona de la capa oculta está conectada a un pequeñ
 
 \subsection{Entornos software para redes neuronales}\label{SoftwaresRNN}
 
-Actualmente, el incipiente interés que hay en crear aplicaciones basadas en la inteligencia artificial ha hecho que existan una gran cantidad librerías que permiten desarrollar este tipo de trabajos e investigaciones.\\
+Actualmente, el incipiente interés que hay en crear aplicaciones basadas en la inteligencia artificial ha hecho que existan una gran cantidad de librerías que permiten desarrollar este tipo de trabajos e investigaciones.\\
 
 A continuación se definen brevemente algunos de los softwares más utilizados para aplicaciones de aprendizaje máquina en la actualidad.
 
 \begin{enumerate}
-\item Caffe\cite{Caffe} es uno de los softwares más populares y extendidos actualmente. Este trabajo ha sido desarrollado utilizando este software, por lo que se detallarán sus características principales más adelante.
+\item \textbf{Caffe}\cite{Caffe} es uno de los softwares más populares y extendidos actualmente. Este trabajo ha sido desarrollado utilizando este software, por lo que se detallarán sus características principales más adelante.
 \item \textbf{TensorFlow}\cite{TensorFlow} es una biblioteca software de código abierto diseñada para el cálculo numérico de alto rendimiento. Su arquitectura flexible permite una fácil implementación de computación en una gran variedad de plataformas, tales como CPUs ó GPs, y desde escritorios hasta clústeres de servidores y dispositivos móviles y periféricos. Fue diseñado originalmente por investigadores e ingenieros de Google. Este software cuenta con un sólido soporte para el aprendizaje automático y el aprendizaje profundo y el flexible núcleo de computación numérica del que dispone hace que puede ser utilizado en muchos otros dominios científicos.
 
 \item \textbf{Keras}\cite{Keras} es una \acrshort{API} de redes neuronales de alto nivel escrita en Python y capaz de ejecutarse sobre TensorFlow, CNTK o Theano. Fue desarrolla con el objetivo principal de permitir una experimentación rápida. El enfoque de este software es que el poder pasar de la idea al resultado en el menor tiempo posible es la clave para hacer una buena experimentación.\\
@@ -382,7 +377,7 @@ Las características y ventajas principales que pueden definir a esta librería so
 \begin{itemize}
 \item \textbf{Facilidad de uso:} Keras es una \acrshort{API} diseñada para seres humanos, no para máquinas. Sigue las mejores prácticas para reducir la carga cognitiva: ofrece APIs consistentes y simples, las cuales minimizan el número de acciones de usuario requeridas para casos de uso común y proporciona comentarios claros y procesables ante el error del usuario.
 \item \textbf{Modularidad:} Un modelo se entiende como una secuencia o un gráfico de módulos independientes y completamente configurables que se pueden conectar con la menor cantidad de restricciones posible. En particular, las capas neuronales, las funciones de costos, los optimizadores, los esquemas de inicialización, las funciones de activación y los esquemas de regularización se tratan de módulos independientes que se puede combinar para crear nuevos modelos.
-\item \textbf{Facilmente extensible:} Los nuevos módulos son simples de agregar, ya sea como nuevas clases o como funciones. Al crearlos se permite una total expresividad, lo que hace de Keras una librería altamente adecuada para la investigación avanzada.
+\item \textbf{Fácilmente extensible:} Los nuevos módulos son simples de agregar, ya sea como nuevas clases o como funciones. Al crearlos se permite una total expresividad, lo que hace de Keras una librería altamente adecuada para la investigación avanzada.
 \item \textbf{Trabaja con Python:} No hay archivos de configuración de modelos definidos en un formato declarativo. Los modelos se escriben en código de Python, el cual permite fácilmente la extensión y es compacto y fácil de depurar.
 \end{itemize}
 \item \textbf{Darknet\cite{Darknet}:} Se trata de un framework de código abierto de redes neuronales escrito en C y CUDA. En su página web oficial se pueden observar varios de los trabajos desarrollados por sus creadores. Algunos de los más destacados son su componente detector en tiempo real, utilizando para el entrenamiento de la red la base de datos \acrshort{COCO}, la cual se utilizará en este trabajo, y su clasificador de imágenes para el reto 1000-class ImageNet.
@@ -467,7 +462,7 @@ Por otra parte, David Pascual\footnote{\url{https://jderobot.org/Dpascual-tfg}} 
 \end{center}
 \end{figure}
 
-En lo referente a la detección de objetos, en Robotics de la URJC también se ha desarrollado la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} que se trata de un conjunto de utilidades que simplifican la evaluación de los conjuntos de datos de detección de objetos más comunes con varias redes neuronales de detección de objetos.\\
+En lo referente a la detección de objetos, en Robotics de la URJC también se ha desarrollado la herramienta \textit{Detection Suite}\footnote{\url{https://github.com/JdeRobot/dl-DetectionSuite}} que trata de un conjunto de utilidades que simplifican la evaluación de los conjuntos de datos de detección de objetos más comunes con varias redes neuronales de detección de objetos.\\
 
 La idea principal es ofrecer una infraestructura genérica para evaluar los algoritmos de detección de objetos contra un conjunto de datos y calcular las estadísticas más comunes, tales como \textit{Intersecion Over Union}, \textit{precision} y \textit{recall}. Esta herramienta acepta un gran número de bases de datos internacionales como \acrshort{PascalVOC} y permite la comparación de varias arquitecturas de \textit{Deep Learning} utilizando exactamente la misma prueba.
 
@@ -560,7 +555,7 @@ Los puntos que definen a este entorno y que lo posicionan frente a otros orienta
 
 \subsection{Interfaz vía comandos}
 
-Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe}\cite{CaffeInterface} la cuál es la herramienta utilizada para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
+Caffe dispone de una interfaz de línea de comandos llamada \textit{cmdcaffe}\cite{CaffeInterface} la cual es la herramienta utilizada para el entrenamiento del modelo y el diagnóstico del mismo. Los principales comandos que se pueden ejecutar son:
 
 \begin{itemize}
 \item \textbf{Entrenamiento:}  Con el comando \textit{caffe train} es posible aprender modelos desde cero, reanudar el aprendizaje a partir de \textit{snapshots} guardadas y ajustar los modelos a los nuevos datos y tareas.
@@ -1013,7 +1008,7 @@ La distribución de los objetos en esta base de datos se puede obtener desde su s
 
 Uno de los objetivos de este trabajo fin de grado es el desarrollo de una aplicación que permita el uso de redes \acrshort{SSD} para detección visual de objetos en flujos de vídeo.\\
 
-En este capítulo se explica todo lo necesario para desarrollar y utilizar esta aplicación. Se comienza con una introducción a la técnica \acrshort{SSD}, tanto a la estructura del modelo como a las características principales del entrenamiento de éste. Tras esto se continúa con la explicación de todos los módulos que forman parte de la aplicación y cómo se ejecuta ésta. Después se muestra cómo se integra Caffe con \acrshort{SSD} y finalmente se explica cómo entrenar una red propia usando la plataforma Caffe, la cuál podrá ser usada en la aplicación desarrollada.
+En este capítulo se explica todo lo necesario para desarrollar y utilizar esta aplicación. Se comienza con una introducción a la técnica \acrshort{SSD}, tanto a la estructura del modelo como a las características principales del entrenamiento de éste. Tras esto se continúa con la explicación de todos los módulos que forman parte de la aplicación y cómo se ejecuta ésta. Después se muestra cómo se integra Caffe con \acrshort{SSD} y finalmente se explica cómo entrenar una red propia usando la plataforma Caffe, la cual podrá ser usada en la aplicación desarrollada.
 
 \section{Técnica Single Shot MultiBox Detection}
 
@@ -1414,7 +1409,7 @@ layer {
 }
 \end{lstlisting}
 
-Al inicio de esta capa se definen varios parámetros tales como el nombre de esta, \textit{name}, el tipo, \textit{type}, la capa de la cual recibe los datos, \textit{bottom} y la capa a la cual envía los datos procesados, \textit{top}. Este ejemplo particular de capa de convolución genera 64 salidas, \textit{num\_output} y utiliza un núcleo de convolución de 3x3, \textit{kernel\_size}. Los pesos se inicializan con el algoritmo Xavier, el cuál determina automáticamente la escala de inicialización basándose en el número de entradas y salidas de cada neurona. Adicionalmente, al sesgo se le asigna una constante, siendo esta 0.0.\\
+Al inicio de esta capa se definen varios parámetros tales como el nombre de esta, \textit{name}, el tipo, \textit{type}, la capa de la cual recibe los datos, \textit{bottom} y la capa a la cual envía los datos procesados, \textit{top}. Este ejemplo particular de capa de convolución genera 64 salidas, \textit{num\_output} y utiliza un núcleo de convolución de 3x3, \textit{kernel\_size}. Los pesos se inicializan con el algoritmo Xavier, el cual determina automáticamente la escala de inicialización basándose en el número de entradas y salidas de cada neurona. Adicionalmente, al sesgo se le asigna una constante, siendo esta 0.0.\\
 
 Posteriormente se define una capa de pooling, cuyo funcionamiento se ha explicado en el apartado \ref{CapasVision}.\\
 
@@ -1626,7 +1621,7 @@ Por último, cuando finalizan las iteraciones definidas en el solucionador, en es
 
 \chapter{Comparación experimental de redes de detección}
 
-En este capítulo se abordará el último \textit{subobjetivo} definido en este trabajo fin de grado, es decir, la evaluación y comparación cuantitativa de las tres redes de detección incorporadas a la aplicación de detección visual de objetos: red preentrenada \acrshort{COCO}, red preentrenada \acrshort{PascalVOC} y red entrenada sobre la base de datos combinada. Para esto se utilizará la herramienta de evaluación automática \textit{Detection Suite} de JdeRobot, la cuál devuelve varias métricas para medir sistemas detectores, que serán explicadas y posteriormente interpretadas.
+En este capítulo se abordará el último \textit{subobjetivo} definido en este trabajo fin de grado, es decir, la evaluación y comparación cuantitativa de las tres redes de detección incorporadas a la aplicación de detección visual de objetos: red preentrenada \acrshort{COCO}, red preentrenada \acrshort{PascalVOC} y red entrenada sobre la base de datos combinada. Para esto se utilizará la herramienta de evaluación automática \textit{Detection Suite} de JdeRobot, la cual devuelve varias métricas para medir sistemas detectores, que serán explicadas y posteriormente interpretadas.
 
 \section{Métricas de calidad de las detecciones visuales}
 \label{MetricasEvaluacionSection}
@@ -2324,7 +2319,7 @@ El desarrollo de este trabajo ha permitido aprender muchas cuestiones relacionad
 \item[Desarrollo de una aplicación que detecte objetos en tiempo real]\hfill 
 \vspace{5pt}
 \\
-El objetivo principal de este TFG de desarrollar una aplicación capaz de detectar visualmente objetos en flujos de video en tiempo real utilizando redes SSD se ha cumplido con éxito. Se ha escrito un programa en Python que emplea el entorno Caffe y que ofrece buenos resultados con las redes neuronales entrenadas previamente. El desacoplar la tarea en tres hilos, dedicando uno únicamente al proceso de detección, hace que la aplicación sea robusta evitando que ésta baje su rendimiento debido a la detección, ya que se realiza a la velocidad que pueda soportar la CPU del equipo utilizado.
+El objetivo principal de este TFG de desarrollar una aplicación capaz de detectar visualmente objetos en flujos de video en tiempo real utilizando redes SSD se ha cumplido con éxito. Se ha escrito un programa en Python que emplea el entorno Caffe y que ofrece buenos resultados con las redes neuronales entrenadas previamente. El desacoplar la tarea en tres hilos, dedicando uno únicamente al proceso de detección, hace que la aplicación sea robusta evitando que ésta baje su rendimiento debido a la detección, ya que se realiza a la velocidad que pueda soportar la CPU del equipo utilizado.\\\\
 \item[Entrenamiento de una red neuronal propia para la detección de objetos]\hfill
 \vspace{5pt}
 \\
@@ -2332,27 +2327,29 @@ Se han completado todos los pasos necesarios para entrenar una red neuronal en C
 \item[Evaluación cuantitativa experimental con la herramienta \textit{Detection Suite}]\hfill
 \vspace{5pt}
 \\
-Se han explicado las métricas que calcula \textit{Detection Suite} y que se han utilizado para evaluar los modelos. Esta introducción ha hecho que fuera más fácil interpretar posteriormente los resultados obtenidos. Con la utilización de \textit{Detection Suite} se han comprobado varias de las funcionalidades que tiene esta herramienta. Primero, con el detector, de una forma muy sencilla se puede realizar la detección de objetos sobre un gran conjunto de datos. Después, con el evaluador, se ha verificado que de una forma muy intuitiva se pueden calcular diferentes métricas de varios modelos. Después se han validado experimentalmente y caracterizado de modo cuantitativo el rendimiento de varias redes neuronales. Concretamente se han comparado tres alternativas diferentes: una preentrenada con \acrshort{PascalVOC}, otra preentrenada con \acrshort{COCO} y la red neuronal propia entrenada con la base de datos combinada. Los datos obtenidos muestran que con la red propia se obtienen mejores valores tanto de \acrshort{mAP} como de \acrshort{mAR}, mejorándolos en alrededor de un 30\% y un 20\% respectivamente, probablemente debido a que se ha entrenado con un conjunto más extenso y variado de datos.
+Se han explicado las métricas que calcula \textit{Detection Suite} y que se han utilizado para evaluar los modelos. Esta introducción ha hecho que fuera más fácil interpretar posteriormente los resultados obtenidos. Con la utilización de \textit{Detection Suite} se han comprobado varias de las funcionalidades que tiene esta herramienta. Primero, con el detector, de una forma muy sencilla se puede realizar la detección de objetos sobre un gran conjunto de datos. Después, con el evaluador, se ha verificado que de una forma muy intuitiva se pueden calcular diferentes métricas de varios modelos. Después se han validado experimentalmente y caracterizado de modo cuantitativo el rendimiento de varias redes neuronales. Concretamente se han comparado tres alternativas diferentes: una preentrenada con \acrshort{PascalVOC}, otra preentrenada con \acrshort{COCO} y la red neuronal propia entrenada con la base de datos combinada. Los resultados obtenidos muestran que con la red propia se obtienen valores más altos de \acrshort{mAP} y \acrshort{mAR}, con una mejora aproximada del 100\% y del 50\%, respectivamente. Esta mejora en las prestaciones puede tener su origen en que el entrenamiento de la red se ha realizado con un conjunto más extenso y variado de imágenes.\\
 \end{description}
 
-Además, con el trabajo diario se han aprendido varias cuestiones relacionadas con las herramientas y técnicas utilizadas.\\
+Además, con el trabajo diario se han sacado varias conclusiones relacionadas con las herramientas y técnicas utilizadas.
 
-Se ha propuesto un \textit{script} escrito en Python para la creación de bases de datos personalizadas a partir de ficheros \acrshort{LMDB}. De esta manera, se podrán crear conjuntos de imágenes en función de las necesidades que se requieran y utilizarlas para entrenar, validar o testear una red neuronal.
+\begin{itemize}
+\item Se ha propuesto un \textit{script} escrito en Python para la creación de bases de datos personalizadas a partir de ficheros \acrshort{LMDB}. De esta manera, se podrán crear conjuntos de imágenes en función de las necesidades que se requieran y utilizarlas para entrenar, validar o testear una red neuronal.
 
-La plataforma Caffe es una herramienta de gran utilidad para el trabajo con redes neuronales y uno de los entornos con mayor uso y reconocimiento actualmente. La forma tan sencilla con la que es posible realizar el entrenamiento de un modelo, hace que sea una herramienta muy intuitiva, reforzando su uso frente a otros entornos. Además, aporta varios ejemplos relacionados con la clasificación y detección de objetos, siendo un buen punto de partida para introducirse en el mundo de la inteligencia artificial.\\
+\item La plataforma Caffe es una herramienta de gran utilidad para el trabajo con redes neuronales y uno de los entornos con mayor uso y reconocimiento actualmente. La forma tan sencilla con la que es posible realizar el entrenamiento de un modelo, hace que sea una herramienta muy intuitiva, reforzando su uso frente a otros entornos. Además, aporta varios ejemplos relacionados con la clasificación y detección de objetos, siendo un buen punto de partida para introducirse en el mundo de la inteligencia artificial.
 
-Con el estudio de \acrshort{PascalVOC} y \acrshort{COCO}, se ha podido comprobar cuáles son los puntos que definen y diferencian a las bases de datos creadas para el entrenamiento de redes neuronales dedicadas a la detección. La cantidad de imágenes que las componen y cómo están distribuidos los objetos presentes en ellas, las anotaciones y etiquetado de los objetos de estas imágenes y el formato de éstas y el número de clases de objetos existentes en ellas. Además, con las pruebas realizadas se ha comprobado cómo se comportan redes entrenadas con ellas.\\
+\item Con el estudio de \acrshort{PascalVOC} y \acrshort{COCO}, se ha podido comprobar cuáles son los puntos que definen y diferencian a las bases de datos creadas para el entrenamiento de redes neuronales dedicadas a la detección. La cantidad de imágenes que las componen y cómo están distribuidos los objetos presentes en ellas, las anotaciones y etiquetado de los objetos de estas imágenes y el formato de éstas y el número de clases de objetos existentes en ellas. Además, con las pruebas realizadas se ha comprobado cómo se comportan redes entrenadas con ellas.
 
-Se han expuesto las principales características de la técnica \acrshort{SSD}, tanto en el modelo que se propone como a la hora del entrenamiento. Se ha explicado cómo la utilización de cajas delimitadoras con múltiples escalas conectadas con mapas de características permite modelar las diferentes formas de los objetos. Además, la utilización de un modelo con varias capas convolucionales permite que la imagen de entrada disminuya de tamaño paulatinamente, obteniendo así características en múltiples escalas y generando salidas más precisas. Los desarrolladores de \acrshort{SSD} integran esta técnica con Caffe, exponiendo varios ejemplos y redes preentrenadas, que son un buen punto de partida para conocer los resultados que da un modelo que utiliza esta técnica. Además, la integración con este entorno hace posible el entrenamiento de un modelo \acrshort{SSD} para su posterior estudio.
+\item Se han expuesto las principales características de la técnica \acrshort{SSD}, tanto en el modelo que se propone como a la hora del entrenamiento. Se ha explicado cómo la utilización de cajas delimitadoras con múltiples escalas conectadas con mapas de características permite modelar las diferentes formas de los objetos. Además, la utilización de un modelo con varias capas convolucionales permite que la imagen de entrada disminuya de tamaño paulatinamente, obteniendo así características en múltiples escalas y generando salidas más precisas. Los desarrolladores de \acrshort{SSD} integran esta técnica con Caffe, exponiendo varios ejemplos y redes preentrenadas, que son un buen punto de partida para conocer los resultados que da un modelo que utiliza esta técnica. Además, la integración con este entorno hace posible el entrenamiento de un modelo \acrshort{SSD} para su posterior estudio.
+\end{itemize}
 
 \section{Líneas futuras}
 
-Tras la exposición de las conclusiones y contribuciones de este TFG se enumeran varias líneas de investigación que ayudarían a continuar con lo desarrollado durante este trabajo.
+Tras la exposición de las conclusiones y contribuciones de este TFG, se enumeran a continuación varias líneas de investigación que ayudarían a continuar con este TFG.
 
 \begin{itemize}
-\item Una primera mejora sería la detección de objetos en la aplicación utilizando algunos de los softwares adicionales para redes neuronales como TensorFlow o Darknet. De esta manera sería posible contrastar como funciona cada entorno y que el usuario elija cualquiera de ellos a voluntad por fichero de configuración
-\item Segundo, dado que \textit{Detection Suite} soporta otras bases de datos, como YOLO \cite{YOLO} o ImageNet \cite{ImageNet}, sería interesante utilizarlas para entrenar una red y así ver los resultados que genera la utilización de cada una de ellas. Además, se podría extender con ellas la base de datos combinada y entrenar una nueva red con ella para verificar si aumentan las prestaciones.
-\item Y tercero se podría integrar la aplicación realizada de detección neuronal en vivo en una aplicación finalista como una de videovigilancia o en el sistema de percepción visual de un robot autónomo. De esta manera se podría comprobar cómo actúan las redes neuronales aportando su robustez en la detección de objetos en movimiento.
+\item La detección de objetos en la aplicación utilizando algunos de los entornos específicos para redes neuronales, como TensorFlow o Darknet. De esta manera sería posible contrastar cómo funciona cada entorno y que el usuario elija cualquiera de ellos a voluntad, a partir de un  fichero de configuración
+\item Dado que \textit{Detection Suite} soporta otras bases de datos, como YOLO \cite{YOLO} o ImageNet \cite{ImageNet}, sería interesante utilizarlas para entrenar una red y así analizar los resultados que genera la utilización de cada una de ellas. Además, se podría extender con ellas la base de datos combinada y entrenar con ella una nueva red para verificar si mejoran las prestaciones.
+\item Integrar la aplicación realizada para detección de objetos en vivo en una aplicación finalista, como pudiera ser una aplicación de videovigilancia o un sistema de percepción visual de un robot autónomo. De esta manera se podría comprobar la robustez de las redes neuronales diseñadas en escenarios de detección de objetos en movimiento.
 \end{itemize}
 
 \begin{thebibliography}{X}
