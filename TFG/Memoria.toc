@@ -1,57 +1,61 @@
-\select@language {spanish}
-\contentsline {chapter}{\'{I}ndice de figuras}{IX}{chapter*.2}
-\contentsline {chapter}{\'Indice de tablas}{XI}{chapter*.2}
-\contentsline {chapter}{Acr\'onimos}{XIII}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Inteligencia artificial y aprendizaje autom\'atico}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Redes neuronales artificiales}{4}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Aprendizaje en redes neuronales artificiales}{7}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Redes neuronales convolucionales (CNN)}{8}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Entornos software para redes neuronales}{9}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}Deep Learning}{11}{subsection.1.2.4}
-\contentsline {section}{\numberline {1.3}Antecedentes en Robotics de la URJC}{13}{section.1.3}
-\contentsline {chapter}{\numberline {2}Objetivos y metodolog\IeC {\'\i }a}{17}{chapter.2}
-\contentsline {section}{\numberline {2.1}Objetivos}{17}{section.2.1}
-\contentsline {section}{\numberline {2.2}Metodolog\IeC {\'\i }a y plan de trabajo}{18}{section.2.2}
-\contentsline {chapter}{\numberline {3}Infraestructura}{21}{chapter.3}
-\contentsline {section}{\numberline {3.1}Caffe}{21}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}L\IeC {\'\i }nea de comandos}{22}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Python}{22}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Capas de una red neuronal}{23}{subsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.3.1}Capas de datos}{23}{subsubsection.3.1.3.1}
-\contentsline {subsubsection}{\numberline {3.1.3.2}Capas de visi\'on}{24}{subsubsection.3.1.3.2}
-\contentsline {subsubsection}{\numberline {3.1.3.3}Capas comunes}{25}{subsubsection.3.1.3.3}
-\contentsline {subsubsection}{\numberline {3.1.3.4}Capas de p\'erdida}{26}{subsubsection.3.1.3.4}
-\contentsline {subsubsection}{\numberline {3.1.3.5}Capas de activaci\'on}{27}{subsubsection.3.1.3.5}
-\contentsline {section}{\numberline {3.2}JdeRobot}{28}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}CameraServer}{29}{subsection.3.2.1}
-\contentsline {section}{\numberline {3.3}Bases de datos}{30}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}PASCAL Visual Object Classes}{30}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Common Objects in Context}{33}{subsection.3.3.2}
-\contentsline {chapter}{\numberline {4}Detecci\'on con Single Shot MultiBox y Caffe}{37}{chapter.4}
-\contentsline {section}{\numberline {4.1}T\'ecnica Single Shot MultiBox Detection}{37}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Arquitectura}{38}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Entrenamiento}{40}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Single Shot MultiBox Detection en Caffe}{42}{section.4.2}
-\contentsline {section}{\numberline {4.3}Detector de objetos}{46}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Estructura de la red}{46}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Definici\'on del solucionador}{52}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Entrenamiento de la red}{54}{subsection.4.3.3}
-\contentsline {section}{\numberline {4.4}Componente detector}{56}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Hilo Camera}{57}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Hilo Detector}{58}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Hilo GUI}{59}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Ejecuci\'on}{60}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Detecci\'on condicional}{61}{subsection.4.4.5}
-\contentsline {chapter}{\numberline {5}Medidor de calidad}{63}{chapter.5}
-\contentsline {section}{\numberline {5.1}Comparaci\'on \textit {bounding boxes} real y detectada}{63}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}PascalVOC}{63}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}COCO}{68}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}M\'etricas de evaluaci\'on}{72}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Precisi\'on y Recall}{73}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}\'Indice Jaccard}{73}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Resultado final}{75}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusiones}{83}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusiones}{83}{section.6.1}
-\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{85}{section.6.2}
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{87}{chapter*.49}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\'{I}ndice de figuras}{VII}{chapter*.2}% 
+\contentsline {chapter}{\'Indice de tablas}{IX}{chapter*.2}% 
+\contentsline {chapter}{Acr\'onimos}{XI}{chapter*.2}% 
+\contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Inteligencia artificial y aprendizaje autom\'atico}{1}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Redes neuronales artificiales}{4}{section.1.2}% 
+\contentsline {subsection}{\numberline {1.2.1}Aprendizaje en redes neuronales artificiales}{7}{subsection.1.2.1}% 
+\contentsline {subsection}{\numberline {1.2.2}Redes neuronales convolucionales (CNN)}{8}{subsection.1.2.2}% 
+\contentsline {subsection}{\numberline {1.2.3}Entornos software para redes neuronales}{9}{subsection.1.2.3}% 
+\contentsline {subsection}{\numberline {1.2.4}Deep Learning}{11}{subsection.1.2.4}% 
+\contentsline {section}{\numberline {1.3}Antecedentes en Robotics de la URJC}{13}{section.1.3}% 
+\contentsline {chapter}{\numberline {2}Objetivos y metodolog\IeC {\'\i }a}{17}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Objetivos}{17}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Metodolog\IeC {\'\i }a y plan de trabajo}{18}{section.2.2}% 
+\contentsline {chapter}{\numberline {3}Infraestructura utilizada}{21}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Plataforma Caffe}{21}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Interfaz v\IeC {\'\i }a comandos}{22}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Interfaz con lenguaje Python}{22}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}Capas de una red neuronal}{23}{subsection.3.1.3}% 
+\contentsline {subsubsection}{\numberline {3.1.3.1}Capas de datos}{23}{subsubsection.3.1.3.1}% 
+\contentsline {subsubsection}{\numberline {3.1.3.2}Capas de visi\'on}{24}{subsubsection.3.1.3.2}% 
+\contentsline {subsubsection}{\numberline {3.1.3.3}Capas comunes}{25}{subsubsection.3.1.3.3}% 
+\contentsline {subsubsection}{\numberline {3.1.3.4}Capas de p\'erdida}{26}{subsubsection.3.1.3.4}% 
+\contentsline {subsubsection}{\numberline {3.1.3.5}Capas de activaci\'on}{26}{subsubsection.3.1.3.5}% 
+\contentsline {section}{\numberline {3.2}Organizaci\'on JdeRobot}{28}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Servidor de im\'agenes CameraServer}{29}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}DetectionSuite}{30}{subsection.3.2.2}% 
+\contentsline {section}{\numberline {3.3}Bases de datos de detecci\'on visual}{32}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}PASCAL Visual Object Classes}{32}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}Common Objects in Context}{34}{subsection.3.3.2}% 
+\contentsline {chapter}{\numberline {4}Detecci\'on visual de objetos con Single Shot MultiBox y Caffe}{39}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}T\'ecnica Single Shot MultiBox Detection}{39}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Arquitectura}{41}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Entrenamiento}{42}{subsection.4.1.2}% 
+\contentsline {section}{\numberline {4.2}Aplicaci\'on para detecci\'on de objetos en flujos de v\IeC {\'\i }deo con SSD}{45}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Dise\~no}{45}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Hilo Camera}{46}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Hilo Detector}{47}{subsection.4.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Hilo GUI}{48}{subsection.4.2.4}% 
+\contentsline {subsection}{\numberline {4.2.5}Ejecuci\'on}{49}{subsection.4.2.5}% 
+\contentsline {subsection}{\numberline {4.2.6}Detecci\'on espec\IeC {\'\i }fica de un tipo de objetos}{51}{subsection.4.2.6}% 
+\contentsline {section}{\numberline {4.3}Uso de redes SSD preentrenadas en Caffe}{53}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Creaci\'on y uso de un modelo de red SSD propio}{56}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Estructura de la red}{56}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Definici\'on del solucionador}{62}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Entrenamiento de la red}{64}{subsection.4.4.3}% 
+\contentsline {chapter}{\numberline {5}Comparaci\'on experimental de redes de detecci\'on}{67}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}M\'etricas de calidad de las detecciones visuales}{67}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Precisi\'on y Recall}{67}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}\'Indice Jaccard}{68}{subsection.5.1.2}% 
+\contentsline {section}{\numberline {5.2}Comparaci\'on entre detecciones conseguidas y las verdaderas}{70}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}PascalVOC}{70}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}COCO}{74}{subsection.5.2.2}% 
+\contentsline {section}{\numberline {5.3}Evaluaci\'on experimental cuantitativa}{79}{section.5.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Comparaci\'on en tiempos de ejecuci\'on}{84}{subsection.5.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}Evaluaci\'on de Precision y Recall}{84}{subsection.5.3.2}% 
+\contentsline {chapter}{\numberline {6}Conclusiones}{89}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Conclusiones}{89}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{91}{section.6.2}% 
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{93}{chapter*.51}% 

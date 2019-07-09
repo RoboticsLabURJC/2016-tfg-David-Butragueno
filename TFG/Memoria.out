@@ -12,45 +12,44 @@
 \BOOKMARK [0][-]{chapter.2}{Objetivos y metodolog\355a}{}% 12
 \BOOKMARK [1][-]{section.2.1}{Objetivos}{chapter.2}% 13
 \BOOKMARK [1][-]{section.2.2}{Metodolog\355a y plan de trabajo}{chapter.2}% 14
-\BOOKMARK [0][-]{chapter.3}{Infraestructura}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Caffe}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.1.1}{L\355nea de comandos}{section.3.1}% 17
-\BOOKMARK [2][-]{subsection.3.1.2}{Python}{section.3.1}% 18
+\BOOKMARK [0][-]{chapter.3}{Infraestructura utilizada}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Plataforma Caffe}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Interfaz v\355a comandos}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.2}{Interfaz con lenguaje Python}{section.3.1}% 18
 \BOOKMARK [2][-]{subsection.3.1.3}{Capas de una red neuronal}{section.3.1}% 19
-\BOOKMARK [3][-]{subsubsection.3.1.3.1}{Capas de datos}{subsection.3.1.3}% 20
-\BOOKMARK [3][-]{subsubsection.3.1.3.2}{Capas de visi\363n}{subsection.3.1.3}% 21
-\BOOKMARK [3][-]{subsubsection.3.1.3.3}{Capas comunes}{subsection.3.1.3}% 22
-\BOOKMARK [3][-]{subsubsection.3.1.3.4}{Capas de p\351rdida}{subsection.3.1.3}% 23
-\BOOKMARK [3][-]{subsubsection.3.1.3.5}{Capas de activaci\363n}{subsection.3.1.3}% 24
-\BOOKMARK [1][-]{section.3.2}{JdeRobot}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.2.1}{CameraServer}{section.3.2}% 26
-\BOOKMARK [1][-]{section.3.3}{Bases de datos}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.1}{PASCAL Visual Object Classes}{section.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.2}{Common Objects in Context}{section.3.3}% 29
-\BOOKMARK [0][-]{chapter.4}{Detecci\363n con Single Shot MultiBox y Caffe}{}% 30
-\BOOKMARK [1][-]{section.4.1}{T\351cnica Single Shot MultiBox Detection}{chapter.4}% 31
-\BOOKMARK [2][-]{subsection.4.1.1}{Arquitectura}{section.4.1}% 32
-\BOOKMARK [2][-]{subsection.4.1.2}{Entrenamiento}{section.4.1}% 33
-\BOOKMARK [1][-]{section.4.2}{Single Shot MultiBox Detection en Caffe}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.3}{Detector de objetos}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.3.1}{Estructura de la red}{section.4.3}% 36
-\BOOKMARK [2][-]{subsection.4.3.2}{Definici\363n del solucionador}{section.4.3}% 37
-\BOOKMARK [2][-]{subsection.4.3.3}{Entrenamiento de la red}{section.4.3}% 38
-\BOOKMARK [1][-]{section.4.4}{Componente detector}{chapter.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.1}{Hilo Camera}{section.4.4}% 40
-\BOOKMARK [2][-]{subsection.4.4.2}{Hilo Detector}{section.4.4}% 41
-\BOOKMARK [2][-]{subsection.4.4.3}{Hilo GUI}{section.4.4}% 42
-\BOOKMARK [2][-]{subsection.4.4.4}{Ejecuci\363n}{section.4.4}% 43
-\BOOKMARK [2][-]{subsection.4.4.5}{Detecci\363n condicional}{section.4.4}% 44
-\BOOKMARK [0][-]{chapter.5}{Medidor de calidad}{}% 45
-\BOOKMARK [1][-]{section.5.1}{Comparaci\363n bounding boxes real y detectada}{chapter.5}% 46
-\BOOKMARK [2][-]{subsection.5.1.1}{PascalVOC}{section.5.1}% 47
-\BOOKMARK [2][-]{subsection.5.1.2}{COCO}{section.5.1}% 48
-\BOOKMARK [1][-]{section.5.2}{M\351tricas de evaluaci\363n}{chapter.5}% 49
-\BOOKMARK [2][-]{subsection.5.2.1}{Precisi\363n y Recall}{section.5.2}% 50
-\BOOKMARK [2][-]{subsection.5.2.2}{\315ndice Jaccard}{section.5.2}% 51
-\BOOKMARK [1][-]{section.5.3}{Resultado final}{chapter.5}% 52
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 53
-\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 54
-\BOOKMARK [1][-]{section.6.2}{L\355neas futuras}{chapter.6}% 55
-\BOOKMARK [0][-]{chapter*.49}{Bibliograf\355a}{}% 56
+\BOOKMARK [1][-]{section.3.2}{Organizaci\363n JdeRobot}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Servidor de im\341genes CameraServer}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.2}{DetectionSuite}{section.3.2}% 22
+\BOOKMARK [1][-]{section.3.3}{Bases de datos de detecci\363n visual}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.1}{PASCAL Visual Object Classes}{section.3.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.2}{Common Objects in Context}{section.3.3}% 25
+\BOOKMARK [0][-]{chapter.4}{Detecci\363n visual de objetos con Single Shot MultiBox y Caffe}{}% 26
+\BOOKMARK [1][-]{section.4.1}{T\351cnica Single Shot MultiBox Detection}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.1.1}{Arquitectura}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.2}{Entrenamiento}{section.4.1}% 29
+\BOOKMARK [1][-]{section.4.2}{Aplicaci\363n para detecci\363n de objetos en flujos de v\355deo con SSD}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.2.1}{Dise\361o}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.2}{Hilo Camera}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.3}{Hilo Detector}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.4}{Hilo GUI}{section.4.2}% 34
+\BOOKMARK [2][-]{subsection.4.2.5}{Ejecuci\363n}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.6}{Detecci\363n espec\355fica de un tipo de objetos}{section.4.2}% 36
+\BOOKMARK [1][-]{section.4.3}{Uso de redes SSD preentrenadas en Caffe}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.4}{Creaci\363n y uso de un modelo de red SSD propio}{chapter.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.1}{Estructura de la red}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.2}{Definici\363n del solucionador}{section.4.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.3}{Entrenamiento de la red}{section.4.4}% 41
+\BOOKMARK [0][-]{chapter.5}{Comparaci\363n experimental de redes de detecci\363n}{}% 42
+\BOOKMARK [1][-]{section.5.1}{M\351tricas de calidad de las detecciones visuales}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.1.1}{Precisi\363n y Recall}{section.5.1}% 44
+\BOOKMARK [2][-]{subsection.5.1.2}{\315ndice Jaccard}{section.5.1}% 45
+\BOOKMARK [1][-]{section.5.2}{Comparaci\363n entre detecciones conseguidas y las verdaderas}{chapter.5}% 46
+\BOOKMARK [2][-]{subsection.5.2.1}{PascalVOC}{section.5.2}% 47
+\BOOKMARK [2][-]{subsection.5.2.2}{COCO}{section.5.2}% 48
+\BOOKMARK [1][-]{section.5.3}{Evaluaci\363n experimental cuantitativa}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.3.1}{Comparaci\363n en tiempos de ejecuci\363n}{section.5.3}% 50
+\BOOKMARK [2][-]{subsection.5.3.2}{Evaluaci\363n de Precision y Recall}{section.5.3}% 51
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 52
+\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.2}{L\355neas futuras}{chapter.6}% 54
+\BOOKMARK [0][-]{chapter*.51}{Bibliograf\355a}{}% 55
