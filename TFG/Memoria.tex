@@ -142,13 +142,13 @@ $\ $
 \chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
 \pagenumbering{Roman}
 
-Durante este trabajo se ha abordado el tema de la Inteligencia Artificial, más en concreto del \textit{Deep Learning} o Aprendizaje Profundo que trata de un conjunto de algoritmos automáticos y estructurados que hacen posible crear modelos o sistemas que simulen el comportamiento humano.\\
+Este Trabajo Fin de Grado (TFG) se contextualiza en el ámbito de la Inteligencia Artificial, y más en concreto en los esquemas de aprendizaje automático denominados Aprendizaje Profundo o \textit{Deep Learning}, esquemas que permiten crear modelos o sistemas basados en redes neuronales artificiales para simular, en cierta medida, el comportamiento humano.\\
 
-Uno de los objetivos de este TFG es entrenar una red neuronal propia para la detección de objetos. En primer lugar se realiza un estudio de la infraestructura que se ha utilizado para ello. Se definen las principales características y funcionalidades de la herramienta Caffe, que es un entorno de Aprendizaje Profundo para redes neuronales. Posteriormente se realiza un estudio de las bases de datos que se usan para entrenar la red propia: PASCAL Visual Object Classes y Common Objects in Context. Para cada una de ellas se especifica el número total de imágenes, qué objetos se contemplan y cómo están distribuidos y el formato de sus ficheros de anotaciones, en los que se definen las coordenadas de los objetos de cada imagen. Tras esto se explica el proceso de entrenamiento de la red neuronal, especificando su arquitectura y parámetros. Esta red propia es entrenada para tener la capacidad de detectar 20 objetos diferentes, todos ellos existentes en las dos bases de datos utilizadas.\\
+Uno de los objetivos de este TFG es entrenar una red neuronal propia para la detección de objetos. En primer lugar se realiza un estudio de la infraestructura utilizada y se definen las principales características y funcionalidades de la herramienta Caffe, que es un entorno de Aprendizaje Profundo para redes neuronales. Posteriormente se examinan las bases de datos que se usan para entrenar la red propia: PASCAL Visual Object Classes y Common Objects in Context. Para cada una de ellas se especifica el número total de imágenes, qué objetos se contemplan y cómo están distribuidos y el formato de sus ficheros de anotaciones, en los que se definen las coordenadas de los objetos de cada imagen. A continuación se explica el proceso de entrenamiento de la red neuronal, especificando su arquitectura y parámetros. Esta red propia es entrenada para tener la capacidad de detectar 20 objetos diferentes, todos ellos existentes en las dos bases de datos utilizadas.\\
 
-Además se ha desarrollado una aplicación para la detección de objetos en flujos de vídeo integrada con Caffe y en el que se puede utilizar cualquier red neuronal entrenada con este entorno. Se explican todos los módulos de esta aplicación y se muestran ejemplos de su ejecución y funcionamiento, tanto en vídeos grabados como en imágenes captadas por una cámara en tiempo real.\\
+En este TFG también se ha desarrollado una aplicación, integrada con Caffe, para detectar objetos en flujos de vídeo y en la que se puede utilizar cualquier red neuronal entrenada con este entorno. Se explican todos los módulos de esta aplicación, presentando ejemplos de su ejecución y funcionamiento, considerando tanto vídeos grabados como imágenes captadas por una cámara en tiempo real.\\
 
-Finalmente, para medir la calidad de las detecciones de la red propia, se comparan sus prestaciones con las de otras 2 redes preentrenados con PASCAL Visual Object Classes y Common Objects in Context respectivamente. Tras la evaluación cuantitativa de todas ellas se obtienen valores más altos de las métricas calculadas usando la red propia, lo cual indica que se conseguirán mejores resultados al detectar los objetos contemplados con ella.
+Finalmente, para evaluar la calidad del modelo creado con la red propia, se comparan sus prestaciones con las de otras dos redes preentrenadas con PASCAL Visual Object Classes y Common Objects in Context, respectivamente. Los resultados de la evaluación cuantitativa muestran prestaciones más altas usando la red propia, lo que indica que se conseguirán mejores resultados al detectar los objetos contemplados con ella.
 
 
 \newpage
@@ -1189,15 +1189,15 @@ En la Figura \ref{ComponenteDetectorPython} se puede observar cómo se comporta l
 \end{center}
 \end{figure}
 
-En el ejemplo anterior se ha utilizado la cámara del portátil, es decir, se están detectando los objetos que capta la cámara en tiempo real. Sin embargo, está aplicación también permite definir como entrada un vídeo grabado previamente si se especifica su ruta en el fichero de configuración del servidor de imágenes, \textit{cameraserver.cfg}. Para ello, se modificará la clave \textit{CameraSrv.Camera.0.Uri} del archivo de la siguiente manera:\\
+En el ejemplo anterior se ha utilizado la cámara del portátil, es decir, se están detectando los objetos que capta la cámara en tiempo real. Sin embargo, está aplicación también permite definir como entrada un vídeo grabado previamente si se especifica su ruta en el fichero de configuración del servidor de imágenes, \textit{cameraserver.cfg}. Para ello, se modifica la clave \textit{CameraSrv.Camera.0.Uri} del archivo de la siguiente manera:\\
 
 \begin{lstlisting}[frame=single]
 CameraSrv.Camera.0.Uri= /home/davidbutra/Descargas/TheBigBangTheory.mp4
 \end{lstlisting}
 
-Para probar esta funcionalidad se ha descargado un vídeo en el ordenador local y se ha arrancado la aplicación. El vídeo que muestra el comportamiento de la aplicación se encuentra en Youtube\footnote{\url{https://www.youtube.com/watch?v=CZ_ppBCFZaQ&feature=youtu.be}}. Primero se muestra como funciona el botón de detección única, detectando objetos únicamente cuando es pulsado. Posteriormente, se prueba la detección continua sobre todas las imágenes de entrada.\\
+Para probar esta funcionalidad se ha utilizado un vídeo descargado, localizado en el ordenador local en la ruta especificada, y se ha arrancado la aplicación. El vídeo que muestra el comportamiento de la aplicación se encuentra en Youtube\footnote{\url{https://www.youtube.com/watch?v=CZ_ppBCFZaQ&feature=youtu.be}}. Primero se muestra cómo funciona el botón de detección única, detectando objetos únicamente cuando es pulsado. Posteriormente se prueba la detección continua sobre todas las imágenes de entrada.\\
 
-En el vídeo, además de la interfaz gráfica de la aplicación, se observa el terminal, en el que van apareciendo los objetos que se detectan y en cuanto tiempo se ha realizado todo el proceso siendo éste alrededor de unos 1.5 y 2 segundos. Esto es debido a que la aplicación ha sido ejecutada en una máquina virtual la cuál no tiene los mejores recursos para esta tarea. Si esta aplicación se utilizará en una máquina con mayores recursos se podría observar como los tiempos disminuyen y como se realiza la detección sobre un mayor número de imágenes por segundo.\\
+En el vídeo, además de la interfaz gráfica de la aplicación, se observa el terminal, en el que van apareciendo los objetos que se detectan y en cuánto tiempo se ha realizado todo el proceso, estando éste en el rango de 1.5 y 2 segundos aproximadamente. Esto es debido a que la aplicación ha sido ejecutada en una máquina virtual, la cual no tiene los mejores recursos para esta tarea. Si esta aplicación se utilizará en una máquina con mayores recursos se podría observar como los tiempos disminuyen y como se realiza la detección sobre un mayor número de imágenes por segundo.\\
 
 La Figura \ref{ComponenteDetectorTheBigBangTheory} muestra una secuencia de imágenes del vídeo cuando se ha pulsado el botón de detección continua.\\
 
@@ -1274,6 +1274,7 @@ self.net = caffe.Net(model_def,  # defines the structure of the model
 \end{lstlisting}
 
 Posteriormente, se define la función \textit{get\_labelname}, que es la encargada de devolver las etiquetas que se encuentran definidas en el fichero {labelmap.prototxt}.\\
+\lhead[\rightmark]{}
 
 \begin{lstlisting}[frame=single]
 def get_labelname(self,labelmap, labels):
@@ -1700,6 +1701,7 @@ Para determinar la calidad de un detector, se utilizarán la \textit{bounding box
 \end{figure}
 
 \section{Comparación entre detecciones conseguidas y las verdaderas}
+\fancyhead[LE]{\thesection . COMPARARIÓN DETECCIONES Y VERDADERAS}
 
 En el apartado \ref{SSDCaffe} se ha explicado cómo se obtiene la \textit{bounding box} de los objetos detectados. Para obtener la \textit{bounding box} real, hay que recuperar las coordenadas del objeto, las cuales se encuentran en las anotaciones de la imagen. Como se ha explicado en el apartado \ref{BBDD}, las anotaciones para \acrshort{PascalVOC} y \acrshort{COCO} tienen formatos de archivos diferentes, para la primera base de datos se trata de ficheros \acrshort{XML} y para la segunda ficheros \acrshort{JSON}, por lo que se utilizarán dos scripts diferentes para recorrer el fichero determinado y obtener las coordenadas originales. Tras ello, se podrá observar fácil y gráficamente la diferencia entre la \textit{bounding box} real y la detectada, consiguiendo así una aproximación visual de la calidad del detector.
 
@@ -2116,6 +2118,7 @@ El código anterior comparará una variable creada con el nombre de una de las eti
 \end{comment}
 \section{Evaluación experimental cuantitativa}
 \label{ResultadoFinalSection}
+\lhead[\rightmark]{}
 
 En este apartado se describen las pruebas realizadas para evaluar la calidad con la que detectan objetos los modelos comentados durante la memoria. Las redes entrenadas que se han medidos son las dos preentrenadas con las bases de datos \acrshort{PascalVOC} y \acrshort{COCO}, enunciadas en el apartado \ref{SSDCaffe}, y la entrenada utilizando una base de datos combinada explicada en el apartado \ref{DetectorObjetosSection}.\\
 
@@ -2354,6 +2357,8 @@ Tras la exposición de las conclusiones y contribuciones de este TFG, se enumeran
 
 \begin{thebibliography}{X}
 \addcontentsline{toc}{chapter}{Bibliografía}
+\fancyhead[RO]{BIBLIOGRAFÍA}
+\fancyhead[LE]{BIBLIOGRAFÍA}
 
 \bibitem{IA_Introduccion}
 Wei Di, Anurag Bhardwaj, Jianing Wei.
